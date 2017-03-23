@@ -1,3 +1,65 @@
-app:
-    resource: '@AppBundle/Controller/'
-    type: annotation
+home_page:
+    path:    /
+    defaults:
+        _controller: AppBundle:Front:index
+
+observation:
+    path:    /observation
+    defaults:
+        _controller: AppBundle:Back:observation
+
+results:
+    path:    /results
+    defaults:
+        _controller: AppBundle:Front:results
+
+#blog:
+#    path:    /blog
+#    defaults:
+#        _controller:
+
+contact:
+    path:    /contact
+    defaults:
+        _controller: AppBundle:Front:contact
+
+legal_notice:
+    path:    /legal_notice
+    defaults:
+        _controller: AppBundle:Front:legal
+
+join:
+    path:    /join
+    defaults:
+        _controller: AppBundle:Back:join
+
+donate:
+    path:    /donate
+    defaults:
+        _controller: AppBundle:Front:donate
+
+admin_account:
+    path:    /admin-account
+    defaults:
+        _controller: AppBundle:Back:adminAccount
+
+admin_dashboard:
+    path:    /a-dashboard
+    defaults:
+        _controller: AppBundle:Back:adminDashboard
+
+account:
+    path:    /account
+    defaults:
+        _controller: AppBundle:Back:account
+
+#login:
+#    path:    /log
+#    defaults:
+#        _controller: AppBundle:Back:login
+
+create_account:
+    path:    /create-account
+    defaults:
+        _controller: AppBundle:Back:createAccount
+

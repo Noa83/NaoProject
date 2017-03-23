@@ -1,0 +1,60 @@
+#travaux
+{
+    width: 40%;
+    margin-left: 250px;
+}
+
+/* Header */
+#top_button_bar
+{
+    padding-right: 0;
+    padding-top: 10px;
+}
+#top_button_bar_xs
+{
+    display: none;
+}
+#btn_donate
+{
+    margin-left: 5px;
+}
+.navbar-brand>img
+{
+    height: 80px;
+}
+.navbar-default {
+    background-color: white;
+    border-bottom: solid 5px #F5871F;
+    border-left:none;
+    border-right:none;
+}
+
+/* Carte */
+#map
+{
+    height: 400px;
+    width: 700px;
+    margin-bottom: 50px;
+}
+
+/* Footer */
+.breadcrumb
+{
+    background-color: white;
+}
+
+
+/* Media Queries */
+@media (max-width: 960px) {
+    .navbar-brand > img {
+        display: none;
+    }
+}
+
+@media (max-width: 770px) {
+    #top_button_bar_xs {
+        margin-bottom: 5px;
+        margin-top: 5px;
+        display: block;
+    }
+}
