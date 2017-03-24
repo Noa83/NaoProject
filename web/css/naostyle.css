@@ -4,6 +4,46 @@
     margin-left: 250px;
 }
 
+/* General */
+body
+{
+    font-family: Lato, SansSerif;
+    color: #321c0e;
+}
+h1
+{
+     font-size: 1.8em;
+}
+h2
+{
+    font-size: 1.5em;
+}
+h3
+{
+    font-size: 1.17em;
+}
+p
+{
+    font-size: 14px;
+}
+a
+{
+    color: #288b90;
+}
+
+/* Blog */
+h1, h2, h3
+{
+    color: #321c0e;
+    font-size: 18px;
+}
+a.blog, p
+{
+    color: #7d736a;
+    font-size: 14px;
+}
+
+
 /* Header */
 #top_button_bar
 {
@@ -18,12 +58,14 @@
 .donate, .donate:hover
 {
     background-color: #FE9A04;
+    color: white;
     margin-left: 5px;
     border: none;
 }
 .join, .join:hover
 {
     background-color: #288B90;
+    color: white;
     margin-left: 5px;
     border: none;
 }
@@ -36,6 +78,7 @@
 .navbar-brand>img
 {
     height: 80px;
+    width: auto;
 }
 .navbar-default {
     background-color: white;
@@ -43,7 +86,14 @@
     border-left:none;
     border-right:none;
 }
-
+.navbar-default .navbar-nav>li>a
+{
+    color: #288B90;
+}
+.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover
+{
+    color: #288B90;
+}
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover
 {
     background-color: #288B90;
@@ -59,6 +109,17 @@
 .fa-home
 {
     color: #288B90;
+}
+#btn_search
+{
+    background-color: white;
+    color: #288B90;
+    border: solid 1px #CCC;
+}
+#btn_search:hover
+{
+    background-color: #288B90;
+    color: white;
 }
 
 
@@ -77,10 +138,21 @@
 }
 
 
-/* Media Queries */
-@media (max-width: 960px) {
+ /*Media Queries*/
+
+@media (min-width: 992px) {
+    .navbar-brand > img {
+        /*display: none;*/
+        position: absolute;
+        height: 80px;
+        width: auto;
+    }
+}
+
+@media (max-width: 770px) {
     .navbar-brand > img {
         display: none;
+
     }
 }
 
