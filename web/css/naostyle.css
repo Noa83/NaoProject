@@ -1,144 +1,142 @@
-#travaux
-{
+#travaux {
     width: 40%;
     margin-left: 250px;
 }
 
 /* General */
-body
-{
+body {
     font-family: Lato, SansSerif;
     color: #321c0e;
 }
-h1
-{
-     font-size: 1.8em;
+
+h1 {
+    font-size: 1.8em;
 }
-h2
-{
+
+h2 {
     font-size: 1.5em;
 }
-h3
-{
+
+h3 {
     font-size: 1.17em;
 }
-p
-{
+
+p {
     font-size: 14px;
 }
-a
-{
+
+a {
     color: #288b90;
 }
 
 /* Blog */
-h1, h2, h3
-{
+h1, h2, h3 {
     color: #321c0e;
     font-size: 18px;
 }
-a.blog, p
-{
+
+a.blog, p {
     color: #7d736a;
     font-size: 14px;
 }
 
-
 /* Header */
-#top_button_bar
-{
+#top_button_bar {
     padding-right: 0;
     padding-top: 10px;
     margin-bottom: 20px;
 }
-#top_button_bar_xs
-{
+
+#top_button_bar_xs {
     display: none;
 }
-.donate, .donate:hover
-{
+
+.donate, .donate:hover {
     background-color: #FE9A04;
     color: white;
     margin-left: 5px;
     border: none;
 }
-.join, .join:hover
-{
+
+.join, .join:hover {
     background-color: #288B90;
     color: white;
     margin-left: 5px;
     border: none;
 }
-.faceb
-{
+
+.faceb {
     color: white;
     background-color: #4862a3;
     border: none;
 }
-.navbar-brand>img
-{
+
+.navbar-brand > img {
     height: 80px;
     width: auto;
 }
+
 .navbar-default {
     background-color: white;
     border-bottom: solid 5px #FE9A04;
-    border-left:none;
-    border-right:none;
+    border-left: none;
+    border-right: none;
 }
-.navbar-default .navbar-nav>li>a
-{
+
+.navbar-default .navbar-nav > li > a {
     color: #288B90;
 }
-.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover
-{
+
+.navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover {
     color: #288B90;
 }
-.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover
-{
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {
     background-color: #288B90;
     color: white;
     border-top-left-radius: 70%;
     border-top-right-radius: 70%;
 }
-#fa-home_active
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover,
+    .dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover, .dropdown-menu>li>a
 {
+    background-color: white;
+    color: #288B90;
+}
+
+#fa-home_active {
     color: white;
 }
 
-.fa-home
-{
+.fa-home {
     color: #288B90;
 }
-#btn_search
-{
+
+#btn_search {
     background-color: white;
     color: #288B90;
     border: solid 1px #CCC;
 }
-#btn_search:hover
-{
+
+#btn_search:hover {
     background-color: #288B90;
     color: white;
 }
 
-
 /* Carte */
-#map
-{
+#map {
     height: 400px;
     width: 700px;
     margin-bottom: 50px;
 }
 
 /* Footer */
-.breadcrumb
-{
+.breadcrumb {
     background-color: white;
 }
 
-
- /*Media Queries*/
+/*Media Queries*/
 
 @media (min-width: 992px) {
     .navbar-brand > img {
