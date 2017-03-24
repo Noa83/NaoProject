@@ -1,17 +1,17 @@
 home_page:
     path:    /
     defaults:
-        _controller: AppBundle:Front:index
+        _controller: AppBundle:Home:index
 
 observation:
     path:    /observation
     defaults:
-        _controller: AppBundle:Back:observation
+        _controller: AppBundle:Observation:observation
 
 results:
     path:    /results
     defaults:
-        _controller: AppBundle:Front:results
+        _controller: AppBundle:Results:results
 
 #blog:
 #    path:    /blog
@@ -21,45 +21,45 @@ results:
 contact:
     path:    /contact
     defaults:
-        _controller: AppBundle:Front:contact
+        _controller: AppBundle:Contact:contact
 
 legal_notice:
     path:    /legal_notice
     defaults:
-        _controller: AppBundle:Front:legal
+        _controller: AppBundle:Legal:legal
 
 join:
     path:    /join
     defaults:
-        _controller: AppBundle:Back:join
+        _controller: AppBundle:Join:join
 
 donate:
     path:    /donate
     defaults:
-        _controller: AppBundle:Front:donate
+        _controller: AppBundle:Donate:donate
 
 admin_account:
     path:    /admin-account
     defaults:
-        _controller: AppBundle:Back:adminAccount
+        _controller: AppBundle:AdminAccount:adminAccount
 
 admin_dashboard:
     path:    /a-dashboard
     defaults:
-        _controller: AppBundle:Back:adminDashboard
+        _controller: AppBundle:AdminDashboard:adminDashboard
 
 account:
     path:    /account
     defaults:
-        _controller: AppBundle:Back:account
+        _controller: AppBundle:Account:account
 
 #login:
 #    path:    /log
 #    defaults:
-#        _controller: AppBundle:Back:login
+#        _controller:
 
 create_account:
     path:    /create-account
     defaults:
-        _controller: AppBundle:Back:createAccount
+        _controller: AppBundle:CreateAccount:createAccount
 

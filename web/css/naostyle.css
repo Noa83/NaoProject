@@ -9,14 +9,29 @@
 {
     padding-right: 0;
     padding-top: 10px;
+    margin-bottom: 20px;
 }
 #top_button_bar_xs
 {
     display: none;
 }
-#btn_donate
+.donate, .donate:hover
 {
+    background-color: #FE9A04;
     margin-left: 5px;
+    border: none;
+}
+.join, .join:hover
+{
+    background-color: #288B90;
+    margin-left: 5px;
+    border: none;
+}
+.faceb
+{
+    color: white;
+    background-color: #4862a3;
+    border: none;
 }
 .navbar-brand>img
 {
@@ -24,10 +39,28 @@
 }
 .navbar-default {
     background-color: white;
-    border-bottom: solid 5px #F5871F;
+    border-bottom: solid 5px #FE9A04;
     border-left:none;
     border-right:none;
 }
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover
+{
+    background-color: #288B90;
+    color: white;
+    border-top-left-radius: 70%;
+    border-top-right-radius: 70%;
+}
+#fa-home_active
+{
+    color: white;
+}
+
+.fa-home
+{
+    color: #288B90;
+}
+
 
 /* Carte */
 #map

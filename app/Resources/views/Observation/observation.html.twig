@@ -1,5 +1,9 @@
 {% extends 'base.html.twig' %}
 
+{% block navi2 %}
+    <li class="active"><a href="{{ path('observation') }}">Observation<span class="sr-only">(current)</span></a></li>
+{% endblock %}
+
 {% block body %}
 
     <h1>Saisir une observation</h1>

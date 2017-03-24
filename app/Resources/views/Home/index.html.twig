@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block navi1 %}
+    <li class="active"><a href="{{ path('home_page') }}"><i id="fa-home_active" class="fa fa-home" aria-hidden="true"></i> Accueil<span class="sr-only">(current)</span></a>
+    </li>
+{% endblock %}
+
+{% block body %}
+
+    <h1>Accueil</h1>
+
+    <img id="travaux" alt="travaux" src="{{ asset('images/travaux.jpg') }}">
+
+{% endblock %}

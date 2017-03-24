@@ -1,5 +1,9 @@
 {% extends 'base.html.twig' %}
 
+{% block navi3 %}
+    <li class="active"><a href="{{ path('results') }}">Consultation<span class="sr-only">(current)</span></a></li>
+{% endblock %}
+
 {% block body %}
 
     <h1>Consulter les données</h1>

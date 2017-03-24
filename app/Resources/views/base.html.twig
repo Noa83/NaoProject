@@ -5,6 +5,7 @@
     <title>{% block title %}Welcome!{% endblock %}</title>
     {% block stylesheets %}
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ asset('/css/font-awesome-4.7.0/css/font-awesome.css') }}">
         <link rel="stylesheet" href="{{ asset('css/naostyle.css') }}">
     {% endblock %}
     <link rel="icon" type="image/png" href="{{ asset('images/favicon-NAO.png') }}"/>
@@ -12,8 +13,9 @@
 <body class="container-fluid">
 <header class="row" id="nao_header">
     <div id="top_button_bar_xs" class="col-sm-12">
-        <a class="btn btn-success" href="{{ path('join') }}" role="button">Adhérer</a>
-        <a class="btn btn-warning" href="{{ path('donate') }}" role="button">Faire un don</a>
+        <a class="btn pull-right btn-sm faceb" href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+        <a class="btn btn-success btn-sm join" href="{{ path('join') }}" role="button">Adhérer</a>
+        <a class="btn btn-warning btn-sm donate" href="{{ path('donate') }}" role="button">Faire un don</a>
     </div>
     <!-- Navbar -->
     <nav class="navbar navbar-default">
@@ -33,15 +35,24 @@
             </div>
             <div class="collapse navbar-collapse" id="nao-navbar">
                 <div id="top_button_bar" class="col-sm-4 pull-right">
-                    <a id="btn_donate" class="btn btn-warning pull-right" href="{{ path('donate') }}" role="button">Faire un
+                    <a class="btn btn-sm btn-warning pull-right donate" href="{{ path('donate') }}" role="button">Faire
+                        un
                         don</a>
-                    <a class="btn btn-success pull-right" href="{{ path('join') }}" role="button">Adhérer</a>
+                    <a class="btn btn-sm btn-success pull-right join" href="{{ path('join') }}"
+                       role="button">Adhérer</a>
+                    <a class="btn pull-right btn-sm faceb" href="#">
+                        <i class="fa fa-facebook" aria-hidden="true"></i></a>
                 </div>
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="{{ path('home_page') }}">Accueil<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li><a href="{{ path('observation') }}">Observation</a></li>
-                    <li><a href="{{ path('results') }}">Consultation</a></li>
+                    {% block navi1 %}
+                        <li><a href="{{ path('home_page') }}"><i class="fa fa-home" aria-hidden="true"></i> Accueil</a>
+                        </li>{% endblock %}
+                    {% block navi2 %}
+                        <li><a href="{{ path('observation') }}">Observation</a></li>
+                    {% endblock %}
+                    {% block navi3 %}
+                        <li><a href="{{ path('results') }}">Consultation</a></li>
+                    {% endblock %}
                     <li>
                         <form class="navbar-form navbar-right">
                             <div class="form-group">
@@ -51,16 +62,21 @@
                                                                                 aria-hidden="true"></span></button>
                         </form>
                     </li>
-                    <li><a href="#">Blog</a></li>
-                    <li class="dropdown">
-                        <a href="{{ path('account') }}" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                           aria-haspopup="true"
-                           aria-expanded="false">Mon Compte<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Se Connecter</a></li>
-                            <li><a href="{{ path('create_account') }}">Créer un compte</a></li>
-                        </ul>
-                    </li>
+                    {% block navi4 %}
+                        <li><a href="#">Blog</a></li>
+                    {% endblock %}
+                    {% block navi5 %}
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true"
+                               aria-expanded="false">Mon Compte<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Se Connecter</a></li>
+                                <li><a href="{{ path('account') }}">Mon Compte</a></li>
+                                <li><a href="{{ path('create_account') }}">Créer un compte</a></li>
+                            </ul>
+                        </li>
+                    {% endblock %}
                 </ul>
             </div>
         </div>
@@ -71,7 +87,6 @@
 {% block javascripts %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
 {% endblock %}
 
 <footer class="row">
