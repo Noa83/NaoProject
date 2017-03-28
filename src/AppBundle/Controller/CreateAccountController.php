@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 class CreateAccountController extends Controller
 {
     public function createAccountAction(Request $request) {
+
         // 1) Création du formulaire
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
@@ -26,7 +27,7 @@ class CreateAccountController extends Controller
             $user->setPassword($password);
 
             $user->setIsActive(true);
-            $user->setRoles('USER');
+            $user->setRoles(array('USER'));
 
             // 4) Sauvegarde de l'utilisateur
             $em = $this->getDoctrine()->getManager();

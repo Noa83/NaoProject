@@ -63,3 +63,8 @@ create_account:
     defaults:
         _controller: AppBundle:CreateAccount:createAccount
 
+login_check:
+    path: /login_check
+
+logout:
+    path: /logout
