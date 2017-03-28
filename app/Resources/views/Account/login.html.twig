@@ -15,20 +15,8 @@
 
 {% block body %}
 
-    <h1>Creer un Compte</h1>
+    <h1>Se connecter</h1>
 
-    <div class="container">
-        <div class="col-md-6">
-            {{ form_start(form) }}
-            {{ form_row(form.username) }}
-            {{ form_row(form.email) }}
-            {{ form_row(form.plainPassword.first) }}
-            {{ form_row(form.plainPassword.second) }}
-            {{ form_row(form.termsAccepted) }}
-
-            <button type="submit">Register!</button>
-            {{ form_end(form) }}
-        </div>
-    </div>
+    <img id="travaux" alt="travaux" src="{{ asset('images/travaux.jpg') }}">
 
 {% endblock %}
