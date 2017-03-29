@@ -3,8 +3,8 @@
 namespace AppBundle\Controller;
 
 
-use NAOSecurityBundle\Form\UserType;
-use NAOSecurityBundle\Entity\User;
+use AppBundle\Form\UserType;
+use AppBundle\Entity\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -27,7 +27,7 @@ class CreateAccountController extends Controller
             $user->setPassword($password);
 
             $user->setIsActive(true);
-            $user->setRoles(array('USER'));
+            $user->setRoles(array('ROLE_USER'));
 
             // 4) Sauvegarde de l'utilisateur
             $em = $this->getDoctrine()->getManager();

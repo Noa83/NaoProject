@@ -1,6 +1,6 @@
 <?php
 
-namespace NAOSecurityBundle\Repository;
+namespace AppBundle\Repository;
 
 /**
  * UserRepository

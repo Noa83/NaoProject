@@ -1,6 +1,6 @@
 <?php
 
-namespace NAOSecurityBundle\Form;
+namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -39,7 +39,7 @@ class UserType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'NAOSecurityBundle\Entity\User'
+            'data_class' => 'AppBundle\Entity\User'
         ));
     }
 }

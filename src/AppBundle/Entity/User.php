@@ -1,6 +1,6 @@
 <?php
 
-namespace NAOSecurityBundle\Entity;
+namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -46,12 +46,14 @@ class User implements UserInterface, \Serializable
     private $email;
 
     /**
-     * @var bool
+     * @ORM\Column(type="boolean", unique=false)
+     *
      */
     private $isActive;
 
     /**
-     * @var array
+     * @ORM\Column(type="array", length=255, unique=false)
+     *
      */
     private $roles;
 

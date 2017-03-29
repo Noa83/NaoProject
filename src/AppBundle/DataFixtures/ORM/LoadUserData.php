@@ -1,14 +1,14 @@
 <?php
 
 
-namespace NAOSecurityBundle\DataFixtures\ORM;
+namespace AppBundle\DataFixtures\ORM;
 
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use NAOSecurityBundle\Entity\User;
+use AppBundle\Entity\User;
 
 class LoadUserData implements FixtureInterface, ContainerAwareInterface {
 
@@ -35,7 +35,7 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface {
 
         $userAdmin->setEmail('admin@nao.fr');
         $userAdmin->setIsActive(true);
-        $userAdmin->setRoles('ROLE_ADMIN');
+        $userAdmin->setRoles(array('ROLE_ADMIN'));
 
         $manager->persist($userAdmin);
         $manager->flush();
