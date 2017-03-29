@@ -1,0 +1,3 @@
+nao_security_homepage:
+    path:     /
+    defaults: { _controller: NAOSecurityBundle:Default:index }
