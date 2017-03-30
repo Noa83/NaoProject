@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="{{ asset('/css/font-awesome-4.7.0/css/font-awesome.css') }}">
         <link rel="stylesheet" href="{{ asset('css/naostyle.css') }}">
+        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     {% endblock %}
     <link rel="icon" type="image/png" href="{{ asset('images/favicon-NAO.png') }}"/>
 </head>
@@ -67,16 +68,20 @@
                     {% endblock %}
                     {% block navi5 %}
                         <li class="dropdown">
+                    {% endblock %}
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-haspopup="true"
                                aria-expanded="false">Mon Compte<span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="{{ path('login') }}">Se Connecter</a></li>
-                                <li><a href="{{ path('account') }}">Mon Compte</a></li>
-                                <li><a href="{{ path('create_account') }}">Créer un compte</a></li>
+                                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                    <li><a href="{{ path('account') }}">Mon Compte</a></li>
+                                    <li><a href="{{ path('logout') }}">Se Déconnecter</a></li>
+                                {% else %}
+                                    <li><a href="{{ path('login') }}">Se Connecter</a></li>
+                                    <li><a href="{{ path('create_account') }}">Créer un compte</a></li>
+                                {% endif %}
                             </ul>
                         </li>
-                    {% endblock %}
                 </ul>
             </div>
         </div>
@@ -89,7 +94,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 {% endblock %}
 
-<footer class="row">
+<footer class="row footer">
     <ol class="breadcrumb  pull-right">
         <li><a href="#">Admin</a></li>
         <li><a href="{{ path('legal_notice') }}">Mentions légales</a></li>
