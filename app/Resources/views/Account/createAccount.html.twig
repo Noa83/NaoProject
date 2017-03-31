@@ -38,10 +38,10 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            {{ form_row(form.termsAccepted, {'label': 'J\'accepte les conditions d\'utilisation' }) }}
+                            <input type="checkbox" name="terms" required>J'accepte les <u>Conditions d'utilisation</u>
                         </div>
                         <div class="col-md-2 col-md-offset-4">
-                            <button class="button-inscription" type="submit">Je m'inscris</button>
+                            <button class="btn" type="submit">Je m'inscris</button>
                         </div>
                     </div>
                     {{ form_end(form) }}

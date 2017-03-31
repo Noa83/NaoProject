@@ -9,8 +9,6 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity
- * @UniqueEntity(fields="email", message="Email already taken")
- * @UniqueEntity(fields="username", message="Username already taken")
  */
 class User implements UserInterface, \Serializable
 {
@@ -23,7 +21,6 @@ class User implements UserInterface, \Serializable
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
-     * @Assert\NotBlank()
      */
     private $username;
 
@@ -33,29 +30,19 @@ class User implements UserInterface, \Serializable
     private $password;
 
     /**
-     * @Assert\NotBlank()
-     * @Assert\Length(max=4096)
-     */
-    private $plainPassword;
-
-    /**
      * @ORM\Column(type="string", length=255, unique=true)
-     * @Assert\NotBlank()
-     * @Assert\Email()
      */
     private $email;
-
-    /**
-     * @ORM\Column(type="boolean", unique=false)
-     *
-     */
-    private $isActive;
 
     /**
      * @ORM\Column(type="array", length=255, unique=false)
      *
      */
     private $roles;
+
+    function __construct() {
+        $this->setRoles(array('ROLE_USER'));
+    }
 
 
     /**
@@ -116,16 +103,6 @@ class User implements UserInterface, \Serializable
         return $this->password;
     }
 
-    public function getPlainPassword()
-    {
-        return $this->plainPassword;
-    }
-
-    public function setPlainPassword($password)
-    {
-        $this->plainPassword = $password;
-    }
-
     /**
      * Set email
      *
@@ -148,30 +125,6 @@ class User implements UserInterface, \Serializable
     public function getEmail()
     {
         return $this->email;
-    }
-
-    /**
-     * Set isActive
-     *
-     * @param boolean $isActive
-     *
-     * @return User
-     */
-    public function setIsActive($isActive)
-    {
-        $this->isActive = $isActive;
-
-        return $this;
-    }
-
-    /**
-     * Get isActive
-     *
-     * @return bool
-     */
-    public function getIsActive()
-    {
-        return $this->isActive;
     }
 
     /**
