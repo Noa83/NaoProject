@@ -21,9 +21,7 @@ class UserService {
     public function createUser(UserModel $model){
 
         $user = new User();
-
-        var_dump('HelloWorld');
-
+        
         $user->setUsername($model->getUsername());
         $user->setEmail($model->getEmail());
 
