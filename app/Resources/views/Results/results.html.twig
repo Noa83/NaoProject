@@ -6,43 +6,55 @@
 
 {% block body %}
 
-    <h1>Consulter les données</h1>
-
-<div id="map" class="col-sm-offset-2 col-sm-8"></div>
-
-<script type="text/javascript">
-
-    var map;
-    var myLatLng = {lat: 46.041, lng: 6.155};
-    function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: 46.255, lng: 6.644},
-            zoom: 8
-        });
+<br>
+    <div class="row">
+        <div class="col-sm-5"><h1>Consulter les données</h1>
+            <p>contenu recherche</p>
+        </div>
+        <div>
+            {% if observation.image is not null %}
+                <img src="{{ observation.image.url }}" alt="{{ observation.image.alt }}">
+            {% endif %}
+        </div>
 
 
-        map.data.loadGeoJson('https://raw.githubusercontent.com/Noa83/Activit-_Git/master/carroyage10km.json');
+
+
+        <div id="map" class="col-sm-7"></div>
+    </div>
+
+    <script type="text/javascript">
+
+        var map;
+//        var myLatLng = {lat: 46.041, lng: 6.155};
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: 46.227588, lng: 2.214329},
+                zoom: 5
+            });
+
+
+            map.data.loadGeoJson('https://raw.githubusercontent.com/Noa83/Activit-_Git/master/carroyage10km.json');
 //            var KmlLayer = new google.maps.KmlLayer({
 //                url: 'https://inpn.mnhn.fr/docs/KMZ/L93_10K.kmz',
 //                map: map
 //            });
-        map.data.setStyle({
-            fillColor: 'green',
-            strokeWeight: 1
-        });
+            map.data.setStyle({
+                fillColor: 'green',
+                strokeWeight: 0
+            });
 
-        var marker = new google.maps.Marker({
-            position: myLatLng,
-            map: map,
-            title: 'Villy!'
-        });
-    }
+//            var marker = new google.maps.Marker({
+//                position: myLatLng,
+//                map: map,
+//                title: 'Villy!'
+//            });
+        }
 
 
-
-</script>
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHtk1Q7isnHjGK7ApFU2_V5--RdvqVUks&callback=initMap">
-</script>
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHtk1Q7isnHjGK7ApFU2_V5--RdvqVUks&callback=initMap">
+    </script>
 
 {% endblock %}
