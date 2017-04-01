@@ -53,13 +53,18 @@ account:
     defaults:
         _controller: AppBundle:Account:account
 
-#login:
-#    path:    /log
-#    defaults:
-#        _controller:
+login:
+    path:    /login
+    defaults:
+        _controller: AppBundle:Login:login
 
 create_account:
     path:    /create-account
     defaults:
         _controller: AppBundle:CreateAccount:createAccount
 
+login_check:
+    path: /login_check
+
+logout:
+    path: /logout
