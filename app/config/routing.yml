@@ -13,10 +13,14 @@ results:
     defaults:
         _controller: AppBundle:Results:results
 
-#blog:
-#    path:    /blog
-#    defaults:
-#        _controller:
+blog:
+    path:    /blog/{page}
+    defaults:
+        _controller: AppBundle:Blog:blog
+
+article:
+    path:    /article/{id}
+    defaults: { _controller: AppBundle:Blog:article }
 
 contact:
     path:    /contact

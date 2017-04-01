@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block enfant %}
+    <link rel="stylesheet" href="{{ asset('css/blog.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-12">
+                <div class="col-lg-10 ligne_verticale">
+                    {% for article in articles %}
+                        <h1>{{ article.title}}</h1>
+                        <p class="post-meta">Posté par <a href="#">Nos amis les oiseaux</a> le {{ article.date|date('d-m-Y') }} a {{ article.date|date('H:i:s') }} | {{ article.category.name }}</p>
+
+                        <img src="{{ asset(article.picture.url) }}" alt="{{ article.picture.alt }}" class="imageArticle">
+
+                        <br><br>
+
+                        {% autoescape %}
+                            <p>{{ article.text|truncate(650)|raw}}</p>
+                        {% endautoescape %}
+
+                        <div class="text-right">
+                            <a href="{{ path('article', {'id': article.id}) }}" class="btn btn-primary" style="color: white">Lire la suite</a>
+                        </div>
+                        <hr>
+
+                    {% endfor %}
+                </div>
+
+                <div class="col-lg-2">
+                    <div class="article_recent">
+                        <h3>Article récents</h3>
+                        <hr>
+                        {% for article in articlesTotal %}
+                        <a href="{{ path('article', {'id': article.id}) }}">Article {{ loop.revindex + 1 }}</a>{# Rajoute 1 pour faire la correspondance avec l'article#}
+                            <br><br>
+                        {% endfor %}
+
+                        <h3>Newsletter</h3>
+                        <hr>
+                        <p>Pour recevoir nos informations, abonnez-vous à notre newsletter</p>
+                        <form action="#">
+                            <div class="form-group">
+                                <label for="prenom">Prénom:</label>
+                                <input type="text" placeholder="Prénom" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="prenom">Email:</label>
+                                <input type="email" placeholder="Email" class="form-control">
+                            </div>
+                            <button class="btn btn-warning form-control">Je m'inscris</button>
+                        </form>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+    <ul class="pager">
+        {# On utilise la fonction range(a, b) qui crée un tableau de valeurs entre a et b #}
+        {% for p in range(1, nbPages) %}
+            <li{% if p == page %} class="active"{% endif %}>
+                <a href="{{ path('blog', {'page': p}) }}">{{ p }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
