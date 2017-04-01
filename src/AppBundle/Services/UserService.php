@@ -29,12 +29,12 @@ class UserService {
 
         $user = new User();
 
-        $user->setUsername($model->getUsername());
-        $user->setEmail($model->getEmail());
+        $user->setUsername($model->username);
+        $user->setEmail($model->email);
 
         // Encodage du mot de passe.
         $password = $this->encoder
-            ->encodePassword($user, $model->getPlainPassword());
+            ->encodePassword($user, $model->plainPassword);
         $user->setPassword($password);
 
         // 4) Sauvegarde de l'utilisateur
