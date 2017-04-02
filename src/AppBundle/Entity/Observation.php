@@ -13,11 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
 class Observation
 {
     /**
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Image", cascade={"persist"})
-     */
-    private $image;
-
-    /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Birds")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -61,7 +56,8 @@ class Observation
      */
     private $msg;
 
-//    private $idUser;
+
+   // private $idUser;
 
     /**
      * @var bool
@@ -71,20 +67,28 @@ class Observation
     private $validated;
 
     /**
-     * @return mixed
+     * @var string
+     *
+     * @ORM\Column(name="image_url", type="text")
      */
-    public function getImage()
+    private $imageUrl;
+
+    /**
+     * @return string
+     */
+    public function getImageUrl()
     {
-        return $this->image;
+        return $this->imageUrl;
     }
 
     /**
-     * @param mixed $image
+     * @param string $imageUrl
      */
-    public function setImage($image)
+    public function setImageUrl($imageUrl)
     {
-        $this->image = $image;
+        $this->imageUrl = $imageUrl;
     }
+
 
     /**
      * @return mixed

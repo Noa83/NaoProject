@@ -4,8 +4,13 @@ parameters:
     #parameter_name: value
 
 services:
-    observation.persist:
-        class: AppBundle\Services\ObservationPersist
+    observation.recording:
+        class: AppBundle\Services\ObservationRecording
+        arguments:
+            - "@doctrine.orm.entity_manager"
+
+    maille.finder:
+        class: AppBundle\Services\MailleFinder
         arguments:
             - "@doctrine.orm.entity_manager"
     appbundle.user_service:

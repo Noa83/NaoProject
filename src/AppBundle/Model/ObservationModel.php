@@ -14,12 +14,28 @@ use Doctrine\ORM\Mapping as ORM;
 class ObservationModel
 {
     private $date;
-    private $specie;
     private $latLong;
     private $nomMaille;
     private $observationMsg;
     private $image;
     private $idUser;
+    private $birds;
+
+    /**
+     * @return mixed
+     */
+    public function getBirds()
+    {
+        return $this->birds;
+    }
+
+    /**
+     * @param mixed $birds
+     */
+    public function setBirds($birds)
+    {
+        $this->birds = $birds;
+    }
 
 
     public function __construct()
@@ -42,22 +58,6 @@ class ObservationModel
     public function setDate($date)
     {
         $this->date = $date;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getSpecie()
-    {
-        return $this->specie;
-    }
-
-    /**
-     * @param mixed $specie
-     */
-    public function setSpecie($specie)
-    {
-        $this->specie = $specie;
     }
 
     /**
