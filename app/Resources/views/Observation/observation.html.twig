@@ -1,103 +1,59 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/createAccountStyle.css') }}">
+{% endblock %}
+
 {% block navi2 %}
     <li class="active"><a href="{{ path('observation') }}">Observation<span class="sr-only">(current)</span></a></li>
 {% endblock %}
 
-{% block body %}
-    <div class="col-sm-offset-5 col-sm-4">
-        <h1>Saisir une observation</h1>
-    </div>
-
-    <div class="row">
-        <div class="formstyle">
-            {{ form_start(formView, {'attr': {'class': 'form-horizontal'}}) }}
-            <div class="col-sm-6">
-
-                <div class="form-group">
-                    <div class="col-sm-12">
-                        {{ form_errors(formView.date) }}
+    {% block body %}
+    {#<img class="img-responsive" alt="logo_nos_amis_les_oiseaux" src="{{ asset('images/fond_landing.jpg') }}">#}
+    <div class="container-fluid landing">
+        <div class="container-fluid test">
+            <div class="col-md-6 col-md-offset-6">
+                <div class="part-right">
+                    <h2 class="sous-titre">Ensemble, préservons l'environnement.</h2>
+                    <p class="accroche">Aidez-nous à étudier les effets du climat, de l'urbanisation
+                        et de l'agriculture sur la biodiversité.<br/>
+                        Inscrivez-vous et envoyez-nous vos observations.
+                    </p>
+                    {{ form_start(form) }}
+                    <div class="row">
+                        <div class="col-md-6">
+                            {{ form_row(form.date, {'label': 'Date de l\'observation :'}) }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ form_row(form.birds, {'label': 'Nom de l\'espèce :'}) }}
+                        </div>
                     </div>
-
-                    {{ form_label(formView.date, "Date de l'observation:", {'label_attr': {'class': 'col-md-6 control-label'}}) }}
-
-                    <div class="col-sm-6">
-                        {{ form_widget(formView.date, {'attr': {'class': 'form-control'}}) }}
+                    <div class="row">
+                        <div class="col-md-6">
+                            {{ form_row(form.latLong, {'label': 'Coordonnées d\'observation (Long Lat) :', 'placeholder':'2.213624 46.229208'}) }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ form_row(form.observationMsg, {'label': 'Observations :'}) }}
+                        </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            {{ form_row(form.image, {'label': 'Joindre une image :'}) }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ form_row(form.idUser) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2 col-md-offset-4">
+                            <button class="btn" type="submit">Envoyer</button>
+                        </div>
+                    </div>
+                    {{ form_end(form) }}
                 </div>
-
-                <div class="form-group">
-                    <div class="col-sm-12">
-                        <input type="hidden" value="{{ birds }}" id="birds_names"/>
-                        {{ form_errors(formView.specie) }}
-                    </div>
-
-                    {{ form_label(formView.specie, "Espèce observée:", {'label_attr': {'class': 'col-md-6 control-label'}}) }}
-
-                    <div class="col-sm-6">
-                        {{ form_widget(formView.specie, {'attr': {'class': 'form-control'}}) }}
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-sm-12">
-                        {{ form_errors(formView.latLong) }}
-                    </div>
-
-                    {{ form_label(formView.latLong, "Coordonnées géographiques à saisir au format lat long:", {'label_attr': {'class': 'col-md-6 control-label', 'placeholder':'-9.85484 47.13808'}}) }}
-
-                    <div class="col-sm-6">
-                        {{ form_widget(formView.latLong, {'attr': {'class': 'form-control'}}) }}
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-sm-12">
-                        {{ form_errors(formView.observationMsg) }}
-                    </div>
-                    {{ form_label(formView.observationMsg, "Notes:", {'label_attr': {'class': 'col-md-6 control-label'}}) }}
-
-                    <div class="col-sm-6">
-                        {{ form_widget(formView.observationMsg, {'attr': {'class': 'form-control'}}) }}
-                    </div>
-                </div>
-                <br>
-            </div>
-
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <div class="col-sm-12">
-                        {{ form_errors(formView.image.url) }}
-                    </div>
-                    {{ form_label(formView.image.url, "URL:", {'label_attr': {'class': 'col-md-2 control-label'}}) }}
-
-                    <div class="col-sm-10">
-                        {{ form_widget(formView.image.url, {'attr': {'class': 'form-control'}}) }}
-                    </div>
-                </div>
-                <br>
-
-                <div class="form-group">
-                    <div class="col-sm-12">
-                        {{ form_errors(formView.image.alt) }}
-                    </div>
-                    {{ form_label(formView.image.alt, "Alt (texte alternatif):", {'label_attr': {'class': 'col-md-2 control-label'}}) }}
-
-                    <div class="col-sm-10">
-                        {{ form_widget(formView.image.alt, {'attr': {'class': 'form-control'}}) }}
-                    </div>
-                </div>
-                <br>
-
-                <div class="col-sm-12">
-                    <input id="validButton" type="submit" value="Validation" class="btn btn-default pull-right"/>
-                </div>
-
-                {{ form_end(formView) }}
             </div>
         </div>
     </div>
-
-    <img id="travaux" alt="travaux" src="{{ asset('images/travaux.jpg') }}">
 
 {% endblock %}

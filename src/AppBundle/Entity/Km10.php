@@ -28,5 +28,59 @@ class Km10
      */
     private $nom_maille;
 
-    private $polygon_geo;
+    /**
+     * @var \_CouchbaseSpatialViewQuery
+     *
+     * @ORM\Column(name="polygon", type="polygon")
+     */
+    private $polygon;
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNomMaille()
+    {
+        return $this->nom_maille;
+    }
+
+    /**
+     * @param string $nom_maille
+     */
+    public function setNomMaille($nom_maille)
+    {
+        $this->nom_maille = $nom_maille;
+    }
+
+    /**
+     * @return \_CouchbaseSpatialViewQuery
+     */
+    public function getPolygon()
+    {
+        return $this->polygon;
+    }
+
+    /**
+     * @param \_CouchbaseSpatialViewQuery $polygon
+     */
+    public function setPolygon($polygon)
+    {
+        $this->polygon = $polygon;
+    }
+
 }

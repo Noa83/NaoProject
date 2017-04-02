@@ -13,7 +13,7 @@ class MailleFinder
         $this->manager = $manager;
     }
 
-    public function mailleFinder()
+    public function find($latLong)
     {
 
     }

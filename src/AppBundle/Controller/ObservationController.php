@@ -3,40 +3,46 @@
 namespace AppBundle\Controller;
 
 
-use AppBundle\AppBundle;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Form\Type\ObservationType;
 use AppBundle\Model\ObservationModel;
-use AppBundle\Entity\Birds;
-use AppBundle\Entity\Observation;
-
 
 
 class ObservationController extends Controller
 {
     public function observationAction(Request $request)
     {
-        $observationModel = new ObservationModel();
-        $observationForm = $this->get('form.factory')->create(ObservationType::class, $observationModel);
-
+        //Recup liste oiseaux et injection dans le formulaire créé.
         $birds = $this->getDoctrine()->getRepository('AppBundle:Birds')->getBirdsList();
-
-        dump($birds);
-
-
+        $observationModel = new ObservationModel();
+        $observationForm = $this->get('form.factory')->create(ObservationType::class,
+            $observationModel, ['birdList' => $birds]);
 
         if ($request->isMethod('POST') && $observationForm->handleRequest($request)->isValid()) {
+            //
+            $geo = $this->getDoctrine()->getRepository('AppBundle:Km10')->getMailleNativeSql($observationModel->getLatLong());
+            $observationModel->setNomMaille($geo);
+            dump($geo);
 
-            dump($request);
-//            $this->get('observation.persist')->observationPersist();
+            $file = $observationModel->getImage();
+            $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+            $file->move($this->getParameter('birds_images'), $fileName);
+            $fileUrl = 'web/images/birdsImages/'.$fileName.'\'';
+            dump($fileUrl);
+            dump($fileName);
 
+           // $this->get('observation.recording')->persist($observationModel);
+            dump($observationModel);
+
+            //dump($this->generateUrl('birds_images_list'));
+//            return $this->redirect($this->generateUrl('birds_images_list'));
 
             //return $this->redirectToRoute('observation');
         }
         return $this->render('Observation/observation.html.twig', [
             'birds' => $birds,
-            'formView' => $observationForm
-            ->createView(),]);
+            'form' => $observationForm
+                ->createView(),]);
     }
 }

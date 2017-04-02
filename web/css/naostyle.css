@@ -5,7 +5,7 @@
 
 /* General */
 body {
-    font-family: 'Lato', sans-serif;
+    font-family: Mitr, SansSerif;
     color: #321c0e;
 }
 
@@ -94,8 +94,8 @@ a.blog, p {
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {
     background-color: #288B90;
     color: white;
-    border-top-left-radius: 70%;
-    border-top-right-radius: 70%;
+    border-top-left-radius: 10%;
+    border-top-right-radius: 10%;
 }
 
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover,

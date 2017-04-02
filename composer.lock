@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "76608e5d9817f1cdaa826ce79f3c20c2",
-    "content-hash": "d4afe2dbcd9664370fb51bea59db59e2",
+    "hash": "c7ff8bbc91ab630ee432ca8d82fb15d8",
+    "content-hash": "6c83c4cb562610dcd76646c8b691a5c4",
     "packages": [
         {
             "name": "creof/doctrine2-spatial",
