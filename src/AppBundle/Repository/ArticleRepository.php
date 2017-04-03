@@ -11,31 +11,25 @@ use Doctrine\ORM\Tools\Pagination\Paginator;
  */
 class ArticleRepository extends \Doctrine\ORM\EntityRepository
 {
-    //Récupère les articles et utilise le paginator
-    public function getArticles($page, $nbreParPage)
+    //Récupère les articles et utilise le paginator, réorganiser et nommer findAll
+    public function findAllArticles($page, $nbreParPage)
     {
-        $queryBuilder = $this->createQueryBuilder('a');
-        $queryBuilder->orderBy('a.id', 'DESC'); //Ordonne par ordre décroissant dernier article au premier article
-        $query = $queryBuilder->getQuery();
-
-        $query
-            //On définit l'article à partir duquel commencer la liste
-            ->setFirstResult(($page-1) * $nbreParPage)
-            //Le nombre d'épisode à afficher sur une page
-            ->setMaxResults($nbreParPage);
-
+        $query = $this->createQueryBuilder('a')
+            ->orderBy('a.id', 'DESC') //Ordonne par ordre décroissant dernier article au premier article
+            ->getQuery()
+            ->setFirstResult(($page-1) * $nbreParPage) //On définit l'article à partir duquel commencer la liste
+            ->setMaxResults($nbreParPage); //Le nombre d'épisode à afficher sur une page
 
         return new Paginator($query, true);
     }
 
-    //Récupère les articles pour utilisation dans articles récents et le limit à 3 résultats
-    public function getArticlesTotal()
+    //Récupère les articles pour utilisation dans articles récents et le limit à 3 résultats  //A réorganiser et nommer différement findArticlesRecents
+    public function getArticlesRecents()
     {
-        $queryBuilder = $this->createQueryBuilder('a');
-        $queryBuilder->orderBy('a.id', 'DESC');//Ordonne par ordre décroissant dernier article au premier article
-        $query = $queryBuilder->getQuery();
-        $query->setMaxResults(3); //Limite à 3 résultats.
-
-        return $query->getResult();
+        return $this->createQueryBuilder('a')
+            ->orderBy('a.id', 'DESC') //Ordonne par ordre décroissant dernier article au premier article
+            ->setMaxResults(3)  //Limite à 3 résultats.
+            ->getQuery()
+            ->getResult();
     }
 }

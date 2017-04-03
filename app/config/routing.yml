@@ -14,13 +14,8 @@ results:
         _controller: AppBundle:Results:results
 
 blog:
-    path:    /blog/{page}
-    defaults:
-        _controller: AppBundle:Blog:blog
-
-article:
-    path:    /article/{id}
-    defaults: { _controller: AppBundle:Blog:article }
+    resource: '@AppBundle/Controller/BlogController.php'
+    type:     annotation
 
 contact:
     path:    /contact
