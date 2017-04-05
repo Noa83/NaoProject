@@ -40,5 +40,36 @@ class UserService {
         // 4) Sauvegarde de l'utilisateur
         $this->em->persist($user);
         $this->em->flush();
+
+        return $user;
+    }
+
+    public function createUserModel(User $user){
+
+        $userModel = new UserModel();
+
+        $userModel->username = $user->getUsername();
+        $userModel->email = $user->getEmail();
+        $userModel->plainPassword = "";
+        $userModel->ville = $user->getVille();
+        $userModel->dateNaissance = $user->getDateNaissance();
+        $userModel->prenom = $user->getPrenom();
+
+        return $userModel;
+    }
+
+    public function modifyUser(User $user, UserModel $model){
+
+        $user->setUsername($model->username);
+        $user->setEmail($model->email);
+        $user->setPrenom($model->prenom);
+        $user->setDateNaissance($model->dateNaissance);
+        $user->setVille($model->ville);
+
+        // 4) Sauvegarde de l'utilisateur
+        $this->em->persist($user);
+        $this->em->flush();
+
+        return $user;
     }
 }

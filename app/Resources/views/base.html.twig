@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="{{ asset('/css/font-awesome-4.7.0/css/font-awesome.css') }}">
         <link rel="stylesheet" href="{{ asset('css/naostyle.css') }}">
         <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     {% endblock %}
     <link rel="icon" type="image/png" href="{{ asset('images/favicon-NAO.png') }}"/>
 </head>
@@ -74,7 +75,8 @@
                                aria-expanded="false">Mon Compte<span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                                    <li><a href="{{ path('account') }}">Mon Compte</a></li>
+                                    <li><a href="{{ path('account') }}">{{ app.user.getUsername() }}</a></li>
+                                    <li><a href="{{ path('admin_dashboard') }}">Dashboard</a></li>
                                     <li><a href="{{ path('logout') }}">Se Déconnecter</a></li>
                                 {% else %}
                                     <li><a href="{{ path('login') }}">Se Connecter</a></li>

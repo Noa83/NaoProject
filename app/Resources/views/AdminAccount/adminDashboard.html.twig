@@ -2,21 +2,113 @@
 
 {% block navi5 %}
     <li class="dropdown active">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-           aria-haspopup="true"
-           aria-expanded="false">Mon Compte<span class="sr-only">(current)</span><span class="caret"></span></a>
-        <ul class="dropdown-menu">
-            <li><a href="#">Se Connecter</a></li>
-            <li><a href="{{ path('account') }}">Mon Compte</a></li>
-            <li><a href="{{ path('create_account') }}">Créer un compte</a></li>
-        </ul>
-    </li>
 {% endblock %}
 
 {% block body %}
 
-    <h1>Tableau de Bord Admin</h1>
+    <h1>Compte Admin</h1>
 
-    <img id="travaux" alt="travaux" src="{{ asset('images/travaux.jpg') }}">
+    {% for flashMessage in app.session.flashbag.get('success') %}
+        <div class="alert alert-success">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+            <ul class="nav nav-tabs nav-justified">
+                {% if is_granted('ROLE_VALIDATEUR') %}
+                    <li class="active"><a href="#validation" data-toggle="tab">Gestion des validations</a></li>
+                {% endif %}
+                {% if is_granted('ROLE_ADMIN') %}
+                    <li><a href="#admin" data-toggle="tab">Admin</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+
+    {% for type, flash_messages in app.session.flashBag.all %}
+        {% for flash_message in flash_messages %}
+            <div class="flash-{{ type }}">
+                {{ flash_message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+    <div class="tab-pane fade in active adminTable" id="validation">
+        <h1 class="text-center">Validation des observations.</h1>
+    </div>
+
+    <div class="tab-pane fade adminTable" id="admin">
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                <ul class="nav nav-tabs nav-justified">
+                    <li class="active"><a href="#utilisateur" data-toggle="tab">Gestion des utilisateurs</a></li>
+                    <li><a href="#articles" data-toggle="tab">Creation/Modification articles</a></li>
+                    <li><a href="#rapports" data-toggle="tab">Rapports d'observation</a></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="tab-content col-md-10 col-md-offset-1">
+            <div class="tab-pane fade in active adminTable" id="utilisateur">
+
+                Gestion des utilisateurs
+
+            </div>
+            <div class="tab-pane fade adminTable" id="articles">
+                {% if 1 %} <!-- if articles -->
+                    <div class="table-responsive">
+                        <table class="table table-hover table-condensed">
+                            <thead>
+                            <tr>
+                                <th>Titre</th>
+                                <th>Contenu</th>
+                                <th></th>  <!-- Actions column -->
+                            </tr>
+                            </thead>
+                            <!-- for article in articles-->
+                            <tr>
+                                <td><a class="articleTitle" href="#">titre article</a></td>
+                                <td>contenu</td>
+                                <td>
+                                    <a href="#" class="btn btn-info btn-xs" title="Edit"><span class="glyphicon glyphicon-edit"></span></a>
+                                    <button type="button" class="btn btn-danger btn-xs" title="Delete" data-toggle="modal" data-target="#articleDialog"><span class="glyphicon glyphicon-remove"></span>
+                                    </button>
+                                    <div class="modal fade" id="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                    <h4 class="modal-title" id="myModalLabel">Confirmation needed</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Do you really want to delete this article ?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                                    <a href="#" class="btn btn-danger">Confirm</a>
+                                                </div>
+                                            </div><!-- /.modal-content -->
+                                        </div><!-- /.modal-dialog -->
+                                    </div><!-- /.modal -->
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                {% else %}
+                    <div class="alert alert-warning">Aucun article trouvé.</div>
+                {% endif %}
+                <a href="#"><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Ajouter un article</button></a>
+            </div>
+
+            <div class="tab-pane fade adminTable" id="rapports">
+
+                Gestion des rapports
+
+            </div>
+
+        </div>
+    </div>
 
 {% endblock %}

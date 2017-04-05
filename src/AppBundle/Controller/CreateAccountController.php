@@ -9,6 +9,7 @@ use AppBundle\Model\UserModel;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
 class CreateAccountController extends Controller
 {
@@ -25,9 +26,14 @@ class CreateAccountController extends Controller
             $form->handleRequest($request);
             if ($form->isSubmitted() && $form->isValid()) {
 
-                $this->get('appbundle.user_service')->createUser($model);
+                $user = $this->get('appbundle.user_service')->createUser($model);
 
-                return $this->redirectToRoute('login');
+                //Creation du token pour le login automatique apres inscription.
+                $token = new UsernamePasswordToken($user, null, 'main', $user->getRoles());
+                $this->get('security.token_storage')->setToken($token);
+                $this->get('session')->set('_security_main', serialize($token));
+
+                return $this->redirectToRoute('account');
             }
 
             return $this->render('Account/createAccount.html.twig',
