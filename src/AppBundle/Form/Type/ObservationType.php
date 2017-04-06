@@ -3,13 +3,12 @@
 namespace AppBundle\Form\Type;
 
 
-use AppBundle\Form\Type\PointType;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -31,10 +30,18 @@ class ObservationType extends AbstractType
             ->add('birds', ChoiceType::class, [
                 'choices' => $options['birdList']
             ])
-            ->add('latLong', TextType::class)
-            ->add('observationMsg', TextType::class)
-            ->add('image', FileType::class)
-            ->add('idUser', HiddenType::class);
+            ->add('lat', NumberType::class,[
+                'scale' => 6,
+                'invalid_message' => 'Vous devez saisir une lattitude géographique.'
+            ])
+            ->add('long', NumberType::class,[
+                'scale' => 6,
+                'invalid_message' => 'Vous devez saisir une lattitude géographique.'
+            ])
+            ->add('observationMsg', TextareaType::class)
+            ->add('image', FileType::class, [
+                'required' => false
+            ]);
     }
     public function configureOptions(OptionsResolver $resolver)
     {

@@ -13,36 +13,36 @@ class ObservationController extends Controller
 {
     public function observationAction(Request $request)
     {
-        //Recup liste oiseaux et injection dans le formulaire créé.
+        //Récup liste oiseaux.
         $birds = $this->getDoctrine()->getRepository('AppBundle:Birds')->getBirdsList();
+
+        //Créa du formulaire
         $observationModel = new ObservationModel();
         $observationForm = $this->get('form.factory')->create(ObservationType::class,
             $observationModel, ['birdList' => $birds]);
 
+        //Gestion d'une saisie géo hors France (quand les coordonnées rentrent dans les min/max entrés en conditions)
+        $errorMsg = '';
         if ($request->isMethod('POST') && $observationForm->handleRequest($request)->isValid()) {
-            //
-            $geo = $this->getDoctrine()->getRepository('AppBundle:Km10')->getMailleNativeSql($observationModel->getLatLong());
-            $observationModel->setNomMaille($geo);
-            dump($geo);
+            try {
+                $observationModel->setNomMaille($this->getDoctrine()->getRepository('AppBundle:Km10')
+                    ->getMailleNativeSql($observationModel->getLongLat()));
+                //Récup du user
 
-            $file = $observationModel->getImage();
-            $fileName = md5(uniqid()) . '.' . $file->guessExtension();
-            $file->move($this->getParameter('birds_images'), $fileName);
-            $fileUrl = 'web/images/birdsImages/'.$fileName.'\'';
-            dump($fileUrl);
-            dump($fileName);
+                $observationModel->setIdUser($this->getUser());
+                $role = $this->getUser()->getRoles();
 
-           // $this->get('observation.recording')->persist($observationModel);
-            dump($observationModel);
+                //Envoi en traitement Bdd et redirect
+                $this->get('observation.recording')->persist($observationModel, $role);
+                return $this->redirectToRoute('observation');
 
-            //dump($this->generateUrl('birds_images_list'));
-//            return $this->redirect($this->generateUrl('birds_images_list'));
-
-            //return $this->redirectToRoute('observation');
+            } catch (\Exception $exception) {
+                $errorMsg = $exception->getMessage();
+            }
         }
         return $this->render('Observation/observation.html.twig', [
             'birds' => $birds,
             'form' => $observationForm
-                ->createView(),]);
+                ->createView(), 'errorMessage' => $errorMsg]);
     }
 }

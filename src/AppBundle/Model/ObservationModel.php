@@ -3,6 +3,7 @@
 namespace AppBundle\Model;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 
 /**
@@ -14,9 +15,36 @@ use Doctrine\ORM\Mapping as ORM;
 class ObservationModel
 {
     private $date;
-    private $latLong;
+    /**
+     * @Assert\Range(
+     *      min = 41.56,
+     *      max = 51.56,
+     *      minMessage = "Vous devez entrer une coordonnée minimale de {{ limit }}",
+     *      maxMessage = "Vous devez entrer une coordonnée maximale de {{ limit }}",
+     *  )
+     */
+    private $lat;
+    /**
+     * @Assert\Range(
+     *      min = -9.88,
+     *      max = 10.21,
+     *      minMessage = "Vous devez entrer une coordonnée minimale de {{ limit }}",
+     *      maxMessage = "Vous devez entrer une coordonnée maximale de {{ limit }}",
+     *  )
+     */
+    private $long;
     private $nomMaille;
     private $observationMsg;
+
+
+    /**
+     * @Assert\Image(
+     *     maxSize="2M",
+     *     mimeTypes={"image/png", "image/jpeg", "image/gif"},
+     *     mimeTypesMessage = "Ce fichier n'est pas une photo.",
+     *     maxSizeMessage = "Le fichier est trop lourd ({{ size }})MB."
+     * )
+     */
     private $image;
     private $idUser;
     private $birds;
@@ -63,17 +91,41 @@ class ObservationModel
     /**
      * @return mixed
      */
-    public function getLatLong()
+    public function getLongLat()
     {
-        return $this->latLong;
+        return $longLat = $this->long.' '.$this->lat;
     }
 
     /**
-     * @param mixed $latLong
+     * @return mixed
      */
-    public function setLatLong($latLong)
+    public function getLat()
     {
-        $this->latLong = $latLong;
+        return $this->lat;
+    }
+
+    /**
+     * @param mixed $lat
+     */
+    public function setLat($lat)
+    {
+        $this->lat = $lat;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLong()
+    {
+        return $this->long;
+    }
+
+    /**
+     * @param mixed $long
+     */
+    public function setLong($long)
+    {
+        $this->long = $long;
     }
 
     /**

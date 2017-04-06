@@ -1,53 +1,56 @@
 {% extends 'base.html.twig' %}
 
-{% block stylesheets %}
-    {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('css/createAccountStyle.css') }}">
-{% endblock %}
-
 {% block navi5 %}
 <li class="dropdown active">
-{% endblock %}
+    {% endblock %}
 
     {% block body %}
-    <div class="container-fluid landing">
-        <div class="container-fluid test">
-            <div class="col-md-6 col-md-offset-6">
-                <div class="part-right">
-                    <h2 class="sous-titre">Ensemble, préservons l'environnement.</h2>
-                    <p class="accroche">Aidez-nous à étudier les effets du climat, de l'urbanisation
-                        et de l'agriculture sur la biodiversité.<br/>
-                        Inscrivez-vous et envoyez-nous vos observations.
-                    </p>
-                    {{ form_start(form) }}
-                    <div class="row">
-                        <div class="col-md-6">
-                            {{ form_row(form.username, {'label': 'Pseudo :'}) }}
-                        </div>
-                        <div class="col-md-6">
-                            {{ form_row(form.email, {'label': 'Email :'}) }}
-                        </div>
+    <div class="container-fluid" id="landing">
+        <div class="col-md-6 col-md-offset-6" id="opal_bg">
+            <div class="part-right">
+                <h1 class="sous-titre">Ensemble, préservons l'environnement.</h1>
+                <p class="accroche">Aidez-nous à étudier les effets du climat, de l'urbanisation
+                    et de l'agriculture sur la biodiversité.<br/>
+                    Inscrivez-vous et envoyez-nous vos observations.
+                </p>
+                {{ form_start(form) }}
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form_row(form.username, {'label': 'Pseudo :'}) }}
                     </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            {{ form_row(form.plainPassword.first, {'label': 'Votre mot de passe :'}) }}
-                        </div>
-                        <div class="col-md-6">
-                            {{ form_row(form.plainPassword.second, {'label': 'Retapez votre mot de passe :'}) }}
-                        </div>
+                    <div class="col-md-6">
+                        {{ form_row(form.email, {'label': 'Email :'}) }}
                     </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <input type="checkbox" name="terms" required>J'accepte les <u>Conditions d'utilisation</u>
-                        </div>
-                        <div class="col-md-2 col-md-offset-4">
-                            <button class="btn" type="submit">Je m'inscris</button>
-                        </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form_row(form.plainPassword.first, {'label': 'Votre mot de passe :'}) }}
                     </div>
-                    {{ form_end(form) }}
+                    <div class="col-md-6">
+                        {{ form_row(form.plainPassword.second, {'label': 'Retapez votre mot de passe :'}) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="checkbox" name="terms" required>J'accepte les <u>Conditions d'utilisation</u><br/>
+                    </div>
+                </div>
+                <div class="row">
+                    <button class="btn pull-right" id="btn-form" type="submit">Je m'inscris</button>
                 </div>
             </div>
+            {{ form_end(form) }}
+            <h2 class="sous-titre">
+                C’est facile et gratuit !
+            </h2>
+            <p class="accroche">
+                Une fois inscrit, contribuez, vous aussi, à la sauvegarde de l’environnement. Pour partager vos
+                observations, rien de plus simple ! Remplissez le formulaire et dites-nous où et quand vous avez observé
+                un oiseau. Si vous le souhaitez, téléchargez aussi une photo. Après validation par un naturaliste, votre
+                contribution sera visible de tous.
+            </p>
         </div>
     </div>
+
 
 {% endblock %}
