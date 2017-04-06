@@ -10,20 +10,30 @@ use Symfony\Component\HttpFoundation\JsonResponse;
  */
 class BirdsRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getBirdById($id)
+    {
+        return $this->find($id);
+    }
+
     public function getBirdsList()
     {
         $arrayList = [];
         $list = $this->_em->createQueryBuilder('b')
             ->select('b.id', 'b.NOM_VERN', 'b.NOM_VALIDE')
             ->from('AppBundle:Birds', 'b')
-            ->orderBy('b.NOM_VALIDE')
+            ->orderBy('b.NOM_VERN')
             ->getQuery()
             ->getResult();
 
         foreach ($list as $bird) {
-            $birdSpecie = $bird['NOM_VALIDE'] . ' (' . $bird['NOM_VERN'] . ')';
-
+            if(empty($bird['NOM_VERN']))
+            {
+                $birdSpecie = $bird['NOM_VALIDE'];
+            }else{
+                $birdSpecie = $bird['NOM_VERN'] . ' (' . $bird['NOM_VALIDE'] . ')';
+            }
             $arrayList[$birdSpecie] = $bird['id'];
+
         }
         return $arrayList;
     }

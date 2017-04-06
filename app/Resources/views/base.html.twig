@@ -93,10 +93,14 @@
 
 {% block body %}{% endblock %}
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<<<<<<< HEAD
     <script src="{{ asset('js/autocomplete.js') }}"></script>
+=======
+{% endblock %}
+>>>>>>> Finalisation du module observation avec gestion des erreurs de coordonnées géo et du poids des uploads d'image. Ajustement du twig de la vue correspondante. Ajustement du twig de la vue CreateAccount. Modifications de css se reportant à ces vues.
 
 <footer class="row footer">
-    <ol class="breadcrumb  pull-right">
+    <ol class="breadcrumb col-sm-offset-3">
         <li><a href="#">Admin</a></li>
         <li><a href="{{ path('legal_notice') }}">Mentions légales</a></li>
         <li><a href="{{ path('contact') }}">Contact</a></li>

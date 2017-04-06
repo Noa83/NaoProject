@@ -13,6 +13,12 @@ use Doctrine\ORM\Mapping as ORM;
 class Observation
 {
     /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $idUser;
+
+    /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Birds")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -40,7 +46,7 @@ class Observation
      *
      * @ORM\Column(name="latLong", type="string", length=255)
      */
-    private $latLong;
+    private $longLat;
 
     /**
      * @var string
@@ -56,9 +62,6 @@ class Observation
      */
     private $msg;
 
-
-   // private $idUser;
-
     /**
      * @var bool
      *
@@ -72,6 +75,22 @@ class Observation
      * @ORM\Column(name="image_url", type="text")
      */
     private $imageUrl;
+
+    /**
+     * @return mixed
+     */
+    public function getIdUser()
+    {
+        return $this->idUser;
+    }
+
+    /**
+     * @param mixed $idUser
+     */
+    public function setIdUser($idUser)
+    {
+        $this->idUser = $idUser;
+    }
 
     /**
      * @return string
@@ -133,27 +152,27 @@ class Observation
     }
 
     /**
-     * Set latLong
+     * Set longLat
      *
-     * @param string $latLong
+     * @param string $longLat
      *
      * @return Observation
      */
-    public function setLatLong($latLong)
+    public function setLongLat($longLat)
     {
-        $this->latLong = $latLong;
+        $this->longLat = $longLat;
 
         return $this;
     }
 
     /**
-     * Get latLong
+     * Get longLat
      *
      * @return string
      */
-    public function getLatLong()
+    public function getLongLat()
     {
-        return $this->latLong;
+        return $this->longLat;
     }
 
     /**

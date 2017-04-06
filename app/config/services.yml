@@ -6,13 +6,9 @@ parameters:
 services:
     observation.recording:
         class: AppBundle\Services\ObservationRecording
-        arguments:
-            - "@doctrine.orm.entity_manager"
+        arguments: ["@doctrine.orm.entity_manager", %birds_images%]
 
-    maille.finder:
-        class: AppBundle\Services\MailleFinder
-        arguments:
-            - "@doctrine.orm.entity_manager"
+
     appbundle.user_service:
-      class: AppBundle\Services\UserService
-      arguments: ["@doctrine.orm.entity_manager","@security.password_encoder"]
+         class: AppBundle\Services\UserService
+         arguments: ["@doctrine.orm.entity_manager","@security.password_encoder"]

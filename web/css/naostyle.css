@@ -4,6 +4,11 @@
 }
 
 /* General */
+.container-fluid
+{
+    padding-right: 0;
+    padding-left: 0;
+}
 body {
     font-family: Mitr, SansSerif;
     color: #321c0e;
@@ -64,6 +69,12 @@ a.blog, p {
     margin-left: -200px;
 }
 /* Header */
+header#nao_header
+{
+    margin-left: 0;
+    margin-right: 0;
+}
+
 #top_button_bar {
     padding-right: 0;
     padding-top: 10px;
@@ -97,6 +108,7 @@ a.blog, p {
 .navbar-brand > img {
     height: 80px;
     width: auto;
+    margin-left: 10px;
 }
 
 .navbar-default {
@@ -104,6 +116,7 @@ a.blog, p {
     border-bottom: solid 5px #FE9A04;
     border-left: none;
     border-right: none;
+    margin-bottom: 0;
 }
 
 .navbar-default .navbar-nav > li > a {
@@ -147,6 +160,41 @@ a.blog, p {
     color: white;
 }
 
+/* Boutons */
+#btn-form
+{
+    color: white;
+    background-color: #288B90;
+    border: none;
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+
+/* Formulaires */
+textarea#observation_observationMsg.form-control
+{
+    height:100px;
+}
+label
+{
+    margin-left: 15px;
+    padding-top: 10px;
+}
+input[type="file"]
+{
+    width: 290px;
+}
+p.accroche
+{
+
+}
+h1.sous-titre, h2.sous-titre
+{
+    padding-top: 10px;
+    text-shadow: 3px 3px 2px #288B90;
+}
+
+
 /* Carte */
 #map {
     height: 450px;
@@ -155,8 +203,57 @@ a.blog, p {
 }
 
 /* Footer */
+footer.row.footer
+{
+    margin-right: 0;
+}
 .breadcrumb {
     background-color: white;
+}
+.breadcrumb>li>a
+{
+    color: #7d736a;
+}
+ol{
+    margin-left: 20px;
+}
+
+/* Erreurs */
+div.alert.alert-warning
+{
+    color: #321c0e;
+    background-color: rgba(16,55,56,0.2);
+    margin-right: 15px;
+    margin-left: 15px;
+    border: none;
+}
+
+/* Backgrounds */
+div.container-fluid#observation_bg
+{
+    width: auto;
+    height: auto;
+    background: url("../images/fond_observation.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+div.container-fluid#landing
+{
+    width: auto;
+    height: auto;
+    background: url("../images/fond_landing.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+div#opal_bg
+{
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    right: 20px;
 }
 
 /*Media Queries*/
@@ -170,11 +267,24 @@ a.blog, p {
     }
 }
 
-@media (max-width: 770px) {
+@media screen and (max-width: 767px) {
+    div#opal_bg.col-md-6.col-md-offset-6
+    {
+        padding-top: 5px;
+        left: 0;
+    }
+    div.container-fluid#observation_bg
+    {
+        background-position-x: -660px;
+    }
+    div.container-fluid#landing
+    {
+        background-position: -330px;
+    }
     .navbar-brand > img {
         display: none;
-
     }
+
 }
 
 @media (max-width: 770px) {
