@@ -55,4 +55,10 @@ class UserModel {
      * )
      */
     public $ville;
+
+    /**
+     * @Assert\NotBlank()
+     */
+    public $role;
+
 }

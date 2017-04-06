@@ -17,6 +17,9 @@
             <ul class="nav nav-tabs nav-justified">
                 <li class="active"><a href="#profil" data-toggle="tab">Profil</a></li>
                 <li><a href="#observations" data-toggle="tab">Mes observations</a></li>
+                {% if is_granted('ROLE_VALIDATEUR') %}
+                    <li><a href="#validation" data-toggle="tab">Gestion des validations</a></li>
+                {% endif %}
             </ul>
         </div>
     </div>
@@ -107,6 +110,11 @@
             {% endif %}
             <a href="#"><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Ajouter une observation</button></a>
         </div>
+
+        <div class="tab-pane fade adminTable" id="validation">
+            <h1 class="text-center">Validation des observations.</h1>
+        </div>
+
     </div>
 
 {% endblock %}

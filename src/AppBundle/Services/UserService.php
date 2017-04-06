@@ -54,6 +54,9 @@ class UserService {
         $userModel->ville = $user->getVille();
         $userModel->dateNaissance = $user->getDateNaissance();
         $userModel->prenom = $user->getPrenom();
+        foreach($user->getRoles() as $role) {
+            $userModel->role = $role;
+        }
 
         return $userModel;
     }
@@ -65,6 +68,7 @@ class UserService {
         $user->setPrenom($model->prenom);
         $user->setDateNaissance($model->dateNaissance);
         $user->setVille($model->ville);
+        $user->setRoles(array($model->role));
 
         // 4) Sauvegarde de l'utilisateur
         $this->em->persist($user);
