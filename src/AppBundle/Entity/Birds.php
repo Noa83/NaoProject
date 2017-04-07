@@ -26,112 +26,112 @@ class Birds
     /**
      * @var string
      *
-     * @ORM\Column(name="REGNE", type="string", nullable=true, length=8)
+     * @ORM\Column(name="regne", type="string", nullable=true, length=8)
      *
      */
-    private $REGNE;
+    private $regne;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="PHYLUM", type="string", nullable=true, length=8)
+     * @ORM\Column(name="phylum", type="string", nullable=true, length=8)
      */
-    private $PHYLUM;
+    private $phylum;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="CLASSE", type="string", nullable=true, length=4)
+     * @ORM\Column(name="classe", type="string", nullable=true, length=4)
      */
-    private $CLASSE;
+    private $classe;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="ORDRE", type="string", nullable=true, length=19)
+     * @ORM\Column(name="ordre", type="string", nullable=true, length=19)
      */
-    private $ORDRE;
+    private $ordre;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="FAMILLE", type="string", nullable=true, length=17)
+     * @ORM\Column(name="famille", type="string", nullable=true, length=17)
      */
-    private $FAMILLE;
+    private $famille;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="CD_NOM", type="integer",  nullable=true)
+     * @ORM\Column(name="cd_nom", type="integer",  nullable=true)
      */
-    private $CD_NOM;
+    private $cdNom;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="CD_TAXSUP", type="integer", nullable=true)
+     * @ORM\Column(name="cd_taxsup", type="integer", nullable=true)
      */
-    private $CD_TAXSUP;
+    private $cdTaxsup;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="CD_REF", type="integer", nullable=true)
+     * @ORM\Column(name="cd_ref", type="integer", nullable=true)
      */
-    private $CD_REF;
+    private $cdRef;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="RANG", type="string", nullable=true, length=4)
+     * @ORM\Column(name="rang", type="string", nullable=true, length=4)
      */
-    private $RANG;
+    private $rang;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="LB_NOM", type="string", nullable=true, length=44)
+     * @ORM\Column(name="lb_nom", type="string", nullable=true, length=44)
      */
-    private $LB_NOM;
+    private $lbNom;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="LB_AUTEUR", type="string", nullable=true, length=31)
+     * @ORM\Column(name="lb_auteur", type="string", nullable=true, length=31)
      */
-    private $LB_AUTEUR;
+    private $lbAuteur;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="NOM_COMPLET", type="string", nullable=true, length=63)
+     * @ORM\Column(name="nom_complet", type="string", nullable=true, length=63)
      */
-    private $NOM_COMPLET;
+    private $nomComplet;
     /**
      * @var string
      *
-     * @ORM\Column(name="NOM_VALIDE", type="string", nullable=true, length=56)
+     * @ORM\Column(name="nom_valide", type="string", nullable=true, length=56)
      */
-    private $NOM_VALIDE;
+    private $nomValide;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="NOM_VERN", type="string", nullable=true, length=63)
+     * @ORM\Column(name="nom_vern", type="string", nullable=true, length=63)
      */
-    private $NOM_VERN;
+    private $nomVern;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="NOM_VERN_ENG", type="string", nullable=true, length=57)
+     * @ORM\Column(name="nom_vern_eng", type="string", nullable=true, length=57)
      */
-    private $NOM_VERN_ENG;
+    private $nomVernEng;
 
     /**
      * @return int
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
@@ -139,123 +139,121 @@ class Birds
     /**
      * @return string
      */
-    public function getREGNE()
+    public function getRegne(): string
     {
-        return $this->REGNE;
+        return $this->regne;
     }
 
     /**
      * @return string
      */
-    public function getPHYLUM()
+    public function getPhylum(): string
     {
-        return $this->PHYLUM;
+        return $this->phylum;
     }
 
     /**
      * @return string
      */
-    public function getCLASSE()
+    public function getClasse(): string
     {
-        return $this->CLASSE;
+        return $this->classe;
     }
 
     /**
      * @return string
      */
-    public function getORDRE()
+    public function getOrdre(): string
     {
-        return $this->ORDRE;
+        return $this->ordre;
     }
 
     /**
      * @return string
      */
-    public function getFAMILLE()
+    public function getFamille(): string
     {
-        return $this->FAMILLE;
+        return $this->famille;
     }
 
     /**
      * @return int
      */
-    public function getCDNOM()
+    public function getCdNom(): int
     {
-        return $this->CD_NOM;
+        return $this->cdNom;
     }
 
     /**
      * @return int
      */
-    public function getCDTAXSUP()
+    public function getCdTaxsup(): int
     {
-        return $this->CD_TAXSUP;
+        return $this->cdTaxsup;
     }
 
     /**
      * @return int
      */
-    public function getCDREF()
+    public function getCdRef(): int
     {
-        return $this->CD_REF;
+        return $this->cdRef;
     }
 
     /**
      * @return string
      */
-    public function getRANG()
+    public function getRang(): string
     {
-        return $this->RANG;
+        return $this->rang;
     }
 
     /**
      * @return string
      */
-    public function getLBNOM()
+    public function getLbNom(): string
     {
-        return $this->LB_NOM;
+        return $this->lbNom;
     }
 
     /**
      * @return string
      */
-    public function getLBAUTEUR()
+    public function getLbAuteur(): string
     {
-        return $this->LB_AUTEUR;
+        return $this->lbAuteur;
     }
 
     /**
      * @return string
      */
-    public function getNOMCOMPLET()
+    public function getNomComplet(): string
     {
-        return $this->NOM_COMPLET;
+        return $this->nomComplet;
     }
 
     /**
      * @return string
      */
-    public function getNOMVALIDE()
+    public function getNomValide(): string
     {
-        return $this->NOM_VALIDE;
+        return $this->nomValide;
     }
 
     /**
      * @return string
      */
-    public function getNOMVERN()
+    public function getNomVern(): string
     {
-        return $this->NOM_VERN;
+        return $this->nomVern;
     }
 
     /**
      * @return string
      */
-    public function getNOMVERNENG()
+    public function getNomVernEng(): string
     {
-        return $this->NOM_VERN_ENG;
+        return $this->nomVernEng;
     }
-
-
 
 }

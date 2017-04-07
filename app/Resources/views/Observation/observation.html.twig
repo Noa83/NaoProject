@@ -17,7 +17,7 @@
                 {{ form_start(form) }}
                 <div class="row">
                     <div class="col-md-12">
-                        {{ form_row(form.birds, {'label': 'Nom de l\'espèce :'}) }}
+                        {{ form_row(form.bird, {'label': 'Nom de l\'espèce :'}) }}
                     </div>
                 </div>
                 <div class="row">
@@ -30,15 +30,15 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6 col-xs-6">
-                        {{ form_row(form.lat, {'label': 'Lattitude :', 'placeholder': 'Lattitude :'}) }}
+                        {{ form_row(form.lat, {'label': 'Lattitude :'}) }}
                     </div>
                     <div class="col-md-6 col-xs-6">
-                        {{ form_row(form.long, {'label': 'Longitude :', 'placeholder':'2.213624'}) }}
+                        {{ form_row(form.long, {'label': 'Longitude :'}) }}
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6 col-xs-12">
-                        {{ form_row(form.date, {'label': 'Date de l\'observation :'}) }}
+                        {{ form_row(form.observationDate, {'label': 'Date de l\'observation :'}) }}
                     </div>
                     <div class="col-md-6 col-xs-6">
                         {{ form_row(form.image, {'label': 'Joindre une image (Max: 2M) :'}) }}
@@ -46,7 +46,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        {{ form_row(form.observationMsg, {'label': 'Observations :'}) }}
+                        {{ form_row(form.observationComment, {'label': 'Observations :'}) }}
                     </div>
                 </div>
                 <div class="row">

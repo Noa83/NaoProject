@@ -19,18 +19,18 @@ class BirdsRepository extends \Doctrine\ORM\EntityRepository
     {
         $arrayList = [];
         $list = $this->_em->createQueryBuilder('b')
-            ->select('b.id', 'b.NOM_VERN', 'b.NOM_VALIDE')
+            ->select('b.id', 'b.nomVern', 'b.nomValide')
             ->from('AppBundle:Birds', 'b')
-            ->orderBy('b.NOM_VERN')
+            ->orderBy('b.nomVern')
             ->getQuery()
             ->getResult();
 
         foreach ($list as $bird) {
-            if(empty($bird['NOM_VERN']))
+            if(empty($bird['nomVern']))
             {
-                $birdSpecie = $bird['NOM_VALIDE'];
+                $birdSpecie = $bird['nomValide'];
             }else{
-                $birdSpecie = $bird['NOM_VERN'] . ' (' . $bird['NOM_VALIDE'] . ')';
+                $birdSpecie = $bird['nomVern'] . ' (' . $bird['nomValide'] . ')';
             }
             $arrayList[$birdSpecie] = $bird['id'];
 

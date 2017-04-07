@@ -25,15 +25,12 @@ class ObservationController extends Controller
         $errorMsg = '';
         if ($request->isMethod('POST') && $observationForm->handleRequest($request)->isValid()) {
             try {
-                $observationModel->setNomMaille($this->getDoctrine()->getRepository('AppBundle:Km10')
+                $observationModel->setMaille($this->getDoctrine()->getRepository('AppBundle:Km10')
                     ->getMailleNativeSql($observationModel->getLongLat()));
-                //Récup du user
-
-                $observationModel->setIdUser($this->getUser());
-                $role = $this->getUser()->getRoles();
 
                 //Envoi en traitement Bdd et redirect
-                $this->get('observation.recording')->persist($observationModel, $role);
+                $this->get('observation.recording')->persist($observationModel, $this->getUser());
+                //Adresse de redirection à changer vers la bonne.
                 return $this->redirectToRoute('observation');
 
             } catch (\Exception $exception) {

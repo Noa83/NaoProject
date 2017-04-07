@@ -15,9 +15,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 
 /**
- * ObservationModel
- *
- * @ORM\MappedSuperClass
+ * ObservationType
  */
 
 class ObservationType extends AbstractType
@@ -26,8 +24,8 @@ class ObservationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('date', DateType::class)
-            ->add('birds', ChoiceType::class, [
+            ->add('observationDate', DateType::class)
+            ->add('bird', ChoiceType::class, [
                 'choices' => $options['birdList']
             ])
             ->add('lat', NumberType::class,[
@@ -38,7 +36,7 @@ class ObservationType extends AbstractType
                 'scale' => 6,
                 'invalid_message' => 'Vous devez saisir une lattitude géographique.'
             ])
-            ->add('observationMsg', TextareaType::class)
+            ->add('observationComment', TextareaType::class)
             ->add('image', FileType::class, [
                 'required' => false
             ]);
