@@ -16,13 +16,19 @@ class Observation
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $idUser;
+    private $user;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Birds")
      * @ORM\JoinColumn(nullable=false)
      */
     private $bird;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Km10")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $km10Maille;
 
     /**
      * @var int
@@ -36,38 +42,38 @@ class Observation
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date", type="datetime")
+     * @ORM\Column(name="observation_date", type="date")
      *
      */
-    private $date;
+    private $observationDate;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="latLong", type="string", length=255)
+     * @ORM\Column(name="lattitude", type="string", length=255)
      */
-    private $longLat;
+    private $lattitude;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nomMaille", type="string", length=255)
+     * @ORM\Column(name="longitude", type="string", length=255)
      */
-    private $nomMaille;
+    private $longitude;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="msg", type="text")
+     * @ORM\Column(name="observation_comment", type="text")
      */
-    private $msg;
+    private $observationComment;
 
     /**
      * @var bool
      *
      * @ORM\Column(name="validated", type="boolean")
      */
-    private $validated;
+    private $validated = false;
 
     /**
      * @var string
@@ -79,35 +85,18 @@ class Observation
     /**
      * @return mixed
      */
-    public function getIdUser()
+    public function getUser()
     {
-        return $this->idUser;
+        return $this->user;
     }
 
     /**
-     * @param mixed $idUser
+     * @param mixed $user
      */
-    public function setIdUser($idUser)
+    public function setUser($user)
     {
-        $this->idUser = $idUser;
+        $this->user = $user;
     }
-
-    /**
-     * @return string
-     */
-    public function getImageUrl()
-    {
-        return $this->imageUrl;
-    }
-
-    /**
-     * @param string $imageUrl
-     */
-    public function setImageUrl($imageUrl)
-    {
-        $this->imageUrl = $imageUrl;
-    }
-
 
     /**
      * @return mixed
@@ -126,117 +115,140 @@ class Observation
     }
 
     /**
-     * Get id
-     *
+     * @return mixed
+     */
+    public function getKm10Maille()
+    {
+        return $this->km10Maille;
+    }
+
+    /**
+     * @param mixed $km10Maille
+     */
+    public function setKm10Maille($km10Maille)
+    {
+        $this->km10Maille = $km10Maille;
+    }
+
+    /**
      * @return int
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
 
     /**
+     * @param int $id
+     */
+    public function setId(int $id)
+    {
+        $this->id = $id;
+    }
+
+    /**
      * @return \DateTime
      */
-    public function getDate()
+    public function getObservationDate(): \DateTime
     {
-        return $this->date;
+        return $this->observationDate;
     }
 
     /**
-     * @param \DateTime $date
+     * @param \DateTime $observationDate
      */
-    public function setDate($date)
+    public function setObservationDate(\DateTime $observationDate)
     {
-        $this->date = $date;
+        $this->observationDate = $observationDate;
     }
 
     /**
-     * Set longLat
-     *
-     * @param string $longLat
-     *
-     * @return Observation
-     */
-    public function setLongLat($longLat)
-    {
-        $this->longLat = $longLat;
-
-        return $this;
-    }
-
-    /**
-     * Get longLat
-     *
      * @return string
      */
-    public function getLongLat()
+    public function getLattitude(): string
     {
-        return $this->longLat;
+        return $this->lattitude;
     }
 
     /**
-     * Set nomMaille
-     *
-     * @param string $nomMaille
-     *
-     * @return Observation
+     * @param string $lat
      */
-    public function setNomMaille($nomMaille)
+    public function setLattitude(string $lattitude)
     {
-        $this->nomMaille = $nomMaille;
-
-        return $this;
+        $this->lattitude = $lattitude;
     }
 
     /**
-     * Get nomMaille
-     *
      * @return string
      */
-    public function getNomMaille()
+    public function getLongitude(): string
     {
-        return $this->nomMaille;
+        return $this->longitude;
     }
 
     /**
-     * Set msg
-     *
-     * @param string $msg
-     *
-     * @return Observation
+     * @param string $long
      */
-    public function setMsg($msg)
+    public function setLongitude(string $longitude)
     {
-        $this->msg = $msg;
-
-        return $this;
+        $this->longitude = $longitude;
     }
 
     /**
-     * Get msg
-     *
      * @return string
      */
-    public function getMsg()
+    public function getLongLat(): string
     {
-        return $this->msg;
+        return $longLat = $this->longitude.' '.$this->lattitude;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getValidated()
+    public function getObservationComment(): string
+    {
+        return $this->observationComment;
+    }
+
+    /**
+     * @param string $observationComment
+     */
+    public function setObservationComment(string $observationComment)
+    {
+        $this->observationComment = $observationComment;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isValidated(): bool
     {
         return $this->validated;
     }
 
     /**
-     * @param mixed $validated
+     * @param bool $validated
      */
-    public function setValidated($validated)
+    public function setValidated(bool $validated)
     {
         $this->validated = $validated;
     }
+
+    /**
+     * @return string
+     */
+    public function getImageUrl(): string
+    {
+        return $this->imageUrl;
+    }
+
+    /**
+     * @param string $imageUrl
+     */
+    public function setImageUrl(string $imageUrl)
+    {
+        $this->imageUrl = $imageUrl;
+    }
+
 }
 

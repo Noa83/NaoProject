@@ -3,11 +3,10 @@
 namespace AppBundle\Services;
 
 
+use AppBundle\Entity\User;
 use AppBundle\Model\ObservationModel;
 use Doctrine\ORM\Mapping as ORM;
 use AppBundle\Entity\Observation;
-use AppBundle\Entity\Image;
-use AppBundle\Entity\Birds;
 
 
 class ObservationRecording
@@ -20,11 +19,11 @@ class ObservationRecording
         $this->birdsImg = $birdsImg;
     }
 
-    public function persist(ObservationModel $observationModel, $roles)
+    public function persist(ObservationModel $observationModel, User $user)
     {
         //Génération du chemin de l'image uploadée et enregistrement sur le serveur
         $fileUrl = '';
-        $file = $observationModel->getImage();
+        $file = $observationModel->image;
         if (empty($file)) {
         } else {
             $fileName = md5(uniqid()) . ' . ' . $file->guessExtension();
@@ -35,19 +34,18 @@ class ObservationRecording
         //Affectation des données du formulaire à l'entité Observation
         $observation = new Observation();
         $observation->setImageUrl($fileUrl);
-        $observation->setDate($observationModel->getDate());
-        $bird = $this->manager->getRepository('AppBundle:Birds')->getBirdById($observationModel->getBirds());
+        $observation->setObservationDate($observationModel->observationDate);
+        $bird = $this->manager->getRepository('AppBundle:Birds')->getBirdById($observationModel->bird);
         $observation->setBird($bird);
-        $observation->setLongLat($observationModel->getLongLat());
-        $observation->setNomMaille($observationModel->getNomMaille());
-        $observation->setMsg($observationModel->getObservationMsg());
-        $observation->setIdUser($observationModel->getIdUser());
+        $observation->setLongitude($observationModel->long);
+        $observation->setLattitude($observationModel->lat);
+        $observation->setKm10Maille($observationModel->maille);
+        $observation->setObservationComment($observationModel->observationComment);
+        $observation->setUser($user);
 
         //Gestion de la validation de l'observation selon le role du user
-            if (in_array('ROLE_ADMIN', $roles)||in_array('ROLE_VALIDATEUR', $roles)) {
+            if (in_array('ROLE_ADMIN', [$user])||in_array('ROLE_VALIDATEUR', [$user])) {
                 $observation->setValidated(1);
-            } else if (in_array('ROLE_USER', $roles)) {
-                $observation->setValidated(0);
             }
 
         //Persistance Bdd

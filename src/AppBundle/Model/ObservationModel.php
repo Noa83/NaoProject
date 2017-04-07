@@ -14,7 +14,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 class ObservationModel
 {
-    private $date;
+    public $observationDate;
     /**
      * @Assert\Range(
      *      min = 41.56,
@@ -23,7 +23,7 @@ class ObservationModel
      *      maxMessage = "Vous devez entrer une coordonnée maximale de {{ limit }}",
      *  )
      */
-    private $lat;
+    public $lat;
     /**
      * @Assert\Range(
      *      min = -9.88,
@@ -32,9 +32,9 @@ class ObservationModel
      *      maxMessage = "Vous devez entrer une coordonnée maximale de {{ limit }}",
      *  )
      */
-    private $long;
-    private $nomMaille;
-    private $observationMsg;
+    public $long;
+    public $maille;
+    public $observationComment;
 
 
     /**
@@ -45,153 +45,35 @@ class ObservationModel
      *     maxSizeMessage = "Le fichier est trop lourd ({{ size }})MB."
      * )
      */
-    private $image;
-    private $idUser;
-    private $birds;
-
-    /**
-     * @return mixed
-     */
-    public function getBirds()
-    {
-        return $this->birds;
-    }
-
-    /**
-     * @param mixed $birds
-     */
-    public function setBirds($birds)
-    {
-        $this->birds = $birds;
-    }
-
+    public $image;
+    public $bird;
 
     public function __construct()
     {
-        $this->setDate(new \DateTime());
+        $this->setObservationDate(new \DateTime());
     }
 
-
     /**
-     * @return mixed
+     * @param mixed $observationDate
      */
-    public function getDate()
+    public function setObservationDate($observationDate)
     {
-        return $this->date;
+        $this->observationDate = $observationDate;
     }
 
     /**
-     * @param mixed $date
+     * @return string
      */
-    public function setDate($date)
-    {
-        $this->date = $date;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getLongLat()
+    public function getLongLat(): string
     {
         return $longLat = $this->long.' '.$this->lat;
     }
 
     /**
-     * @return mixed
-     */
-    public function getLat()
-    {
-        return $this->lat;
-    }
-
-    /**
-     * @param mixed $lat
-     */
-    public function setLat($lat)
-    {
-        $this->lat = $lat;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getLong()
-    {
-        return $this->long;
-    }
-
-    /**
-     * @param mixed $long
-     */
-    public function setLong($long)
-    {
-        $this->long = $long;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getNomMaille()
-    {
-        return $this->nomMaille;
-    }
-
-    /**
      * @param mixed $nomMaille
      */
-    public function setNomMaille($nomMaille)
+    public function setMaille($maille)
     {
-        $this->nomMaille = $nomMaille;
+        $this->maille = $maille;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getObservationMsg()
-    {
-        return $this->observationMsg;
-    }
-
-    /**
-     * @param mixed $observationMsg
-     */
-    public function setObservationMsg($observationMsg)
-    {
-        $this->observationMsg = $observationMsg;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
-
-    /**
-     * @param mixed $image
-     */
-    public function setImage($image)
-    {
-        $this->image = $image;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getIdUser()
-    {
-        return $this->idUser;
-    }
-
-    /**
-     * @param mixed $idUser
-     */
-    public function setIdUser($idUser)
-    {
-        $this->idUser = $idUser;
-    }
-
-
-
 }
