@@ -2,12 +2,13 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <title>{% block title %}Welcome!{% endblock %}</title>
+    <title>{% block title %}NAO{% endblock %}</title>
     {% block stylesheets %}
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <link rel="stylesheet" href="{{ asset('/css/font-awesome-4.7.0/css/font-awesome.css') }}">
         <link rel="stylesheet" href="{{ asset('css/naostyle.css') }}">
-        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Mitr:300,400" rel="stylesheet">
     {% endblock %}
     <link rel="icon" type="image/png" href="{{ asset('images/favicon-NAO.png') }}"/>
 </head>
@@ -31,7 +32,7 @@
                 </button>
                 <div class="navbar-brand img-responsive">
                     <img alt="logo_nos_amis_les_oiseaux"
-                         src="{{ asset('images/LogoNAO300x130.png') }}">
+                         src="{{ asset('images/LogoNAO300x123.png') }}">
                 </div>
             </div>
             <div class="collapse navbar-collapse navbar-right" id="nao-navbar">
@@ -92,10 +93,11 @@
 {% block javascripts %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 {% endblock %}
 
 <footer class="row footer">
-    <ol class="breadcrumb  pull-right">
+    <ol class="breadcrumb col-sm-offset-3">
         <li><a href="#">Admin</a></li>
         <li><a href="{{ path('legal_notice') }}">Mentions légales</a></li>
         <li><a href="{{ path('contact') }}">Contact</a></li>
