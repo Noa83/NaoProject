@@ -13,3 +13,7 @@ services:
         arguments:
             - "@mailer"
             - "@templating"
+
+    appbundle.user_service:
+      class: AppBundle\Services\UserService
+      arguments: ["@doctrine.orm.entity_manager","@security.password_encoder"]
