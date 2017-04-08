@@ -170,6 +170,11 @@ header#nao_header
     margin-bottom: 15px;
 }
 
+a.btn.pull-right.btn-sm.faceb:hover
+{
+    color: white;
+}
+
 /* Formulaires */
 textarea#observation_observationMsg.form-control
 {
