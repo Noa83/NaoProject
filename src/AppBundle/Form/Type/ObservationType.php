@@ -34,7 +34,7 @@ class ObservationType extends AbstractType
             ])
             ->add('long', NumberType::class,[
                 'scale' => 6,
-                'invalid_message' => 'Vous devez saisir une lattitude géographique.'
+                'invalid_message' => 'Vous devez saisir une longitude géographique.'
             ])
             ->add('comment', TextareaType::class)
             ->add('image', FileType::class, [

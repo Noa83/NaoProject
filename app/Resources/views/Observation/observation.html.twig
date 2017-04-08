@@ -23,6 +23,7 @@
                 <div class="row">
                     <label class="col-md-12">Coordonnées d'observation:</label>
                     {{ form_errors(form.lat) }}
+                    {{ form_errors(form.long) }}
                 </div>
                 <div class="row">
                     <div class="col-md-6 col-xs-6">
@@ -30,7 +31,8 @@
                         {{ form_widget(form.lat) }}
                     </div>
                     <div class="col-md-6 col-xs-6">
-                        {{ form_row(form.long, {'label': 'Longitude :'}) }}
+                        {{ form_label(form.long, 'Longitude') }}
+                        {{ form_widget(form.long) }}
                     </div>
                 </div>
                 <div class="row">
