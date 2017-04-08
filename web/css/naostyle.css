@@ -194,7 +194,6 @@ h1.sous-titre, h2.sous-titre
     text-shadow: 3px 3px 2px #288B90;
 }
 
-
 /* Carte */
 #map {
     height: 450px;
@@ -219,13 +218,16 @@ ol{
 }
 
 /* Erreurs */
-div.alert.alert-warning
+span.help-block>ul>li
 {
     color: #321c0e;
     background-color: rgba(16,55,56,0.2);
-    margin-right: 15px;
-    margin-left: 15px;
-    border: none;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 5px;
+
 }
 
 /* Backgrounds */

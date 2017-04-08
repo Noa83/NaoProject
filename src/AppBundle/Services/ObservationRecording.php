@@ -34,19 +34,22 @@ class ObservationRecording
         //Affectation des données du formulaire à l'entité Observation
         $observation = new Observation();
         $observation->setImageUrl($fileUrl);
-        $observation->setObservationDate($observationModel->observationDate);
+        $observation->setDate($observationModel->date);
         $bird = $this->manager->getRepository('AppBundle:Birds')->getBirdById($observationModel->bird);
         $observation->setBird($bird);
         $observation->setLongitude($observationModel->long);
         $observation->setLattitude($observationModel->lat);
-        $observation->setKm10Maille($observationModel->maille);
-        $observation->setObservationComment($observationModel->observationComment);
+        $observation->setKm10Maille($this->manager->getRepository('AppBundle:Km10')
+            ->getMailleNativeSql($observationModel->getLongLat()));
+        $observation->setComment($observationModel->comment);
         $observation->setUser($user);
 
         //Gestion de la validation de l'observation selon le role du user
             if (in_array('ROLE_ADMIN', [$user])||in_array('ROLE_VALIDATEUR', [$user])) {
                 $observation->setValidated(1);
             }
+
+            dump($observation);
 
         //Persistance Bdd
         $em = $this->manager;

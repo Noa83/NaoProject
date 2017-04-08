@@ -8,7 +8,13 @@ services:
         class: AppBundle\Services\ObservationRecording
         arguments: ["@doctrine.orm.entity_manager", %birds_images%]
 
-
     appbundle.user_service:
          class: AppBundle\Services\UserService
          arguments: ["@doctrine.orm.entity_manager","@security.password_encoder"]
+
+    out_of_france_validator:
+         class: AppBundle\Validator\Constraints\OutOfFranceValidator
+         arguments:
+             - "@doctrine.orm.entity_manager"
+         tags:
+            - {name: validator.constraint_validator}
