@@ -4,17 +4,21 @@ namespace AppBundle\Model;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use AppBundle\Validator\Constraints as NaoAssert;
 
 
 /**
  * ObservationModel
  *
  * @ORM\MappedSuperClass
+ *
+ * @NaoAssert\OutOfFrance
  */
+
 
 class ObservationModel
 {
-    public $observationDate;
+    public $date;
     /**
      * @Assert\Range(
      *      min = 41.56,
@@ -34,7 +38,7 @@ class ObservationModel
      */
     public $long;
     public $maille;
-    public $observationComment;
+    public $comment;
 
 
     /**
@@ -50,15 +54,15 @@ class ObservationModel
 
     public function __construct()
     {
-        $this->setObservationDate(new \DateTime());
+        $this->setDate(new \DateTime());
     }
 
     /**
-     * @param mixed $observationDate
+     * @param mixed $date
      */
-    public function setObservationDate($observationDate)
+    public function setDate($date)
     {
-        $this->observationDate = $observationDate;
+        $this->date = $date;
     }
 
     /**
@@ -67,13 +71,5 @@ class ObservationModel
     public function getLongLat(): string
     {
         return $longLat = $this->long.' '.$this->lat;
-    }
-
-    /**
-     * @param mixed $nomMaille
-     */
-    public function setMaille($maille)
-    {
-        $this->maille = $maille;
     }
 }

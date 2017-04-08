@@ -42,10 +42,10 @@ class Observation
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="observation_date", type="date")
+     * @ORM\Column(name="date", type="date")
      *
      */
-    private $observationDate;
+    private $date;
 
     /**
      * @var string
@@ -64,9 +64,9 @@ class Observation
     /**
      * @var string
      *
-     * @ORM\Column(name="observation_comment", type="text")
+     * @ORM\Column(name="comment", type="text")
      */
-    private $observationComment;
+    private $comment;
 
     /**
      * @var bool
@@ -149,17 +149,17 @@ class Observation
     /**
      * @return \DateTime
      */
-    public function getObservationDate(): \DateTime
+    public function getDate(): \DateTime
     {
-        return $this->observationDate;
+        return $this->date;
     }
 
     /**
-     * @param \DateTime $observationDate
+     * @param \DateTime $date
      */
-    public function setObservationDate(\DateTime $observationDate)
+    public function setDate(\DateTime $date)
     {
-        $this->observationDate = $observationDate;
+        $this->date = $date;
     }
 
     /**
@@ -205,17 +205,17 @@ class Observation
     /**
      * @return string
      */
-    public function getObservationComment(): string
+    public function getComment(): string
     {
-        return $this->observationComment;
+        return $this->comment;
     }
 
     /**
-     * @param string $observationComment
+     * @param string $comment
      */
-    public function setObservationComment(string $observationComment)
+    public function setComment(string $comment)
     {
-        $this->observationComment = $observationComment;
+        $this->comment = $comment;
     }
 
     /**

@@ -24,7 +24,7 @@ class ObservationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('observationDate', DateType::class)
+            ->add('date', DateType::class)
             ->add('bird', ChoiceType::class, [
                 'choices' => $options['birdList']
             ])
@@ -36,7 +36,7 @@ class ObservationType extends AbstractType
                 'scale' => 6,
                 'invalid_message' => 'Vous devez saisir une lattitude géographique.'
             ])
-            ->add('observationComment', TextareaType::class)
+            ->add('comment', TextareaType::class)
             ->add('image', FileType::class, [
                 'required' => false
             ]);

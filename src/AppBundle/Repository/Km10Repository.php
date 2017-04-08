@@ -3,17 +3,11 @@
 namespace AppBundle\Repository;
 
 use AppBundle\Entity\Km10;
-//use Doctrine\ORM\Query;
-//use CrEOF\Spatial\ORM\Query\AST\Functions\PostgreSql\STIntersects;
-//use Doctrine\ORM\Query\ResultSetMappingBuilder;
 use Doctrine\ORM\Query\ResultSetMapping;
 
 
 /**
  * Km10Repository
- *
- * @Throws Exception
- *
  */
 class Km10Repository extends \Doctrine\ORM\EntityRepository
 {
@@ -30,16 +24,6 @@ class Km10Repository extends \Doctrine\ORM\EntityRepository
             \'POINT(' . $point . ')\'), k.polygon)', $rsm);
 
         $results = $query->getResult();
-
-        if (empty($results))
-        {
-            throw new \Exception("Les coordonnées saisies ne se situent pas sur le territoire métropolitain Français.");
-
-        } else {
-            return $results[0];
-        }
-
+        return $results[0];
     }
-
-
 }
