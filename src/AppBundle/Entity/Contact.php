@@ -8,24 +8,18 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Contact
  *
- * @ORM\Table(name="contact")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\ContactRepository")
  */
 class Contact
 {
     /**
      * @var int
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="lastName", type="string", length=255)
      * @Assert\Length(min=3, minMessage="Le nom doit faire au moins {{ limit }} caractères.")
      * @Assert\Regex(
      *     pattern="/\d/",
