@@ -21,6 +21,12 @@ class BlogController extends Controller
      */
     public function BlogAction($page)
     {
+        //pas de page 0 et négative
+        if ($page < 1)
+        {
+            throw $this->createNotFoundException("La page " . $page . " n'existe pas.");
+        }
+
         //On récupère l'objet Paginator
         $articles = $this->getDoctrine()->getManager()->getRepository('AppBundle:Article')->findAllArticles($page, self::NBRE_PAR_PAGE);
 

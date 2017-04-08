@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="col-lg-3 col-lg-offset-5">
-                    <h1>CONTACTEZ NOUS</h1>
+                    <h1>CONTACTEZ-NOUS</h1>
                     <h2>Pour plus d'informations.</h2>
                 </div>
             </div>
@@ -32,32 +32,42 @@
             <div class="col-lg-8">
 
                 <div class="col-lg-8 col-lg-offset-3">
-                    <form action="#">
-                        <legend>Envoyez-nous un message</legend>
-                        <div class="well">
+                    {{ form_start(form) }}
+                    {{ form_errors(form) }}
+
+                    <legend>Envoyez-nous un message</legend>
+
+                    <div class="well">
                             <div class="form-group">
                                 <label for="nom">Nom:</label>
-                                <input type="text" placeholder="Nom" class="form-control">
+                                {{ form_widget(form.lastName, {'attr': {'class': 'form-control', 'placeholder': 'Nom'}})}}
+                                {{ form_errors(form.lastName) }}
                             </div>
+
                             <div class="form-group">
-                                <label for="prenom">Prénom:</label>
-                                <input type="text" placeholder="Prénom" class="form-control">
+                                <label for="nom">Prénom:</label>
+                                {{ form_widget(form.firstName, {'attr': {'class': 'form-control', 'placeholder': 'Prénom'}})}}
+                                {{ form_errors(form.firstName) }}
                             </div>
+
                             <div class="form-group">
-                                <label for="email">Email:</label>
-                                <input type="email" placeholder="Email" class="form-control">
+                                <label for="nom">Email:</label>
+                                {{ form_widget(form.mail, {'attr': {'class': 'form-control', 'placeholder': 'Email'}})}}
+                                {{ form_errors(form.mail) }}
                             </div>
+
                             <div class="form-group">
-                                <label for="message">Votre message:</label>
-                                <textarea name="message"  cols="30" rows="10" class="form-control"></textarea>
+                                <label for="nom">Votre message:</label>
+                                {{ form_widget(form.message, {'attr': {'class': 'form-control', 'placeholder': 'Message', 'cols': '30', 'rows':'10'}})}}
+                                {{ form_errors(form.message) }}
                             </div>
-                            <button class="btn btn-warning pull-right">Envoyer</button>
-                        </div>
-                    </form>
+                            {{ form_widget(form.Envoyer, {'attr': {'class': 'btn btn-warning pull-right'}})}}
+                    </div>
+
+                    {{ form_rest(form) }}
+                    {{ form_end(form) }}
                 </div>
-
             </div>
-
         </div>
     </div>
 {% endblock %}
@@ -66,5 +76,4 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAR8e4bssWdv_3Om7ArT7GGGmLQg2Ylg2A"></script>
     <script src="{{ asset('js/maps.js')}}"></script>
     <script src="{{ asset('js/observation.js')}}"></script>
-
 {% endblock %}
