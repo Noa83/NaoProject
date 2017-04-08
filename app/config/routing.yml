@@ -13,10 +13,9 @@ results:
     defaults:
         _controller: AppBundle:Results:results
 
-#blog:
-#    path:    /blog
-#    defaults:
-#        _controller:
+blog:
+    resource: '@AppBundle/Controller/BlogController.php'
+    type:     annotation
 
 contact:
     path:    /contact
