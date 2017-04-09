@@ -2,12 +2,13 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <title>{% block title %}Welcome!{% endblock %}</title>
+    <title>{% block title %}NAO{% endblock %}</title>
     {% block stylesheets %}
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <link rel="stylesheet" href="{{ asset('/css/font-awesome-4.7.0/css/font-awesome.css') }}">
         <link rel="stylesheet" href="{{ asset('css/naostyle.css') }}">
-        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Mitr:300,400" rel="stylesheet">
         {% block enfant %} {% endblock %}
     {% endblock %}
     <link rel="icon" type="image/png" href="{{ asset('images/favicon-NAO.png') }}"/>
@@ -32,7 +33,7 @@
                 </button>
                 <div class="navbar-brand img-responsive">
                     <img alt="logo_nos_amis_les_oiseaux"
-                         src="{{ asset('images/LogoNAO300x130.png') }}">
+                         src="{{ asset('images/LogoNAO300x123.png') }}">
                 </div>
             </div>
             <div class="collapse navbar-collapse navbar-right" id="nao-navbar">
@@ -42,7 +43,7 @@
                         don</a>
                     <a class="btn btn-sm join pull-right" href="{{ path('join') }}"
                        role="button">Adhérer</a>
-                    <a class="btn pull-right btn-sm faceb" href="#">
+                    <a class="btn pull-right btn-sm faceb" href="https://www.facebook.com/lapagedenosamislesoiseaux/">
                         <i class="fa fa-facebook" aria-hidden="true"></i></a>
                 </div>
                 <ul class="nav navbar-nav navbar-right">
@@ -60,30 +61,30 @@
                         <li><a href="{{ path('blog', {'page': 1}) }}">Blog</a></li>
                     {% endblock %}
                     {% block navi5 %}
-                        <li class="dropdown">
-                    {% endblock %}
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                               aria-haspopup="true"
-                               aria-expanded="false">Mon Compte<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                                    <li><a href="{{ path('account') }}">Mon Compte</a></li>
-                                    <li><a href="{{ path('logout') }}">Se Déconnecter</a></li>
-                                {% else %}
-                                    <li><a href="{{ path('login') }}">Se Connecter</a></li>
-                                    <li><a href="{{ path('create_account') }}">Créer un compte</a></li>
-                                {% endif %}
-                            </ul>
-                        </li>
-                        <li>
-                            <form class="navbar-form navbar-right">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Rechercher">
-                                </div>
-                                <button type="submit" id="btn_search" class="btn"><span class="glyphicon glyphicon-search"
-                                                                                        aria-hidden="true"></span></button>
-                            </form>
-                        </li>
+                    <li class="dropdown">
+                        {% endblock %}
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                           aria-haspopup="true"
+                           aria-expanded="false">Mon Compte<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                <li><a href="{{ path('account') }}">Mon Compte</a></li>
+                                <li><a href="{{ path('logout') }}">Se Déconnecter</a></li>
+                            {% else %}
+                                <li><a href="{{ path('login') }}">Se Connecter</a></li>
+                                <li><a href="{{ path('create_account') }}">Créer un compte</a></li>
+                            {% endif %}
+                        </ul>
+                    </li>
+                    <li>
+                        <form class="navbar-form navbar-right">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Rechercher">
+                            </div>
+                            <button type="submit" id="btn_search" class="btn"><span class="glyphicon glyphicon-search"
+                                                                                    aria-hidden="true"></span></button>
+                        </form>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -91,9 +92,10 @@
 </header>
 
 {% block body %}{% endblock %}
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <footer class="row footer">
-    <ol class="breadcrumb  pull-right">
+    <ol class="breadcrumb col-sm-offset-3">
         <li><a href="#">Admin</a></li>
         <li><a href="{{ path('legal_notice') }}">Mentions légales</a></li>
         <li><a href="{{ path('contact') }}">Contact</a></li>
