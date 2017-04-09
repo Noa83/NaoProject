@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e6fbde682ab61182e522d34fc0222ae8",
-    "content-hash": "816a8f833d7468a08fb82c8c699d95ea",
+    "hash": "d6455501e91c209f24fa7da0c23372d2",
+    "content-hash": "af4bffb49773c26e345da85839afd387",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -2047,7 +2047,7 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v3.2.6",
+            "version": "v3.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
@@ -2308,17 +2308,6 @@
         {
             "name": "doctrine/data-fixtures",
             "version": "v1.2.2",
-<<<<<<< HEAD
-            "source": {
-                "type": "git",
-                "url": "https://github.com/doctrine/data-fixtures.git",
-                "reference": "17fa5bfe6ff52e35cb3d9ec37c934a2f4bd1fa2e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/data-fixtures/zipball/17fa5bfe6ff52e35cb3d9ec37c934a2f4bd1fa2e",
-                "reference": "17fa5bfe6ff52e35cb3d9ec37c934a2f4bd1fa2e",
-=======
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/data-fixtures.git",
@@ -2387,7 +2376,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/doctrine/DoctrineFixturesBundle/zipball/0f1a2f91b349e10f5c343f75ab71d23aace5b029",
                 "reference": "0f1a2f91b349e10f5c343f75ab71d23aace5b029",
->>>>>>> Finalisation du module observation avec gestion des erreurs de coordonnées géo et du poids des uploads d'image. Ajustement du twig de la vue correspondante. Ajustement du twig de la vue CreateAccount. Modifications de css se reportant à ces vues.
                 "shasum": ""
             },
             "require": {
@@ -3828,7 +3816,7 @@
         },
         {
             "name": "symfony/phpunit-bridge",
-            "version": "v3.2.6",
+            "version": "v3.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/phpunit-bridge.git",

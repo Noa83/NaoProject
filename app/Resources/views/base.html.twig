@@ -61,30 +61,30 @@
                         <li><a href="{{ path('blog', {'page': 1}) }}">Blog</a></li>
                     {% endblock %}
                     {% block navi5 %}
-                        <li class="dropdown">
-                    {% endblock %}
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                               aria-haspopup="true"
-                               aria-expanded="false">Mon Compte<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                                    <li><a href="{{ path('account') }}">Mon Compte</a></li>
-                                    <li><a href="{{ path('logout') }}">Se Déconnecter</a></li>
-                                {% else %}
-                                    <li><a href="{{ path('login') }}">Se Connecter</a></li>
-                                    <li><a href="{{ path('create_account') }}">Créer un compte</a></li>
-                                {% endif %}
-                            </ul>
-                        </li>
-                        <li>
-                            <form class="navbar-form navbar-right">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Rechercher">
-                                </div>
-                                <button type="submit" id="btn_search" class="btn"><span class="glyphicon glyphicon-search"
-                                                                                        aria-hidden="true"></span></button>
-                            </form>
-                        </li>
+                    <li class="dropdown">
+                        {% endblock %}
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                           aria-haspopup="true"
+                           aria-expanded="false">Mon Compte<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                <li><a href="{{ path('account') }}">Mon Compte</a></li>
+                                <li><a href="{{ path('logout') }}">Se Déconnecter</a></li>
+                            {% else %}
+                                <li><a href="{{ path('login') }}">Se Connecter</a></li>
+                                <li><a href="{{ path('create_account') }}">Créer un compte</a></li>
+                            {% endif %}
+                        </ul>
+                    </li>
+                    <li>
+                        <form class="navbar-form navbar-right">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Rechercher">
+                            </div>
+                            <button type="submit" id="btn_search" class="btn"><span class="glyphicon glyphicon-search"
+                                                                                    aria-hidden="true"></span></button>
+                        </form>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -92,12 +92,6 @@
 </header>
 
 {% block body %}{% endblock %}
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<<<<<<< HEAD
-    <script src="{{ asset('js/autocomplete.js') }}"></script>
-=======
-{% endblock %}
->>>>>>> Finalisation du module observation avec gestion des erreurs de coordonnées géo et du poids des uploads d'image. Ajustement du twig de la vue correspondante. Ajustement du twig de la vue CreateAccount. Modifications de css se reportant à ces vues.
 
 <footer class="row footer">
     <ol class="breadcrumb col-sm-offset-3">

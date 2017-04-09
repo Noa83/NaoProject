@@ -130,8 +130,8 @@ header#nao_header
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {
     background-color: #288B90;
     color: white;
-    border-top-left-radius: 10%;
-    border-top-right-radius: 10%;
+    border-top-left-radius: 8%;
+    border-top-right-radius: 8%;
 }
 
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover,
@@ -196,7 +196,7 @@ p.accroche
 h1.sous-titre, h2.sous-titre
 {
     padding-top: 10px;
-    text-shadow: 3px 3px 2px #288B90;
+    text-shadow: 2px 2px 2px #288B90;
 }
 
 /* Carte */
@@ -221,6 +221,42 @@ footer.row.footer
 ol{
     margin-left: 20px;
 }
+
+/* Contact */
+legend
+{
+    color: orange;
+    text-shadow: black 0.1em 0.05em 0.07em
+}
+p.contact
+{
+    color: white
+}
+
+h1.contact
+{
+    color: white;
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+h2.contact
+{
+    color: white;
+    margin-left: 8%;
+}
+
+div.well.contact
+{
+    background-color: rgba(255, 255, 255, 0.4);
+    padding-bottom: 50px;
+}
+
+#maps
+{
+    height: 400px;
+}
+
 
 /* Erreurs */
 span.help-block>ul>li
@@ -257,6 +293,16 @@ div.container-fluid#landing
     padding-top: 50px;
     padding-bottom: 20px;
 }
+
+div.container-fluid#contact_bg
+{
+    width: auto;
+    height: auto;
+    background: url("../images/contact.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
 div#opal_bg
 {
     background-color: rgba(255, 255, 255, 0.5);
@@ -288,6 +334,11 @@ div#opal_bg
     div.container-fluid#landing
     {
         background-position: -330px;
+    }
+    div.container-fluid#contact_bg
+    {
+        background-position: -1000px;
+        background-size: initial;
     }
     .navbar-brand > img {
         display: none;
