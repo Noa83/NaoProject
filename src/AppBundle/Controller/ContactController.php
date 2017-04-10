@@ -25,7 +25,7 @@ class ContactController extends Controller
 
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid())
         {
-            $this->get('mail')->mail($formulaireContact);
+            $this->get('mail')->sendContactMail($formulaireContact);
             return $this->redirectToRoute('contact');
         }
 

@@ -1,9 +1,16 @@
 <?php
-namespace AppBundle\Mail;
+/**
+ * Created by PhpStorm.
+ * User: Bruno
+ * Date: 10/04/2017
+ * Time: 09:25
+ */
 
+namespace AppBundle\Services;
 use Symfony\Component\Templating\EngineInterface;
 
-class Mail
+
+class ContactService
 {
     protected $mailer;
     protected $templating;
@@ -14,7 +21,7 @@ class Mail
         $this->templating = $templating; //Pour pouvoir utiliser le render
     }
 
-    public function mail($form)
+    public function sendContactMail($form)
     {
         $message = \Swift_Message::newInstance()
             ->setSubject('Demande d\'informations')

@@ -9,7 +9,7 @@ services:
     #    arguments: ['@another_service_name', 'plain_value', '%parameter_name%']
 
     mail:
-        class: AppBundle\Mail\Mail
+        class: AppBundle\Services\ContactService
         arguments:
             - "@mailer"
             - "@templating"
