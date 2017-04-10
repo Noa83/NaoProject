@@ -1,11 +1,15 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheet_enfant %}
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+{% endblock %}
+
 {% block navi5 %}
     <li class="dropdown active">
 {% endblock %}
 
 {% block body %}
-
+<div class="container-fluid" id="login_bg">
     <h1>Se connecter</h1>
 
     {# S'il y a une erreur, on l'affiche dans un joli cadre #}
@@ -23,5 +27,5 @@
         <br />
         <input type="submit" value="Connexion" />
     </form>
-
+</div>
 {% endblock %}

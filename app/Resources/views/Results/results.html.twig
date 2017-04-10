@@ -1,11 +1,15 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheet_enfant %}
+    <link rel="stylesheet" href="{{ asset('css/consultation.css') }}">
+{% endblock %}
+
 {% block navi3 %}
     <li class="active"><a href="{{ path('results') }}">Consultation<span class="sr-only">(current)</span></a></li>
 {% endblock %}
 
 {% block body %}
-
+<div class="container-fluid" id="consultation_bg">
 <br>
     <div class="row">
         <div class="col-sm-5"><h1>Consulter les données</h1>
@@ -56,5 +60,5 @@
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHtk1Q7isnHjGK7ApFU2_V5--RdvqVUks&callback=initMap">
     </script>
-
+</div>
 {% endblock %}

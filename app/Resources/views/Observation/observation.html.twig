@@ -1,5 +1,9 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheet_enfant %}
+    <link rel="stylesheet" href="{{ asset('css/observation.css') }}">
+{% endblock %}
+
 {% block navi2 %}
     <li class="active"><a href="{{ path('observation') }}">Observation<span class="sr-only">(current)</span></a></li>
 {% endblock %}
