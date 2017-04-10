@@ -27,8 +27,8 @@ class AdminDashboardController extends Controller
             $user = $this->getDoctrine()->getRepository('AppBundle:User')->findOneBy(array('username' => $userModel->username));
 
             if ($user != null) {
-                
-                $userModel = $this->get('appbundle.user_service')->createUserModel($user);
+
+                $userModel = $this->get('appbundle.user_service')->userToUserModel($user);
                 $formEditUser = $this->createForm(UserAdminDashboardType::class, $userModel);
             }else {
                 $this->addFlash(

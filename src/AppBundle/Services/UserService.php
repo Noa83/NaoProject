@@ -44,7 +44,7 @@ class UserService {
         return $user;
     }
 
-    public function createUserModel(User $user){
+    public function userToUserModel(User $user){
 
         $userModel = new UserModel();
 

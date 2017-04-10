@@ -15,7 +15,7 @@ class AccountController extends Controller
     public function accountAction(Request $request)
     {
         $user = $this->get('security.token_storage')->getToken()->getUser();
-        $userModel = $this->get('appbundle.user_service')->createUserModel($user);
+        $userModel = $this->get('appbundle.user_service')->userToUserModel($user);
         $form = $this->createForm(UserModelCompleteType::class, $userModel);
 
         $form->handleRequest($request);
