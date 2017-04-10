@@ -4,7 +4,7 @@ div#calls_to_action_bar
     height: 250px;
     margin-top: 110px;
     color: white;
-    text-shadow: 0px 1px 2px black;
+    text-shadow: 0 1px 2px black;
 }
 div#call_observer
 {
@@ -35,13 +35,23 @@ div#call_observer>button, div#call_blog>button
 {
     width: 150px;
     background-color: #288B90;
-    text-shadow: 0px 1px 2px black;
+    text-shadow: 0 1px 2px black;
+}
+div#call_observer>button:hover, div#call_blog>button:hover
+{
+    transition: width 1s linear, background-color 1s linear;
+    background: #289490;
 }
 div#call_consultation>button
 {
     width: 150px;
     background-color: #FE9A04;
-    text-shadow: 0px 1px 2px black;
+    text-shadow: 0 1px 2px black;
+}
+div#call_consultation>button:hover
+{
+    transition: width 1s linear, background-color 1s linear;
+    background: #FFB604;
 }
 div#call_observer>button:hover, div#call_blog>button:hover, div#call_consultation>button:hover
 {
@@ -65,7 +75,7 @@ div#informations, div#newsletter
     color: white;
     padding-left: 20px;
     font-weight: lighter;
-    text-shadow: 0px 1px 2px black;
+    text-shadow: 0 1px 2px black;
 }
 div#informations
 {
@@ -83,12 +93,56 @@ button#email
 {
     width: 150px;
     background-color: #FE9A04;
-    text-shadow: 0px 1px 2px black;
+    text-shadow: 0 1px 2px black;
     color: white;
+}
+button#email:hover
+{
+    transition: width 1s linear, background-color 1s linear;
+    background: #FFB604;
 }
 form#form_home
 {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+/* Articles du blog */
+div#last_articles
+{
+    height: 400px;
+    display: flex;
+    font-weight: lighter;
+
+}
+div.content_article
+{
+    height: 330px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 10px 10px 15px;
+    margin: 20px 10px 10px 15px;
+    border: solid 1px #288B90;
+    border-radius: 8px;
+}
+div.btn_more
+{
+    display: flex;
+    align-self: flex-end;
+    justify-content: center;
+}
+div.btn_more>a
+{
+    background-color: #288B90;
+}
+div.btn_more>a:hover
+{
+    transition: width 1s linear, background-color 1s linear;
+    background: #289490;
+}
+div.content_article>h2
+{
+    font-size: 1.4em;
 }

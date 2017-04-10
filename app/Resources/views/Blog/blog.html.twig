@@ -28,7 +28,7 @@
                         {% endautoescape %}
 
                         <div class="text-right">
-                            <a href="{{ path('article', {'id': article.id}) }}" class="btn btn-primary" style="color: white">Lire la suite</a>
+                            <a href="{{ path('article', {'id': article.id}) }}" class="btn btn-default" id="btn-form" style="color: white">Lire la suite</a>
                         </div>
                         <hr>
 
@@ -37,7 +37,7 @@
 
                 <div class="col-lg-2">
                     <div class="article_recent">
-                        <h3>Article récents</h3>
+                        <h3>Articles récents</h3>
                         <hr>
                         {% for article in articlesTotal %}
                         <a href="{{ path('article', {'id': article.id}) }}">Article {{ loop.revindex + 1 }}</a>{# Rajoute 1 pour faire la correspondance avec l'article#}
@@ -56,7 +56,7 @@
                                 <label for="prenom">Email:</label>
                                 <input type="email" placeholder="Email" class="form-control">
                             </div>
-                            <button class="btn btn-warning form-control">Je m'inscris</button>
+                            <button class="btn btn-default form-control" id="btn-form-orange">Je m'inscris</button>
                         </form>
                     </div>
                 </div>

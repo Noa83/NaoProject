@@ -5,12 +5,14 @@
 {% endblock %}
 
 {% block navi1 %}
-    <li class="active"><a href="{{ path('home_page') }}"><i id="fa-home_active" class="fa fa-home"
-                                                            aria-hidden="true"></i> Accueil<span class="sr-only">(current)</span></a>
+    <li class="active"><a href="{{ path('home_page', {'page': 1}) }}"><i id="fa-home_active" class="fa fa-home"
+                                                                         aria-hidden="true"></i> Accueil<span
+                    class="sr-only">(current)</span></a>
     </li>
 {% endblock %}
 
 {% block body %}
+    <div class="container-fluid" id="global_home_bg">
     <div class="container-fluid" id="calls_to_action_bar">
         <div class="col-md-4" id="call_observer">
             <h2>Observation</h2>
@@ -49,10 +51,30 @@
             <form action="#" id="form_home">
                 <div class="form-group">
                     <input type="email" placeholder="Email" class="form-control" id="email">
-                </div><br>
+                </div>
+                <br>
                 <button class="btn form-control" id="email">Je m'inscris</button>
             </form>
         </div>
+    </div>
+    <div class="col-md-12" id="last_articles">
+        {% for article in articles %}
+            <div class="col-md-4 content_article">
+                <div>
+                <h2>{{ article.title }}</h2>
+                {#<p class="post-meta">Posté par <a href="#">Nos amis les oiseaux</a> le {{ article.date|date('d-m-Y') }}</p>#}
+                {#<img src="{{ asset(article.picture.url) }}" alt="{{ article.picture.alt }}" class="imageArticle">#}
+                {% autoescape %}
+                    <p>{{ article.text|truncate(300)|raw }}</p>
+                {% endautoescape %}
+                </div>
+                <div class="btn_more">
+                    <a href="{{ path('article', {'id': article.id}) }}" class="btn btn-default" style="color: white">Lire
+                        la suite</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
     </div>
 
 {% endblock %}

@@ -51,18 +51,32 @@ header#nao_header
     display: none;
 }
 
-.donate, .donate:hover {
+.donate
+{
     background-color: #FE9A04;
     color: white;
     margin-left: 5px;
     border: none;
 }
+.donate:hover
+{
+    transition: width 1s linear, background-color 1s linear;
+    background: #FFB604;
+    color: white;
+}
 
-.join, .join:hover {
+.join
+{
     background-color: #288B90;
     color: white;
     margin-left: 5px;
     border: none;
+}
+.join:hover
+{
+    transition: width 1s linear, background-color 1s linear;
+    background: #289490;
+    color: white;
 }
 
 .faceb {
@@ -85,7 +99,8 @@ header#nao_header
 .navbar-default .navbar-nav > li > a {
     color: #288B90;
 }
-.navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover {
+.navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover
+{
     color: #288B90;
 }
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {
@@ -134,7 +149,34 @@ a.btn.pull-right.btn-sm.faceb:hover
 {
     color: white;
 }
-
+#btn-form
+{
+    color: white;
+    background-color: #288B90;
+    border: none;
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+#btn-form:hover
+{
+    transition: width 1s linear, background-color 1s linear;
+    background: #289490;
+    color: white;
+}
+#btn-form-orange
+{
+    color: white;
+    background-color: #FE9A04;
+    border: none;
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+#btn-form-orange:hover
+{
+    transition: width 1s linear, background-color 1s linear;
+    background: #FFB604;
+    color: white;
+}
 /* Formulaires */
 label
 {
