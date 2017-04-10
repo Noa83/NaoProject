@@ -3,11 +3,11 @@
 namespace AppBundle\Controller;
 
 
+use AppBundle\Model\ContactModel;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use AppBundle\Entity\Contact;
 use AppBundle\Form\ContactType;
 
 
@@ -19,7 +19,7 @@ class ContactController extends Controller
      */
     public function contactAction(Request $request)
     {
-        $formulaireContact = new Contact();
+        $formulaireContact = new ContactModel();
 
         $form = $this->get('form.factory')->create(ContactType::class, $formulaireContact);
 
