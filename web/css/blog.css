@@ -1,0 +1,25 @@
+.imageArticle
+{
+    width: 892px;
+    height: 502px;
+}
+
+.ligne_verticale
+{
+    padding-left: 20px;
+    border-right:1px solid;
+    border-right-color: rgba(230, 230, 230, 0.6);
+    margin-top: 130px;
+}
+
+.article_recent
+{
+    margin-left: 20px;
+    margin-top: 130px;
+}
+
+/*recentrer le pager*/
+.pager
+{
+    margin-left: -200px;
+}

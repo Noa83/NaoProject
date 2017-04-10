@@ -1,0 +1,94 @@
+/* Home page*/
+div#calls_to_action_bar
+{
+    height: 250px;
+    margin-top: 110px;
+    color: white;
+    text-shadow: 0px 1px 2px black;
+}
+div#call_observer
+{
+    background: url("../images/fond_call_3.jpg");
+}
+div#call_consultation
+{
+    background: url("../images/fond_call_1.jpg");
+}
+div#call_blog
+{
+    background: url("../images/fond_call_2.jpg");
+}
+
+div#call_observer, div#call_consultation, div#call_blog
+{
+    height: 100%;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+    padding-left: 30px;
+    font-weight: lighter;
+}
+div#call_observer>button, div#call_blog>button
+{
+    width: 150px;
+    background-color: #288B90;
+    text-shadow: 0px 1px 2px black;
+}
+div#call_consultation>button
+{
+    width: 150px;
+    background-color: #FE9A04;
+    text-shadow: 0px 1px 2px black;
+}
+div#call_observer>button:hover, div#call_blog>button:hover, div#call_consultation>button:hover
+{
+    color: white;
+}
+div#information_bar
+{
+    height: 225px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+div#informations, div#newsletter
+{
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding-left: 20px;
+    font-weight: lighter;
+    text-shadow: 0px 1px 2px black;
+}
+div#informations
+{
+    background-color: #FE9A04;
+}
+div#newsletter
+{
+    background-color: #288B90;
+}
+input#email
+{
+    width: 350px;
+}
+button#email
+{
+    width: 150px;
+    background-color: #FE9A04;
+    text-shadow: 0px 1px 2px black;
+    color: white;
+}
+form#form_home
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

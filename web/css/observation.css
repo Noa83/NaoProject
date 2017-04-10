@@ -1,0 +1,28 @@
+
+textarea#observation_observationMsg.form-control
+{
+    height:100px;
+}
+
+/* Background */
+div.container-fluid#observation_bg
+{
+    width: auto;
+    height: auto;
+    background: url("../images/fond_observation.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: 110px;
+}
+
+/* Bouton */
+#btn-form
+{
+    color: white;
+    background-color: #288B90;
+    border: none;
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
