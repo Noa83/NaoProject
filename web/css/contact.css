@@ -1,0 +1,29 @@
+
+
+p.contact
+{
+    color: white
+}
+
+h1.contact
+{
+    color: white;
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+h2.contact
+{
+    color: white;
+    margin-left: 8%;
+}
+
+.well.contact
+{
+    background-color: rgba(255, 255, 255, 0.4);
+    padding-bottom: 50px; }
+
+#maps
+{
+    height: 400px;
+}

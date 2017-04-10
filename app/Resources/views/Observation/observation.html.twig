@@ -5,9 +5,56 @@
 {% endblock %}
 
 {% block body %}
-
-    <h1>Saisir une observation</h1>
-
-    <img id="travaux" alt="travaux" src="{{ asset('images/travaux.jpg') }}">
-
+    <div class="container-fluid" id="observation_bg">
+        {#<div class="container-fluid test">#}
+        <div class="col-md-6 col-md-offset-6" id="opal_bg">
+            <div class="part-right">
+                <h1 class="sous-titre">Saisir une nouvelle observation:</h1>
+                <p class="accroche">Vous avez eu l'opportunité d'observer un oiseau lors de vos promenades ou même dans
+                    votre jardin? Vous pouvez nous aider à réaliser à un inventaire des espèces de nos régions.<br/>
+                    Complétez ce formulaire pour nous envoyer une observation.
+                </p>
+                {{ form_start(form) }}
+                <div class="row">
+                    <div class="col-md-12">
+                        {{ form_row(form.bird, {'label': 'Nom de l\'espèce :'}) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-md-12">Coordonnées d'observation:</label>
+                    {{ form_errors(form.lat) }}
+                    {{ form_errors(form.long) }}
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-xs-6">
+                        {{ form_label(form.lat, 'Lattitude') }}
+                        {{ form_widget(form.lat) }}
+                    </div>
+                    <div class="col-md-6 col-xs-6">
+                        {{ form_label(form.long, 'Longitude') }}
+                        {{ form_widget(form.long) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-xs-12">
+                        {{ form_row(form.date, {'label': 'Date de l\'observation :'}) }}
+                    </div>
+                    <div class="col-md-6 col-xs-6">
+                        {{ form_row(form.image, {'label': 'Joindre une image (Max: 2M) :'}) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        {{ form_row(form.comment, {'label': 'Observations :'}) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-offset-5 col-xs-offset-5">
+                        <button class="btn" id="btn-form" type="submit">Envoyer</button>
+                    </div>
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
 {% endblock %}
