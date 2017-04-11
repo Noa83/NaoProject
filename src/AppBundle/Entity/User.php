@@ -22,14 +22,6 @@ class User implements UserInterface, \Serializable
     private $id;
 
     /**
-     * @param mixed $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    /**
      * @ORM\Column(type="string", length=255, unique=true)
      */
     private $username;

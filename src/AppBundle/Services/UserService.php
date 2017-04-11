@@ -2,7 +2,7 @@
 
 namespace AppBundle\Services;
 
-use AppBundle\Model\UserModel;
+use AppBundle\Model\UserAccountModel;
 use AppBundle\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -25,7 +25,7 @@ class UserService {
         $this->encoder = $encoder;
     }
 
-    public function createUser(UserModel $model){
+    public function createUser(UserAccountModel $model){
 
         $user = new User();
 
@@ -46,7 +46,7 @@ class UserService {
 
     public function userToUserModel(User $user){
 
-        $userModel = new UserModel();
+        $userModel = new UserAccountModel();
 
         $userModel->username = $user->getUsername();
         $userModel->email = $user->getEmail();
@@ -61,7 +61,7 @@ class UserService {
         return $userModel;
     }
 
-    public function modifyUser(User $user, UserModel $model){
+    public function modifyUser(User $user, UserAccountModel $model){
 
         $user->setUsername($model->username);
         $user->setEmail($model->email);

@@ -133,7 +133,7 @@ class Observation
     /**
      * @return int
      */
-    public function getId(): int
+    public function getId()
     {
         return $this->id;
     }
@@ -149,7 +149,7 @@ class Observation
     /**
      * @return \DateTime
      */
-    public function getDate(): \DateTime
+    public function getDate()
     {
         return $this->date;
     }
@@ -165,7 +165,7 @@ class Observation
     /**
      * @return string
      */
-    public function getLattitude(): string
+    public function getLattitude()
     {
         return $this->lattitude;
     }
@@ -181,7 +181,7 @@ class Observation
     /**
      * @return string
      */
-    public function getLongitude(): string
+    public function getLongitude()
     {
         return $this->longitude;
     }
@@ -197,7 +197,7 @@ class Observation
     /**
      * @return string
      */
-    public function getLongLat(): string
+    public function getLongLat()
     {
         return $longLat = $this->longitude.' '.$this->lattitude;
     }
@@ -205,7 +205,7 @@ class Observation
     /**
      * @return string
      */
-    public function getComment(): string
+    public function getComment()
     {
         return $this->comment;
     }
@@ -221,7 +221,7 @@ class Observation
     /**
      * @return bool
      */
-    public function isValidated(): bool
+    public function isValidated()
     {
         return $this->validated;
     }
@@ -237,7 +237,7 @@ class Observation
     /**
      * @return string
      */
-    public function getImageUrl(): string
+    public function getImageUrl()
     {
         return $this->imageUrl;
     }

@@ -6,7 +6,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\User;
 use AppBundle\Form\UserAdminDashboardType;
 use AppBundle\Form\UserSearchType;
-use AppBundle\Model\UserModel;
+use AppBundle\Model\UserAccountModel;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -17,7 +17,7 @@ class AdminDashboardController extends Controller
     {
 
         $user = new User();
-        $userModel = new UserModel();
+        $userModel = new UserAccountModel();
         $formSearch = $this->createForm(UserSearchType::class, $userModel);
         $formEditUser = $this->createForm(UserAdminDashboardType::class, $userModel);
 
