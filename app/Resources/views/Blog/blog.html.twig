@@ -1,5 +1,9 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheet_enfant %}
+    <link rel="stylesheet" href="{{ asset('css/blog.css') }}">
+{% endblock %}
+
 {% block navi4 %}
     <li class="active"><a href="{{ path('blog', {'page': 1}) }}">Blog<span class="sr-only">(current)</span></a></li>
 {% endblock %}
@@ -8,12 +12,11 @@
 
     <div class="container">
         <div class="row">
-
             <div class="col-lg-12">
                 <div class="col-lg-10 ligne_verticale">
                     {% for article in articles %}
                         <h1>{{ article.title}}</h1>
-                        <p class="post-meta">Posté par <a href="#">Nos amis les oiseaux</a> le {{ article.date|date('d-m-Y') }} a {{ article.date|date('H:i:s') }} | {{ article.category.name }}</p>
+                        <p class="ecrit">Posté par <a href="#">Nos amis les oiseaux</a> le {{ article.date|date('d-m-Y') }} a {{ article.date|date('H:i:s') }} | {{ article.category.name }}</p>
 
                         <img src="{{ asset(article.picture.url) }}" alt="{{ article.picture.alt }}" class="imageArticle">
 
@@ -24,7 +27,7 @@
                         {% endautoescape %}
 
                         <div class="text-right">
-                            <a href="{{ path('article', {'id': article.id}) }}" class="btn btn-primary" style="color: white">Lire la suite</a>
+                            <a href="{{ path('article', {'id': article.id}) }}" class="btn btn-primary lire">Lire la suite</a>
                         </div>
                         <hr>
 
@@ -33,7 +36,7 @@
 
                 <div class="col-lg-2">
                     <div class="article_recent">
-                        <h3>Article récents</h3>
+                        <h3>Articles récents</h3>
                         <hr>
                         {% for article in articlesTotal %}
                         <a href="{{ path('article', {'id': article.id}) }}">Article {{ loop.revindex + 1 }}</a>{# Rajoute 1 pour faire la correspondance avec l'article#}
@@ -43,17 +46,33 @@
                         <h3>Newsletter</h3>
                         <hr>
                         <p>Pour recevoir nos informations, abonnez-vous à notre newsletter</p>
-                        <form action="#">
-                            <div class="form-group">
-                                <label for="prenom">Prénom:</label>
-                                <input type="text" placeholder="Prénom" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="prenom">Email:</label>
-                                <input type="email" placeholder="Email" class="form-control">
-                            </div>
-                            <button class="btn btn-warning form-control">Je m'inscris</button>
-                        </form>
+                        <div id="mc_embed_signup">
+                            <form action="//eg2.us15.list-manage.com/subscribe/post?u=bbe78064cd70e2b6f19d973f9&amp;id=2f04265752" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                                <div id="mc_embed_signup_scroll">
+
+                                    <div class="form-group">
+                                        <div class="mc-field-group">
+                                            <label for="mce-FNAME">Prénom </label>
+                                            <input type="text" value="" name="FNAME" class="required form-control" id="mce-FNAME" placeholder="Prénom" >
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="mc-field-group">
+                                            <label for="mce-EMAIL">Email </label>
+                                            <input type="email" value="" name="EMAIL" class="required email form-control" id="mce-EMAIL" placeholder="Mail">
+                                        </div>
+                                    </div>
+
+                                    <div id="mce-responses" class="clear">
+                                        <div class="response" id="mce-error-response" style="display:none"></div>
+                                        <div class="response" id="mce-success-response" style="display:none"></div>
+                                    </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_bbe78064cd70e2b6f19d973f9_2f04265752" tabindex="-1" value=""></div>
+                                    <div class="clear"><input type="submit" value="Je m'inscris" name="subscribe" id="mc-embedded-subscribe" class="button form-control" style="background-color: #fe9a04; color: white;"></div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
         </div>
@@ -68,4 +87,29 @@
         {% endfor %}
     </ul>
 
+    <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
+    <script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[1]='FNAME';ftypes[1]='text';fnames[0]='EMAIL';ftypes[0]='email'; /*
+         * Translated default messages for the $ validation plugin.
+         * Locale: FR
+         */
+            $.extend($.validator.messages, {
+                required: "Ce champ est requis.",
+                remote: "Veuillez remplir ce champ pour continuer.",
+                email: "Veuillez entrer une adresse email valide.",
+                url: "Veuillez entrer une URL valide.",
+                date: "Veuillez entrer une date valide.",
+                dateISO: "Veuillez entrer une date valide (ISO).",
+                number: "Veuillez entrer un nombre valide.",
+                digits: "Veuillez entrer (seulement) une valeur numérique.",
+                creditcard: "Veuillez entrer un numéro de carte de crédit valide.",
+                equalTo: "Veuillez entrer une nouvelle fois la même valeur.",
+                accept: "Veuillez entrer une valeur avec une extension valide.",
+                maxlength: $.validator.format("Veuillez ne pas entrer plus de {0} caractères."),
+                minlength: $.validator.format("Veuillez entrer au moins {0} caractères."),
+                rangelength: $.validator.format("Veuillez entrer entre {0} et {1} caractères."),
+                range: $.validator.format("Veuillez entrer une valeur entre {0} et {1}."),
+                max: $.validator.format("Veuillez entrer une valeur inférieure ou égale à {0}."),
+                min: $.validator.format("Veuillez entrer une valeur supérieure ou égale à {0}.")
+            });}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+    <!--End mc_embed_signup-->
 {% endblock %}

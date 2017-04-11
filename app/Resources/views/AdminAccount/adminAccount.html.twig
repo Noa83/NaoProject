@@ -1,13 +1,17 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheet_enfant %}
+    <link rel="stylesheet" href="{{ asset('css/adminAccount.css') }}">
+{% endblock %}
+
 {% block navi5 %}
     <li class="dropdown active">
 {% endblock %}
 
 {% block body %}
-
+<div class="container-fluid" id="adminAccount_bg">
     <h1>Compte Admin</h1>
 
     <img id="travaux" alt="travaux" src="{{ asset('images/travaux.jpg') }}">
-
+</div>
 {% endblock %}
