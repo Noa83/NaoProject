@@ -1,5 +1,8 @@
-
-
+legend
+{
+    color: orange;
+    text-shadow: black 0.1em 0.05em 0.07em
+}
 p.contact
 {
     color: white
@@ -27,3 +30,15 @@ h2.contact
 {
     height: 400px;
 }
+
+/* Background */
+div.container-fluid#contact_bg
+{
+    width: auto;
+    height: auto;
+    background: url("../images/fond_contact.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-top: 110px;
+}
+

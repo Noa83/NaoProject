@@ -1,7 +1,10 @@
 home_page:
-    path:    /
+    path:    /{page}
     defaults:
         _controller: AppBundle:Home:index
+        page:        1
+    requirements:
+        page: \d+
 
 observation:
     path:    /observation
