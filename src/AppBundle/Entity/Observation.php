@@ -141,7 +141,7 @@ class Observation
     /**
      * @param int $id
      */
-    public function setId(int $id)
+    public function setId($id)
     {
         $this->id = $id;
     }
@@ -157,7 +157,7 @@ class Observation
     /**
      * @param \DateTime $date
      */
-    public function setDate(\DateTime $date)
+    public function setDate($date)
     {
         $this->date = $date;
     }
@@ -173,7 +173,7 @@ class Observation
     /**
      * @param string $lat
      */
-    public function setLattitude(string $lattitude)
+    public function setLattitude($lattitude)
     {
         $this->lattitude = $lattitude;
     }
@@ -189,7 +189,7 @@ class Observation
     /**
      * @param string $long
      */
-    public function setLongitude(string $longitude)
+    public function setLongitude($longitude)
     {
         $this->longitude = $longitude;
     }
@@ -213,7 +213,7 @@ class Observation
     /**
      * @param string $comment
      */
-    public function setComment(string $comment)
+    public function setComment($comment)
     {
         $this->comment = $comment;
     }
@@ -229,7 +229,7 @@ class Observation
     /**
      * @param bool $validated
      */
-    public function setValidated(bool $validated)
+    public function setValidated($validated)
     {
         $this->validated = $validated;
     }
@@ -245,7 +245,7 @@ class Observation
     /**
      * @param string $imageUrl
      */
-    public function setImageUrl(string $imageUrl)
+    public function setImageUrl($imageUrl)
     {
         $this->imageUrl = $imageUrl;
     }
