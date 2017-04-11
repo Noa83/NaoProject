@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block stylesheets %}
-    {{ parent() }}
+{% block stylesheet_enfant %}
+    <link rel="stylesheet" href="{{ asset('css/adminDashboard.css') }}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 {% endblock %}
 
@@ -144,4 +144,5 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/locales/bootstrap-datepicker.fr.min.js"></script>
     <script src="{{ asset('js/account.js') }}"></script>
+
 {% endblock %}

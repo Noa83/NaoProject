@@ -1,7 +1,8 @@
 {
-    "name": "audrey/naoproject",
+    "name": "JumpStreetTeam/naoproject",
     "license": "proprietary",
     "type": "project",
+    "description": "OpenClassRooms Study Project NAO",
     "autoload": {
         "psr-4": {
             "": "src/"

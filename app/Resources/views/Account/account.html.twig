@@ -1,5 +1,9 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheet_enfant %}
+    <link rel="stylesheet" href="{{ asset('css/account.css') }}">
+{% endblock %}
+
 {% block navi5 %}
     <li class="dropdown active">
 {% endblock %}
@@ -124,4 +128,5 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/locales/bootstrap-datepicker.fr.min.js"></script>
     <script src="{{ asset('js/account.js') }}"></script>
+
 {% endblock %}
