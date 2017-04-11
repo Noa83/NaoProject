@@ -4,10 +4,26 @@ parameters:
     #parameter_name: value
 
 services:
-    #service_name:
-    #    class: AppBundle\Directory\ClassName
-    #    arguments: ['@another_service_name', 'plain_value', '%parameter_name%']
+    observation.recording:
+        class: AppBundle\Services\ObservationRecording
+        arguments: ["@doctrine.orm.entity_manager", %birds_images%]
+
+    mail:
+        class: AppBundle\Services\ContactService
+        arguments:
+            - "@mailer"
+            - "@templating"
 
     appbundle.user_service:
-      class: AppBundle\Services\UserService
-      arguments: ["@doctrine.orm.entity_manager","@security.password_encoder"]
+         class: AppBundle\Services\UserService
+         arguments: ["@doctrine.orm.entity_manager","@security.password_encoder"]
+
+    out_of_france_validator:
+         class: AppBundle\Validator\Constraints\OutOfFranceValidator
+         arguments:
+             - "@doctrine.orm.entity_manager"
+         tags:
+            - {name: validator.constraint_validator}
+         class: AppBundle\Services\UserService
+         arguments: ["@doctrine.orm.entity_manager","@security.password_encoder"]
+

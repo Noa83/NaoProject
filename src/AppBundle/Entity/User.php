@@ -9,8 +9,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity
- * @UniqueEntity(fields="email", message="Email déjà enr")
- * @UniqueEntity(fields="username", message="Username already taken")
+ * @UniqueEntity(fields="email", message="Email déjà enregistré")
+ * @UniqueEntity(fields="username", message="Nom d'utilisateur déja attribué")
  */
 class User implements UserInterface, \Serializable
 {
@@ -20,6 +20,14 @@ class User implements UserInterface, \Serializable
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)

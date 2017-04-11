@@ -1,9 +1,13 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheet_enfant %}
+    <link rel="stylesheet" href="{{ asset('css/donate_join.css') }}">
+{% endblock %}
+
 {% block body %}
+    <div class="container-fluid" id="donate_join_bg">
+        <h1>Adhérer</h1>
 
-    <h1>Adhérer</h1>
-
-    <img id="travaux" alt="travaux" src="{{ asset('images/travaux.jpg') }}">
-
+        <img id="travaux" alt="travaux" src="{{ asset('images/travaux.jpg') }}">
+    </div>
 {% endblock %}
