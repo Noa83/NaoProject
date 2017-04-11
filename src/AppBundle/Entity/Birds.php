@@ -131,7 +131,7 @@ class Birds
     /**
      * @return int
      */
-    public function getId(): int
+    public function getId()
     {
         return $this->id;
     }
@@ -139,7 +139,7 @@ class Birds
     /**
      * @return string
      */
-    public function getRegne(): string
+    public function getRegne()
     {
         return $this->regne;
     }
@@ -147,7 +147,7 @@ class Birds
     /**
      * @return string
      */
-    public function getPhylum(): string
+    public function getPhylum()
     {
         return $this->phylum;
     }
@@ -155,7 +155,7 @@ class Birds
     /**
      * @return string
      */
-    public function getClasse(): string
+    public function getClasse()
     {
         return $this->classe;
     }
@@ -163,7 +163,7 @@ class Birds
     /**
      * @return string
      */
-    public function getOrdre(): string
+    public function getOrdre()
     {
         return $this->ordre;
     }
@@ -171,7 +171,7 @@ class Birds
     /**
      * @return string
      */
-    public function getFamille(): string
+    public function getFamille()
     {
         return $this->famille;
     }
@@ -179,7 +179,7 @@ class Birds
     /**
      * @return int
      */
-    public function getCdNom(): int
+    public function getCdNom()
     {
         return $this->cdNom;
     }
@@ -187,7 +187,7 @@ class Birds
     /**
      * @return int
      */
-    public function getCdTaxsup(): int
+    public function getCdTaxsup()
     {
         return $this->cdTaxsup;
     }
@@ -195,7 +195,7 @@ class Birds
     /**
      * @return int
      */
-    public function getCdRef(): int
+    public function getCdRef()
     {
         return $this->cdRef;
     }
@@ -203,7 +203,7 @@ class Birds
     /**
      * @return string
      */
-    public function getRang(): string
+    public function getRang()
     {
         return $this->rang;
     }
@@ -211,7 +211,7 @@ class Birds
     /**
      * @return string
      */
-    public function getLbNom(): string
+    public function getLbNom()
     {
         return $this->lbNom;
     }
@@ -219,7 +219,7 @@ class Birds
     /**
      * @return string
      */
-    public function getLbAuteur(): string
+    public function getLbAuteur()
     {
         return $this->lbAuteur;
     }
@@ -227,7 +227,7 @@ class Birds
     /**
      * @return string
      */
-    public function getNomComplet(): string
+    public function getNomComplet()
     {
         return $this->nomComplet;
     }
@@ -235,7 +235,7 @@ class Birds
     /**
      * @return string
      */
-    public function getNomValide(): string
+    public function getNomValide()
     {
         return $this->nomValide;
     }
@@ -243,7 +243,7 @@ class Birds
     /**
      * @return string
      */
-    public function getNomVern(): string
+    public function getNomVern()
     {
         return $this->nomVern;
     }
@@ -251,7 +251,7 @@ class Birds
     /**
      * @return string
      */
-    public function getNomVernEng(): string
+    public function getNomVernEng()
     {
         return $this->nomVernEng;
     }

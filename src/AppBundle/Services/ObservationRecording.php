@@ -49,8 +49,6 @@ class ObservationRecording
                 $observation->setValidated(1);
             }
 
-            dump($observation);
-
         //Persistance Bdd
         $em = $this->manager;
         $em->persist($observation);

@@ -68,7 +68,7 @@ class ObservationModel
     /**
      * @return string
      */
-    public function getLongLat(): string
+    public function getLongLat()
     {
         return $longLat = $this->long.' '.$this->lat;
     }
