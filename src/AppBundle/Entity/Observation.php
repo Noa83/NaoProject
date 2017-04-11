@@ -133,7 +133,7 @@ class Observation
     /**
      * @return int
      */
-    public function getId(): int
+    public function getId()
     {
         return $this->id;
     }
@@ -141,7 +141,7 @@ class Observation
     /**
      * @param int $id
      */
-    public function setId(int $id)
+    public function setId($id)
     {
         $this->id = $id;
     }
@@ -149,7 +149,7 @@ class Observation
     /**
      * @return \DateTime
      */
-    public function getDate(): \DateTime
+    public function getDate()
     {
         return $this->date;
     }
@@ -157,7 +157,7 @@ class Observation
     /**
      * @param \DateTime $date
      */
-    public function setDate(\DateTime $date)
+    public function setDate($date)
     {
         $this->date = $date;
     }
@@ -165,7 +165,7 @@ class Observation
     /**
      * @return string
      */
-    public function getLattitude(): string
+    public function getLattitude()
     {
         return $this->lattitude;
     }
@@ -173,7 +173,7 @@ class Observation
     /**
      * @param string $lat
      */
-    public function setLattitude(string $lattitude)
+    public function setLattitude($lattitude)
     {
         $this->lattitude = $lattitude;
     }
@@ -181,7 +181,7 @@ class Observation
     /**
      * @return string
      */
-    public function getLongitude(): string
+    public function getLongitude()
     {
         return $this->longitude;
     }
@@ -189,7 +189,7 @@ class Observation
     /**
      * @param string $long
      */
-    public function setLongitude(string $longitude)
+    public function setLongitude($longitude)
     {
         $this->longitude = $longitude;
     }
@@ -197,7 +197,7 @@ class Observation
     /**
      * @return string
      */
-    public function getLongLat(): string
+    public function getLongLat()
     {
         return $longLat = $this->longitude.' '.$this->lattitude;
     }
@@ -205,7 +205,7 @@ class Observation
     /**
      * @return string
      */
-    public function getComment(): string
+    public function getComment()
     {
         return $this->comment;
     }
@@ -213,7 +213,7 @@ class Observation
     /**
      * @param string $comment
      */
-    public function setComment(string $comment)
+    public function setComment($comment)
     {
         $this->comment = $comment;
     }
@@ -221,7 +221,7 @@ class Observation
     /**
      * @return bool
      */
-    public function isValidated(): bool
+    public function isValidated()
     {
         return $this->validated;
     }
@@ -229,7 +229,7 @@ class Observation
     /**
      * @param bool $validated
      */
-    public function setValidated(bool $validated)
+    public function setValidated($validated)
     {
         $this->validated = $validated;
     }
@@ -237,7 +237,7 @@ class Observation
     /**
      * @return string
      */
-    public function getImageUrl(): string
+    public function getImageUrl()
     {
         return $this->imageUrl;
     }
@@ -245,7 +245,7 @@ class Observation
     /**
      * @param string $imageUrl
      */
-    public function setImageUrl(string $imageUrl)
+    public function setImageUrl($imageUrl)
     {
         $this->imageUrl = $imageUrl;
     }
