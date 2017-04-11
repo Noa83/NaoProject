@@ -11,6 +11,20 @@ observation:
     defaults:
         _controller: AppBundle:Observation:observation
 
+observation_edit:
+    path:    /observation/edit/{id}
+    defaults:
+        _controller: AppBundle:Observation:observationEdit
+    requirements:
+        id:  \d+
+
+observation_remove:
+    path:    /observation/remove/{id}
+    defaults:
+        _controller: AppBundle:Observation:observationRemove
+    requirements:
+        id:  \d+
+
 results:
     path:    /results
     defaults:

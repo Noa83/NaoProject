@@ -10,116 +10,122 @@
 
 {% block body %}
 
-    <h1 class="text-center">Mon compte</h1><br/>
-    {% for flashMessage in app.session.flashbag.get('success') %}
-        <div class="alert alert-success">
-            {{ flashMessage }}
-        </div>
-    {% endfor %}
-    <div class="row">
-        <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-            <ul class="nav nav-tabs nav-justified">
-                <li class="active"><a href="#profil" data-toggle="tab">Profil</a></li>
-                <li><a href="#observations" data-toggle="tab">Mes observations</a></li>
-                {% if is_granted('ROLE_VALIDATEUR') %}
-                    <li><a href="#validation" data-toggle="tab">Gestion des validations</a></li>
-                {% endif %}
-            </ul>
-        </div>
-    </div>
-
-    {% for type, flash_messages in app.session.flashBag.all %}
-        {% for flash_message in flash_messages %}
-            <div class="flash-{{ type }}">
-                {{ flash_message }}
+    <div class="container-fluid" id="account">
+        <h1 class="text-center">Mon compte</h1><br/>
+        {% for flashMessage in app.session.flashbag.get('success') %}
+            <div class="alert alert-success">
+                {{ flashMessage }}
             </div>
         {% endfor %}
-    {% endfor %}
-
-    <div class="tab-content col-md-10 col-md-offset-1">
-        <div class="tab-pane fade in active adminTable" id="profil">
-            <h2>Modification du profil</h2>
-            {{ form_start(formProfil) }}
-            <div class="row">
-                <div class="col-md-6">
-                    {{ form_row(formProfil.username, {'label': 'Pseudo :'}) }}
-                </div>
-                <div class="col-md-6">
-                    {{ form_row(formProfil.email, {'label': 'Email :'}) }}
-                </div>
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                <ul class="nav nav-tabs nav-justified">
+                    <li class="active"><a href="#profil" data-toggle="tab">Profil</a></li>
+                    <li><a href="#observations" data-toggle="tab">Mes observations</a></li>
+                    {% if is_granted('ROLE_VALIDATEUR') %}
+                        <li><a href="#validation" data-toggle="tab">Gestion des validations</a></li>
+                    {% endif %}
+                </ul>
             </div>
-            <div class="row">
-                <div class="col-md-6">
-                    {{ form_row(formProfil.prenom, {'label': '*Votre prénom:'}) }}
-                </div>
-                <div class="col-md-6">
-                    {{ form_row(formProfil.ville, {'label': '*Votre ville :'}) }}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    {{ form_row(formProfil.dateNaissance, {'label': '*Votre date de naissance :'}) }}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <button class="btn" type="submit">Sauvegarder</button>
-                </div>
-            </div>
-            {{ form_end(formProfil) }}
         </div>
 
-        <div class="tab-pane fade adminTable" id="observations">
-            {% if 1 %} <!-- if observation -->
-                <div class="table-responsive">
-                    <table class="table table-hover table-condensed">
-                        <thead>
-                        <tr>
-                            <th>Titre</th>
-                            <th>Observation</th>
-                            <th></th>  <!-- Actions column -->
-                        </tr>
-                        </thead>
-                        <!-- for observation in observations-->
+        {% for type, flash_messages in app.session.flashBag.all %}
+            {% for flash_message in flash_messages %}
+                <div class="flash-{{ type }}">
+                    {{ flash_message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+        <div class="tab-content col-md-10 col-md-offset-1">
+            <div class="tab-pane fade in active adminTable" id="profil">
+                <h2>Modification du profil</h2>
+                {{ form_start(formProfil) }}
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form_row(formProfil.username, {'label': 'Pseudo :'}) }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_row(formProfil.email, {'label': 'Email :'}) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form_row(formProfil.prenom, {'label': '*Votre prénom:'}) }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_row(formProfil.ville, {'label': '*Votre ville :'}) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form_row(formProfil.dateNaissance, {'label': '*Votre date de naissance :'}) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button class="btn" type="submit">Sauvegarder</button>
+                    </div>
+                </div>
+                {{ form_end(formProfil) }}
+            </div>
+
+            <div class="tab-pane fade adminTable" id="observations">
+                {% if observations %} <!-- if observation -->
+                    <div class="table-responsive">
+                        <table class="table table-hover table-condensed">
+                            <thead>
                             <tr>
-                                <td><a class="articleTitle" href="#">titre article</a></td>
-                                <td>contenu</td>
-                                <td>
-                                    <a href="#" class="btn btn-info btn-xs" title="Edit"><span class="glyphicon glyphicon-edit"></span></a>
-                                    <button type="button" class="btn btn-danger btn-xs" title="Delete" data-toggle="modal" data-target="#articleDialog"><span class="glyphicon glyphicon-remove"></span>
-                                    </button>
-                                    <div class="modal fade" id="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                                    <h4 class="modal-title" id="myModalLabel">Confirmation needed</h4>
-                                                </div>
-                                                <div class="modal-body">
-                                                    Do you really want to delete this article ?
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                                    <a href="#" class="btn btn-danger">Confirm</a>
-                                                </div>
-                                            </div><!-- /.modal-content -->
-                                        </div><!-- /.modal-dialog -->
-                                    </div><!-- /.modal -->
-                                </td>
+                                <th>Nom de l'oiseau</th>
+                                <th>Observation</th>
+                                <th>Date d'observation</th>
+                                <th>Actions</th>  <!-- Actions column -->
                             </tr>
-                    </table>
-                </div>
-            {% else %}
-                <div class="alert alert-warning">Aucune observation trouvée.</div>
-            {% endif %}
-            <a href="#"><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Ajouter une observation</button></a>
-        </div>
+                            </thead>
+                            {% for observation in observations %}
+                                <tr>
+                                    <td class="col-sm-4"><a class="articleTitle" href="#">{{ observation.bird.getNomValide() }}</td>
+                                    <td class="col-sm-5">{{ observation.comment }}
+                                    <td class="col-sm-2">{{ observation.date | date("d/m/Y") }}</td>
+                                    <td class="col-sm-1">
+                                        <a href="{{ path('observation_edit', {'id': observation.id}) }}" class="btn btn-info btn-xs" title="Edit"><span class="glyphicon glyphicon-edit"></span></a>
+                                        <button type="button" class="btn btn-danger btn-xs" title="Delete" data-toggle="modal" data-target="#obsDialog{{ observation.id }}"><span class="glyphicon glyphicon-remove"></span>
+                                        </button>
+                                        <div class="modal fade" id="obsDialog{{ observation.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                        <h4 class="modal-title" id="myModalLabel">Confirmation needed</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Do you really want to delete this article ?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                                        <a href="{{ path('observation_remove', { 'id': observation.id }) }}" class="btn btn-danger">Confirm</a>
+                                                    </div>
+                                                </div><!-- /.modal-content -->
+                                            </div><!-- /.modal-dialog -->
+                                        </div><!-- /.modal -->
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                {% else %}
+                    <div class="alert alert-warning">Aucune observation trouvée.</div>
+                {% endif %}
+                <a href="{{ path('observation') }}"><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Ajouter une observation</button></a>
+            </div>
 
-        <div class="tab-pane fade adminTable" id="validation">
-            <h1 class="text-center">Validation des observations.</h1>
-        </div>
+            <div class="tab-pane fade adminTable" id="validation">
+                <h1 class="text-center">Validation des observations.</h1>
+            </div>
 
+        </div>
     </div>
+
 
 {% endblock %}
 

@@ -18,6 +18,8 @@ class AccountController extends Controller
         $userModel = $this->get('appbundle.user_service')->userToUserModel($user);
         $form = $this->createForm(UserModelCompleteType::class, $userModel);
 
+        $observations = $this->getDoctrine()->getRepository('AppBundle:Observation')->findBy(array('user' => $user->getId()));
+
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
 
@@ -29,7 +31,8 @@ class AccountController extends Controller
 
         }
 
-        return $this->render('Account/account.html.twig', array('formProfil' => $form->createView()));
+        return $this->render('Account/account.html.twig', array('formProfil' => $form->createView(),
+            'observations' => $observations));
     }
 
 }
