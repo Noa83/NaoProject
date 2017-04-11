@@ -1,13 +1,134 @@
 {% extends 'base.html.twig' %}
 
+
 {% block stylesheet_enfant %}
     <link rel="stylesheet" href="{{ asset('css/legal.css') }}">
 {% endblock %}
 
 {% block body %}
-    <div class="container-fluid" id="legal_bg">
-        <h1>Mentions Légales</h1>
 
-        <img id="travaux" alt="travaux" src="{{ asset('images/travaux.jpg') }}">
+    <div class="container" id="legal_bg">
+        <div class="row">
+            <div class="col-lg-12 well">
+                <h1>Mentions Légales</h1>
+                <br>
+                    <p>Le site url du site est édité par l’Association Nos Amis les Oiseaux, ci-après nommée NAO
+                       et dont le siège social est situé adresse de l’association. NAO est présidée par civilité prénom nom.</p>
+                    <p>Siret : 123 456 789 00000</p>
+                    <p>RNA : X12345678</p>
+
+                <h2>I – Présentation du site.</h2>
+                <p>Le site url du site a pour objet :</p>
+                <ul>
+                    <li>Le recueil et la diffusion de l’ensemble des données nationales permettant aux personnes physiques et morales de les gérer dans les meilleures conditions grâce à :</li>
+                    <ul>
+                        <li>Un accès sécurisé.</li>
+                        <li>Une saisie instantanée et ergonomique avec possibilité de rectifier les erreurs de saisie.</li>
+                        <li>Une diffusion par consultation en ligne.</li>
+                        <li>Une extraction des données.</li>
+                    </ul>
+                </ul>
+
+                <h2>II – Utilisation du site</h2>
+                    <h3>Qualité des informations.</h3>
+                        <p>Les rédacteurs du site apportent le plus grand soin et mettent en œuvre tous les moyens pour diffuser
+                           sur le site internet url du site des informations de qualité. NAO ne peut toutefois garantir de
+                           manière absolue l’exactitude et l’exhaustivité de l’ensemble de ces informations. Ainsi, NAO, soumis
+                           à une obligation de moyens, ne saurait être tenu responsable de tout préjudice direct ou indirect du
+                           fait d’une information mal utilisée et/ou qui se révélerait inexacte ou incomplète.</p>
+
+                    <h3>Accès au site url du site.</h3>
+                        <p>NAO ne pourra être tenu pour responsable de tout dommage direct ou indirect résultant de
+                           l’accès à son site Internet et à ceux de ses partenaires, ou au contraire de l’impossibilité
+                           d’y accéder.</p>
+
+                    <h3 id="condition">Conditions d’utilisation spécifiques aux observations</h3>
+                        <p>La consultation des données du site est libre et ne demande aucune formalité.<br>
+                           Pour les autres utilisations, l’inscription sur le site url du site est nécessaire.
+                           Elle est gratuite et quasiment immédiate pour les personnes physiques ou morales.
+                           Elle implique l’acceptation des conditions d’utilisation.<br>
+                           NAO se réserve le droit de requalifier les données saisies par l’utilisateur dans le cadre
+                           de leur validation.<br>
+                           Le site de NAO permet à l’observateur d’associer des images à ses observations en vue
+                           notamment de valider ses données. Ces images sont par défaut consultables par les visiteurs
+                           du site. De fait, leur auteur cède les droits de représentation des ces images à cette fin.</p>
+
+                <h2>III – Propriété intellectuelle.</h2>
+                        <p>Les informations délivrées sur le site Internet url du site ne peuvent être utilisées qu’à
+                           des fins strictement personnelles. Toute utilisation effectuée à des fins commerciales ou à
+                           toute autre fin est purement et simplement interdite. En outre, les éléments présents sur
+                           notre site Internet sont protégés par le Code de la Propriété Intellectuelle, des traités
+                           et des accords internationaux traitant des dispositions relatives à la protection des droits
+                           d’auteur. Ainsi, toute modification, représentation et reproduction intégrale ou partielle,
+                           pour un usage autre que privé, est formellement interdite. Cette interdiction vaut quel que
+                           soit le procédé de reproduction, de représentation et/ou de modification, et quelle qu’en
+                           soit la durée. De manière générale, NAO ne saurait être tenu pour responsable de tout
+                           dommage, direct ou indirect, résultant de l’utilisation interdite des informations ou de
+                           tout autre élément, délivrés sur le site Internet url du site.</p>
+
+                <h2>IV – Respect de la vie privée.</h2>
+                    <h3>Collecte des données personnelles</h3>
+                        <p>Lors de vos visites sur le site Internet url du site, NAO peut être amenée à vous demander
+                           certaines informations vous concernant afin d’être en mesure de vous identifier,
+                           de vous proposer des accès personnalisés.<br>
+                           Les données nominatives (noms, prénoms, coordonnées postales, e-mail…) ou non nominatives
+                           pourront vous être demandées notamment lors de vos visites sur le site url du site.
+                           Certaines informations vous concernant devront être obligatoirement communiquées pour que
+                           vous puissiez accéder au service concerné. Les informations revêtant un caractère
+                           obligatoire sont signalées par un astérisque.</p>
+
+                    <h3>Politique relative aux cookies.</h3>
+                        <p>Ce site est susceptible d’enregistrer des « cookies » sur votre ordinateur. Il s’agit
+                           d’informations sur votre visite, consultables par le site si vous revenez le visiter
+                           ultérieurement.
+                           Ces informations sont de plusieurs types :</p>
+                                <ul>
+                                    <li>Cookies enregistrés à des fins d’établissement de statistiques de fréquentation.
+                                        Leur création, leur enregistrement et leur traitement sont réalisés par
+                                        la société Google.
+                                    </li>
+                                    <li>Cookies de session.</li>
+                                    <li> Cookies de suivi de votre navigation, pour faciliter votre navigation ou
+                                         identifier votre provenance (lien partenaire, newsletter,…) lors de certaines
+                                         actions (don en ligne).
+                                        Il vous est possible de refuser l’enregistrement de telles informations en vous
+                                        rendant dans les options (ou préférences) de votre navigateur internet, et en
+                                        désactivant les cookies.
+                                    </li>
+                                </ul>
+
+                    <h3>Utilisation de vos données personnelles</h3>
+                        <p>Sous réserve des données personnelles recueillies dans le cadre de l’Espace Dialogue
+                           strictement utilisées conformément à la fonctionnalité de ce service, les informations
+                           nominatives et indirectement nominatives recueillies sur le site Internet url du site ne
+                           seront utilisées qu’à des fins de communication interne.
+                        </p>
+
+                    <h3>Transmission de vos données personnelles</h3>
+                        <p>Les données nominatives vous concernant recueillies sur le site Internet url du site pourront
+                           être communiquées à nos établissements où partenaires dans le cadre exclusif de
+                           l’exploitation du site Internet url du site.<br>
+                           Ces données ne feront l’objet de communications extérieures éventuelles autres que celles
+                           prévues ci-dessus que pour satisfaire aux obligations légales et réglementaires, ou à la
+                           demande d’une administration ou d’une autorité judiciaire.
+                        </p>
+
+                    <h3>Droits d’accès et de rectification</h3>
+                        <p>En conformité avec les dispositions de la loi du 6 janvier 1978 dite
+                           « Loi Informatique et Libertés » relative à l’informatique, aux fichiers et aux libertés,
+                           les traitements automatisés des données nominatives réalisés à partir du site Internet url
+                           du site pourront faire l’objet d’une déclaration auprès de la Commission Nationale de
+                           l’Informatique et des Libertés (CNIL).Les internautes disposent à tout moment d’un droit
+                           d’accès, de modification, de rectification et de suppression des données qui les concernent.
+                        </p>
+
+                    <h3>Droit à l’image</h3>
+                        <p>Votre image est une donnée personnelle. Vous avez donc un droit sur son utilisation
+                           et vous pouvez vous opposer à sa conservation ou sa diffusion publique sans votre
+                           autorisation, sauf cas particuliers. Pour chacune des photos et/ou des vidéos publiées
+                           sur url du site, NAO dispose des autorisations nécessaires à leur publication.</p>
+
+            </div>
+        </div>
     </div>
 {% endblock %}

@@ -8,6 +8,12 @@ services:
         class: AppBundle\Services\ObservationRecording
         arguments: ["@doctrine.orm.entity_manager", %birds_images%]
 
+    mail:
+        class: AppBundle\Services\ContactService
+        arguments:
+            - "@mailer"
+            - "@templating"
+
     appbundle.user_service:
          class: AppBundle\Services\UserService
          arguments: ["@doctrine.orm.entity_manager","@security.password_encoder"]
@@ -18,3 +24,6 @@ services:
              - "@doctrine.orm.entity_manager"
          tags:
             - {name: validator.constraint_validator}
+         class: AppBundle\Services\UserService
+         arguments: ["@doctrine.orm.entity_manager","@security.password_encoder"]
+

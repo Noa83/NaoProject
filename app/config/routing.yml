@@ -21,14 +21,14 @@ blog:
     type:     annotation
 
 contact:
-    path:    /contact
-    defaults:
-        _controller: AppBundle:Contact:contact
+    resource: '@AppBundle/Controller/ContactController.php'
+    type:     annotation
+
 
 legal_notice:
-    path:    /legal_notice
-    defaults:
-        _controller: AppBundle:Legal:legal
+    resource: '@AppBundle/Controller/legalController.php'
+    type:     annotation
+
 
 join:
     path:    /join
