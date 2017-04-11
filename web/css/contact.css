@@ -1,34 +1,6 @@
-<<<<<<< HEAD
-legend
-{
-    color: orange;
-    text-shadow: black 0.1em 0.05em 0.07em
-}
-p.contact
-{
-    color: white
-}
-
-h1.contact
-{
-    color: white;
-    font-size: 2.5em;
-    font-weight: bold;
-}
-=======
-body{ background-image: url("../images/contact.jpg"); background-repeat:no-repeat; background-attachment:fixed;}
-
 legend{ color: orange; text-shadow: black 0.05em 0.05em; font-weight: bold;  }
->>>>>>> contact
 
-h2.contact
-{
-    color: white;
-    margin-left: 8%;
-}
-
-<<<<<<< HEAD
-.well.contact
+.well
 {
     background-color: rgba(255, 255, 255, 0.4);
     padding-bottom: 50px; }
@@ -37,11 +9,13 @@ h2.contact
 {
     height: 400px;
 }
-=======
+
 h1{ color: white; font-size: 2.5em; font-weight: bold; text-shadow: 0.05em 0.05em rgba(63,107,169, 0.7); }
 
-h2{ color: white; margin-left: 10%; text-shadow: 0.05em 0.05em rgba(63,107,169, 0.7); font-size: 1.5em; }
->>>>>>> contact
+h2{ color: white; margin-left: 8%; text-shadow: 0.05em 0.05em rgba(63,107,169, 0.7); font-size: 1.5em; }
+
+p{  color: white; }
+
 
 /* Background */
 div.container-fluid#contact_bg
@@ -54,9 +28,8 @@ div.container-fluid#contact_bg
     margin-top: 110px;
 }
 
-<<<<<<< HEAD
-=======
-.form-group ul{ color:#e01f0b; font-weight: bold; font-size: 1.2em; text-shadow:  0.05em 0.05em rgba(63,107,169, 0.5); }
+
+.glyphicon-exclamation-sign{ color:#e01f0b; font-weight: bold;  text-shadow:  0.05em 0.05em rgba(63,107,169, 0.5); }
 
 #maps{ height: 400px; }
->>>>>>> contact
+
