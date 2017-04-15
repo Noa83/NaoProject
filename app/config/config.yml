@@ -8,6 +8,7 @@ imports:
 parameters:
     locale: fr
     birds_images: '%kernel.root_dir%/../web/images/birdsImages'
+    pictures_directory: '%kernel.root_dir%/../web/images'
 
 framework:
     #esi: ~

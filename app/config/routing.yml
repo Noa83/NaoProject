@@ -26,7 +26,7 @@ contact:
 
 
 legal_notice:
-    resource: '@AppBundle/Controller/legalController.php'
+    resource: '@AppBundle/Controller/LegalController.php'
     type:     annotation
 
 
