@@ -4,6 +4,12 @@ textarea#observation_observationMsg.form-control
     height:100px;
 }
 
+.row#btn_valid
+{
+    display: flex;
+    justify-content: center;
+}
+
 /* Background */
 div.container-fluid#observation_bg
 {
