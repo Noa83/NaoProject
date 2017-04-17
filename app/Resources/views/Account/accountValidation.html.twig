@@ -1,0 +1,57 @@
+{% extends 'Account/account.html.twig' %}
+
+
+{% block accountContent %}
+
+
+    <div class="tab-content col-md-10 col-md-offset-1">
+        <h1 class="text-center">Validation des observations.</h1>
+        {% if obsModerer %} <!-- if observation -->
+            <div class="table-responsive">
+                <table class="table table-hover table-condensed">
+                    <thead>
+                    <tr>
+                        <th>Nom de l'oiseau</th>
+                        <th>Observation</th>
+                        <th>Date d'observation</th>
+                        <th>Actions</th>  <!-- Actions column -->
+                    </tr>
+                    </thead>
+                    {% for obs in obsModerer %}
+                        <tr>
+                            <td class="col-sm-4"><a class="articleTitle" href="#">{{ obs.bird.getNomValide() }}</td>
+                            <td class="col-sm-5">{{ obs.comment }}
+                            <td class="col-sm-2">{{ obs.date | date("d/m/Y") }}</td>
+                            <td class="col-sm-1">
+                                <a href="{{ path('observation_validate', {'id': obs.id}) }}" class="btn btn-success btn-xs" title="Edit"><span class="glyphicon glyphicon-ok"></span></a>
+                                <button type="button" class="btn btn-danger btn-xs" title="Delete" data-toggle="modal" data-target="#obsModererDialog{{ obs.id }}"><span class="glyphicon glyphicon-remove"></span>
+                                </button>
+                                <div class="modal fade" id="obsModererDialog{{ obs.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                <h4 class="modal-title" id="myModalLabel">Confirmation needed</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                Voulez vous supprimer cette observation ?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                                                <a href="{{ path('observation_remove', { 'id': obs.id }) }}" class="btn btn-danger">Confirmer</a>
+                                            </div>
+                                        </div><!-- /.modal-content -->
+                                    </div><!-- /.modal-dialog -->
+                                </div><!-- /.modal -->
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        {% else %}
+            <div class="alert alert-warning">Aucune observation à valider.</div>
+        {% endif %}
+    </div>
+
+
+{% endblock %}

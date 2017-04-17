@@ -25,6 +25,13 @@ observation_remove:
     requirements:
         id:  \d+
 
+observation_validate:
+    path:    /observation/validate/{id}
+    defaults:
+        _controller: AppBundle:Observation:observationValid
+    requirements:
+        id:  \d+
+
 results:
     path:    /results
     defaults:
@@ -40,7 +47,7 @@ contact:
 
 
 legal_notice:
-    resource: '@AppBundle/Controller/legalController.php'
+    resource: '@AppBundle/Controller/LegalController.php'
     type:     annotation
 
 
@@ -54,20 +61,35 @@ donate:
     defaults:
         _controller: AppBundle:Donate:donate
 
-admin_account:
-    path:    /admin-account
+admin_user:
+    path:    /admin/user
     defaults:
-        _controller: AppBundle:AdminAccount:adminAccount
+        _controller: AppBundle:AdminGestionUser:adminGestionUser
 
-admin_dashboard:
-    path:    /a-dashboard
+admin_article:
+    path:    /admin/article
     defaults:
-        _controller: AppBundle:AdminDashboard:adminDashboard
+        _controller: AppBundle:AdminGestionArticle:adminGestionArticle
+
+admin_rapport:
+    path:    /admin/rapport
+    defaults:
+        _controller: AppBundle:AdminGestionRapport:adminGestionRapport
 
 account:
     path:    /account
     defaults:
-        _controller: AppBundle:Account:account
+        _controller: AppBundle:AccountProfil:account
+
+account_observation:
+    path:    /account/observation
+    defaults:
+        _controller: AppBundle:AccountObservation:observation
+
+account_validation:
+    path:    /account/validation
+    defaults:
+        _controller: AppBundle:AccountValidation:validation
 
 login:
     path:    /login

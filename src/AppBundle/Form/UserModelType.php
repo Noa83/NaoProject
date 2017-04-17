@@ -35,7 +35,7 @@ class UserModelType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Model\UserAccountModel'
+            'data_class' => 'AppBundle\Model\UserRegistrationModel'
         ));
     }
 }

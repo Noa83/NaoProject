@@ -11,9 +11,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 
-class AdminDashboardController extends Controller
+class AdminGestionUserController extends Controller
 {
-    public function adminDashboardAction(Request $request)
+    public function adminGestionUserAction(Request $request)
     {
 
         $user = new User();
@@ -37,7 +37,7 @@ class AdminDashboardController extends Controller
                 );
             }
 
-            return $this->render('AdminAccount/adminDashboard.html.twig', array('formSearch' => $formSearch->createView(),
+            return $this->render('AdminAccount/adminGestionUser.html.twig', array('formSearch' => $formSearch->createView(),
                 'formEditUser' => $formEditUser->createView()));
         }
 
@@ -53,7 +53,7 @@ class AdminDashboardController extends Controller
             );
         }
 
-        return $this->render('AdminAccount/adminDashboard.html.twig', array('formSearch' => $formSearch->createView(),
+        return $this->render('AdminAccount/adminGestionUser.html.twig', array('formSearch' => $formSearch->createView(),
             'formEditUser' => $formEditUser->createView()));
     }
 }

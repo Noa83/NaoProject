@@ -4,6 +4,7 @@ namespace AppBundle\Services;
 
 use AppBundle\Model\UserAccountModel;
 use AppBundle\Entity\User;
+use AppBundle\Model\UserRegistrationModel;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
@@ -25,7 +26,7 @@ class UserService {
         $this->encoder = $encoder;
     }
 
-    public function createUser(UserAccountModel $model){
+    public function createUser(UserRegistrationModel $model){
 
         $user = new User();
 

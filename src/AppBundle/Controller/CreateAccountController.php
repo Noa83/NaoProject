@@ -6,6 +6,7 @@ namespace AppBundle\Controller;
 use AppBundle\Form\UserModelType;
 use AppBundle\Entity\User;
 use AppBundle\Model\UserAccountModel;
+use AppBundle\Model\UserRegistrationModel;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,7 +20,7 @@ class CreateAccountController extends Controller
             throw $this->createAccessDeniedException();
         } else {
             // 1) Création du formulaire
-            $model = new UserAccountModel();
+            $model = new UserRegistrationModel();
             $form = $this->createForm(UserModelType::class, $model);
 
             // 2) Si le formulaire est valide et Requete POST encodage du mot de passe puis sauvegarde des données

@@ -71,7 +71,7 @@
                             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                                 <li><a href="{{ path('account') }}">{{ app.user.getUsername() }}</a></li>
                                 {% if is_granted('ROLE_ADMIN') %}
-                                    <li><a href="{{ path('admin_dashboard') }}">Dashboard</a></li>
+                                    <li><a href="{{ path('admin_user') }}">Dashboard</a></li>
                                 {% endif %}
                                 <li><a href="{{ path('logout') }}">Se Déconnecter</a></li>
                             {% else %}

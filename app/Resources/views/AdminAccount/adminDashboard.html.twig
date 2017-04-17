@@ -2,8 +2,6 @@
 
 {% block stylesheet_enfant %}
     <link rel="stylesheet" href="{{ asset('css/adminDashboard.css') }}">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('css/adminDashboard.css') }}">
 {% endblock %}
 
 {% block navi5 %}
@@ -23,9 +21,9 @@
         <div class="row">
             <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
                 <ul class="nav nav-tabs nav-justified">
-                    <li class="active"><a href="#utilisateur" data-toggle="tab">Gestion des utilisateurs</a></li>
-                    <li><a href="#articles" data-toggle="tab">Creation/Modification articles</a></li>
-                    <li><a href="#rapports" data-toggle="tab">Rapports d'observation</a></li>
+                    <li><a href="{{ path('admin_user') }}">Gestion des utilisateurs</a></li>
+                    <li><a href="{{ path('admin_article') }}">Creation/Modification articles</a></li>
+                    <li><a href="{{ path('admin_rapport') }}">Rapports d'observation</a></li>
                 </ul>
             </div>
         </div>
@@ -38,107 +36,9 @@
             {% endfor %}
         {% endfor %}
 
-        <div class="tab-content col-md-10 col-md-offset-1">
-            <div class="tab-pane fade in active adminTable" id="utilisateur">
+        {% block adminContent %}
+        {% endblock %}
 
-                <p class="text-center">Gestion des utilisateurs</p>
-
-                <div class="col-md-8 col-md-offset-2">
-                    {{ form_start(formSearch) }}
-                        {{ form_row(formSearch.username, {'label': 'Pseudo :'}) }}
-                        <button class="btn" type="submit">Rechercher</button>
-                    {{ form_end(formSearch) }}
-                    <br/><br/>
-
-                    <table class="table">
-                        <tr>
-                            <th>Pseudo</th>
-                            <th>Prenom</th>
-                            <th>Date de naissance</th>
-                            <th>Email</th>
-                            <th>Ville</th>
-                            <th>Role</th>
-                            <th>Suppression</th>
-                        </tr>
-
-                        {% if formEditUser %}
-                            {{ form_start(formEditUser) }}
-                            <tr>
-                                <td>{{ form_widget(formEditUser.username) }}</td>
-                                <td>{{ form_widget(formEditUser.prenom) }}</td>
-                                <td>{{ form_widget(formEditUser.dateNaissance) }}</td>
-                                <td>{{ form_widget(formEditUser.email) }}</td>
-                                <td>{{ form_widget(formEditUser.ville) }}</td>
-                                <td>{{ form_widget(formEditUser.role) }}</td>
-                                <td>
-                                    <a href="#">X</a>
-                                </td>
-                        {% else %}
-                            Aucune données
-                        {% endif %}
-                    </table>
-                    <button class="btn" type="submit">Sauvegarder</button>
-                    {{ form_end(formEditUser) }}
-
-                    {% if formEditUser == null %}
-                        Le pseudo recherché n'a pas été trouvé.
-                    {% endif %}
-                </div>
-
-            </div>
-            <div class="tab-pane fade adminTable" id="articles">
-                {% if 1 %} <!-- if articles -->
-                    <div class="table-responsive">
-                        <table class="table table-hover table-condensed">
-                            <thead>
-                            <tr>
-                                <th>Titre</th>
-                                <th>Contenu</th>
-                                <th></th>  <!-- Actions column -->
-                            </tr>
-                            </thead>
-                            <!-- for article in articles-->
-                            <tr>
-                                <td><a class="articleTitle" href="#">titre article</a></td>
-                                <td>contenu</td>
-                                <td>
-                                    <a href="#" class="btn btn-info btn-xs" title="Edit"><span class="glyphicon glyphicon-edit"></span></a>
-                                    <button type="button" class="btn btn-danger btn-xs" title="Delete" data-toggle="modal" data-target="#articleDialog"><span class="glyphicon glyphicon-remove"></span>
-                                    </button>
-                                    <div class="modal fade" id="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                                    <h4 class="modal-title" id="myModalLabel">Confirmation needed</h4>
-                                                </div>
-                                                <div class="modal-body">
-                                                    Do you really want to delete this article ?
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                                    <a href="#" class="btn btn-danger">Confirm</a>
-                                                </div>
-                                            </div><!-- /.modal-content -->
-                                        </div><!-- /.modal-dialog -->
-                                    </div><!-- /.modal -->
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                {% else %}
-                    <div class="alert alert-warning">Aucun article trouvé.</div>
-                {% endif %}
-                <a href="#"><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Ajouter un article</button></a>
-            </div>
-
-            <div class="tab-pane fade adminTable" id="rapports">
-
-                Gestion des rapports
-
-            </div>
-        </div>
-    </div>
 
 {% endblock %}
 
