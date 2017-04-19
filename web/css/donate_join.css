@@ -4,3 +4,46 @@
     background-repeat: no-repeat;
 
 }
+div#opal_bg.col-md-6.col-md-offset-6
+{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+div#centrage
+{
+    margin-left: 40px;
+    margin-top: 20px;
+}
+div.part_donate.col-md-12
+{
+    margin-top: 20px;
+    padding-bottom: 40px
+}
+div.image_donate_join.col-md-6
+{
+    padding-top: 20px;
+}
+div.part_join.col-md-12
+{
+    margin-top: 20px;
+}
+div#opal_bg.col-md-12
+{
+    margin-bottom: 20px;
+}
+.btn.pull-right.btn-default
+{
+    color: #288B90;
+    background-color: rgba(255, 255, 255, 0.5);
+    margin-right: 15px;
+    margin-bottom: 15px;
+    width: 150px;
+}
+.btn.pull-right.btn-default:hover
+{
+    transition: width 1s linear;
+    border: solid 2px #288B90;
+    color: #288B90;
+    margin-bottom: 13px;
+    width: 175px;
+}

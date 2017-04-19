@@ -52,6 +52,12 @@
                         {{ form_row(form.comment, {'label': 'Observations :'}) }}
                     </div>
                 </div>
+                {% for flash_message in app.session.flashBag.get('success') %}
+                    <div class="flash-success">
+                        {{ flash_message }}
+                        <hr>
+                    </div>
+                {% endfor %}
                 <div class="row" id="btn_valid">
                     <div>
                         <button class="btn btn_form" type="submit">Envoyer</button>
