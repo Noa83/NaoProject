@@ -10,14 +10,17 @@ use AppBundle\Validator\Constraints as NaoAssert;
 /**
  * ObservationModel
  *
- * @ORM\MappedSuperClass
- *
  * @NaoAssert\OutOfFrance
  */
 
 
 class ObservationModel
 {
+    /**
+     * @Assert\LessThanOrEqual("today UTC",
+     *     message = "Vous avez saisi une date future, merci de corriger votre saisie"
+     * )
+     */
     public $date;
     /**
      * @Assert\Range(
