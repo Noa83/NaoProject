@@ -1,11 +1,30 @@
-div.container-fluid#login_bg
-{
+.content-body{
     width: auto;
     height: auto;
-    background: url("../images/fond_landing.jpg");
+    background: url("../images/fond_call_2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     padding-top: 50px;
     padding-bottom: 20px;
     margin-top: 110px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.form-login{
+    text-align: center;
+}
+
+.form-login input {
+    width: 100%;
+}
+
+.form-login button {
+    margin-bottom: 5%;
+}
+
+.contenulogin {
+    margin-top: 10vh;
 }

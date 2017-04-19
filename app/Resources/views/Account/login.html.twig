@@ -9,27 +9,34 @@
 {% endblock %}
 
 {% block body %}
-    <div class="container-fluid content-test" id="login_bg">
+    <div class="container-fluid" id="login_bg">
         {% if error %}
             <div class="alert alert-danger">Erreur de connexion vérifiez vos identifiants. ({{ error.message }})</div>
         {% endif %}
-        <div class="col-md-6 col-md-offset-6" id="opal_bg">
-            <div class="part-right">
-                <div class="col-md-6 col-md-offset-6" id="opal_bg">
-                    <div class="part-right">
-                        <h1>Se connecter</h1>
-                        <form action="{{ path('login_check') }}" method="post">
-                            <label for="username">Login :</label>
-                            <input type="text" id="username" name="_username" /> <br/>
-
+        <div class="col-md-6 col-md-offset-3 contenulogin" id="opal_bg">
+            <div class="test">
+                <h1 class="sous-titre">Se connecter :</h1>
+                <form class="form-login" action="{{ path('login_check') }}" method="post">
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+                            <label for="username">Login : </label><br/>
+                            <input type="text" class="form-control" id="username" name="_username" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
                             <label for="password">Mot de passe :</label>
-                            <input type="password" id="password" name="_password" />
+                            <input type="password" class="form-control" id="password" name="_password" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
                             <input type="hidden" name="_target_path" value="account" />
                             <br />
-                            <button type="submit" class="btn-form" value="Connexion" > Connexion </button>
-                        </form>
+                            <button class="btn btn-form" type="submit" value="Connexion" > Connexion </button>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
