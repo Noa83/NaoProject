@@ -9,23 +9,28 @@
 {% endblock %}
 
 {% block body %}
-<div class="container-fluid" id="login_bg">
-    <h1>Se connecter</h1>
+    <div class="container-fluid" id="login_bg">
+        {% if error %}
+            <div class="alert alert-danger">Erreur de connexion vérifiez vos identifiants. ({{ error.message }})</div>
+        {% endif %}
+        <div class="col-md-6 col-md-offset-6" id="opal_bg">
+            <div class="part-right">
+                <div class="col-md-6 col-md-offset-6" id="opal_bg">
+                    <div class="part-right">
+                        <h1>Se connecter</h1>
+                        <form action="{{ path('login_check') }}" method="post">
+                            <label for="username">Login :</label>
+                            <input type="text" id="username" name="_username" /> <br/>
 
-    {# S'il y a une erreur, on l'affiche dans un joli cadre #}
-    {% if error %}
-        <div class="alert alert-danger">{{ error.message }}</div>
-    {% endif %}
-
-    <form action="{{ path('login_check') }}" method="post">
-        <label for="username">Login :</label>
-        <input type="text" id="username" name="_username" />
-
-        <label for="password">Mot de passe :</label>
-        <input type="password" id="password" name="_password" />
-        <input type="hidden" name="_target_path" value="account" />
-        <br />
-        <input type="submit" value="Connexion" />
-    </form>
-</div>
+                            <label for="password">Mot de passe :</label>
+                            <input type="password" id="password" name="_password" />
+                            <input type="hidden" name="_target_path" value="account" />
+                            <br />
+                            <button type="submit" class="btn-form" value="Connexion" > Connexion </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

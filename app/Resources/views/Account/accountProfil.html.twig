@@ -18,6 +18,14 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
+                    {{ form_row(formProfil.plainPassword.first, {'label': 'Votre mot de passe :'}) }}
+                </div>
+                <div class="col-md-6">
+                    {{ form_row(formProfil.plainPassword.second, {'label': 'Retapez votre mot de passe :'}) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
                     {{ form_row(formProfil.prenom, {'label': '*Votre prénom:'}) }}
                 </div>
                 <div class="col-md-6">

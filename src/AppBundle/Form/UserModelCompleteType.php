@@ -21,7 +21,12 @@ class UserModelCompleteType extends AbstractType
     {
         $builder->add('email',      EmailType::class)
             ->add('username',       TextType::class)
-            ->remove('plainPassword')
+            ->add('plainPassword',  RepeatedType::class, array(
+                'type' => PasswordType::class,
+                'first_options'  => array('label' => 'Mot de passe'),
+                'second_options' => array('label' => 'Mot de passe répété'),
+                'required' => true
+                ))
             ->add('prenom',         TextType::class, array(
                 'required' => false))
             ->add('dateNaissance',  DateType::class, array(

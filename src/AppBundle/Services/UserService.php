@@ -66,6 +66,12 @@ class UserService {
 
         $user->setUsername($model->username);
         $user->setEmail($model->email);
+
+        // Encodage du mot de passe.
+        $password = $this->encoder
+            ->encodePassword($user, $model->plainPassword);
+        $user->setPassword($password);
+
         $user->setPrenom($model->prenom);
         $user->setDateNaissance($model->dateNaissance);
         $user->setVille($model->ville);
