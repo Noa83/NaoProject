@@ -31,6 +31,13 @@
                         </div>
                     </div>
                     {{ form_end(form) }}
+                        </div>
+
+                <div>
+                    {#{% if observation.image is not null %}#}
+                    {#<img src="{{ observation.image.url }}" alt="{{ observation.image.alt }}">#}
+                    {#{% endif %}#}
+                        {{ form_end(form) }}
                     {% endif %}
                         {% if birdChoisi is defined %}
                         <a class="btn btn-form" href="{{ path('results') }}">Effectuer une nouvelle consultation</a>
@@ -45,6 +52,7 @@
                 </div>
                     </div>
                 </div>
+                <div id="map" class="col-sm-7"></div>
             </div>
 
             <div class="colonne_carte col-md-6 col-xs-12">
