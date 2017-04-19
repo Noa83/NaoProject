@@ -4,6 +4,7 @@ namespace AppBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 
+
 /**
  * ObservationRepository
  *
@@ -47,6 +48,10 @@ class ObservationRepository extends EntityRepository
         if (empty($results)){
             throw new \Exception();
         }
+        return $results;
+    }
+        dump($jsonResult);
+
         return $results;
     }
 }

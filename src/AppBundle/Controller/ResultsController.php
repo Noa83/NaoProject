@@ -46,5 +46,6 @@ class ResultsController extends Controller
     {
         return new Response ($this->get('data_to_geojson')->getGeoJson($this->getDoctrine()
             ->getRepository('AppBundle:Observation')->getObservationInfoWithMailleByBird($id)));
+                ->createView()]);
     }
 }
