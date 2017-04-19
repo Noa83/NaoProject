@@ -115,6 +115,13 @@ h2.titre
     text-align: center;
     margin-bottom: 42px;
 }
+/*h2.titre.label.label-default*/
+/*{*/
+    /*background-color: #288B90;*/
+    /*color: white:*/
+    /*text-align: center;*/
+    /*margin-bottom: 42px;*/
+/*}*/
 div.col-md-12.last_articles
 {
     border: solid 1px #288B90;

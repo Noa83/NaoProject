@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheet_enfant %}
+    <link rel="stylesheet" href="{{ asset('css/donate_join.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="container-fluid" id="donate_join_bg">
+        <div id="centrage">
+            <div class="col-md-12" id="opal_bg">
+                <div class="part_join col-md-12">
+                    <div class="image_donate_join col-md-6">
+                        <img class="img img-responsive col-md-11" src="{{ asset('images/adherents.jpg') }}"
+                             alt="adhérer à nos amis les oiseaux">
+                    </div>
+                    <div class="text_donate_join col-md-6">
+                        <h1 class="sous-titre" id="join">Devenez acteur de la protection de la biodiversité.</h1>
+                        <p class="text_join">Forte de ses 800 adhérents répartis sur tout l’hexagone, l’association Nos
+                            Amis les Oiseaux contribue chaque jour à la préservation de l’environnement.<br>
+                            Parce que leur soutient est important, ils nous permettent la mise en place de programmes
+                            d’étude et donne du poids à nos actions.<br>
+                            Vous aussi, devenez acteur de la protection de la biodiversité en devenant adhérent à Nos
+                            Amis les Oiseaux.<br>
+                        </p><br>
+                        <a href="www.helloasso.fr/" class="btn pull-right btn-default">J'adhère</a><br>
+                    </div>
+                </div>
+                <div class="part_donate col-md-12">
+                    <div class="image_donate_join col-md-6">
+                        <img class="img img-responsive col-md-11" src="{{ asset('images/donateur.jpg') }}"
+                             alt="faire un don à nos amis les oiseaux">
+                    </div>
+                    <div class="text_donate_join col-md-6">
+                        <h1 class="sous-titre" id="donate">Avec Nos Amis les Oiseaux, soutenez la protection de la
+                            nature.</h1>
+                        <p class="text_donate">Faire un don à l’association Nos Amis les Oiseaux, c’est également
+                            devenir
+                            biodiv’acteur en apportant votre soutien aux nombreuses actions que nous mettons en
+                            place.<br>
+                            Vous pouvez faire un don unique ou choisir de donner chaque mois. Dans les deux cas, vous
+                            bénéficiez d’une déduction d’impôt de 66% dans la limite de 20% de votre revenu imposable.
+                            <br>
+                        </p><br>
+                        <a href="www.helloasso.fr/" class="btn pull-right btn-default">Faire un don</a><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
