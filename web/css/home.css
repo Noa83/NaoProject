@@ -121,7 +121,12 @@ h2.titre
     text-align: center;
     margin-bottom: 42px;
 }
-div.col-sm-12.last_articles
+/*{*/
+    /*background-color: #288B90;*/
+    /*color: white:*/
+    /*text-align: center;*/
+    /*margin-bottom: 42px;*/
+/*}*/
 {
     margin-left: 15px;
     display: flex;
