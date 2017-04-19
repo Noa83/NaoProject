@@ -26,6 +26,10 @@ class ObservationController extends Controller
 
                 //Envoi en traitement Bdd et redirect
                 $this->get('observation.recording')->persist($observationModel, $this->getUser());
+                $this->addFlash(
+                    'success',
+                    'Votre observation a bien été enregistrée!'
+            );
                 //Adresse de redirection à changer vers la bonne.
                 return $this->redirectToRoute('observation');
         }

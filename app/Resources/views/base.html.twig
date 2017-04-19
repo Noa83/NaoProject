@@ -15,12 +15,12 @@
 </head>
 <body class="container-fluid">
 <header class="row" id="nao_header">
-    <div id="top_button_bar_xs" class="col-sm-12">
-        <a class="btn pull-right btn-sm faceb" title="NAO Link"
+    <div id="top_button_bar_xs" class="col-xs-12">
+        <a class="btn btn-sm faceb" title="NAO Link"
            href="https://www.facebook.com/lapagedenosamislesoiseaux/" target="_blank"><i
                     class="fa fa-facebook" aria-hidden="true"></i></a>
-        <a class="btn btn-sm join" href="{{ path('join') }}" role="button">Adhérer</a>
-        <a class="btn btn-sm donate" href="{{ path('donate') }}" role="button">Faire un don</a>
+        <a class="btn btn-sm join" href="{{ path('donate_join') }}" role="button">Adhérer</a>
+        <a class="btn btn-sm donate" href="{{ path('donate_join') }}#donate" role="button">Faire un don</a>
     </div>
     <!-- Navbar -->
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -39,11 +39,11 @@
                 </div>
             </div>
             <div class="collapse navbar-collapse navbar-right" id="nao-navbar">
-                <div id="top_button_bar" class="col-sm-4 pull-right">
-                    <a class="btn btn-sm donate pull-right" href="{{ path('donate') }}" role="button">Faire
+                <div id="top_button_bar" class="col-xs-4 pull-right">
+                    <a class="btn btn-sm donate pull-right" href="{{ path('donate_join') }}#donate" role="button">Faire
                         un
                         don</a>
-                    <a class="btn btn-sm join pull-right" href="{{ path('join') }}"
+                    <a class="btn btn-sm join pull-right" href="{{ path('donate_join') }}"
                        role="button">Adhérer</a>
                     <a class="btn pull-right btn-sm faceb" href="https://www.facebook.com/lapagedenosamislesoiseaux/">
                         <i class="fa fa-facebook" aria-hidden="true"></i></a>
@@ -97,12 +97,12 @@
 
 
 <footer class="row footer">
-    <ol class="breadcrumb col-md-11">
+    <ol class="breadcrumb col-xs-11">
         <li><a href="#">Admin</a></li>
         <li><a href="{{ path('legal_notice') }}">Mentions légales</a></li>
         <li><a href="{{ path('contact') }}">Contact</a></li>
-        <li><a href="{{ path('join') }}">Adhérer</a></li>
-        <li><a href="{{ path('donate') }}">Faire un don</a></li>
+        <li><a href="{{ path('donate_join') }}">Adhérer</a></li>
+        <li><a href="{{ path('donate_join') }}#donate">Faire un don</a></li>
     </ol>
     <a href="http://www.europe-en-france.gouv.fr/" target="_blank"><img src="{{ asset('images/europe.png') }}" alt="europe"
                                                         id="europe_img"></a>
