@@ -44,6 +44,7 @@ class ObservationRepository extends EntityRepository
         return $list;
     }
 
+
     public function find10ByBird($bird){
 
         $results = $this->findBy(array("bird" => $bird), array('id' => 'DESC','date' => 'DESC'));
