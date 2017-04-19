@@ -278,3 +278,16 @@ div#opal_bg
         display:none;
     }
 }
+
+
+/* TEST */
+.content-test {
+    background-color: black;
+    min-height: 81vh;
+}
+
+footer {
+    position: absolute;
+    right: 0;
+    left: 0;
+}
