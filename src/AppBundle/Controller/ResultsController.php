@@ -15,7 +15,7 @@ class ResultsController extends Controller
     /**
      * @Route("/results", name="results")
      */
-    public function resultsAction()
+public function resultsAction(Request $request)
     {
         //liste de choix des oiseaux
         $birds = $this->getDoctrine()->getRepository('AppBundle:Birds')->getBirdsList();

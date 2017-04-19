@@ -15,21 +15,21 @@
     <div class="container-fluid" id="global_home_bg">
         <div class="row">
             <div class="container-fluid" id="calls_to_action_bar">
-                <div class="col-sm-4" id="call_observer">
+                <div class="col-xs-4" id="call_observer">
                     <h2>Observation</h2>
                     <p>Inter haec Orfitus praefecti potestate regebat urbem aeternam ultra modum delatae dignitatis sese
                         efferens insolenter, vir quidem prudens et forensium negotiorum oppido gnarus, sed splendore
                         liberalium.</p>
                     <button class="btn btn_form">Observer</button>
                 </div>
-                <div class="col-sm-4" id="call_consultation">
+                <div class="col-xs-4" id="call_consultation">
                     <h2>Consultation</h2>
                     <p>Inter haec Orfitus praefecti potestate regebat urbem aeternam ultra modum delatae dignitatis sese
                         efferens insolenter, vir quidem prudens et forensium negotiorum oppido gnarus, sed splendore
                         liberalium.</p>
                     <button class="btn btn_form-orange">Consulter</button>
                 </div>
-                <div class="col-sm-4" id="call_blog">
+                <div class="col-xs-4" id="call_blog">
                     <h2>Blog</h2>
                     <p>Inter haec Orfitus praefecti potestate regebat urbem aeternam ultra modum delatae dignitatis sese
                         efferens insolenter, vir quidem prudens et forensium negotiorum oppido gnarus, sed splendore
@@ -39,8 +39,8 @@
             </div>
         </div>
         <div class="container-fluid global_bottom_part">
-            <div class="col-sm-5" id="information_bar">
-                <div class="col-sm-12" id="informations">
+            <div class="col-xs-5" id="information_bar">
+                <div class="col-xs-12" id="informations">
                     <h2 class="information_group_title">Qui sommes-nous?</h2><br>
                     <p>Nos amis les oiseaux est une association regroupant des passionnés d'ornithologie. Elle compte, à
                         ce
@@ -53,7 +53,7 @@
                         souhaitons
                         recueuillir vos observations à travers ce site participatif.</p>
                 </div>
-                <div class="col-sm-12" id="newsletter">
+                <div class="col-xs-12" id="newsletter">
                     <h2 class="information_group_title">Newsletter</h2><br>
                     <p>Pour recevoir nos informations, abonnez-vous à notre newsletter</p>
                     <div id="mc_embed_signup">
@@ -85,14 +85,14 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-7" id="last_articles">
-                <div class="col-sm-12 last_articles">
-                    <div class="col-sm-12">
+            <div class="col-xs-7" id="last_articles">
+                <div class="col-xs-12 last_articles">
+                    <div class="col-xs-12">
                         {#<h2 class="titre label label-default">Les derniers articles du Blog</h2>#}
                         <h2 class="titre">Les derniers articles du Blog</h2>
                     </div>
                     {% for article in articles %}
-                        <div class="col-sm-12 content_article">
+                        <div class="col-xs-12 content_article">
                             <div class="col-md-3 col-xs-4" id="img_btn"><br>
                             <img src="{{ asset(article.picture.url) }}" alt="{{ article.picture.alt }}" class="col-xs-2 img-rounded">
                             <a href="{{ path('article', {'id': article.id}) }}"
