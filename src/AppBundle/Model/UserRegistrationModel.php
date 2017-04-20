@@ -11,7 +11,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *
  *
  */
-class UserModel {
+class UserRegistrationModel {
 
     /**
      *
@@ -20,7 +20,7 @@ class UserModel {
     public $username;
 
     /**
-     * @Assert\NotBlank()
+     *
      * @Assert\Length(max=4096)
      */
     public $plainPassword;
@@ -30,4 +30,5 @@ class UserModel {
      * @Assert\Email()
      */
     public $email;
+
 }

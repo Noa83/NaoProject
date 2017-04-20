@@ -9,23 +9,37 @@
 {% endblock %}
 
 {% block body %}
-<div class="container-fluid" id="login_bg">
-    <h1>Se connecter</h1>
-
-    {# S'il y a une erreur, on l'affiche dans un joli cadre #}
-    {% if error %}
-        <div class="alert alert-danger">{{ error.message }}</div>
-    {% endif %}
-
-    <form action="{{ path('login_check') }}" method="post">
-        <label for="username">Login :</label>
-        <input type="text" id="username" name="_username" />
-
-        <label for="password">Mot de passe :</label>
-        <input type="password" id="password" name="_password" />
-        <input type="hidden" name="_target_path" value="account" />
-        <br />
-        <input type="submit" value="Connexion" />
-    </form>
-</div>
+    <div class="container-fluid" id="login_bg">
+        {% if error %}
+            <div class="alert alert-danger">Erreur de connexion vérifiez vos identifiants. ({{ error.message }})</div>
+        {% endif %}
+        <div class="col-md-6 col-md-offset-3 contenulogin" id="opal_bg">
+            <div class="test">
+                <h1 class="sous-titre">Se connecter :</h1>
+                <p class="text-center">Connectez-vous pour compléter votre profil et saisir vos observations.</p>
+                <p class="text-center">Pas encore inscrit ? Cliquez <a href="{{ path('create_account') }}">ici</a>.</p>
+                <form class="form-login" action="{{ path('login_check') }}" method="post">
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+                            <label for="username">Login : </label><br/>
+                            <input type="text" class="form-control" id="username" name="_username" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+                            <label for="password">Mot de passe :</label>
+                            <input type="password" class="form-control" id="password" name="_password" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+                            <input type="hidden" name="_target_path" value="account" />
+                            <br />
+                            <button class="btn btn-form" type="submit" value="Connexion" > Connexion </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 {% endblock %}

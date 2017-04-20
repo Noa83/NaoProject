@@ -7,7 +7,7 @@ security:
                 algorithm: bcrypt
 
     role_hierarchy:
-        ROLE_VALIDATEUR:    ROLE_USER
+        ROLE_VALIDATEUR:   [ROLE_USER]
         ROLE_ADMIN:        [ROLE_USER, ROLE_VALIDATEUR]
         ROLE_SUPER_ADMIN:  [ROLE_USER, ROLE_VALIDATEUR, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
@@ -38,4 +38,5 @@ security:
 
     access_control:
         - { path: ^/account, roles: ROLE_USER }
+        - { path: ^/a-dashboard, roles: ROLE_ADMIN }
         - { path: ^/observation, roles: ROLE_USER}

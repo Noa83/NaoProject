@@ -1,63 +1,6 @@
-home_page:
-    path:    /{page}
-    defaults:
-        _controller: AppBundle:Home:index
-        page:        1
-    requirements:
-        page: \d+
-
-observation:
-    path:    /observation
-    defaults:
-        _controller: AppBundle:Observation:observation
-
-results:
-    path:    /results
-    defaults:
-        _controller: AppBundle:Results:results
-
-blog:
-    resource: '@AppBundle/Controller/BlogController.php'
-    type:     annotation
-
-contact:
-    resource: '@AppBundle/Controller/ContactController.php'
-    type:     annotation
-
-
-legal_notice:
-    resource: '@AppBundle/Controller/LegalController.php'
-    type:     annotation
-
-donate_join:
-    path:    /donate_join
-    defaults:
-        _controller: AppBundle:DonateJoin:DonateJoin
-
-admin_account:
-    path:    /admin-account
-    defaults:
-        _controller: AppBundle:AdminAccount:adminAccount
-
-admin_dashboard:
-    path:    /a-dashboard
-    defaults:
-        _controller: AppBundle:AdminDashboard:adminDashboard
-
-account:
-    path:    /account
-    defaults:
-        _controller: AppBundle:Account:account
-
-login:
-    path:    /login
-    defaults:
-        _controller: AppBundle:Login:login
-
-create_account:
-    path:    /create-account
-    defaults:
-        _controller: AppBundle:CreateAccount:createAccount
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
 
 login_check:
     path: /login_check

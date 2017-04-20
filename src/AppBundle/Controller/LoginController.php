@@ -3,11 +3,15 @@
 namespace AppBundle\Controller;
 
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 
 class LoginController extends Controller
 {
+    /**
+     * @Route("/login", name="login")
+     */
     public function loginAction()
     {
         // Si le visiteur est déjà identifié, on le redirige vers l'accueil
