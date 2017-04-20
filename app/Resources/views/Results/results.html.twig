@@ -36,6 +36,21 @@
                         <a class="btn btn-form" href="{{ path('results') }}">Effectuer une nouvelle consultation</a>
                     {% endif %}
                         </div>
+                    <div class="col-md-10 col-md-offset-1">
+                        <div>
+                            <h3 class="text-center">Information sur l'oiseau :</h3><br/>
+                            {% if birdChoisi is defined %}
+                                <p>Regne de l'oiseau : {{ birdChoisi.regne }}</p>
+                                <p>Phylum de l'oiseau : {{ birdChoisi.phylum }}</p>
+                                <p>Classe de l'oiseau : {{ birdChoisi.classe }}</p>
+                                <p>Ordre de l'oiseau : {{ birdChoisi.ordre }}</p>
+                                <p>Famille de l'oiseau : {{ birdChoisi.famille }}</p>
+                                <p>Nom Complet de l'oiseau : {{ birdChoisi.nomComplet }}</p>
+                                <p>Nom Valide de l'oiseau : {{ birdChoisi.nomValide }}</p>
+                                <p>Nom Vern de l'oiseau : {{ birdChoisi.nomVern }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
                     </div>
                         {{ form_end(form) }}
                     {% endif %}
