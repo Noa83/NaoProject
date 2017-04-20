@@ -33,6 +33,7 @@ public function resultsAction(Request $request)
             dump($resultsModel);
 
             $birdChoisi = $this->getDoctrine()->getRepository('AppBundle:Birds')->find($resultsModel->bird);
+            //return $listResults;
 
             return $this->render('Results/results.html.twig', [
                 'birds' => $birds,

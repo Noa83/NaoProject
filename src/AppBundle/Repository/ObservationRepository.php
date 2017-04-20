@@ -42,6 +42,7 @@ class ObservationRepository extends EntityRepository
             ->setParameter('birdId',$birdId);
 
 
+
         //Requete avec le validated true
 //        $query = $this->_em->createNativeQuery("SELECT k.nom_maille, st_asgeojson(k.polygon) as geojson FROM observation o,
 // km10 k WHERE o.bird_id = :birdId AND o.km10maille_id = k.id AND o.validated = true", $rsm)
