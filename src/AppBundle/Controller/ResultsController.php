@@ -23,7 +23,6 @@ class ResultsController extends Controller
         $resultsForm->handleRequest($request);
         if ($request->isMethod('POST') && $resultsForm->isSubmitted() && $resultsForm->isValid()) {
            return $this->redirectToRoute('results_list', ['birdId' => $resultsModel->birdId]);
-            return new JsonResponse($listResults);
         }
         return $this->render('Results/results.html.twig', [
             'birds' => $birds,
@@ -39,8 +38,12 @@ class ResultsController extends Controller
             ->getRepository('AppBundle:Observation')->getObservationInfoWithMailleByBird($id)));
     }
 
-    public function getBirdsResultsAction($birdId)
+    /**
+     * @Route("/bird/{id}", name="bird", requirements={"id": "\d+"})
+     */
+    public function getBirdsResultsAction($id)
     {
-
+        $result = $this->getDoctrine()->getRepository('AppBundle:Observation')->getMailleGeoJsonByBird($id);
+        return new JsonResponse($result);
     }
 }
