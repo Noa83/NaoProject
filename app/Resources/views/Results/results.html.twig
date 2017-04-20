@@ -39,6 +39,7 @@
                 <div class="col-sm-6 pull-left">
                     <div class="col-md-10 col-md-offset-1">
                         <div id="map" class="col-sm-6 pull-right"></div>
+                        <div id="info-box" data-toggle="tooltip" data-placement="top"> </div>
                     </div>
                 </div>
             </div>
@@ -56,9 +57,19 @@
                     map.data.loadGeoJson('{{ path('bird', {'id':results.bird}) }}');
 
                     map.data.setStyle({
-                        fillColor: 'green',
-                        strokeWeight: 1,
-                        clickable: true
+                        fillColor: '#FE9A04',
+                        fillOpacity: 0.5,
+                        strokeWeight: 0
+                    });
+
+                    map.data.addListener('mouseover', function(event) {
+                        map.data.revertStyle();
+                        map.data.overrideStyle(event.feature, {strokeWeight: 2, strokeOpacity: 0.5});
+                    });
+
+                    map.data.addListener('mouseover', function(event) {
+                        document.getElementById('info-box').textContent =
+                            event.feature.getProperty('name');
                     });
                     {% endif %}
                 }
@@ -68,6 +79,10 @@
             <script async defer
                     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHtk1Q7isnHjGK7ApFU2_V5--RdvqVUks&callback=initMap">
             </script>
+
         </div>
     </div>
+{% endblock %}
+{% block JS %}
+    <script src="{{ asset('js/tooltip.js') }}"></script>
 {% endblock %}
