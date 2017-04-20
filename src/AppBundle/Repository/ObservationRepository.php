@@ -36,11 +36,12 @@ class ObservationRepository extends \Doctrine\ORM\EntityRepository
         $rsm = new ResultSetMapping($em);
 
         $rsm->addScalarResult('nom_maille', 'nomMaille');
-        $rsm->addScalarResult('geojson', 'polygon');
+        $rsm->addScalarResult('geojson', 'geometry');
 
         //Requete sans le validated true
         $query = $this->_em->createNativeQuery("SELECT k.nom_maille, st_asgeojson(k.polygon) as geojson FROM observation o,
- km10 k WHERE o.bird_id = '".$birdId."' AND o.km10maille_id = k.id", $rsm);
+ km10 k WHERE o.bird_id = '" . $birdId . "' AND o.km10maille_id = k.id", $rsm);
+
 
         //Requete avec le validated true
 //        $query = $this->_em->createNativeQuery("SELECT k.nom_maille, st_asgeojson(k.polygon) as geojson FROM observation o,
