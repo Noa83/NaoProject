@@ -128,6 +128,7 @@
                 <div class="col-sm-6 pull-left">
                     <div class="col-md-10 col-md-offset-1">
                         <div id="map" class="col-sm-6 pull-right"></div>
+                        <div id="info-box" data-toggle="tooltip" data-placement="top"> </div>
                     </div>
                 </div>
         </div>
@@ -157,6 +158,7 @@
                     fillOpacity: 0.5,
                     strokeWeight: 0
                     });
+
                     map.data.addListener('mouseover', function(event) {
                         map.data.revertStyle();
                         map.data.overrideStyle(event.feature, {strokeWeight: 2, strokeOpacity: 0.5});
