@@ -36,6 +36,10 @@
                             </div>
                         </div>
                         {{ form_end(form) }}
+                    {% endif %}
+                    {% if results is defined %}
+                        <a class="btn btn-form" href="{{ path('results') }}">Effectuer une nouvelle consultation</a>
+                    {% endif %}
                             </div>
                             {{ form_end(form) }}
                         </div>
@@ -105,7 +109,6 @@
         <script type="text/javascript">
 
             var map;
-//                var geojson =  ;
             function initMap() {
                 {% if birdChoisi is empty %}
                 map = new google.maps.Map(document.getElementById('empty_map'), {
@@ -120,7 +123,7 @@
                     zoom: 6,
                     mapTypeId: 'terrain'
                 });
-
+                    {% if results is defined %}
                 map.data.loadGeoJson('{{ path('bird', {'id':birdChoisi.id}) }}');
 
                 map.data.setStyle({
