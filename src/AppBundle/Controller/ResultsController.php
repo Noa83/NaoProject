@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 
+use AppBundle\AppBundle;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AppBundle\Model\ResultsModel;
@@ -31,8 +32,11 @@ public function resultsAction(Request $request)
         if ($request->isMethod('POST') && $resultsForm->handleRequest($request)->isValid()){
             dump($resultsModel);
 
+            $birdChoisi = $this->getDoctrine()->getRepository('AppBundle:Birds')->find($resultsModel->bird);
+
             return $this->render('Results/results.html.twig', [
                 'birds' => $birds,
+                'birdChoisi' => $birdChoisi,
                 'results' => $resultsModel
                     ]);
         }
