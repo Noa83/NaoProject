@@ -27,6 +27,7 @@ class ObservationAssembleur
         $observation = new Observation();
         $this->editObservation($observationModel, $observation, $user, $imageUrl);
 
+        return $observation;
     }
 
     public function editObservation(ObservationModel $observationModel, Observation $observation, User $user, $imageUrl){
