@@ -15,26 +15,24 @@
             <div class="row">
                 <div class="col-sm-5"><h1>Consulter les données</h1>
                     <p>contenu recherche</p>
-                    {{ form_start(form) }}
-                    <div class="row">
-                        <div class="col-md-12">
-                            {{ form_row(form.bird, {'label': 'Nom de l\'espèce :'}) }}
+                    {% if form is defined %}
+                        {{ form_start(form) }}
+                        <div class="row">
+                            <div class="col-md-12">
+                                {{ form_row(form.bird, {'label': 'Nom de l\'espèce :'}) }}
+                            </div>
                         </div>
-                    </div>
-                    <div class="row" id="btn_valid">
-                        <div>
-                            <button class="btn btn_form" type="submit">Envoyer</button>
+                        <div class="row" id="btn_valid">
+                            <div>
+                                <button class="btn btn_form" type="submit">Envoyer</button>
+                            </div>
                         </div>
-                    </div>
-                    {{ form_end(form) }}
+                        {{ form_end(form) }}
+                    {% endif %}
+                    {% if results is defined %}
+                        <a class="btn btn-form" href="{{ path('results') }}">Effectuer une nouvelle consultation</a>
+                    {% endif %}
                 </div>
-
-                <div>
-                    {#{% if observation.image is not null %}#}
-                    {#<img src="{{ observation.image.url }}" alt="{{ observation.image.alt }}">#}
-                    {#{% endif %}#}
-                </div>
-
 
                 <div id="map" class="col-sm-7"></div>
             </div>
@@ -42,21 +40,21 @@
             <script type="text/javascript">
 
                 var map;
-//                var geojson =  ;
                 function initMap() {
                     map = new google.maps.Map(document.getElementById('map'), {
                         center: {lat: 46.227588, lng: 2.214329},
                         zoom: 6,
                         mapTypeId: 'terrain'
                     });
-
-                    map.data.loadGeoJson('{{ path('consultation'), {'id':resultsModel.bird} }}');
+                    {% if results is defined %}
+                    map.data.loadGeoJson('{{ path('bird', {'id':results.bird}) }}');
 
                     map.data.setStyle({
                         fillColor: 'green',
                         strokeWeight: 1,
                         clickable: true
                     });
+                    {% endif %}
                 }
 
 
