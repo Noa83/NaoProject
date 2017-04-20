@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AppBundle\Model\ResultsModel;
 use AppBundle\Form\Type\ResultsType;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 
@@ -35,18 +36,18 @@ public function resultsAction(Request $request)
 
             dump($listResults);
             //dump($listResults2);
-            //return $listResults;
+            return new JsonResponse($listResults);
         }
-
-
-
-
-
 
 
         return $this->render('Results/results.html.twig', [
             'birds' => $birds,
             'form' => $resultsForm
                 ->createView()]);
+    }
+
+    public function getBirdsResultsAction($birdId)
+    {
+
     }
 }
