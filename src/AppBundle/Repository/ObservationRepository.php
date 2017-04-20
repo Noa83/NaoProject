@@ -93,6 +93,7 @@ class ObservationRepository extends EntityRepository
             'type' => 'FeatureCollection',
             'features' => $feature
         );
-            return new JsonResponse($geojson);
+
+        return $geojson;
     }
 }
