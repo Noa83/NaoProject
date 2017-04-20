@@ -33,23 +33,23 @@ public function resultsAction(Request $request)
             dump($resultsModel);
 
             $birdChoisi = $this->getDoctrine()->getRepository('AppBundle:Birds')->find($resultsModel->bird);
-            //return $listResults;
+            return new JsonResponse($listResults);
 
 
             return $this->render('Results/results.html.twig', [
                 'birds' => $birds,
                 'birdChoisi' => $birdChoisi
-
                     ]);
         }
-
-
-
-
         return $this->render('Results/results.html.twig', [
             'birds' => $birds,
             'form' => $resultsForm
                 ->createView()]);
+    }
+
+    public function getBirdsResultsAction($birdId)
+    {
+
     }
 
     /**
