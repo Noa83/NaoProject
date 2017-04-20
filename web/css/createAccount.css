@@ -7,3 +7,25 @@
     padding-top: 50px;
     padding-bottom: 20px;
 }
+
+button#btn-form.btn.pull-right
+{
+    margin-right: 15px;
+}
+
+button#btn-form.btn.pull-right
+{
+    color: #288B90;
+    background-color: rgba(255, 255, 255, 0.5);
+    margin-right: 15px;
+    margin-bottom: 15px;
+    width: 150px;
+}
+button#btn-form.btn.pull-right:hover
+{
+    transition: width 1s linear;
+    border: solid 2px #288B90;
+    color: #288B90;
+    margin-bottom: 13px;
+    width: 175px;
+}

@@ -27,7 +27,6 @@ class ObservationRepository extends \Doctrine\ORM\EntityRepository
             ->addSelect('bird')
             ->getQuery()
             ->getResult();
-        dump($list);
     }
 
     public function getMailleGeoJsonByBird($birdId)
@@ -49,7 +48,6 @@ class ObservationRepository extends \Doctrine\ORM\EntityRepository
 
 
         $results = $query->getResult();
-        dump($results);
 
         //Transfo en géoJson
         $feature = [];
@@ -67,7 +65,6 @@ class ObservationRepository extends \Doctrine\ORM\EntityRepository
             'type' => 'FeatureCollection',
             'features' => $feature
         );
-
         return $geojson;
     }
 }
