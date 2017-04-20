@@ -43,6 +43,7 @@ class ObservationRepository extends EntityRepository
             ->getResult();
         return $list;
     }
+
 //              ->setParameter('birdId',$birdId);
 
 

@@ -30,6 +30,7 @@ class ResultsController extends Controller
         //validation du choix
         if ($request->isMethod('POST') && $resultsForm->handleRequest($request)->isValid()) {
             $birdChoisi = $this->getDoctrine()->getRepository('AppBundle:Birds')->find($resultsModel->bird);
+            //return $listResults;
 
             return $this->render('Results/results.html.twig', [
                 'birds' => $birds,
