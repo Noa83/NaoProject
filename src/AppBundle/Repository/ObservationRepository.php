@@ -75,7 +75,6 @@ class ObservationRepository extends EntityRepository
             'type' => 'FeatureCollection',
             'features' => $feature
         );
-
         return $geojson;
     }
 
