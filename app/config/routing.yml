@@ -1,5 +1,12 @@
 app:
     resource: '@AppBundle/Controller/'
+consultation:
+    path:    /bird/{id}
+    defaults:
+        _controller: AppBundle:Results:getBirdsResults
+    requirements:
+        id:
+
     type: annotation
 
 login_check:

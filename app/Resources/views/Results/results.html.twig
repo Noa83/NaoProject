@@ -103,6 +103,7 @@
         <script type="text/javascript">
 
             var map;
+//                var geojson =  ;
             function initMap() {
                 {% if birdChoisi is empty %}
                 map = new google.maps.Map(document.getElementById('empty_map'), {
@@ -119,7 +120,7 @@
                 });
 
                 map.data.loadGeoJson('{{ path('bird', {'id':birdChoisi.id}) }}');
-//                    function eqfeed_callback(response) {
+
                 map.data.setStyle({
                     fillColor: '#FE9A04',
                     fillOpacity: 0.5,

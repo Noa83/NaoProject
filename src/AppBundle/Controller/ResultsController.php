@@ -29,7 +29,7 @@ class ResultsController extends Controller
         //validation du choix
         if ($request->isMethod('POST') && $resultsForm->handleRequest($request)->isValid()) {
             $birdChoisi = $this->getDoctrine()->getRepository('AppBundle:Birds')->find($resultsModel->bird);
-            //return $listResults;
+            return new JsonResponse($listResults);
     }
 
     /**
@@ -39,7 +39,6 @@ class ResultsController extends Controller
     {
         return new JsonResponse($this->getDoctrine()->getRepository('AppBundle:Observation')->getMailleGeoJsonByBird($id));
     }
-
     /**
      * @Route("/bird/json/{id}", name="bird", requirements={"id": "\d+"})
      */
@@ -48,5 +47,10 @@ class ResultsController extends Controller
         return new Response ($this->get('data_to_geojson')->getGeoJson($this->getDoctrine()
             ->getRepository('AppBundle:Observation')->getObservationInfoWithMailleByBird($id)));
                 ->createView()]);
+    }
+
+    public function getBirdsResultsAction($birdId)
+    {
+
     }
 }
