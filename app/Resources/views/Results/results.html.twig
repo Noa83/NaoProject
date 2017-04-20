@@ -26,11 +26,11 @@
                                 {{ form_row(form.birdId, {'label': 'Nom de l\'espèce :'}) }}
                             </div>
                         </div>
-                        <div>
-                            <button class="btn btn_form" type="submit">Envoyer</button>
+                            <div>
+                                <button class="btn btn_form" type="submit">Envoyer</button>
+                            </div>
                         </div>
-                    </div>
-                    {{ form_end(form) }}
+                        {{ form_end(form) }}
                         </div>
                     </div>
                 <div>
@@ -52,7 +52,11 @@
                 </div>
                     </div>
                 </div>
-                <div id="map" class="col-sm-7"></div>
+                <div class="col-sm-6 pull-left">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div id="map" class="col-sm-6 pull-right"></div>
+                    </div>
+                </div>
             </div>
 
             <div class="colonne_carte col-md-6 col-xs-12">
