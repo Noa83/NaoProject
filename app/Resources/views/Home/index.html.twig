@@ -15,17 +15,17 @@
     <div class="container-fluid" id="global_home_bg">
         <div>
             <div class="container-fluid" id="calls_to_action_bar">
-                <div class="col-xs-4" id="call_observer">
+                <div class="col-sm-4" id="call_observer">
                     <h2>Observation</h2>
                     <p>Devenez acteur de la biodiversité. Partagez vos observations.</p>
                     <a class="btn btn_form call" href="{{ path('observation') }}">Observer</a>
                 </div>
-                <div class="col-xs-4" id="call_consultation">
+                <div class="col-sm-4" id="call_consultation">
                     <h2>Consultation</h2>
                     <p>Consultez les observations de tous les contributeurs enregistrés.</p>
                     <a class="btn btn_form-orange call" href="{{ path('results') }}">Consulter</a>
                 </div>
-                <div class="col-xs-4" id="call_blog">
+                <div class="col-sm-4" id="call_blog">
                     <h2>Blog</h2>
                     <p>Suivez l'actualité et les conseils de Nos Amis les Oiseaux.<br></p>
                     <a class="btn btn_form call" href="{{ path('blog') }}">Blog</a>
@@ -33,8 +33,8 @@
             </div>
         </div>
         <div class="container-fluid global_bottom_part">
-            <div class="col-xs-5" id="information_bar">
-                <div class="col-xs-12" id="informations">
+            <div class="col-sm-5" id="information_bar">
+                <div class="col-sm-12" id="informations">
                     <h1 class="information_group_title">Nos amis les oiseaux : partager vos observations d'oiseaux</h1>
                     <h2 class="information_group_title">Qui sommes-nous?</h2><br>
                     <p>Nos amis les oiseaux est une association regroupant des passionnés d'ornithologie. Elle compte, à
@@ -48,7 +48,7 @@
                         souhaitons
                         recueuillir vos observations à travers ce site participatif.</p>
                 </div>
-                <div class="col-xs-12" id="newsletter">
+                <div class="col-sm-12" id="newsletter">
                     <h2 class="information_group_title">Newsletter</h2><br>
                     <p>Pour recevoir nos informations, abonnez-vous à notre newsletter</p>
                     <div id="mc_embed_signup">
@@ -80,14 +80,14 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xs-7" id="last_articles">
-                <div class="col-xs-12 last_articles">
-                    <div class="col-xs-12">
+            <div class="col-sm-7" id="last_articles">
+                <div class="col-sm-12 last_articles">
+                    <div class="col-sm-12">
                         {#<h2 class="titre label label-default">Les derniers articles du Blog</h2>#}
                         <h2 class="titre">Les derniers articles du Blog</h2>
                     </div>
                     {% for article in articlesTotal %}
-                        <div class="col-xs-12 content_article">
+                        <div class="col-sm-12 content_article">
                             <div class="col-md-3 col-xs-4" id="img_btn"><br>
                             <img src="{{ asset(article.imageUrl) }}" alt="{{ article.title }}" class="col-xs-2 img-rounded">
                                 {#-------------------------------------------------------------#}
