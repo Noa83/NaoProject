@@ -9,9 +9,44 @@
 {% endblock %}
 
 {% block body %}
-<div class="container-fluid" id="adminDash_bg">
-    <h1>Tableau de Bord Admin</h1>
 
-    <img id="travaux" alt="travaux" src="{{ asset('images/travaux.jpg') }}">
-</div>
+    <div class="container-fluid" id="adminDash_bg">
+        <h1 class="text-center">Dashboard Admin</h1>
+
+        {% for flashMessage in app.session.flashbag.get('success') %}
+            <div class="alert alert-success">
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                <ul class="nav nav-tabs nav-justified">
+                    <li><a href="{{ path('admin_user') }}">Gestion des utilisateurs</a></li>
+                    <li><a href="{{ path('admin_article') }}">Creation/Modification articles</a></li>
+                    <li><a href="{{ path('admin_rapport') }}">Rapports d'observation</a></li>
+                </ul>
+            </div>
+        </div>
+
+        {% for type, flash_messages in app.session.flashBag.all %}
+            {% for flash_message in flash_messages %}
+                <div class="flash-{{ type }}">
+                    {{ flash_message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+        {% block adminContent %}
+        {% endblock %}
+    </div>
+
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/locales/bootstrap-datepicker.fr.min.js"></script>
+    <script src="{{ asset('js/account.js') }}"></script>
+
 {% endblock %}

@@ -22,14 +22,6 @@ class User implements UserInterface, \Serializable
     private $id;
 
     /**
-     * @param mixed $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    /**
      * @ORM\Column(type="string", length=255, unique=true)
      */
     private $username;
@@ -49,6 +41,25 @@ class User implements UserInterface, \Serializable
      *
      */
     private $roles;
+
+    /**
+     * @ORM\Column(type="string", length=255, unique=false, nullable = true)
+     *
+     */
+    private $prenom;
+
+    /**
+     * @ORM\Column(type="date", nullable = true)
+     *
+     */
+    private $dateNaissance;
+
+    /**
+     * @ORM\Column(type="string", length=255, unique=false, nullable = true)
+     *
+     */
+    private $ville;
+
 
     function __construct() {
         $this->setRoles(array('ROLE_USER'));
@@ -194,5 +205,77 @@ class User implements UserInterface, \Serializable
 
     public function eraseCredentials() {
 
+    }
+
+    /**
+     * Set prenom
+     *
+     * @param string $prenom
+     *
+     * @return User
+     */
+    public function setPrenom($prenom)
+    {
+        $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    /**
+     * Get prenom
+     *
+     * @return string
+     */
+    public function getPrenom()
+    {
+        return $this->prenom;
+    }
+
+    /**
+     * Set dateNaissance
+     *
+     * @param string $dateNaissance
+     *
+     * @return User
+     */
+    public function setDateNaissance($dateNaissance)
+    {
+        $this->dateNaissance = $dateNaissance;
+
+        return $this;
+    }
+
+    /**
+     * Get dateNaissance
+     *
+     * @return string
+     */
+    public function getDateNaissance()
+    {
+        return $this->dateNaissance;
+    }
+
+    /**
+     * Set ville
+     *
+     * @param string $ville
+     *
+     * @return User
+     */
+    public function setVille($ville)
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    /**
+     * Get ville
+     *
+     * @return string
+     */
+    public function getVille()
+    {
+        return $this->ville;
     }
 }
