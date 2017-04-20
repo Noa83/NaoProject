@@ -42,6 +42,7 @@
             <script type="text/javascript">
 
                 var map;
+//                var geojson =  ;
                 function initMap() {
                     map = new google.maps.Map(document.getElementById('map'), {
                         center: {lat: 46.227588, lng: 2.214329},
@@ -49,10 +50,8 @@
                         mapTypeId: 'terrain'
                     });
 
-//                    map.data.loadGeoJson('https://raw.githubusercontent.com/Noa83/Activit-_Git/master/essaiJson2.json');
-//                    function eqfeed_callback(response) {
-                        map.data.addGeoJson(data.json);
-//                    }
+                    map.data.loadGeoJson('{{ path('consultation'), {'id':resultsModel.bird} }}');
+
                     map.data.setStyle({
                         fillColor: 'green',
                         strokeWeight: 1,

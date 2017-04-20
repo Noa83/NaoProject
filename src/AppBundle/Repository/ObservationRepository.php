@@ -67,6 +67,7 @@ class ObservationRepository extends \Doctrine\ORM\EntityRepository
             'type' => 'FeatureCollection',
             'features' => $feature
         );
-            return new JsonResponse($geojson);
+
+        return $geojson;
     }
 }
