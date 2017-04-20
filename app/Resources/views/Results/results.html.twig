@@ -31,6 +31,10 @@
                             </div>
                         </div>
                         {{ form_end(form) }}
+                    {% endif %}
+                    {% if results is defined %}
+                        <a class="btn btn-form" href="{{ path('results') }}">Effectuer une nouvelle consultation</a>
+                    {% endif %}
                         </div>
                     </div>
                     <div class="row">
@@ -50,7 +54,6 @@
 
             <script type="text/javascript">
                 var map;
-//                var geojson =  ;
                 function initMap() {
                     map = new google.maps.Map(document.getElementById('empty_map'), {
                         center: {lat: 46.227588, lng: 2.214329},
