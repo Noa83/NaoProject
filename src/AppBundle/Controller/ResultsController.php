@@ -57,7 +57,6 @@ class ResultsController extends Controller
      */
     public function getBirdsResultsAction($id)
     {
-        $result = $this->getDoctrine()->getRepository('AppBundle:Observation')->getMailleGeoJsonByBird($id);
-        return new JsonResponse($result);
+        return new JsonResponse($this->getDoctrine()->getRepository('AppBundle:Observation')->getMailleGeoJsonByBird($id));
     }
 }
