@@ -14,6 +14,9 @@ use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
 class CreateAccountController extends Controller
 {
+    /**
+     * @Route("/create-account", name="create_account")
+     */
     public function createAccountAction(Request $request) {
 
         if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {

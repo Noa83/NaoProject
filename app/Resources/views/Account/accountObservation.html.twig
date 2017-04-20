@@ -6,7 +6,7 @@
 
     <div class="tab-content col-md-10 col-md-offset-1">
         <h1 class="text-center">Mes observations.</h1>
-        {% if observations %} <!-- if observation -->
+        {% if observationsUser %} <!-- if observation -->
             <div class="table-responsive">
                 <table class="table table-hover table-condensed">
                     <thead>
@@ -18,7 +18,7 @@
                         <th>Actions</th>  <!-- Actions column -->
                     </tr>
                     </thead>
-                    {% for observation in observations %}
+                    {% for observation in observationsUser %}
                         <tr>
                             <td class="col-sm-3"><a class="articleTitle" href="#">{{ observation.bird.getNomValide() }}</td>
                             <td class="col-sm-5">{{ observation.comment }}

@@ -43,7 +43,7 @@ class User implements UserInterface, \Serializable
     private $roles;
 
     /**
-     * @ORM\Column(type="string", length=255, unique=false)
+     * @ORM\Column(type="string", length=255, unique=false, nullable = true)
      *
      */
     private $prenom;
@@ -55,7 +55,7 @@ class User implements UserInterface, \Serializable
     private $dateNaissance;
 
     /**
-     * @ORM\Column(type="string", length=255, unique=false)
+     * @ORM\Column(type="string", length=255, unique=false, nullable = true)
      *
      */
     private $ville;
@@ -63,9 +63,6 @@ class User implements UserInterface, \Serializable
 
     function __construct() {
         $this->setRoles(array('ROLE_USER'));
-        $this->prenom = "";
-        $this->dateNaissance = null;
-        $this->ville = "";
     }
 
 

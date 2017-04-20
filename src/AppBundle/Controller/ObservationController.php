@@ -8,10 +8,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Form\Type\ObservationType;
 use AppBundle\Model\ObservationModel;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 
 class ObservationController extends Controller
 {
+    /**
+     * @Route("/observation", name="observation")
+     */
     public function observationAction(Request $request)
     {
         //Récup liste oiseaux.
@@ -37,6 +41,9 @@ class ObservationController extends Controller
                 ->createView()]);
     }
 
+    /**
+     * @Route("/observation/edit/{id}", name="observation_edit", requirements={"id": "\d+"})
+     */
     public function observationEditAction(Request $request, $id){
 
         $birds = $this->getDoctrine()->getRepository('AppBundle:Birds')->getBirdsList();
@@ -66,6 +73,9 @@ class ObservationController extends Controller
 
     }
 
+    /**
+     * @Route("/observation/remove/{id}", name="observation_remove", requirements={"id": "\d+"})
+     */
     public function observationRemoveAction(Observation $observation){
 
 
@@ -76,6 +86,9 @@ class ObservationController extends Controller
         return $this->redirectToRoute('account');
     }
 
+    /**
+     * @Route("/observation/validate/{id}", name="observation_validate", requirements={"id": "\d+"})
+     */
     public function observationValidAction(Observation $observation){
 
         $observation->setValidated(true);

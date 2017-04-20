@@ -6,20 +6,24 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\User;
 use AppBundle\Form\UserModelCompleteType;
 use AppBundle\Model\UserAccountModel;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 
 class AccountObservationController extends Controller
 {
+    /**
+     * @Route("/account/observation", name="account_observation")
+     */
     public function observationAction(Request $request)
     {
         $user = $this->get('security.token_storage')->getToken()->getUser();
 
-        $observations = $this->getDoctrine()->getRepository('AppBundle:Observation')->findBy(array('user' => $user->getId()));
+        $observationsUser = $this->getDoctrine()->getRepository('AppBundle:Observation')->findBy(array('user' => $user->getId()));
 
         return $this->render('Account/accountObservation.html.twig', array(
-            'observations' => $observations));
+            'observationsUser' => $observationsUser));
     }
 
 }

@@ -7,12 +7,17 @@ use AppBundle\Entity\User;
 use AppBundle\Form\UserAdminDashboardType;
 use AppBundle\Form\UserSearchType;
 use AppBundle\Model\UserAccountModel;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 
 class AdminGestionUserController extends Controller
 {
+
+    /**
+     * @Route("/admin/user", name="admin_user")
+     */
     public function adminGestionUserAction(Request $request)
     {
 

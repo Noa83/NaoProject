@@ -6,7 +6,7 @@
 
     <div class="tab-content col-md-10 col-md-offset-1">
         <h1 class="text-center">Validation des observations.</h1>
-        {% if obsModerer %} <!-- if observation -->
+        {% if observationAModerer %} <!-- if observation -->
             <div class="table-responsive">
                 <table class="table table-hover table-condensed">
                     <thead>
@@ -17,7 +17,7 @@
                         <th>Actions</th>  <!-- Actions column -->
                     </tr>
                     </thead>
-                    {% for obs in obsModerer %}
+                    {% for obs in observationAModerer %}
                         <tr>
                             <td class="col-sm-4"><a class="articleTitle" href="#">{{ obs.bird.getNomValide() }}</td>
                             <td class="col-sm-5">{{ obs.comment }}
