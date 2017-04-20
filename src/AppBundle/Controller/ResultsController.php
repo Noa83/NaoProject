@@ -35,6 +35,7 @@ public function resultsAction(Request $request)
 
             dump($listResults);
             //dump($listResults2);
+            //return $listResults;
         }
 
 
