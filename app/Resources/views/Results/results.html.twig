@@ -13,30 +13,34 @@
         <br>
         <div>
             <div class="row">
-                <div class="col-sm-5"><h1>Consulter les données</h1>
-                    <p>contenu recherche</p>
-                    {{ form_start(form) }}
-                    <div class="row">
-                        <div class="col-md-12">
-                            {{ form_row(form.bird, {'label': 'Nom de l\'espèce :'}) }}
+                <h1 class="text-center">Consulter les données</h1>
+                <div class="col-sm-6 pull-left">
+                    <div class="col-md-10 col-md-offset-1">
+                        <p>contenu recherche</p>
+                        {{ form_start(form) }}
+                        <div class="row">
+                            <div class="col-md-12">
+                                {{ form_row(form.bird, {'label': 'Nom de l\'espèce :'}) }}
+                            </div>
                         </div>
-                    </div>
-                    <div class="row" id="btn_valid">
-                        <div>
-                            <button class="btn btn_form" type="submit">Envoyer</button>
+                        <div class="row" id="btn_valid">
+                            <div>
+                                <button class="btn btn_form" type="submit">Envoyer</button>
+                            </div>
                         </div>
+                        {{ form_end(form) }}
                     </div>
-                    {{ form_end(form) }}
                 </div>
-
                 <div>
                     {#{% if observation.image is not null %}#}
                     {#<img src="{{ observation.image.url }}" alt="{{ observation.image.alt }}">#}
                     {#{% endif %}#}
                 </div>
-
-
-                <div id="map" class="col-sm-7"></div>
+                <div class="col-sm-6 pull-left">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div id="map" class="col-sm-6 pull-right"></div>
+                    </div>
+                </div>
             </div>
 
             <script type="text/javascript">
