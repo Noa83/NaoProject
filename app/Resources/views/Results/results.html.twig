@@ -31,12 +31,12 @@
                             </div>
                         </div>
                         {{ form_end(form) }}
+                    {% endif %}
+                    {% if results is defined %}
+                        <a class="btn btn-form" href="{{ path('results') }}">Effectuer une nouvelle consultation</a>
+                    {% endif %}
                         </div>
                     </div>
-                <div>
-                    {#{% if observation.image is not null %}#}
-                    {#<img src="{{ observation.image.url }}" alt="{{ observation.image.alt }}">#}
-                    {#{% endif %}#}
                         {{ form_end(form) }}
                     {% endif %}
                         {% if birdChoisi is defined %}
@@ -51,7 +51,6 @@
                     {{ form_end(form) }}
                 </div>
                     </div>
-                </div>
                 <div class="col-sm-6 pull-left">
                     <div class="col-md-10 col-md-offset-1">
                         <div id="map" class="col-sm-6 pull-right"></div>
@@ -65,7 +64,6 @@
 
             <script type="text/javascript">
                 var map;
-//                var geojson =  ;
                 function initMap() {
                     map = new google.maps.Map(document.getElementById('empty_map'), {
                         center: {lat: 46.227588, lng: 2.214329},
