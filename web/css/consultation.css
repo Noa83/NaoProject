@@ -4,3 +4,8 @@
     width: 700px;
     margin-bottom: 30px;
 }
+
+div#info-box
+{
+    z-index: 1;
+}
