@@ -1,15 +1,18 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Bruno
- * Date: 20/04/2017
- * Time: 15:32
- */
 
 namespace AppBundle\Controller;
 
 
-class RechercheController
-{
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
+class RechercheController extends Controller
+{
+    /**
+     *@Route("/resultat", name="resultat")
+     */
+    public function resultatAction()
+    {
+        return $this->render('Recherche/resultatRecherche.html.twig');
+    }
 }

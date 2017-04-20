@@ -1,3 +1,7 @@
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
 home_page:
     path:    /{page}
     defaults:
@@ -16,18 +20,6 @@ results:
     defaults:
         _controller: AppBundle:Results:results
 
-blog:
-    resource: '@AppBundle/Controller/BlogController.php'
-    type:     annotation
-
-contact:
-    resource: '@AppBundle/Controller/ContactController.php'
-    type:     annotation
-
-
-legal_notice:
-    resource: '@AppBundle/Controller/LegalController.php'
-    type:     annotation
 
 
 join:

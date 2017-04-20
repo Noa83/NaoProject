@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheet_enfant %}
+    <link rel="stylesheet" href="{{ asset('css/recherche.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-lg-offset-3 well">
+                <h1>Résultats:</h1><br>
+                <p><strong>Fiche: </strong><a href="#" class="lien">Martin pêcheur</a></p>
+                <p><strong>Fiche: </strong><a href="#">Martin pêcheur</a></p>
+                <p><strong>Fiche: </strong><a href="#">Martin pêcheur</a></p>
+                <p><strong>Fiche: </strong><a href="#">Martin pêcheur</a></p>
+                <p><strong>Article: </strong><a href="#">Martin pêcheur</a></p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
