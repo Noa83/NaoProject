@@ -31,6 +31,7 @@ class ResultsController extends Controller
 
             dump($listResults);
             //dump($listResults2);
+            //return $listResults;
         }
 
 
