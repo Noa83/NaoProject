@@ -119,13 +119,12 @@
                 });
 
                 map.data.loadGeoJson('{{ path('bird', {'id':birdChoisi.id}) }}');
-
+//                    function eqfeed_callback(response) {
                 map.data.setStyle({
                     fillColor: '#FE9A04',
                     fillOpacity: 0.5,
                     strokeWeight: 0
                 });
-
                 map.data.addListener('mouseover', function (event) {
                     map.data.revertStyle();
                     map.data.overrideStyle(event.feature, {strokeWeight: 2, strokeOpacity: 0.5});

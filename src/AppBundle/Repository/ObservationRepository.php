@@ -4,6 +4,8 @@ namespace AppBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * ObservationRepository
@@ -50,8 +52,23 @@ class ObservationRepository extends EntityRepository
         }
         return $results;
     }
-        dump($jsonResult);
 
-        return $results;
+        //Transfo en géoJson
+        $feature = [];
+        foreach ($results as $row) {
+            $temp = array(
+                'type' => 'Feature',
+                'properties' => array(
+                    'name' => $row['nomMaille']
+                ),
+                'geometry' => json_decode($row['geometry'])
+            );
+            array_push($feature, $temp);
+        }
+        $geojson = array(
+            'type' => 'FeatureCollection',
+            'features' => $feature
+        );
+            return new JsonResponse($geojson);
     }
 }
