@@ -18,7 +18,7 @@
                         <h1>{{ article.title}}</h1>
                         <p class="ecrit">Posté par <a href="#">Nos amis les oiseaux</a> le {{ article.date|date('d-m-Y') }} a {{ article.date|date('H:i:s') }} | {{ article.category.name }}</p>
 
-                        <img src="{{ asset('images/' ~ article.picture.url) }}" alt="{{ article.picture.alt }}" class="imageArticle">
+                        <img src="{{ asset('images/articlesImages/' ~ article.picture.url) }}" alt="{{ article.picture.alt }}" class="imageArticle">
 
                         <br><br>
 
