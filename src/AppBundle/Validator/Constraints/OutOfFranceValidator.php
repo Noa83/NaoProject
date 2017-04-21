@@ -21,10 +21,11 @@ class OutOfFranceValidator extends ConstraintValidator
          * @var ObservationModel $value
          */
         $latlong = $value->getLongLat();
-        $maille = $this->manager->getRepository('AppBundle:Km10')
+        try{
+        $this->manager->getRepository('AppBundle:Km10')
             ->getMailleNativeSql($latlong);
-
-        if (empty($maille))
+        }
+        catch(\Exception $e)
         {
             $this->context->buildViolation($constraint->message)
                 ->atPath('long')

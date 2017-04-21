@@ -31,7 +31,7 @@
                         </div>
                         {{ form_end(form) }}
                         {% endif %}
-                        {% if results is defined %}
+                        {% if birdChoisi is defined %}
                             <a class="btn btn-form" href="{{ path('results') }}">Effectuer une nouvelle consultation</a>
                         {% endif %}
                     </div>
@@ -68,8 +68,8 @@
                         zoom: 6,
                         mapTypeId: 'terrain'
                     });
-                    {% if results is defined %}
-                    map.data.loadGeoJson('{{ path('bird', {'id':results.bird}) }}');
+                    {% if birdChoisi is defined %}
+                    map.data.loadGeoJson('{{ path('bird', {'id':birdChoisi.id}) }}');
 
                     map.data.setStyle({
                         fillColor: '#FE9A04',
