@@ -26,7 +26,7 @@ class ResultsController extends Controller
            return $this->redirectToRoute('results_list', ['birdId' => $resultsModel->birdId]);
             $birdChoisi = $this->getDoctrine()->getRepository('AppBundle:Birds')->find($resultsModel->bird);
 
-                'birdChoisi' => $birdChoisi,
+                'birdChoisi' => $birdChoisi
         }
         return $this->render('Results/results.html.twig', [
             'birds' => $birds,
@@ -49,4 +49,6 @@ class ResultsController extends Controller
     {
         return new JsonResponse($this->getDoctrine()->getRepository('AppBundle:Observation')->getMailleGeoJsonByBird($id));
     }
+
+
 }

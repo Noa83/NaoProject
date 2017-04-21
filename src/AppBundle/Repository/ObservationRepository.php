@@ -52,6 +52,8 @@ class ObservationRepository extends EntityRepository
         return $results;
     }
 
+
+        //mettre dans un service
         //Transfo en géoJson
         $feature = [];
         foreach ($results as $row) {
@@ -70,5 +72,15 @@ class ObservationRepository extends EntityRepository
         );
 
         return $geojson;
+    }
+
+    public function getNbBirdsByMailleForChoicedBird($birdId)
+    {
+
+    }
+
+    public function getOneMailleGeoJsonByBird($birdId)
+    {
+
     }
 }
