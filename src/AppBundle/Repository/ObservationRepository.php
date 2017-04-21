@@ -1,12 +1,6 @@
 <?php
-
 namespace AppBundle\Repository;
-
 use Doctrine\ORM\EntityRepository;
-
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\JsonResponse;
-
 /**
  * ObservationRepository
  *
@@ -26,32 +20,7 @@ class ObservationRepository extends EntityRepository
             ->getQuery()
             ->getResult();
         return $list;
-
-    public function getOneMailleGeoJsonByBird($birdId, $observationId)
-    {
-        $list = $this->createQueryBuilder('o')
-            ->where('o.bird = :birdId')
-            ->setParameter('birdId', $birdId)
-            ->andWhere('o.id = :observationId')
-            ->setParameter('observationId', $observationId)
-//            ->andWhere('o.validated = true')
-            ->leftJoin('o.km10Maille', 'km')
-            ->addSelect('km')
-            ->getQuery()
-            ->getResult();
-        return $list;
     }
-
-
-
-    public function find10ByBird($bird){
-        $results = $this->findBy(array("bird" => $bird), array('id' => 'DESC','date' => 'DESC'));
-        if (empty($results)){
-            throw new \Exception();
-        }
-    }
-    }
-
     public function getOneMailleGeoJsonByBird($birdId, $observationId)
     {
         $list = $this->createQueryBuilder('o')
@@ -65,9 +34,7 @@ class ObservationRepository extends EntityRepository
             ->getResult();
         return $list;
     }
-
     public function find10ByBird($birdId){
-
         $results = $this->createQueryBuilder('o')
             ->where('o.bird = :birdId')
             ->setParameter('birdId', $birdId)
@@ -76,24 +43,9 @@ class ObservationRepository extends EntityRepository
             ->setMaxResults(10)
             ->getQuery()
             ->getResult();
-
         if (empty($results)){
             throw new \Exception();
         }
-            $temp = array(
-                'type' => 'Feature',
-                'properties' => array(
-                    'name' => $row['nomMaille']
-                ),
-                'geometry' => json_decode($row['geometry'])
-            );
-            array_push($feature, $temp);
-        }
-        $geojson = array(
-            'type' => 'FeatureCollection',
-            'features' => $feature
-        );
-
-        return $geojson;
+        return $results;
     }
 }

@@ -13,94 +13,31 @@
     <div class="container-fluid" id="consultation_bg">
         <br>
         <div class="col-md-12">
-            <h1 class="text-center">Consulter les donnÃ©es</h1>
+            <h1 class="text-center">Consulter les données</h1>
             <div class="colonne_recherches col-md-6 col-xs-12">
                 <div class="col-md-12" id="bg_infos_consult">
                     <div class="col-md-12" id="opal_bg_consult">
                         <h3 class="text-center">Choisissez l'oiseau pour lequel vous souhaitez obtenir des
-                            informations et visualisez les zones gÃ©ographiques dans lesquelles il a Ã©tÃ© observÃ©
+                            informations et visualisez les zones géographiques dans lesquelles il a été observé
                             sur la carte.</h3>
                         {{ form_start(form) }}
                         <div class="row">
                             <div class="col-md-12">
-                                {{ form_row(form.birdId, {'label': 'Nom de l\'espÃ¨ce :'}) }}
+                                {{ form_row(form.birdId, {'label': 'Nom de l\'espèce :'}) }}
                             </div>
-                            </div>
+                        </div>
+                    </div>
                     <div class="row">
                         <div id="btn_valid">
                             <button class="btn btn_form" type="submit">Envoyer</button>
                         </div>
-                                    <button class="btn btn_form" type="submit">Envoyer</button>
-                                </div>
-                    {% endif %}
-                    {% if results is defined %}
-                        <a class="btn btn-form" href="{{ path('results') }}">Effectuer une nouvelle consultation</a>
-                    {% endif %}
-                        </div>
-                        {{ form_end(form) }}
-                        <div>
-                            <h3 class="text-center">Information sur l'oiseau :</h3><br/>
-                            {% if birdChoisi is defined %}
-                                <p>Regne de l'oiseau : {{ birdChoisi.regne }}</p>
-                                <p>Phylum de l'oiseau : {{ birdChoisi.phylum }}</p>
-                                <p>Classe de l'oiseau : {{ birdChoisi.classe }}</p>
-                                <p>Ordre de l'oiseau : {{ birdChoisi.ordre }}</p>
-                                <p>Famille de l'oiseau : {{ birdChoisi.famille }}</p>
-                                <p>Nom Complet de l'oiseau : {{ birdChoisi.nomComplet }}</p>
-                                <p>Nom Valide de l'oiseau : {{ birdChoisi.nomValide }}</p>
-                                <p>Nom Vern de l'oiseau : {{ birdChoisi.nomVern }}</p>
-                            {% endif %}
-                        </div>
-                    </div>
                     </div>
                     {{ form_end(form) }}
-                <div class="col-sm-6 pull-left">
-            </div>
-                        <div id="map" class="col-sm-6 pull-right"></div>
-            <div class="colonne_carte col-md-6 col-xs-12">
-                            </div>
-                            {{ form_end(form) }}
-                        </div>
-                        <div class="col-md-12">
-                            <div>
-                                <button class="btn btn_form" type="submit">Envoyer</button>
-                            </div>
-                        </div>
-                        {{ form_end(form) }}
-                    {% endif %}
-                        {% if birdChoisi is defined %}
-                        <a class="btn btn-form" href="{{ path('results') }}">Effectuer une nouvelle consultation</a>
-                    {% endif %}
-                    </div>
-                            <div>
-                                {% if observationsBird is not empty %}
-                                    <h3 class="text-center">Observations sur l'oiseau :{% if birdChoisi %}
-                                            {{ birdChoisi.nomValide }}{% endif %}</h3><br/>
-                                {% endif %}
-                                {% if observationsBird is not empty %} <!-- if observation -->
-                                    <div class="table-responsive">
-                                        <table class="table table-hover table-condensed">
-                                            <thead>
-                                            <tr>
-                                                <th>Observation</th>
-                                                <th>Date d'observation</th>
-                                            </tr>
-                                            </thead>
-                                            {% for observation in observationsBird|slice(0, 10) %}
-                                                <tr>
-                                                    <td class="col-sm-8"><a class="articleTitle" href="{{ path('fiche_bird_obs',
-                                                        {'id': observation.bird.id, 'idObs': observation.id}) }}">{{ observation.comment | truncate(125) }}</td>
-                                                    <td class="col-sm-4 text-center">{{ observation.date | date("d/m/Y") }}</td>
-                                                </tr>
-                                            {% endfor %}
-                                        </table>
-                                    </div>
-                                {% endif %}
-                            </div>
-                        </div>
                 </div>
             </div>
-            </div>
+
+            <div class="colonne_carte col-md-6 col-xs-12">
+                <div id="empty_map" class="col-md-12"></div>
             </div>
 
             <script type="text/javascript">
@@ -111,36 +48,11 @@
                         zoom: 6,
                         mapTypeId: 'terrain'
                     });
-                {% endif %}
-                {% if birdChoisi is not empty %}
-                map = new google.maps.Map(document.getElementById('map'), {
-                    center: {lat: 46.227588, lng: 2.214329},
-                    zoom: 6,
-                    mapTypeId: 'terrain'
-                });
-                map.data.addListener('mouseover', function (event) {
-                    map.data.revertStyle();
-                    map.data.overrideStyle(event.feature, {strokeWeight: 2, strokeOpacity: 0.5});
-                });
-                        strokeWeight: 0
-                    });
-
-                    map.data.addListener('mouseover', function(event) {
-                        map.data.revertStyle();
-                        map.data.overrideStyle(event.feature, {strokeWeight: 2, strokeOpacity: 0.5});
-                    });
-
-                    map.data.addListener('mouseover', function(event) {
-                        document.getElementById('info-box').textContent =
-                            event.feature.getProperty('name');
-                });
-                    {% endif %}
                 }
             </script>
             <script async defer
                     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHtk1Q7isnHjGK7ApFU2_V5--RdvqVUks&callback=initMap">
             </script>
-
         </div>
     </div>
 
