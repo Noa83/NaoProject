@@ -84,7 +84,7 @@ header#nao_header
     background-color: #4862a3;
     border: none;
 }
-.navbar-brand > img {
+img#logo_nao {
     height: 80px;
     width: auto;
     margin-left: 10px;
@@ -270,7 +270,7 @@ div#opal_bg
         background-position: -1000px;
         background-size: initial;
     }
-    .navbar-brand > img {
+    img#logo_nao {
         display: none;
     }
 
