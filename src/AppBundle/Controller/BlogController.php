@@ -75,7 +75,9 @@ class BlogController extends Controller
 
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid())
         {
+
             $this->handleImage($article);
+            $article->setDate(new \DateTime);
             $em = $this->getDoctrine()->getManager();
             $em->persist($article);
             $em->flush();

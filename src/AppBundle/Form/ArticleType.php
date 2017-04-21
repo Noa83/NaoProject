@@ -25,7 +25,6 @@ class ArticleType extends AbstractType
         $builder
             ->add('title', TextType::class)
             ->add('text', TextareaType::class)
-            ->add('date', DateTimeType::class)
             ->add('picture', PictureType::class)
             ->add('category', EntityType::class, array(
                 'class'        => 'AppBundle:Category',

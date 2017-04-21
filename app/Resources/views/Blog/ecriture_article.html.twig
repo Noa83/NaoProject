@@ -2,21 +2,6 @@
 
 {% block stylesheet_enfant %}
     <link rel="stylesheet" href="{{ asset('css/ecriture_article.css') }}">
-    <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=kk0rqsx4ustkjlm70ut883a5hetalz9s5uitpohirak9393x"></script>
-    <script>
-        tinymce.init({
-            selector: 'textarea',
-            height: 500,
-            menubar: false,
-            plugins: [
-                'advlist autolink lists link image charmap print preview anchor',
-                'searchreplace visualblocks code fullscreen',
-                'insertdatetime media table contextmenu paste code'
-            ],
-            toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
-            content_css: '//www.tinymce.com/css/codepen.min.css'
-        });
-    </script>
 {% endblock %}
 
 {% block body %}
@@ -41,11 +26,6 @@
                         {{ form_errors(form.title) }}
                     </div>
 
-                    <div class="form-group">
-                        <label for="date">Date</label>
-                        {{ form_widget(form.date)}}
-                        {{ form_errors(form.date) }}
-                    </div>
 
                     <div class="form-group">
                         <label for="category">Categorie</label>
@@ -56,7 +36,7 @@
                     <div class="form-group">
                         <label for="picture">Image</label>
                         {{ form_widget(form.picture)}}
-                        {{ form_errors(form.picture) }}
+                        {{ form_errors(form.picture)}}
                     </div>
 
                     <div class="form-group">
@@ -72,17 +52,29 @@
                 {{ form_end(form) }}
             </div>
         </div>
-
-        <!--<form method="post">
-            <textarea id="mytextarea">Hello, World!</textarea>
-        </form>-->
     </div>
 {% endblock %}
 
 {% block JS %}
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=kk0rqsx4ustkjlm70ut883a5hetalz9s5uitpohirak9393x"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            height: 500,
+            menubar: false,
+            plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table contextmenu paste code'
+            ],
+            toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+            content_css: '//www.tinymce.com/css/codepen.min.css'
+        });
+    </script>
     <script>
         $(function(){
             $('#appbundle_article_text').removeAttr("required");
+            $('.control-label').hide();
         });
     </script>
 {% endblock %}
