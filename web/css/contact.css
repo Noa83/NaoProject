@@ -18,14 +18,12 @@ p{  color: white; }
 
 
 /* Background */
-div.container-fluid#contact_bg
-{
+.content-body {
     width: auto;
     height: auto;
     background: url("../images/fond_contact.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-    margin-top: 110px;
 }
 
 

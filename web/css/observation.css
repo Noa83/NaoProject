@@ -1,12 +1,16 @@
-
 textarea#observation_observationMsg.form-control
 {
     height:100px;
 }
 
-/* Background */
-div.container-fluid#observation_bg
+.row#btn_valid
 {
+    display: flex;
+    justify-content: center;
+}
+
+/* Background */
+.content-body {
     width: auto;
     height: 670px;
     background: url("../images/fond_observation.jpg");
@@ -14,5 +18,4 @@ div.container-fluid#observation_bg
     background-repeat: no-repeat;
     padding-top: 20px;
     padding-bottom: 20px;
-    margin-top: 110px;
 }

@@ -4,9 +4,17 @@ parameters:
     #parameter_name: value
 
 services:
-    observation.recording:
-        class: AppBundle\Services\ObservationRecording
-        arguments: ["@doctrine.orm.entity_manager", %birds_images%]
+    observation_manager:
+        class: AppBundle\Services\ObservationManager
+        arguments: ["@doctrine.orm.entity_manager"]
+
+    observation_assembleur:
+            class: AppBundle\Services\ObservationAssembleur
+            arguments: ["@doctrine.orm.entity_manager"]
+
+    image_manager:
+        class: AppBundle\Services\ImageManager
+        arguments: [ %birds_images%]
 
     mail:
         class: AppBundle\Services\ContactService

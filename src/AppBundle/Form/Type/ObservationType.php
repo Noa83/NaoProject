@@ -26,7 +26,8 @@ class ObservationType extends AbstractType
         $builder
             ->add('date', DateType::class)
             ->add('bird', ChoiceType::class, [
-                'choices' => $options['birdList']
+                'choices' => $options['birdList'],
+                'data' => $options['selectedBirdId']
             ])
             ->add('lat', NumberType::class,[
                 'scale' => 6,
@@ -45,7 +46,8 @@ class ObservationType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => 'AppBundle\Model\ObservationModel',
-            'birdList' => null
+            'birdList' => null,
+            'selectedBirdId' => null
         ]);
     }
 }

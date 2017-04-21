@@ -4,13 +4,17 @@ namespace AppBundle\Controller;
 
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+
 
 class HomeController extends Controller
 {
     const NBRE_PAR_PAGE = 3;
 
-
-    public function indexAction($page)
+    /**
+    * @Route("/{page}", name="home_page", requirements={"page": "\d+"})
+    */
+    public function indexAction($page = 1)
     {
         //On récupère l'objet Paginator
         $articles = $this->getDoctrine()->getManager()->getRepository('AppBundle:Article')->findAllArticles($page, self::NBRE_PAR_PAGE);

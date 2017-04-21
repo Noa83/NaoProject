@@ -95,6 +95,7 @@ header#nao_header
     border-left: none;
     border-right: none;
     margin-bottom: 0;
+    z-index: 1;
 }
 .navbar-default .navbar-nav > li > a {
     color: #288B90;
@@ -149,33 +150,37 @@ a.btn.pull-right.btn-sm.faceb:hover
 {
     color: white;
 }
-#btn-form
+.btn.btn_form
 {
-    color: white;
-    background-color: #288B90;
-    border: none;
+    color: #288B90;
+    background-color: rgba(255, 255, 255, 0.5);
     margin-right: 15px;
     margin-bottom: 15px;
+    width: 150px;
 }
-#btn-form:hover
+.btn.btn_form:hover
 {
-    transition: width 1s linear, background-color 1s linear;
-    background: #289490;
-    color: white;
+    transition: width 1s linear;
+    border: solid 2px #288B90;
+    color: #288B90;
+    margin-bottom: 13px;
+    width: 175px;
 }
-#btn-form-orange
+.btn_form-orange
 {
-    color: white;
-    background-color: #FE9A04;
-    border: none;
+    color:#FE9A04;
+    background-color: rgba(255, 255, 255, 0.5);
     margin-right: 15px;
     margin-bottom: 15px;
+    width: 150px;
 }
-#btn-form-orange:hover
+.btn_form-orange:hover
 {
-    transition: width 1s linear, background-color 1s linear;
-    background: #FFB604;
-    color: white;
+    transition: width 1s linear;
+    border: solid 2px #FE9A04;
+    color: #FE9A04;
+    margin-bottom: 13px;
+    width: 175px;
 }
 /* Formulaires */
 label
@@ -198,16 +203,19 @@ h1.sous-titre, h2.sous-titre
 footer.row.footer
 {
     margin-right: 0;
+    text-align: center;
 }
 .breadcrumb {
     background-color: white;
+    margin-bottom: 0;
 }
 .breadcrumb>li>a
 {
     color: #7d736a;
 }
-ol{
-    margin-left: 20px;
+img#europe_img
+{
+    height: 30px;
 }
 
 /* Erreurs */
@@ -270,11 +278,48 @@ div#opal_bg
 @media (max-width: 770px) {
     #top_button_bar_xs {
         margin-bottom: 5px;
-        margin-top: 5px;
+        margin-top: 10px;
         display: block;
+        position: fixed;
+        z-index: 2;
+    }
+    a.btn.pull-right.btn-sm.faceb
+    {
+        margin-left: 10px;
     }
     #top_button_bar
     {
         display:none;
     }
+
+    ul.nav.navbar-nav.navbar-right
+    {
+        padding-left: 15px;
+    }
+    div.form-group
+    {
+        padding-left: 10px;
+    }
+    form.navbar-form.navbar-right
+    {
+        text-align: center;
+    }
+}
+
+/* TEST */
+html, body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.content-body {
+    min-height: 83vh;
+    margin-top: 110px;
+}
+
+footer {
+    position: absolute;
+    right: 0;
+    left: 0;
 }

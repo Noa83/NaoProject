@@ -3,6 +3,7 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
@@ -11,7 +12,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
 
-class UserModelType extends AbstractType
+class UserModelCompleteType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -23,19 +24,26 @@ class UserModelType extends AbstractType
             ->add('plainPassword',  RepeatedType::class, array(
                 'type' => PasswordType::class,
                 'first_options'  => array('label' => 'Mot de passe'),
-                'second_options' => array('label' => 'Répétez le mot de passe'),
+                'second_options' => array('label' => 'Mot de passe répété'),
                 'required' => true
-                ));
+                ))
+            ->add('prenom',         TextType::class, array(
+                'required' => false))
+            ->add('dateNaissance',  DateType::class, array(
+                'widget'    =>  'single_text',
+                'format'    =>  'yyyy-MM-dd',
+                'attr'      =>  array(
+                    'class' =>  'date'),
+                'required' => false))
+            ->add('ville',          TextType::class, array(
+                'required' => false))
+        ;
 
     }
-    
-    /**
-     * {@inheritdoc}
-     */
-    public function configureOptions(OptionsResolver $resolver)
+
+    public function getParent()
     {
-        $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Model\UserRegistrationModel'
-        ));
+        return UserModelType::class;
     }
+
 }

@@ -1,0 +1,50 @@
+{% extends 'Account/account.html.twig' %}
+
+
+{% block accountContent %}
+
+
+    <div class="tab-content col-md-10 col-md-offset-1">
+        <div class="tab-pane fade in active adminTable" id="profil">
+            <h2>Modification du profil</h2>
+            {{ form_start(formProfil) }}
+            <div class="row">
+                <div class="col-md-6">
+                    {{ form_row(formProfil.username, {'label': 'Pseudo :'}) }}
+                </div>
+                <div class="col-md-6">
+                    {{ form_row(formProfil.email, {'label': 'Email :'}) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    {{ form_row(formProfil.plainPassword.first, {'label': 'Votre mot de passe :'}) }}
+                </div>
+                <div class="col-md-6">
+                    {{ form_row(formProfil.plainPassword.second, {'label': 'Retapez votre mot de passe :'}) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    {{ form_row(formProfil.prenom, {'label': '*Votre prénom:'}) }}
+                </div>
+                <div class="col-md-6">
+                    {{ form_row(formProfil.ville, {'label': '*Votre ville :'}) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    {{ form_row(formProfil.dateNaissance, {'label': '*Votre date de naissance :'}) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <button class="btn" type="submit">Sauvegarder</button>
+                </div>
+            </div>
+            {{ form_end(formProfil) }}
+        </div>
+    </div>
+
+
+{% endblock %}

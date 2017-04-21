@@ -1,0 +1,51 @@
+{% extends 'AdminAccount/adminDashboard.html.twig' %}
+
+{% block adminContent %}
+
+    <div class="tab-content col-md-10 col-md-offset-1">
+        <p class="text-center">Gestion des utilisateurs</p>
+
+        <div class="col-md-8 col-md-offset-2">
+            {{ form_start(formSearch) }}
+            {{ form_row(formSearch.username, {'label': 'Pseudo :'}) }}
+            <button class="btn" type="submit">Rechercher</button>
+            {{ form_end(formSearch) }}
+            <br/><br/>
+
+            <table class="table">
+                <tr>
+                    <th>Pseudo</th>
+                    <th>Prenom</th>
+                    <th>Date de naissance</th>
+                    <th>Email</th>
+                    <th>Ville</th>
+                    <th>Role</th>
+                    <th>Suppression</th>
+                </tr>
+
+                {% if formEditUser %}
+                {{ form_start(formEditUser) }}
+                <tr>
+                    <td>{{ form_widget(formEditUser.username) }}</td>
+                    <td>{{ form_widget(formEditUser.prenom) }}</td>
+                    <td>{{ form_widget(formEditUser.dateNaissance) }}</td>
+                    <td>{{ form_widget(formEditUser.email) }}</td>
+                    <td>{{ form_widget(formEditUser.ville) }}</td>
+                    <td>{{ form_widget(formEditUser.role) }}</td>
+                    <td>
+                        <a href="#">X</a>
+                    </td>
+                    {% else %}
+                        Aucune données
+                    {% endif %}
+            </table>
+            <button class="btn" type="submit">Sauvegarder</button>
+            {{ form_end(formEditUser) }}
+
+            {% if formEditUser == null %}
+                Le pseudo recherché n'a pas été trouvé.
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}
