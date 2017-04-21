@@ -30,10 +30,13 @@ class ResultsController extends Controller
         //validation du choix
         if ($request->isMethod('POST') && $resultsForm->handleRequest($request)->isValid()) {
             $birdChoisi = $this->getDoctrine()->getRepository('AppBundle:Birds')->find($resultsModel->bird);
-            $birdChoisi = $this->getDoctrine()->getRepository('AppBundle:Birds')->find($resultsModel->bird);
 
-                'birdChoisi' => $birdChoisi,
-    }
+            return $this->render('Results/results.html.twig', [
+                'birds' => $birds,
+                'birdChoisi' => $birdChoisi
+
+                    ]);
+        }
 
     /**
      * @Route("/bird/{id}", name="bird", requirements={"id": "\d+"})
@@ -59,4 +62,6 @@ class ResultsController extends Controller
     {
         return new JsonResponse($this->getDoctrine()->getRepository('AppBundle:Observation')->getMailleGeoJsonByBird($id));
     }
+
+
 }
