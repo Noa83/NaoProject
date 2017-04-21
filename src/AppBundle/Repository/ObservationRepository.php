@@ -51,6 +51,8 @@ class ObservationRepository extends EntityRepository
 
 
 
+        //refaire pour que ça renvoie entite km10
+
         $results = $query->getResult();
 
 
