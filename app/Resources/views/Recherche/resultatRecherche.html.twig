@@ -5,15 +5,24 @@
 {% endblock %}
 
 {% block body %}
-    <div class="container">
+    <div class="container-fluid" id="contact_bg">
         <div class="row">
             <div class="col-lg-6 col-lg-offset-3 well">
                 <h1>Résultats:</h1><br>
-                <p><strong>Fiche: </strong><a href="#" class="lien">Martin pêcheur</a></p>
-                <p><strong>Fiche: </strong><a href="#">Martin pêcheur</a></p>
-                <p><strong>Fiche: </strong><a href="#">Martin pêcheur</a></p>
-                <p><strong>Fiche: </strong><a href="#">Martin pêcheur</a></p>
-                <p><strong>Article: </strong><a href="#">Martin pêcheur</a></p>
+                {% if nom.nomVern is defined %}
+                    <p><strong>Fiche: </strong><a href="#">{{ nom.nomVern }}</a></p><!-- route:  path(fiche, id : nom.id) -->
+                {% elseif  nom.title is defined %}
+                    <p><strong>Article: </strong><a href="#">{{ nom.title }}</a></p><!-- route:  path(fiche, id : nom.id) -->
+                {% else %}
+                    {% for resultat in tab %}
+                        {% if resultat.nomVern is defined %}
+                            <p><strong>Fiche: </strong><a href="#">{{ resultat.nomVern }}</a></p><!-- route:  path(fiche, id : nom.id) -->
+                        {% else %}
+                            <p><strong>Article: </strong><a href="#">{{ resultat.title }}</a></p><!-- route:  path(fiche, id : nom.id) -->
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+
             </div>
         </div>
     </div>

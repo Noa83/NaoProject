@@ -79,13 +79,17 @@
                         </ul>
                     </li>
                     <li>
-                        <form class="navbar-form navbar-right">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Rechercher">
-                            </div>
-                            <button type="submit" id="btn_search" class="btn"><span class="glyphicon glyphicon-search"
-                                                                                    aria-hidden="true"></span></button>
-                        </form>
+                        {{ form_start(form, {'attr': {'class': 'navbar-form navbar-right'}}) }}
+                        {{ form_errors(form) }}
+
+                        <div class="form-group">
+                            {{ form_widget(form.recherche, {'attr': {'class': 'form-control', 'placeholder': 'Recherche'}})}}
+                            {{ form_errors(form.recherche) }}
+                        </div>
+                        <button type="submit" id="btn_search" class="btn"><span class="glyphicon glyphicon-search"
+                                                                                aria-hidden="true"></span></button>
+                        {{ form_rest(form) }}
+                        {{ form_end(form) }}
                     </li>
                 </ul>
             </div>
@@ -113,6 +117,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="{{ asset('js/recherche.js')}}"></script>
     {% block JS %} {% endblock %}
 {% endblock %}
 </body>

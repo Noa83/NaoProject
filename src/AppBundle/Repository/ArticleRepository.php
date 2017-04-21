@@ -32,4 +32,22 @@ class ArticleRepository extends \Doctrine\ORM\EntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function findArticle($term)
+    {
+        $qb = $this->createQueryBuilder('a');
+        $qb ->select('a.id, a.title')
+            ->where('a.title LIKE :term')
+            ->setParameter('term', '%'.$term.'%');
+
+        $arrayAss= $qb->getQuery()->getArrayResult();
+
+        // Transformer le tableau associatif en un tableau standard
+        $array = array();
+        foreach($arrayAss as $data)
+        {
+            $array[] = array("title"=>$data['title']);
+        }
+        return $array;
+    }
 }
