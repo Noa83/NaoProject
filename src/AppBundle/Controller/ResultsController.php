@@ -36,8 +36,8 @@ public function resultsAction(Request $request)
 
             return $this->render('Results/results.html.twig', [
                 'birds' => $birds,
-                'birdChoisi' => $birdChoisi,
-                'results' => $resultsModel
+                'birdChoisi' => $birdChoisi
+
                     ]);
         }
 
@@ -52,7 +52,8 @@ public function resultsAction(Request $request)
      */
     public function getBirdsResultsAction($id)
     {
-        $result = $this->getDoctrine()->getRepository('AppBundle:Observation')->getMailleGeoJsonByBird($id);
-        return new JsonResponse($result);
+        return new JsonResponse($this->getDoctrine()->getRepository('AppBundle:Observation')->getMailleGeoJsonByBird($id));
     }
+
+
 }
