@@ -19,6 +19,8 @@ class AdminGestionArticleController extends Controller
      */
     public function adminGestionArticleAction()
     {
-        return $this->render('AdminAccount/adminGestionArticle.html.twig');
+        $articles = $this->getDoctrine()->getRepository('AppBundle:Article')->findAll();
+
+        return $this->render('AdminAccount/adminGestionArticle.html.twig', array('articles' => $articles));
     }
 }
