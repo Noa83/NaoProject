@@ -21,7 +21,7 @@
                         le {{ article.date|date('d-m-Y') }} a {{ article.date|date('H:i:s') }}
                         | {{ article.category.name }}</p>
 
-                    <img src="{{ asset(article.picture.url) }}" alt="{{ article.picture.alt }}" class="imageArticle">
+                    <img src="{{ asset('images/articlesImages/' ~ article.picture.url) }}" alt="{{ article.picture.alt }}" class="imageArticle">
                     <br><br>
                     {% autoescape %}
                         <p>{{ article.text|raw }}</p>
