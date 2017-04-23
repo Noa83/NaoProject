@@ -38,7 +38,7 @@ class BirdsRepository extends \Doctrine\ORM\EntityRepository
         return $arrayList;
     }
 
-    public function findBirds($term) //mettre limit en CONSTANT
+    public function findBirds($term) //mettre un limit en CONSTANT
     {
 
         $qb = $this->createQueryBuilder('b');
