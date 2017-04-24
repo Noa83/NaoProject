@@ -8,7 +8,6 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Picture;
 use AppBundle\Form\ArticleType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -88,11 +87,12 @@ class ArticleController extends Controller
      */
     public function articleRemoveAction(Article $article){
 
+        $webPath = $this->webRoot = realpath($this->get('kernel')->getRootDir() . '/../web');
+        unlink($webPath."/".$article->getImageUrl());
+
         $em = $this->getDoctrine()->getManager();
         $em->remove($article);
         $em->flush();
-
-
 
         return $this->redirectToRoute('admin_article');
     }
