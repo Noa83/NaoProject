@@ -37,4 +37,3 @@ class Km10Repository extends \Doctrine\ORM\EntityRepository
             ->getResult();
     }
 }
-

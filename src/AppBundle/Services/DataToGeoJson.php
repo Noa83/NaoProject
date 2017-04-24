@@ -1,8 +1,5 @@
 <?php
-
 namespace AppBundle\Services;
-
-
 class DataToGeoJson
 {
     /**
@@ -21,17 +18,14 @@ class DataToGeoJson
         }
         return $strings;
     }
-
-
     public function getGeoJson($observationList)
     {
-        //Transfo en gÃ©oJson
+        //Transfo en géoJson
         $feature = [];
         foreach ($observationList as $Observation) {
             $points = [];
             $geo = $this->toArrayMultiPoint($Observation->getKm10Maille()->getPolygon()->getRings()[0]->getPoints());
             array_push($points, $geo);
-
             $temp = array(
                 'type' => 'Feature',
                 'properties' => array(
