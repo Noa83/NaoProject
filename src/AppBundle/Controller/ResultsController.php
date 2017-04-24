@@ -32,6 +32,8 @@ public function resultsAction(Request $request)
         if ($request->isMethod('POST') && $resultsForm->handleRequest($request)->isValid()){
             dump($resultsModel);
 
+            $try = $this->getBirdsResultsAction(40);
+            dump($try);
             $birdChoisi = $this->getDoctrine()->getRepository('AppBundle:Birds')->find($resultsModel->bird);
 
 
