@@ -94,8 +94,6 @@ class ArticleController extends Controller
         $em->remove($article);
         $em->flush();
 
-
-
         return $this->redirectToRoute('admin_article');
     }
 
