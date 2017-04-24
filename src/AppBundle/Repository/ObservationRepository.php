@@ -53,25 +53,6 @@ class ObservationRepository extends EntityRepository
     }
 
 
-        //mettre dans un service
-        //Transfo en géoJson
-        $feature = [];
-        foreach ($results as $row) {
-            $temp = array(
-                'type' => 'Feature',
-                'properties' => array(
-                    'name' => $row['nomMaille']
-                ),
-                'geometry' => json_decode($row['geometry'])
-            );
-            array_push($feature, $temp);
-        }
-        $geojson = array(
-            'type' => 'FeatureCollection',
-            'features' => $feature
-        );
-
-        return $geojson;
     }
 
     public function getNbBirdsByMailleForChoicedBird($birdId)
