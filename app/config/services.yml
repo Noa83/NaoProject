@@ -32,6 +32,8 @@ services:
              - "@doctrine.orm.entity_manager"
          tags:
             - {name: validator.constraint_validator}
-         class: AppBundle\Services\UserService
-         arguments: ["@doctrine.orm.entity_manager","@security.password_encoder"]
 
+    data_to_geojson:
+        class: AppBundle\Services\DataToGeoJson
+        arguments:
+                     - "@doctrine.orm.entity_manager"
