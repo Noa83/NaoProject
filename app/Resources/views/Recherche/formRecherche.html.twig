@@ -1,0 +1,13 @@
+<li>
+    {{ form_start(form, {'attr': {'class': 'navbar-form navbar-right'}, 'action': path('resultat')}) }}
+    {{ form_errors(form) }}
+
+    <div class="form-group">
+        {{ form_widget(form.recherche, {'attr': {'class': 'form-control', 'placeholder': 'Recherche'}})}}
+        {{ form_errors(form.recherche) }}
+    </div>
+    <button type="submit" id="btn_search" class="btn"><span class="glyphicon glyphicon-search"
+                                                            aria-hidden="true"></span></button>
+    {{ form_rest(form) }}
+    {{ form_end(form) }}
+</li>

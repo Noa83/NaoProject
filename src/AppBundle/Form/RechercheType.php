@@ -15,7 +15,6 @@ class RechercheType extends AbstractType
     {
         $builder
             ->add('recherche', TextType::class);
-        //->add('ok', SubmitType::class);
     }
 
     /**
