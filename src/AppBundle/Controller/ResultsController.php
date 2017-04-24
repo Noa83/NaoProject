@@ -29,6 +29,8 @@ class ResultsController extends Controller
 
         //validation du choix
         if ($request->isMethod('POST') && $resultsForm->handleRequest($request)->isValid()) {
+            $try = $this->getBirdsResultsAction(40);
+            dump($try);
             $birdChoisi = $this->getDoctrine()->getRepository('AppBundle:Birds')->find($resultsModel->bird);
 
 

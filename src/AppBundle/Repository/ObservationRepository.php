@@ -43,6 +43,9 @@ class ObservationRepository extends EntityRepository
             ->getResult();
         return $list;
     }
+//        $query = $this->_em->createNativeQuery("SELECT k.nom_maille, st_asgeojson(k.polygon) as geojson FROM observation o,
+// km10 k WHERE o.bird_id = :birdId AND o.km10maille_id = k.id", $rsm)
+//            ->setParameter('birdId',$birdId);
 
 //              ->setParameter('birdId',$birdId);
 
@@ -58,25 +61,6 @@ class ObservationRepository extends EntityRepository
     }
 
 
-        //mettre dans un service
-        //Transfo en géoJson
-        $feature = [];
-        foreach ($results as $row) {
-            $temp = array(
-                'type' => 'Feature',
-                'properties' => array(
-                    'name' => $row['nomMaille']
-                ),
-                'geometry' => json_decode($row['geometry'])
-            );
-            array_push($feature, $temp);
-        }
-        $geojson = array(
-            'type' => 'FeatureCollection',
-            'features' => $feature
-        );
-
-        return $geojson;
     }
 
     public function getNbBirdsByMailleForChoicedBird($birdId)
