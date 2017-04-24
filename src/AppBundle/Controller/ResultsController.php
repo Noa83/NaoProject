@@ -41,6 +41,10 @@ public function resultsAction(Request $request)
                 'birdChoisi' => $birdChoisi
 
                     ]);
+        return $this->render('Results/results.html.twig', [
+            'birds' => $birds,
+            'form' => $resultsForm
+                ->createView()]);
         }
 
 
