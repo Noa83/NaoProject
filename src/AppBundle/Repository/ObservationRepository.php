@@ -33,7 +33,6 @@ class ObservationRepository extends EntityRepository
             ->getQuery()
             ->getResult();
         return $list;
-
     }
     public function find10ByBird($birdId){
         $results = $this->createQueryBuilder('o')
