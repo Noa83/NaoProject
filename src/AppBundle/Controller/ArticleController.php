@@ -54,14 +54,33 @@ class ArticleController extends Controller
 
     private function handleImage(Article $article)
     {
-        $image   = new Picture();
-        $recuperationImage = $article->getPicture();
-        $file = $recuperationImage->getUrl();
+        $file = $article->getImageUrl();
         $filename = md5(uniqid()).'.'.$file->guessExtension();
         $file->move($this->getParameter('pictures_directory'),$filename);
-        $image->setUrl($filename);
-        $image->setAlt($article->getTitle());
-        $article->setPicture($image);
+        $fileUrl = 'images/articlesImages/' . $filename;
+        $article->setImageUrl($fileUrl);
+
+    }
+
+    /**
+     * @Route("/article/edit/{id}", name="article_edit", requirements={"id": "\d+"})
+     */
+    public function articleEditAction(Request $request, $id){
+
+        $article = $this->getDoctrine()->getRepository('AppBundle:Article')->findOneBy(array('id' => $id));
+        $form = $this->get('form.factory')->create(ArticleType::class, $article);
+
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid())
+        {
+
+            $this->handleImage($article);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($article);
+            $em->flush();
+            return $this->redirectToRoute('admin_article');
+        }
+        return $this->render('Blog/article_edit.html.twig', array('form' => $form->createView()));
+
     }
 
     /**
@@ -72,6 +91,8 @@ class ArticleController extends Controller
         $em = $this->getDoctrine()->getManager();
         $em->remove($article);
         $em->flush();
+
+
 
         return $this->redirectToRoute('admin_article');
     }

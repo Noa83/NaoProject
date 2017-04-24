@@ -20,7 +20,7 @@
                             <td class="col-sm-7">{{ article.text | truncate(250) }}</td>
                             <td class="col-sm-1">{{ article.date | date("d/m/Y") }}</td>
                             <td class="col-sm-1">
-                                <a href="#" class="btn btn-info btn-xs" title="Edit"><span class="glyphicon glyphicon-edit"></span></a>
+                                <a href="{{ path('article_edit', {'id': article.id}) }}" class="btn btn-info btn-xs" title="Edit"><span class="glyphicon glyphicon-edit"></span></a>
                                 <button type="button" class="btn btn-danger btn-xs" title="Delete" data-toggle="modal" data-target="#articleDialog{{ article.id }}"><span class="glyphicon glyphicon-remove"></span>
                                 </button>
                                 <div class="modal fade" id="articleDialog{{ article.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -48,7 +48,7 @@
         {% else %}
             <div class="alert alert-warning">Aucun article trouvé.</div>
         {% endif %}
-        <a href="#"><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Ajouter un article</button></a>
+        <a href="{{ path('ecriture_article') }}"><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Ajouter un article</button></a>
     </div>
 
 {% endblock %}
