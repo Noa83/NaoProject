@@ -38,36 +38,43 @@ class ObservationRepository extends EntityRepository
         $rsm->addFieldResult('k', 'nom_maille', 'nomMaille');
         $rsm->addFieldResult('k', 'polygon', 'polygon');
 
-//        $rsm->addScalarResult('nom_maille', 'nomMaille');
-//        $rsm->addScalarResult('geojson', 'geometry');
-
         //Requete sans le validated true
-        $query = $this->_em->createNativeQuery("SELECT k.nom_maille, k.polygon, k.id FROM observation o,
+        $query = $this->_em->createNativeQuery("SELECT k.nom_maille, ST_AsText(k.polygon) as polygon, k.id FROM observation o,
  km10 k WHERE o.bird_id = :birdId AND o.km10maille_id = k.id", $rsm)
             ->setParameter('birdId',$birdId);
-//        $query = $this->_em->createNativeQuery("SELECT k.nom_maille, st_asgeojson(k.polygon) as geojson FROM observation o,
-// km10 k WHERE o.bird_id = :birdId AND o.km10maille_id = k.id", $rsm)
-//            ->setParameter('birdId',$birdId);
-
 
 
         //Requete avec le validated true
-//        $query = $this->_em->createNativeQuery("SELECT k.nom_maille, st_asgeojson(k.polygon) as geojson FROM observation o,
+//        $query = $this->_em->createNativeQuery("SELECT k.nom_maille, ST_AsText(k.polygon) as polygon FROM observation o,
 // km10 k WHERE o.bird_id = :birdId AND o.km10maille_id = k.id AND o.validated = true", $rsm)
 //              ->setParameter('birdId',$birdId);
 
-
-        //refaire pour que ça renvoie entite km10
-
         $results = $query->getResult();
-        dump($results);
-
-
+        return $results;
     }
 
     public function getNbBirdsByMailleForChoicedBird($birdId)
     {
+        $em = $this->getEntityManager();
+        $rsm = new ResultSetMapping($em);
 
+        $rsm->addEntityResult(Km10::class, 'k');
+        $rsm->addFieldResult('k', 'id', 'id');
+        $rsm->addFieldResult('k', 'nom_maille', 'nomMaille');
+        $rsm->addFieldResult('k', 'polygon', 'polygon');
+
+        //Requete sans le validated true
+        $query = $this->_em->createNativeQuery("SELECT k.nom_maille, ST_AsText(k.polygon) as polygon, k.id FROM observation o,
+ km10 k WHERE o.bird_id = :birdId AND o.km10maille_id = k.id", $rsm)
+            ->setParameter('birdId',$birdId);
+
+        //Requete avec le validated true
+//        $query = $this->_em->createNativeQuery("SELECT k.nom_maille, ST_AsText(k.polygon) as polygon FROM observation o,
+// km10 k WHERE o.bird_id = :birdId AND o.km10maille_id = k.id AND o.validated = true", $rsm)
+//              ->setParameter('birdId',$birdId);
+
+        $results = $query->getResult();
+        return $results;
     }
 
     public function getOneMailleGeoJsonByBird($birdId)

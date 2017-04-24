@@ -20,12 +20,13 @@ class Km10Repository extends \Doctrine\ORM\EntityRepository
         $rsm->addFieldResult('k', 'nom_maille', 'nomMaille');
         $rsm->addFieldResult('k', 'polygon', 'polygon');
 
-        $query = $this->_em->createNativeQuery('SELECT * FROM km10 AS k WHERE ST_Intersects(ST_GeomFromText(:point),
+        $query = $this->_em->createNativeQuery('SELECT k.nom_maille, ST_AsText(k.polygon) as polygon, k.id FROM km10 AS k WHERE ST_Intersects(ST_GeomFromText(:point),
             k.polygon)', $rsm)
         ->setParameter('point', $point)
         ;
 
         $results = $query->getResult();
+
         if (empty($results)){
             throw new \Exception();
         }
