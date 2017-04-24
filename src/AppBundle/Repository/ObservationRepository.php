@@ -33,13 +33,21 @@ class ObservationRepository extends EntityRepository
         $em = $this->getEntityManager();
         $rsm = new ResultSetMapping($em);
 
-        $rsm->addScalarResult('nom_maille', 'nomMaille');
-        $rsm->addScalarResult('geojson', 'geometry');
+        $rsm->addEntityResult(Km10::class, 'k');
+        $rsm->addFieldResult('k', 'id', 'id');
+        $rsm->addFieldResult('k', 'nom_maille', 'nomMaille');
+        $rsm->addFieldResult('k', 'polygon', 'polygon');
+
+//        $rsm->addScalarResult('nom_maille', 'nomMaille');
+//        $rsm->addScalarResult('geojson', 'geometry');
 
         //Requete sans le validated true
-        $query = $this->_em->createNativeQuery("SELECT k.nom_maille, st_asgeojson(k.polygon) as geojson FROM observation o,
+        $query = $this->_em->createNativeQuery("SELECT k.nom_maille, k.polygon, k.id FROM observation o,
  km10 k WHERE o.bird_id = :birdId AND o.km10maille_id = k.id", $rsm)
             ->setParameter('birdId',$birdId);
+//        $query = $this->_em->createNativeQuery("SELECT k.nom_maille, st_asgeojson(k.polygon) as geojson FROM observation o,
+// km10 k WHERE o.bird_id = :birdId AND o.km10maille_id = k.id", $rsm)
+//            ->setParameter('birdId',$birdId);
 
 
 
@@ -54,27 +62,9 @@ class ObservationRepository extends EntityRepository
         //refaire pour que ça renvoie entite km10
 
         $results = $query->getResult();
+        dump($results);
 
 
-        //mettre dans un service
-        //Transfo en géoJson
-        $feature = [];
-        foreach ($results as $row) {
-            $temp = array(
-                'type' => 'Feature',
-                'properties' => array(
-                    'name' => $row['nomMaille']
-                ),
-                'geometry' => json_decode($row['geometry'])
-            );
-            array_push($feature, $temp);
-        }
-        $geojson = array(
-            'type' => 'FeatureCollection',
-            'features' => $feature
-        );
-
-        return $geojson;
     }
 
     public function getNbBirdsByMailleForChoicedBird($birdId)
