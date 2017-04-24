@@ -31,15 +31,15 @@
                             </div>
                         </div>
                         {{ form_end(form) }}
-                    {% endif %}
-                        {% if birdChoisi is defined %}
-                        <a class="btn btn-form" href="{{ path('results') }}">Effectuer une nouvelle consultation</a>
-                    {% endif %}
+                    {#{% endif %}#}
+                        {#{% if birdChoisi is defined %}#}
+                        {#<a class="btn btn-form" href="{{ path('results') }}">Effectuer une nouvelle consultation</a>#}
+                    {#{% endif %}#}
                         </div>
                     <div class="col-md-10 col-md-offset-1">
                         <div>
                             <h3 class="text-center">Information sur l'oiseau :</h3><br/>
-                            {% if birdChoisi is defined %}
+                            {% if birdChoisi is not empty %}
                                 <p>Regne de l'oiseau : {{ birdChoisi.regne }}</p>
                                 <p>Phylum de l'oiseau : {{ birdChoisi.phylum }}</p>
                                 <p>Classe de l'oiseau : {{ birdChoisi.classe }}</p>
