@@ -46,7 +46,7 @@ class ArticleRepository extends \Doctrine\ORM\EntityRepository
         $array = array();
         foreach($arrayAss as $data)
         {
-            $array[] = array("title"=>$data['title']);
+            $array[] = array("title"=>$data['title'], "id" =>$data['id']);
         }
         return $array;
     }

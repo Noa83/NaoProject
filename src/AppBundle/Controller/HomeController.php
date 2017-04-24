@@ -13,8 +13,6 @@ class HomeController extends Controller
 
     public function indexAction($page, Request $request)
     {
-
-
         //On récupère l'objet Paginator
         $articles = $this->getDoctrine()->getManager()->getRepository('AppBundle:Article')->findAllArticles($page, self::NBRE_PAR_PAGE);
 

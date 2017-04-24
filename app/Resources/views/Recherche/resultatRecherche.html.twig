@@ -12,13 +12,13 @@
                 {% if nom.nomVern is defined %}
                     <p><strong>Fiche: </strong><a href="#">{{ nom.nomVern }}</a></p><!-- route:  path(fiche, id : nom.id) -->
                 {% elseif  nom.title is defined %}
-                    <p><strong>Article: </strong><a href="#">{{ nom.title }}</a></p><!-- route:  path(fiche, id : nom.id) -->
+                    <p><strong>Article: </strong><a href="{{ path('article', {'id': nom.id}) }}">{{ nom.title }}</a></p><!-- route:  path(fiche, id : nom.id) -->
                 {% else %}
                     {% for resultat in tab %}
                         {% if resultat.nomVern is defined %}
                             <p><strong>Fiche: </strong><a href="#">{{ resultat.nomVern }}</a></p><!-- route:  path(fiche, id : nom.id) -->
                         {% else %}
-                            <p><strong>Article: </strong><a href="#">{{ resultat.title }}</a></p><!-- route:  path(fiche, id : nom.id) -->
+                            <p><strong>Article: </strong><a href="{{ path('article', {'id': resultat.id}) }}">{{ resultat.title }}</a></p><!-- route:  path(fiche, id : nom.id) -->
                         {% endif %}
                     {% endfor %}
                 {% endif %}
