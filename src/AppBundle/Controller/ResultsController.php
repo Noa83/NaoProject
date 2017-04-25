@@ -34,6 +34,7 @@ class ResultsController extends Controller
 
             $mailleCountsForChoicedBirdList = $this->get('data_to_array_maille_nb_birds')->GetArrayMailleNameAndNumberOfBirds(
                 $this->getDoctrine()->getRepository('AppBundle:Km10')->getMaillesWithBird($resultsModel->bird));
+            dump($mailleCountsForChoicedBirdList);
     }
 
     /**
