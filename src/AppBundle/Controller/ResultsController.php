@@ -23,6 +23,7 @@ class ResultsController extends Controller
     public function resultsAction(Request $request)
     {
         $birdChoisi = '';
+        $observationsBird = null ;
 
         //liste de choix des oiseaux
         $birds = $this->getDoctrine()->getRepository('AppBundle:Birds')->getBirdsList();
@@ -35,11 +36,13 @@ class ResultsController extends Controller
         if ($request->isMethod('POST') && $resultsForm->handleRequest($request)->isValid()) {
 
             $birdChoisi = $this->getDoctrine()->getRepository('AppBundle:Birds')->find($resultsModel->bird);
+            $observationsBird = $this->getDoctrine()->getRepository('AppBundle:Observation')->findBy(array("bird" => $resultsModel->bird));
         }
 
         return $this->render('Results/results.html.twig', [
             'birds' => $birds,
             'birdChoisi' => $birdChoisi,
+            'observationsBird' => $observationsBird,
             'form' => $resultsForm
                 ->createView()]);
     }
