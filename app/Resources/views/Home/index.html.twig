@@ -89,7 +89,8 @@
                     {% for article in articlesTotal %}
                         <div class="col-sm-12 content_article">
                             <div class="col-md-3 col-xs-4" id="img_btn"><br>
-                            <img src="{{ asset(article.imageUrl) }}" alt="{{ article.title }}" class="col-xs-2 img-rounded">
+{#------A SUPPR LE IF QUAND LES ARTICLES AURONT UNE IMAGES-----#}
+                                <img src="{{ asset(article.picture.url) }}" alt="{{ article.picture.alt }}" class="col-xs-2 img-rounded">
                                 {#-------------------------------------------------------------#}
                                 <a href="{{ path('article', {'id': article.id}) }}"
                                    class="btn btn-default btn_more"
