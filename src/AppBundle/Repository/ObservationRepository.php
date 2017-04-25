@@ -11,19 +11,6 @@ use Doctrine\ORM\EntityRepository;
 class ObservationRepository extends EntityRepository
 {
     public function getObservationInfoWithMailleByBird($birdId)
-//    {
-//        $list = $this->createQueryBuilder('o')
-//            ->where('o.bird = :birdId')
-//            ->setParameter('birdId', $birdId)
-////            ->andWhere('o.validated = true')
-//            ->leftJoin('o.km10Maille', 'km')
-//            ->addSelect('km')
-////            ->addGroupBy('o.km10Maille')
-//            ->getQuery()
-//            ->getResult();
-//        return $list;
-//    }
-
     public function getObservationInfoWithMailleByBird($birdId)
     {
         $list = $this->createQueryBuilder('o')
@@ -60,18 +47,6 @@ class ObservationRepository extends EntityRepository
             throw new \Exception();
         }
     }
-    }
-
-    public function getNbBirdsByMailleForChoicedBird($birdId)
-    {
-        $list = $this->createQueryBuilder('o')
-            ->select('COUNT(DISTINCT o.km10Maille)')
-            ->where('o.bird = :birdId')
-            ->setParameter('birdId', $birdId)
-//            ->andWhere('o.validated = true')
-            ->getQuery()
-            ->getResult();
-        return $list;
     }
 
     public function getOneMailleGeoJsonByBird($birdId)
