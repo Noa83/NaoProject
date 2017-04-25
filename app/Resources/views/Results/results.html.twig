@@ -17,7 +17,7 @@
                 <div class="col-sm-6 pull-left">
                     <div class="col-md-10 col-md-offset-1">
                         <p>contenu recherche</p>
-                        {% if form is defined %}
+                    {#{% if form is defined %}#}
                         {{ form_start(form) }}
                         <div class="row">
                             <div class="col-md-12">
@@ -30,15 +30,15 @@
                             </div>
                         </div>
                         {{ form_end(form) }}
-                        {% endif %}
-                        {% if birdChoisi is defined %}
-                            <a class="btn btn-form" href="{{ path('results') }}">Effectuer une nouvelle consultation</a>
-                        {% endif %}
-                    </div>
+                    {#{% endif %}#}
+                        {#{% if birdChoisi is defined %}#}
+                        {#<a class="btn btn-form" href="{{ path('results') }}">Effectuer une nouvelle consultation</a>#}
+                    {#{% endif %}#}
+                        </div>
                     <div class="col-md-10 col-md-offset-1">
                         <div>
                             <h3 class="text-center">Information sur l'oiseau :</h3><br/>
-                            {% if birdChoisi is defined %}
+                            {% if birdChoisi is not empty %}
                                 <p>Regne de l'oiseau : {{ birdChoisi.regne }}</p>
                                 <p>Phylum de l'oiseau : {{ birdChoisi.phylum }}</p>
                                 <p>Classe de l'oiseau : {{ birdChoisi.classe }}</p>
@@ -50,7 +50,7 @@
                             {% endif %}
                         </div>
                     </div>
-                </div>
+                    </div>
                 <div class="col-sm-6 pull-left">
                     <div class="col-md-10 col-md-offset-1">
                         <div id="map" class="col-sm-6 pull-right"></div>
@@ -68,7 +68,7 @@
                         zoom: 6,
                         mapTypeId: 'terrain'
                     });
-                    {% if birdChoisi is defined %}
+                    {% if birdChoisi is not empty %}
                     map.data.loadGeoJson('{{ path('bird', {'id':birdChoisi.id}) }}');
 
                     map.data.setStyle({

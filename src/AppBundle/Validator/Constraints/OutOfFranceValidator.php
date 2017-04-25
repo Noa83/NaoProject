@@ -22,8 +22,8 @@ class OutOfFranceValidator extends ConstraintValidator
          */
         $latlong = $value->getLongLat();
         try{
-        $this->manager->getRepository('AppBundle:Km10')
-            ->getMailleNativeSql($latlong);
+           $this->manager->getRepository('AppBundle:Km10')
+                ->getMailleNativeSql($latlong);
         }
         catch(\Exception $e)
         {
