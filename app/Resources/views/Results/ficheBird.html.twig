@@ -99,6 +99,19 @@
                             </div>
                         {% endif %}
                     </div>
+                    {% if observation is defined %}
+                    <div class="col-md-10 col-md-offset-1">
+                        <div>
+                            <h3 class="text-center">Information sur l'observation :</h3><br/>
+                            <p>Commentaire : {{ observation.comment }}</p>
+                            <p>Date : {{ observation.date | date("d/m/Y") }}</p>
+                            <p>Maille : {{ observation.km10Maille.getNomMaille() }}</p>
+                            {% if observation.imageUrl %}
+                                <p>Image :{{ asset(observation.imageUrl) }} <img src="{{ asset(observation.imageUrl) }}" alt="{{ observation.bird.getNomVern() }}"></p>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endif %}
                 </div>
                 <div class="col-sm-6 map_placement">
                     <div class="col-md-10 col-md-offset-2">
