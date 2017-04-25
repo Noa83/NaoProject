@@ -35,5 +35,6 @@ services:
 
     data_to_geojson:
         class: AppBundle\Services\DataToGeoJson
-        arguments:
-                     - "@doctrine.orm.entity_manager"
+
+    data_to_array_maille_nb_birds:
+        class: AppBundle\Services\DataToArrayMailleNameAndNumberOfBirds
