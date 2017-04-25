@@ -1,14 +1,11 @@
 <?php
-
 namespace AppBundle\Services;
-
 class DataToArrayMailleNameAndNumberOfBirds
 {
     public function GetArrayMailleNameAndNumberOfBirds($Km10List)
     {
         $countList = [];
         $countNbObsTotale = 0;
-
         foreach ($Km10List as $Km10){
             $mailleAndCount = [];
             $compte = count($Km10->getObservations());
@@ -20,5 +17,4 @@ class DataToArrayMailleNameAndNumberOfBirds
         }
         return array($countList,$countNbObsTotale);
     }
-
 }

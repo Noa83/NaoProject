@@ -14,7 +14,6 @@ class ResultsController extends Controller
     public function resultsAction(Request $request)
     {
         $observationsBird = null ;
-        $observationsBird = null ;
         //liste de choix des oiseaux
         $birds = $this->getDoctrine()->getRepository('AppBundle:Birds')->getBirdsList();
         $resultsModel = new ResultsModel();
@@ -24,7 +23,7 @@ class ResultsController extends Controller
         $resultsForm->handleRequest($request);
         if ($request->isMethod('POST') && $resultsForm->isSubmitted() && $resultsForm->isValid()) {
            return $this->redirectToRoute('results_list', ['birdId' => $resultsModel->birdId]);
-            dump($list);
+                $this->getDoctrine()->getRepository('AppBundle:Km10')->getMaillesWithBird($resultsModel->bird));
         }
         return $this->render('Results/results.html.twig', [
             'birds' => $birds,
