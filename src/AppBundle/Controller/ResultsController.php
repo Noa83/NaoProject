@@ -23,6 +23,7 @@ class ResultsController extends Controller
     public function resultsAction(Request $request)
     {
         $birdChoisi = '';
+        $observationsBird = null ;
 
         //liste de choix des oiseaux
         $birds = $this->getDoctrine()->getRepository('AppBundle:Birds')->getBirdsList();
@@ -34,7 +35,7 @@ class ResultsController extends Controller
         //validation du choix
         if ($request->isMethod('POST') && $resultsForm->handleRequest($request)->isValid()) {
             $birdChoisi = $this->getDoctrine()->getRepository('AppBundle:Birds')->find($resultsModel->bird);
-
+            $observationsBird = $this->getDoctrine()->getRepository('AppBundle:Observation')->findBy(array("bird" => $resultsModel->bird));
         }
     /**
      * @Route("/bird/{id}", name="bird", requirements={"id": "\d+"})
