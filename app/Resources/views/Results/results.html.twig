@@ -43,6 +43,18 @@
                         </div>
                     </div>
                     {{ form_end(form) }}
+                                        </thead>
+                                        {% for observation in observationsBird %}
+                                            <tr>
+                                                <td class="col-sm-3"><a class="articleTitle" href="{{ path('fiche_bird', {'id': observation.bird.id}) }}">{{ observation.bird.getNomComplet() }}</td>
+                                                <td class="col-sm-8">{{ observation.comment | truncate(100) }}
+                                                <td class="col-sm-1">{{ observation.date | date("d/m/Y") }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                    </table>
+                                </div>
+                            {% else %}
+                                <div class="alert alert-warning">Aucune observation trouvée.</div>
                 </div>
                     </div>
                 </div>

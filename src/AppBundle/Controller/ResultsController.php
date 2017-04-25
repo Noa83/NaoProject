@@ -14,6 +14,7 @@ class ResultsController extends Controller
     public function resultsAction(Request $request)
     {
         $observationsBird = null ;
+        $observationsBird = null ;
         //liste de choix des oiseaux
         $birds = $this->getDoctrine()->getRepository('AppBundle:Birds')->getBirdsList();
         $resultsModel = new ResultsModel();
