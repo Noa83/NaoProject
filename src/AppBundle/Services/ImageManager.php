@@ -27,7 +27,7 @@ class ImageManager
         } else {
             $fileName = md5(uniqid()) . '.' . $file->guessExtension();
             $file->move($this->birdsImg, $fileName);
-            $fileUrl = 'images/birdsImages/' . $fileName;
+            $fileUrl = 'web/images/birdsImages/' . $fileName;
         }
 
        return $fileUrl;
