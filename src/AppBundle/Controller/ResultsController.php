@@ -19,7 +19,7 @@ class ResultsController extends Controller
     public function resultsAction(Request $request)
     {
         $birdChoisi = '';
-
+        $mailleCountsForChoicedBirdList= '';
         //liste de choix des oiseaux
         $birds = $this->getDoctrine()->getRepository('AppBundle:Birds')->getBirdsList();
 
@@ -32,13 +32,14 @@ class ResultsController extends Controller
 
             $birdChoisi = $this->getDoctrine()->getRepository('AppBundle:Birds')->find($resultsModel->bird);
 
-            $list = $this->getDoctrine()->getRepository('AppBundle:Observation')->getNbBirdsByMailleForChoicedBird($resultsModel->bird);
-            dump($list);
+            $mailleCountsForChoicedBirdList = $this->get('data_to_array_maille_nb_birds')->GetArrayMailleNameAndNumberOfBirds(
+                $this->getDoctrine()->getRepository('AppBundle:Km10')->getMaillesWithBird($resultsModel->bird));
         }
 
         return $this->render('Results/results.html.twig', [
             'birds' => $birds,
             'birdChoisi' => $birdChoisi,
+            'mailleCountForBird' => $mailleCountsForChoicedBirdList,
             'form' => $resultsForm
                 ->createView()]);
     }

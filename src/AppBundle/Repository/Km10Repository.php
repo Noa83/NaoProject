@@ -32,4 +32,16 @@ class Km10Repository extends \Doctrine\ORM\EntityRepository
         }
         return $results[0];
     }
+
+    public function getMaillesWithBird($birdId)
+    {
+        return $this->createQueryBuilder('k')
+            ->where('obs.bird = :birdId')
+            ->setParameter('birdId', $birdId)
+            ->leftJoin('k.observations', 'obs')
+            ->addSelect('obs')
+            ->getQuery()
+            ->getResult();
+
+    }
 }

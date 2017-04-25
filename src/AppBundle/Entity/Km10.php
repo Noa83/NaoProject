@@ -13,6 +13,11 @@ use Doctrine\ORM\Mapping as ORM;
 class Km10
 {
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Observation", mappedBy="km10Maille")
+     */
+    private $observations;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -34,6 +39,22 @@ class Km10
      * @ORM\Column(name="polygon", type="polygon")
      */
     private $polygon;
+
+    /**
+     * @return mixed
+     */
+    public function getObservations()
+    {
+        return $this->observations;
+    }
+
+    /**
+     * @param mixed $observations
+     */
+    public function setObservations($observations)
+    {
+        $this->observations = $observations;
+    }
 
     /**
      * @return int
