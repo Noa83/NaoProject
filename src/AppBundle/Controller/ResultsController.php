@@ -36,7 +36,7 @@ class ResultsController extends Controller
         if ($request->isMethod('POST') && $resultsForm->handleRequest($request)->isValid()) {
 
             $birdChoisi = $this->getDoctrine()->getRepository('AppBundle:Birds')->find($resultsModel->bird);
-            $observationsBird = $this->getDoctrine()->getRepository('AppBundle:Observation')->findBy(array("bird" => $resultsModel->bird));
+            $observationsBird = $this->getDoctrine()->getRepository('AppBundle:Observation')->find10ByBird($resultsModel->bird);
         }
 
         return $this->render('Results/results.html.twig', [

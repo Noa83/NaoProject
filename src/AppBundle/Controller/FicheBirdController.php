@@ -18,15 +18,29 @@ use Symfony\Component\HttpFoundation\Request;
 class FicheBirdController extends Controller
 {
     /**
-     * @Route("/bird/fiche/{id}", name="fiche_bird", requirements={"id" = "\d+"})
+     * @Route("/bird/fiche/{id}/{idObs}", name="fiche_bird_obs", requirements={"id" = "\d+", "idObs" = "\d+"})
      */
-    public function ficheAction($id)
+    public function ficheObsAction($id, $idObs)
+    {
+
+        $birdChoisi = $this->getDoctrine()->getRepository('AppBundle:Birds')->find($id);
+        $observation = $this->getDoctrine()->getRepository('AppBundle:Observation')->findOneBy(array('id'=>$idObs));
+
+        return $this->render('Results/ficheBird.html.twig', [
+            'birdChoisi' => $birdChoisi,
+            'observation' => $observation]);
+    }
+
+    /**
+     * @Route("/bird/fiche/{id}/", name="fiche_bird", requirements={"id" = "\d+"})
+     */
+    public function ficheBirdAction($id)
     {
 
         $birdChoisi = $this->getDoctrine()->getRepository('AppBundle:Birds')->find($id);
 
         return $this->render('Results/ficheBird.html.twig', [
-            'birdChoisi' => $birdChoisi ]);
+            'birdChoisi' => $birdChoisi]);
     }
 
     /**
