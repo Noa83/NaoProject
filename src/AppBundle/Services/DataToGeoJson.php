@@ -2,15 +2,9 @@
 
 namespace AppBundle\Services;
 
-use Doctrine\ORM\EntityManagerInterface;
 
 class DataToGeoJson
 {
-    public function __construct(EntityManagerInterface $manager)
-    {
-        $this->manager = $manager;
-    }
-
     /**
      * @param array[] $multipoint
      *
@@ -29,19 +23,19 @@ class DataToGeoJson
     }
 
 
-    public function getGeoJson($km10List)
+    public function getGeoJson($observationList)
     {
         //Transfo en géoJson
         $feature = [];
-        foreach ($km10List as $Km10) {
+        foreach ($observationList as $Observation) {
             $points = [];
-            $geo = $this->toArrayMultiPoint($Km10->getPolygon()->getRings()[0]->getPoints());
+            $geo = $this->toArrayMultiPoint($Observation->getKm10Maille()->getPolygon()->getRings()[0]->getPoints());
             array_push($points, $geo);
 
             $temp = array(
                 'type' => 'Feature',
                 'properties' => array(
-                    'name' => $Km10->getNomMaille()
+                    'name' => $Observation->getKm10Maille()->getNomMaille()
                 ),
                 'geometry' => [
                     'type' => 'Polygon',
