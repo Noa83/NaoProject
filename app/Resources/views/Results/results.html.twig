@@ -37,16 +37,28 @@
                         </div>
                     <div class="col-md-10 col-md-offset-1">
                         <div>
-                            <h3 class="text-center">Information sur l'oiseau :</h3><br/>
-                            {% if birdChoisi is not empty %}
-                                <p>Regne de l'oiseau : {{ birdChoisi.regne }}</p>
-                                <p>Phylum de l'oiseau : {{ birdChoisi.phylum }}</p>
-                                <p>Classe de l'oiseau : {{ birdChoisi.classe }}</p>
-                                <p>Ordre de l'oiseau : {{ birdChoisi.ordre }}</p>
-                                <p>Famille de l'oiseau : {{ birdChoisi.famille }}</p>
-                                <p>Nom Complet de l'oiseau : {{ birdChoisi.nomComplet }}</p>
-                                <p>Nom Valide de l'oiseau : {{ birdChoisi.nomValide }}</p>
-                                <p>Nom Vern de l'oiseau : {{ birdChoisi.nomVern }}</p>
+                            <h3 class="text-center">Observation sur l'oiseau :</h3><br/>
+                            {% if observationsBird %} <!-- if observation -->
+                                <div class="table-responsive">
+                                    <table class="table table-hover table-condensed">
+                                        <thead>
+                                        <tr>
+                                            <th>Nom de l'oiseau</th>
+                                            <th>Observation</th>
+                                            <th>Date d'observation</th>
+                                        </tr>
+                                        </thead>
+                                        {% for observation in observationsBird %}
+                                            <tr>
+                                                <td class="col-sm-3"><a class="articleTitle" href="{{ path('fiche_bird', {'id': observation.bird.id}) }}">{{ observation.bird.getNomComplet() }}</td>
+                                                <td class="col-sm-8">{{ observation.comment | truncate(100) }}
+                                                <td class="col-sm-1">{{ observation.date | date("d/m/Y") }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                    </table>
+                                </div>
+                            {% else %}
+                                <div class="alert alert-warning">Aucune observation trouvée.</div>
                             {% endif %}
                         </div>
                     </div>
