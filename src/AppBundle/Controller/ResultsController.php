@@ -14,6 +14,7 @@ class ResultsController extends Controller
     public function resultsAction(Request $request)
     {
         $observationsBird = null ;
+        $noResultsMessage='';
         //liste de choix des oiseaux
         $birds = $this->getDoctrine()->getRepository('AppBundle:Birds')->getBirdsList();
         $resultsModel = new ResultsModel();
@@ -42,7 +43,7 @@ class ResultsController extends Controller
     }
 
     /**
-     * @Route("/bird/{id}", name="bird", requirements={"id": "\d+"})
+     * @Route("/bird/json/{id}", name="bird", requirements={"id": "\d+"})
      */
     public function getBirdsResultsAction($id)
     {
