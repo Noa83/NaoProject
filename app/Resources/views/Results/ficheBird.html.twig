@@ -16,79 +16,99 @@
                 <h1 class="text-center">Consulter les données</h1>
                 <div class="col-sm-6">
                     <div class="col-sm-12" id="bg_infos_consult">
-                    <div class="col-md-12">
                         <div class="col-md-12">
-                            <h3 class="text-center">Fiche Espèce :</h3><br/>
-                            {% if birdChoisi is not empty %}
-                                <div class="englob_fiche">
-                                <p class="col-xs-5 label_oiseau">Regne de l'oiseau :</p><p class="col-xs-7"> {{ birdChoisi.regne }}</p>
-                                </div>
-                                <div class="englob_fiche">
-                                <p class="col-xs-5 label_oiseau">Phylum de l'oiseau :</p><p class="col-xs-7"> {{ birdChoisi.phylum }}</p>
-                                </div>
-                                <div class="englob_fiche">
-                                <p class="col-xs-5 label_oiseau">Classe de l'oiseau :</p><p class="col-xs-7"> {{ birdChoisi.classe }}</p>
-                                </div>
-                                <div class="englob_fiche">
-                                <p class="col-xs-5 label_oiseau">Ordre de l'oiseau :</p><p class="col-xs-7"> {{ birdChoisi.ordre }}</p>
-                                </div>
-                                <div class="englob_fiche">
-                                <p class="col-xs-5 label_oiseau">Famille de l'oiseau :</p><p class="col-xs-7"> {{ birdChoisi.famille }}</p>
-                                </div>
-                                <div class="englob_fiche">
-                                <p class="col-xs-5 label_oiseau">Nom Complet de l'oiseau :</p><p class="col-xs-7"> {{ birdChoisi.nomComplet }}</p>
-                                </div>
-                                <div class="englob_fiche">
-                                <p class="col-xs-5 label_oiseau">Nom Valide de l'oiseau :</p><p class="col-xs-7"> {{ birdChoisi.nomValide }}</p>
-                                </div>
-                                {% if birdChoisi.nomVern is not empty %}
+                            <div class="col-md-12">
+                                <h3 class="text-center">Fiche Espèce :</h3><br/>
+                                {% if birdChoisi is not empty %}
                                     <div class="englob_fiche">
-                                    <p class="col-xs-5 label_oiseau">Nom Vern de l'oiseau :</p><p class="col-xs-7"> {{ birdChoisi.nomVern }}</p>
+                                        <p class="col-xs-5 label_oiseau">Regne de l'oiseau :</p>
+                                        <p class="col-xs-7"> {{ birdChoisi.regne }}</p>
                                     </div>
+                                    <div class="englob_fiche">
+                                        <p class="col-xs-5 label_oiseau">Phylum de l'oiseau :</p>
+                                        <p class="col-xs-7"> {{ birdChoisi.phylum }}</p>
+                                    </div>
+                                    <div class="englob_fiche">
+                                        <p class="col-xs-5 label_oiseau">Classe de l'oiseau :</p>
+                                        <p class="col-xs-7"> {{ birdChoisi.classe }}</p>
+                                    </div>
+                                    <div class="englob_fiche">
+                                        <p class="col-xs-5 label_oiseau">Ordre de l'oiseau :</p>
+                                        <p class="col-xs-7"> {{ birdChoisi.ordre }}</p>
+                                    </div>
+                                    <div class="englob_fiche">
+                                        <p class="col-xs-5 label_oiseau">Famille de l'oiseau :</p>
+                                        <p class="col-xs-7"> {{ birdChoisi.famille }}</p>
+                                    </div>
+                                    <div class="englob_fiche">
+                                        <p class="col-xs-5 label_oiseau">Nom Complet de l'oiseau :</p>
+                                        <p class="col-xs-7"> {{ birdChoisi.nomComplet }}</p>
+                                    </div>
+                                    <div class="englob_fiche">
+                                        <p class="col-xs-5 label_oiseau">Nom Valide de l'oiseau :</p>
+                                        <p class="col-xs-7"> {{ birdChoisi.nomValide }}</p>
+                                    </div>
+                                    {% if birdChoisi.nomVern is not empty %}
+                                        <div class="englob_fiche">
+                                            <p class="col-xs-5 label_oiseau">Nom Vern de l'oiseau :</p>
+                                            <p class="col-xs-7"> {{ birdChoisi.nomVern }}</p>
+                                        </div>
                                     {% endif %}
-                            {% endif %}
+                                {% endif %}
+                            </div>
                         </div>
-                    </div>
-                    {% if observation is defined %}
-                    <div class="col-md-12">
-                        <div class="col-md-12">
-                            <h3 class="text-center">Information sur l'observation :</h3><br/>
-                            <div class="englob_fiche">
-                            <p class="col-xs-5 label_oiseau">Commentaire :</p><p class="col-xs-7"> {{ observation.comment }}</p>
-                            </div>
-                            <div class="englob_fiche">
-                            <p class="col-xs-5 label_oiseau">Date :</p><p class="col-xs-7"> {{ observation.date | date("d/m/Y") }}</p>
-                            </div>
-                            <div class="englob_fiche">
-                            <p class="col-xs-5 label_oiseau">Maille :</p><p class="col-xs-7"> {{ observation.km10Maille.getNomMaille() }}</p>
-                            </div>
-                            {% if observation.imageUrl %}
-                            <div class="englob_fiche">
-                                <p class="col-xs-5 label_oiseau">Image :</p><p class="col-xs-7"> <a id="modal-declenche">Cliquez ici</a></p>
-                            </div>
-                                <div class="modal fade" id="enlargeImageModal" tabindex="-1" role="dialog" aria-labelledby="enlargeImageModal" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <img src="{{ asset(observation.imageUrl) }}" class="enlargeImageModalSource" style="width: 100%;">
+                        {% if observation is defined %}
+                            <div class="col-md-12">
+                                <div class="col-md-12">
+                                    <h3 class="text-center">Information sur l'observation :</h3><br/>
+                                    <div class="englob_fiche">
+                                        <p class="col-xs-5 label_oiseau">Commentaire :</p>
+                                        <p class="col-xs-7"> {{ observation.comment }}</p>
+                                    </div>
+                                    <div class="englob_fiche">
+                                        <p class="col-xs-5 label_oiseau">Date :</p>
+                                        <p class="col-xs-7"> {{ observation.date | date("d/m/Y") }}</p>
+                                    </div>
+                                    <div class="englob_fiche">
+                                        <p class="col-xs-5 label_oiseau">Maille :</p>
+                                        <p class="col-xs-7"> {{ observation.km10Maille.getNomMaille() }}</p>
+                                    </div>
+                                    {% if observation.imageUrl %}
+                                        <div class="englob_fiche">
+                                            <p class="col-xs-5 label_oiseau">Image :</p>
+                                            <p class="col-xs-7"><a id="modal-declenche">Cliquez ici</a></p>
+                                        </div>
+                                        <div class="modal fade" id="enlargeImageModal" tabindex="-1" role="dialog"
+                                             aria-labelledby="enlargeImageModal" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close"><span aria-hidden="true">×</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <img src="{{ asset(observation.imageUrl) }}"
+                                                             class="enlargeImageModalSource" style="width: 100%;">
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    {% endif %}
                                 </div>
-                            {% endif %}
-                        </div>
-                    </div>
-                    {% endif %}
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
                 <div class="col-sm-6 map_placement">
                     <div class="col-md-10 col-md-offset-2">
                         <div id="map" class="col-sm-6 pull-right"></div>
-                        <div id="info-box" data-toggle="tooltip" data-placement="top"> </div>
                     </div>
+                    {#<div class="row">#}
+                        {#<div id="btn_valid" class="text-center">#}
+                            {#<a class="btn btn_form" href="{{ path('results') }}">Retour à la liste</a>#}
+                        {#</div>#}
+                    {#</div>#}
                 </div>
             </div>
 
@@ -110,7 +130,7 @@
                         strokeWeight: 0
                     });
 
-                    map.data.addListener('mouseover', function(event) {
+                    map.data.addListener('mouseover', function (event) {
                         map.data.revertStyle();
                         map.data.overrideStyle(event.feature, {strokeWeight: 1, strokeOpacity: 0.5});
                     });
