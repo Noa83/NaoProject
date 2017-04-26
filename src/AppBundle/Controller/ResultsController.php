@@ -20,6 +20,7 @@ class ResultsController extends Controller
     {
         $birdChoisi = '';
         $mailleCountsForChoicedBirdList= '';
+        $noResultsMessage='';
         //liste de choix des oiseaux
         $birds = $this->getDoctrine()->getRepository('AppBundle:Birds')->getBirdsList();
 
@@ -29,9 +30,7 @@ class ResultsController extends Controller
 
         //validation du choix
         if ($request->isMethod('POST') && $resultsForm->handleRequest($request)->isValid()) {
-
             $birdChoisi = $this->getDoctrine()->getRepository('AppBundle:Birds')->find($resultsModel->bird);
-
             $mailleCountsForChoicedBirdList = $this->get('data_to_array_maille_nb_birds')->GetArrayMailleNameAndNumberOfBirds(
                 $this->getDoctrine()->getRepository('AppBundle:Km10')->getMaillesWithBird($resultsModel->bird));
             dump($mailleCountsForChoicedBirdList);
@@ -46,7 +45,7 @@ class ResultsController extends Controller
     }
 
     /**
-     * @Route("/bird/{id}", name="bird", requirements={"id": "\d+"})
+     * @Route("/bird/json/{id}", name="bird", requirements={"id": "\d+"})
      */
     public function getBirdsResultsAction($id)
     {
