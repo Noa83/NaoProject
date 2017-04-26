@@ -15,11 +15,10 @@ class RechercheController extends Controller
      */
     public function formResultatAction(Request $request)
     {
-    // var_dump($_GET['motRecherche']);
-     //die();
-        if (isset($_GET['motRecherche']) AND ($_GET['motRecherche'] != ""))
+        $motRecherche = $request->query->get('motRecherche');
+        
+        if (isset($motRecherche) AND ($motRecherche != ""))
         {
-            $motRecherche = $_GET['motRecherche'];
             $fiche = $this->getDoctrine()->getManager()->getRepository('AppBundle:Birds')->findOneBy(array('nomVern' => $motRecherche));
 
             if ($fiche == null)
