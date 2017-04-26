@@ -25,16 +25,6 @@
                             <div class="col-md-12">
                                 {{ form_row(form.birdId, {'label': 'Nom de l\'espèce :'}) }}
                             </div>
-                        <div class="row" id="btn_valid">
-                            <div>
-                                <button class="btn btn_form" type="submit">Envoyer</button>
-                            </div>
-                        </div>
-                        {{ form_end(form) }}
-                    {#{% endif %}#}
-                        {#{% if birdChoisi is defined %}#}
-                        {#<a class="btn btn-form" href="{{ path('results') }}">Effectuer une nouvelle consultation</a>#}
-                    {#{% endif %}#}
                         </div>
                     </div>
                     <div class="row">
@@ -43,20 +33,6 @@
                         </div>
                     </div>
                     {{ form_end(form) }}
-                                        </thead>
-                                        {% for observation in observationsBird|slice(0, 10) %}
-                                            <tr>
-                                                <td class="col-sm-3"><a class="articleTitle" href="{{ path('fiche_bird_obs', {'id': observation.bird.id, 'idObs': observation.id}) }}">{{ observation.bird.getNomComplet() }}</td>
-                                                <td class="col-sm-8">{{ observation.comment | truncate(125) }}
-                                                <td class="col-sm-1">{{ observation.date | date("d/m/Y") }}</td>
-                                            </tr>
-                                        {% endfor %}
-                                    </table>
-                                </div>
-                            {% else %}
-                                <div class="alert alert-warning">Aucune observation trouvÃ©e.</div>
-                </div>
-                    </div>
                 </div>
             </div>
 
@@ -72,12 +48,6 @@
                         zoom: 6,
                         mapTypeId: 'terrain'
                     });
-                        map.data.overrideStyle(event.feature, {strokeWeight: 2, strokeOpacity: 0.5});
-                    });
-
-                    map.data.addListener('mouseover', function(event) {
-                        document.getElementById('info-box').textContent =
-                            event.feature.getProperty('name');
                 }
             </script>
             <script async defer

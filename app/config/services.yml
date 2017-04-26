@@ -47,8 +47,9 @@ services:
          tags:
             - {name: validator.constraint_validator}
 
-    data_to_geojson:
-        class: AppBundle\Services\DataToGeoJson
-
-    data_to_array_maille_nb_birds:
-        class: AppBundle\Services\DataToArrayMailleNameAndNumberOfBirds
+    no_observations_found_validator:
+         class: AppBundle\Validator\Constraints\NoObservationsFoundValidator
+         arguments:
+             - "@doctrine.orm.entity_manager"
+         tags:
+            - {name: validator.constraint_validator}

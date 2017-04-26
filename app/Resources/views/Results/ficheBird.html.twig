@@ -94,30 +94,6 @@
                            href="{{ path('results_list', {'birdId': birdChoisi.id}) }}">Retour à la liste</a>
                     </div>
                     <br>
-                    <div class="col-md-10 col-md-offset-1">
-                        <div>
-                            <h3 class="text-center">Information sur l'observation :</h3><br/>
-                            <p>Commentaire : {{ observation.comment }}</p>
-                            <p>Date : {{ observation.date | date("d/m/Y") }}</p>
-                            <p>Maille : {{ observation.km10Maille.getNomMaille() }}</p>
-                            {% if observation.imageUrl %}
-                                <p>Image : <a id="modal-declenche">Cliquez ici</a></p>
-                                <div class="modal fade" id="enlargeImageModal" tabindex="-1" role="dialog" aria-labelledby="enlargeImageModal" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">Ã—</span></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <img src="{{ asset(observation.imageUrl) }}" class="enlargeImageModalSource" style="width: 100%;">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            {% endif %}
-                        </div>
-                    </div>
-                    {% endif %}
                 </div>
             </div>
             <div class="colonne_carte col-md-6 col-xs-12">

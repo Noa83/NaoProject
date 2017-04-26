@@ -23,8 +23,6 @@ class ResultsController extends Controller
         $resultsForm->handleRequest($request);
         if ($request->isMethod('POST') && $resultsForm->isSubmitted() && $resultsForm->isValid()) {
            return $this->redirectToRoute('results_list', ['birdId' => $resultsModel->birdId]);
-                $this->getDoctrine()->getRepository('AppBundle:Km10')->getMaillesWithBird($resultsModel->bird));
-            dump($mailleCountsForChoicedBirdList);
         }
         return $this->render('Results/results.html.twig', [
             'birds' => $birds,
