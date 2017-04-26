@@ -7,6 +7,8 @@ class DataToArrayMailleNameAndNumberOfBirds
     public function GetArrayMailleNameAndNumberOfBirds($Km10List)
     {
         $countList = [];
+        $countNbObsTotale = 0;
+
         foreach ($Km10List as $Km10){
             $mailleAndCount = [];
             $compte = count($Km10->getObservations());
@@ -14,7 +16,9 @@ class DataToArrayMailleNameAndNumberOfBirds
             array_push($mailleAndCount, $nomMaille);
             array_push($mailleAndCount, $compte);
             array_push($countList, $mailleAndCount);
+            $countNbObsTotale += $compte;
         }
-        return $countList;
+        return array($countList,$countNbObsTotale);
     }
+
 }
