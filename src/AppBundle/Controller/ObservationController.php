@@ -100,6 +100,6 @@ class ObservationController extends Controller
         $em = $this->getDoctrine()->getManager();
         $em->flush();
 
-        return $this->redirectToRoute('account');
+        return $this->redirectToRoute('account_validation');
     }
 }
