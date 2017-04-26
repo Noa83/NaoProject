@@ -38,13 +38,15 @@ class BirdsRepository extends \Doctrine\ORM\EntityRepository
         return $arrayList;
     }
 
+    const LIMIT = 15;
+
     public function findBirds($term) //mettre un limit en CONSTANT
     {
-
         $qb = $this->createQueryBuilder('b');
         $qb ->select('b.id, b.nomVern')
-            ->where('b.nomVern LIKE :term') //test avec ajout nomComplet, ou ajouter andWhere nomComplet
-            ->setParameter('term', '%'.$term.'%');
+            ->where('b.nomVern LIKE :term')
+            ->setParameter('term', '%'.$term.'%')
+            ->setMaxResults(self::LIMIT);
 
         $arrayAss= $qb->getQuery()->getArrayResult();
 

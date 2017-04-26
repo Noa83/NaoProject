@@ -33,12 +33,15 @@ class ArticleRepository extends \Doctrine\ORM\EntityRepository
             ->getResult();
     }
 
+    const LIMIT = 15;
+
     public function findArticle($term)
     {
         $qb = $this->createQueryBuilder('a');
         $qb ->select('a.id, a.title')
             ->where('a.title LIKE :term')
-            ->setParameter('term', '%'.$term.'%');
+            ->setParameter('term', '%'.$term.'%')
+            ->setMaxResults(self::LIMIT);
 
         $arrayAss= $qb->getQuery()->getArrayResult();
 
