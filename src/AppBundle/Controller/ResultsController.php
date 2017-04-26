@@ -14,7 +14,6 @@ class ResultsController extends Controller
     public function resultsAction(Request $request)
     {
         $observationsBird = null ;
-        $noResultsMessage='';
         //liste de choix des oiseaux
         $birds = $this->getDoctrine()->getRepository('AppBundle:Birds')->getBirdsList();
         $resultsModel = new ResultsModel();
@@ -24,7 +23,6 @@ class ResultsController extends Controller
         $resultsForm->handleRequest($request);
         if ($request->isMethod('POST') && $resultsForm->isSubmitted() && $resultsForm->isValid()) {
            return $this->redirectToRoute('results_list', ['birdId' => $resultsModel->birdId]);
-            dump($mailleCountsForChoicedBirdList);
             $birdChoisi = $this->getDoctrine()->getRepository('AppBundle:Birds')->find($resultsModel->bird);
 
         }
