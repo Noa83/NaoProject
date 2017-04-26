@@ -1,19 +1,7 @@
 legend{ color: orange; text-shadow: black 0.05em 0.05em; font-weight: bold;  }
-
-.well
-{
-    background-color: rgba(255, 255, 255, 0.4);
-    padding-bottom: 50px; }
-
-#maps
-{
-    height: 400px;
-}
-
+.well { background-color: rgba(255, 255, 255, 0.4);  padding-bottom: 50px; }
 h1{ color: white; font-size: 2.5em; font-weight: bold; text-shadow: 0.05em 0.05em rgba(63,107,169, 0.7); }
-
 h2{ color: white; margin-left: 8%; text-shadow: 0.05em 0.05em rgba(63,107,169, 0.7); font-size: 1.5em; }
-
 p{  color: white; }
 
 

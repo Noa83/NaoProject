@@ -25,8 +25,8 @@ class ContactService
     {
         $message = \Swift_Message::newInstance()
             ->setSubject('Demande d\'informations')
-            ->setFrom('gont.bruno@gmail.com')
-            ->setTo('gont.bruno@gmail.com')
+            ->setFrom('contact@nosamislesoiseaux.eg2.fr')
+            ->setTo('contact@nosamislesoiseaux.eg2.fr')
             ->setContentType('text/html') //évite d'avoir du code html ds le mail
 
             ->setBody(

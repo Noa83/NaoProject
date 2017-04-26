@@ -32,4 +32,25 @@ class ArticleRepository extends \Doctrine\ORM\EntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    const LIMIT = 15;
+
+    public function findArticle($term)
+    {
+        $qb = $this->createQueryBuilder('a');
+        $qb ->select('a.id, a.title')
+            ->where('a.title LIKE :term')
+            ->setParameter('term', '%'.$term.'%')
+            ->setMaxResults(self::LIMIT);
+
+        $arrayAss= $qb->getQuery()->getArrayResult();
+
+        // Transformer le tableau associatif en un tableau standard
+        $array = array();
+        foreach($arrayAss as $data)
+        {
+            $array[] = array("title"=>$data['title'], "id" =>$data['id']);
+        }
+        return $array;
+    }
 }
