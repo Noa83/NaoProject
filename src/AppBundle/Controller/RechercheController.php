@@ -6,33 +6,20 @@ namespace AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
-use AppBundle\Model\RechercheModel;
-use AppBundle\Form\RechercheType;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 class RechercheController extends Controller
 {
     /**
-     *@Route("/recherche", name="recherche")
-     */
-    public function formRechercheAction(Request $request)
-    {
-        $recherche = new RechercheModel();
-        $form = $this->get('form.factory')->create(RechercheType::class, $recherche);
-        return $this->render('Recherche/formRecherche.html.twig', array('form' => $form->createView()));
-    }
-
-    /**
      *@Route("/resultat", name="resultat")
      */
     public function formResultatAction(Request $request)
     {
-        $recherche = new RechercheModel();
-        $form = $this->get('form.factory')->create(RechercheType::class, $recherche);
-
-        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid())
+    // var_dump($_GET['motRecherche']);
+     //die();
+        if (isset($_GET['motRecherche']) AND ($_GET['motRecherche'] != ""))
         {
-            $motRecherche = $recherche->recherche;
+            $motRecherche = $_GET['motRecherche'];
             $fiche = $this->getDoctrine()->getManager()->getRepository('AppBundle:Birds')->findOneBy(array('nomVern' => $motRecherche));
 
             if ($fiche == null)
@@ -40,13 +27,18 @@ class RechercheController extends Controller
                 $arrayOiseau = $this->getDoctrine()->getManager()->getRepository('AppBundle:Birds')->findBirds($motRecherche);
                 $arrayArticle = $this->getDoctrine()->getManager()->getRepository('AppBundle:Article')->findArticle($motRecherche);
                 $array = array_merge($arrayOiseau, $arrayArticle);
-                return $this->render('Recherche/resultatRecherche.html.twig', array('tab' => $array, 'form' => $form->createView()));
+                return $this->render('Recherche/resultatRecherche.html.twig', array('tab' => $array));
             }
             else
             {
-                return $this->render('Recherche/resultatRecherche.html.twig', array('nom' => $fiche, 'form' => $form->createView()));
+                return $this->render('Recherche/resultatRecherche.html.twig', array('nom' => $fiche));
             }
         }
+        else
+        {
+            return $this->render('Recherche/resultatRecherche.html.twig', array('tab' => 'Aucun résultat'));
+        }
+
     }
 
     /**

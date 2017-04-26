@@ -1,5 +1,5 @@
-<li>
-    {{ form_start(form, {'attr': {'class': 'navbar-form navbar-right'}, 'action': path('resultat')}) }}
+{#<li>
+    {{ form_start(form, {'attr': {'class': 'navbar-form navbar-right'}, 'action': path('resultat'), 'method' : 'GET'}) }}
     {{ form_errors(form) }}
         <div class="form-group">
             {{ form_widget(form.recherche, {'attr': {'class': 'form-control', 'placeholder': 'Recherche'}})}}
@@ -10,4 +10,4 @@
         </button>
     {{ form_rest(form) }}
     {{ form_end(form) }}
-</li>
+</li>#}

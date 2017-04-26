@@ -78,7 +78,15 @@
                             {% endif %}
                         </ul>
                     </li>
-                    {{  render(controller('AppBundle:Recherche:formRecherche')) }}
+                    <li>
+                        <form class="navbar-form navbar-right" action="{{ path('resultat') }}" method="get">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Rechercher" id="recherche_recherche" name="motRecherche" required>
+                            </div>
+                            <button type="submit" id="btn_search" class="btn"><span class="glyphicon glyphicon-search"
+                                                                                    aria-hidden="true"></span></button>
+                        </form>
+                    </li>
                 </ul>
             </div>
         </div>
