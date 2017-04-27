@@ -39,7 +39,7 @@ div.bg_legend
     padding-top: 15px;
     background-color: rgba(255, 255, 255, 0.4);
     border-radius: 8px;
-    margin-bottom: 30px;
+    font-size: 13px;
     padding: 0;
     border-radius: 8px;
     box-shadow: 2px 2px 5px #288B90;
@@ -124,4 +124,12 @@ p.col-xs-5.label_oiseau
     }
 }
 
+/* Media Queries */
 
+@media screen and (max-width: 1270px)
+{
+    div#bg_infos_consult
+    {
+        margin-bottom: 30px;
+    }
+}

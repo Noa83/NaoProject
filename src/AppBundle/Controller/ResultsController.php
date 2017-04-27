@@ -23,23 +23,12 @@ class ResultsController extends Controller
         $resultsForm->handleRequest($request);
         if ($request->isMethod('POST') && $resultsForm->isSubmitted() && $resultsForm->isValid()) {
            return $this->redirectToRoute('results_list', ['birdId' => $resultsModel->birdId]);
-            $birdChoisi = $this->getDoctrine()->getRepository('AppBundle:Birds')->find($resultsModel->bird);
-
         }
         return $this->render('Results/results.html.twig', [
             'birds' => $birds,
             'form' => $resultsForm
                 ->createView()]);
     }
-    /**
-     * @Route("/bird/json/{id}", name="bird", requirements={"id": "\d+"})
-     */
-    public function getBirdsResultsAction($id)
-    {
-        return new Response ($this->get('data_to_geojson')->getGeoJson($this->getDoctrine()
-            ->getRepository('AppBundle:Observation')->getObservationInfoWithMailleByBird($id)));
-    }
-
     /**
      * @Route("/bird/json/{id}", name="bird", requirements={"id": "\d+"})
      */

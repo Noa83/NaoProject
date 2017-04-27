@@ -258,6 +258,23 @@ div#opal_bg
     right: 20px;
 }
 
+/* TEST Ajustement de la fenetre */
+html, body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.content-body {
+    min-height: 83vh;
+    margin-top: 110px;
+}
+
+footer {
+    position: absolute;
+    right: 0;
+    left: 0;
+}
 
 /*Media Queries*/
 

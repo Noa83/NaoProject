@@ -26,44 +26,6 @@
                                 {{ form_row(form.birdId, {'label': 'Nom de l\'esp�ce :'}) }}
                             </div>
                         </div>
-                                    <button class="btn btn_form" type="submit">Envoyer</button>
-                                </div>
-                            </div>
-                            {{ form_end(form) }}
-                        </div>
-                        <div class="col-md-12">
-                            <div>
-                                {% if observationsBird is not empty %}
-                                    <h3 class="text-center">Observations sur l'oiseau :{% if birdChoisi %}
-                                            {{ birdChoisi.nomValide }}{% endif %}</h3><br/>
-                                {% endif %}
-                                {% if observationsBird is not empty %} <!-- if observation -->
-                                    <div class="table-responsive">
-                                        <table class="table table-hover table-condensed">
-                                            <thead>
-                                            <tr>
-                                                <th>Observation</th>
-                                                <th>Date d'observation</th>
-                                            </tr>
-                                            </thead>
-                                            {% for observation in observationsBird|slice(0, 10) %}
-                                                <tr>
-                                                    <td class="col-sm-8"><a class="articleTitle" href="{{ path('fiche_bird_obs',
-                                                        {'id': observation.bird.id, 'idObs': observation.id}) }}">{{ observation.comment | truncate(125) }}</td>
-                                                    <td class="col-sm-4 text-center">{{ observation.date | date("d/m/Y") }}</td>
-                                                </tr>
-                                            {% endfor %}
-                                        </table>
-                                    </div>
-                                {% endif %}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-                        {% if birdChoisi is defined %}
-                        <a class="btn btn-form" href="{{ path('results') }}">Effectuer une nouvelle consultation</a>
-                    {% endif %}
                     </div>
                     <div class="row">
                         <div id="btn_valid">
@@ -72,28 +34,7 @@
                     </div>
                     {{ form_end(form) }}
                 </div>
-                    </div>
-            <div class="col-sm-6 pull-left">
-                <div class="col-sm-12">
-                {% if observationsBird is empty %}
-                    <div class="col-md-10 col-md-offset-2">
-                        <div id="empty_map" class="col-sm-6 pull-right"></div>
-                    </div>
-                {% endif %}
-                {% if observationsBird is not empty %}
-                <div class="col-md-10 col-md-offset-2">
-                    <div id="map" class="col-sm-6 pull-right"></div>
-                    {#<div class="maille_info">#}
-                        {#<div id="info-box" class="info-box" data-toggle="tooltip"></div>#}
-                    {#</div>#}
-                </div>
-                    <div class="col-sm-12 bg_legend">
-                        Les carrés colorés représentent les zones dans lesquelles l'espèce a été observée.<br>
-                        Plus la couleur du carré est foncée plus un grand nombre d'individus y a été vu.<br>
-                    </div>
-                {% endif %}
             </div>
-        </div>
 
             <div class="colonne_carte col-md-6 col-xs-12">
                 <div id="empty_map" class="col-md-12"></div>
@@ -107,23 +48,6 @@
                         zoom: 6,
                         mapTypeId: 'terrain'
                     });
-                {% endif %}
-                map = new google.maps.Map(document.getElementById('map'), {
-                    center: {lat: 46.227588, lng: 2.214329},
-                    zoom: 6,
-                    mapTypeId: 'terrain'
-                });
-
-
-                map.data.addListener('mouseover', function (event) {
-                    map.data.revertStyle();
-                    map.data.overrideStyle(event.feature, {strokeWeight: 2, strokeOpacity: 0.5});
-                });
-
-//                map.data.addListener('mouseover', function (event) {
-//                    document.getElementById('info-box').textContent =
-//                        event.feature.getProperty('name');
-                });
                 }
             </script>
             <script async defer
