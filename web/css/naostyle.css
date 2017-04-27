@@ -153,6 +153,7 @@ a.btn.pull-right.btn-sm.faceb:hover
 .btn.btn_form
 {
     color: #288B90;
+    text-shadow: 1px 1px 2px white;
     background-color: rgba(255, 255, 255, 0.5);
     margin-right: 15px;
     margin-bottom: 15px;
@@ -169,6 +170,7 @@ a.btn.pull-right.btn-sm.faceb:hover
 .btn_form-orange
 {
     color:#FE9A04;
+    text-shadow: 1px 1px 2px white;
     background-color: rgba(255, 255, 255, 0.5);
     margin-right: 15px;
     margin-bottom: 15px;
@@ -241,6 +243,24 @@ div#opal_bg
     right: 20px;
 }
 
+/* TEST Ajustement de la fenetre */
+html, body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.content-body {
+    min-height: 83vh;
+    margin-top: 110px;
+}
+
+footer {
+    position: absolute;
+    right: 0;
+    left: 0;
+}
+
 /*Media Queries*/
 
 @media (min-width: 992px) {
@@ -277,7 +297,7 @@ div#opal_bg
 
 }
 
-@media (max-width: 770px) {
+@media (max-width: 767px) {
     #top_button_bar_xs {
         margin-bottom: 5px;
         margin-top: 10px;
@@ -306,22 +326,15 @@ div#opal_bg
     {
         text-align: center;
     }
+    .content-body {
+        min-height: 83vh;
+        margin-top: 70px;
+    }
+}
+@media (min-width: 767px) and (max-width: 1229px){
+    .content-body {
+        min-height: 83vh;
+        margin-top: 170px;
+    }
 }
 
-/* TEST */
-html, body {
-    min-height: 100vh;
-    margin: 0;
-    padding: 0;
-}
-
-.content-body {
-    min-height: 83vh;
-    margin-top: 110px;
-}
-
-footer {
-    position: absolute;
-    right: 0;
-    left: 0;
-}
