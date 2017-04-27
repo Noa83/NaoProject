@@ -47,3 +47,9 @@ services:
          tags:
             - {name: validator.constraint_validator}
 
+    no_observations_found_validator:
+         class: AppBundle\Validator\Constraints\NoObservationsFoundValidator
+         arguments:
+             - "@doctrine.orm.entity_manager"
+         tags:
+            - {name: validator.constraint_validator}
