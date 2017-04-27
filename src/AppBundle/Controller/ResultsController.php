@@ -1,15 +1,11 @@
 <?php
-
 namespace AppBundle\Controller;
-
-
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AppBundle\Model\ResultsModel;
 use AppBundle\Form\Type\ResultsType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
-
 
 class ResultsController extends Controller
 {
@@ -22,24 +18,40 @@ class ResultsController extends Controller
         $observationsBird = null ;
         //liste de choix des oiseaux
         $birds = $this->getDoctrine()->getRepository('AppBundle:Birds')->getBirdsList();
-
         $resultsModel = new ResultsModel();
         $resultsForm = $this->get('form.factory')->create(ResultsType::class,
             $resultsModel, ['birdList' => $birds]);
-
         //validation du choix
-        if ($request->isMethod('POST') && $resultsForm->handleRequest($request)->isValid()) {
+        if ($request->isMethod('GET') && $resultsForm->handleRequest($request)->isValid()) {
+
+//            $birdId = $resultsModel->bird;
+//            $this->redirectToRoute('results_route', $birdId);
             $birdChoisi = $this->getDoctrine()->getRepository('AppBundle:Birds')->find($resultsModel->bird);
             $observationsBird = $this->getDoctrine()->getRepository('AppBundle:Observation')->find10ByBird($resultsModel->bird);
+        }
+        return $this->render('Results/results.html.twig', [
+            'birds' => $birds,
+            'birdChoisi' => $birdChoisi,
+            'observationsBird' => $observationsBird,
+            'form' => $resultsForm
+                ->createView()]);
     }
 
     /**
-     * @Route("/bird/{id}", name="bird", requirements={"id": "\d+"})
+     * @Route("/results/{birdId}", name="results_route", requirements={"birdId": "\d+"})
      */
-    public function getBirdsResultsAction($id)
+    public function getBirdsObservationsResultsAction($birdId)
     {
-        return new JsonResponse($this->getDoctrine()->getRepository('AppBundle:Observation')->getMailleGeoJsonByBird($id));
+        $birdChoisi = $this->getDoctrine()->getRepository('AppBundle:Birds')->find($birdId);
+        $observationsBird = $this->getDoctrine()->getRepository('AppBundle:Observation')->find10ByBird($birdId);
+
+        return $this->render('Results/results.html.twig', [
+            'birdChoisi' => $birdChoisi,
+            'observationsBird' => $observationsBird
+                ]);
     }
+
+
 
     /**
      * @Route("/bird/json/{id}", name="bird", requirements={"id": "\d+"})

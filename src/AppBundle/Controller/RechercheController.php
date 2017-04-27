@@ -20,7 +20,7 @@ class RechercheController extends Controller
         if (isset($motRecherche) AND ($motRecherche != ""))
         {
             $fiche = $this->getDoctrine()->getManager()->getRepository('AppBundle:Birds')->findOneBy(array('nomVern' => $motRecherche));
-
+            dump($fiche);
             if ($fiche == null)
             {
                 $arrayOiseau = $this->getDoctrine()->getManager()->getRepository('AppBundle:Birds')->findBirds($motRecherche);

@@ -20,6 +20,7 @@
                             <h3 class="text-center">Choisissez l'oiseau pour lequel vous souhaitez obtenir des
                                 informations et visualisez les zones géographiques dans lesquelles il a été observé
                                 sur la carte.</h3>
+                            {% if form is defined %}
                             {{ form_start(form) }}
                             <div class="row">
                                 <div class="col-md-12">
@@ -32,6 +33,7 @@
                                 </div>
                             </div>
                             {{ form_end(form) }}
+                            {% endif %}
                         </div>
                         <div class="col-md-12">
                             <div>
@@ -63,98 +65,53 @@
                     </div>
                 </div>
             </div>
-                        {% if birdChoisi is defined %}
-                        <a class="btn btn-form" href="{{ path('results') }}">Effectuer une nouvelle consultation</a>
+            <div class="colonne_carte col-sm-6 col-xs-12">
+                    {% if observationsBird is empty %}
+                        <div id="empty_map" class="col-sm-12 col-xs-12"></div>
                     {% endif %}
-                    </div>
-                    <div class="col-md-10 col-md-offset-1">
-                        <div>
-                            <h3 class="text-center">Information sur l'oiseau :</h3><br/>
-                            {% if birdChoisi is defined %}
-                                <p>Regne de l'oiseau : {{ birdChoisi.regne }}</p>
-                                <p>Phylum de l'oiseau : {{ birdChoisi.phylum }}</p>
-                                <p>Classe de l'oiseau : {{ birdChoisi.classe }}</p>
-                                <p>Ordre de l'oiseau : {{ birdChoisi.ordre }}</p>
-                                <p>Famille de l'oiseau : {{ birdChoisi.famille }}</p>
-                                <p>Nom Complet de l'oiseau : {{ birdChoisi.nomComplet }}</p>
-                                <p>Nom Valide de l'oiseau : {{ birdChoisi.nomValide }}</p>
-                                <p>Nom Vern de l'oiseau : {{ birdChoisi.nomVern }}</p>
-                            {% endif %}
+                    {% if observationsBird is not empty %}
+                        <div id="map" class="col-md-12 col-sm-12 col-xs-12"></div>
+                        <div class="col-sm-12 col-xs-12 bg_legend">
+                            Les carrés colorés représentent les zones dans lesquelles l'espèce a été observée.<br>
+                            Plus la couleur du carré est foncée plus un grand nombre d'individus y a été vu.<br>
                         </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 pull-left">
-                    <div class="col-md-10 col-md-offset-1">
-                        <div id="map" class="col-sm-6 pull-right"></div>
-                        <div id="info-box" data-toggle="tooltip" data-placement="top"> </div>
-                    </div>
-            <div class="col-sm-6 pull-left">
-                <div class="col-sm-12">
-                {% if observationsBird is empty %}
-                    <div class="col-md-10 col-md-offset-2">
-                        <div id="empty_map" class="col-sm-6 pull-right"></div>
-                    </div>
-                {% endif %}
-                {% if observationsBird is not empty %}
-                <div class="col-md-10 col-md-offset-2">
-                    <div id="map" class="col-sm-6 pull-right"></div>
-                    {#<div class="maille_info">#}
-                        {#<div id="info-box" class="info-box" data-toggle="tooltip"></div>#}
-                    {#</div>#}
-                </div>
-                    <div class="col-sm-12 bg_legend">
-                        Les carrés colorés représentent les zones dans lesquelles l'espèce a été observée.<br>
-                        Plus la couleur du carré est foncée plus un grand nombre d'individus y a été vu.<br>
-                    </div>
-                {% endif %}
+                    {% endif %}
             </div>
+
+            <script type="text/javascript">
+                var map;
+                function initMap() {
+                    {% if birdChoisi is empty %}
+                    map = new google.maps.Map(document.getElementById('empty_map'), {
+                        center: {lat: 46.227588, lng: 2.214329},
+                        zoom: 6,
+                        mapTypeId: 'terrain'
+                    });
+                    {% endif %}
+                    {% if birdChoisi is not empty %}
+                    map = new google.maps.Map(document.getElementById('map'), {
+                        center: {lat: 46.227588, lng: 2.214329},
+                        zoom: 6,
+                        mapTypeId: 'terrain'
+                    });
+                    map.data.loadGeoJson('{{ path('bird', {'id':birdChoisi.id}) }}');
+                    map.data.setStyle({
+                        fillColor: '#FE9A04',
+                        fillOpacity: 0.5,
+                        strokeWeight: 0
+                    });
+                    map.data.addListener('mouseover', function (event) {
+                        map.data.revertStyle();
+                        map.data.overrideStyle(event.feature, {strokeWeight: 2, strokeOpacity: 0.5});
+                    });
+                    {% endif %}
+                }
+            </script>
+            <script async defer
+                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHtk1Q7isnHjGK7ApFU2_V5--RdvqVUks&callback=initMap">
+            </script>
+
         </div>
-
-        <script type="text/javascript">
-
-            var map;
-            function initMap() {
-                {% if birdChoisi is empty %}
-                map = new google.maps.Map(document.getElementById('empty_map'), {
-                    center: {lat: 46.227588, lng: 2.214329},
-                    zoom: 6,
-                    mapTypeId: 'terrain'
-                });
-                {% endif %}
-                {% if birdChoisi is not empty %}
-                map = new google.maps.Map(document.getElementById('map'), {
-                    center: {lat: 46.227588, lng: 2.214329},
-                    zoom: 6,
-                    mapTypeId: 'terrain'
-                });
-
-                map.data.loadGeoJson('{{ path('bird', {'id':birdChoisi.id}) }}');
-
-                map.data.setStyle({
-                    fillColor: '#FE9A04',
-                    fillOpacity: 0.5,
-                    strokeWeight: 0
-                });
-
-                map.data.addListener('mouseover', function (event) {
-                    map.data.revertStyle();
-                    map.data.overrideStyle(event.feature, {strokeWeight: 2, strokeOpacity: 0.5});
-                });
-
-//                map.data.addListener('mouseover', function (event) {
-//                    document.getElementById('info-box').textContent =
-//                        event.feature.getProperty('name');
-//                });
-                {% endif %}
-            }
-
-
-        </script>
-        <script async defer
-                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHtk1Q7isnHjGK7ApFU2_V5--RdvqVUks&callback=initMap">
-        </script>
-
-    </div>
     </div>
 {% endblock %}
 {% block JS %}

@@ -17,30 +17,25 @@
             <div class="container-fluid" id="calls_to_action_bar">
                 <div class="col-sm-4" id="call_observer">
                     <h2>Observation</h2>
-                    <p>Inter haec Orfitus praefecti potestate regebat urbem aeternam ultra modum delatae dignitatis sese
-                        efferens insolenter, vir quidem prudens et forensium negotiorum oppido gnarus, sed splendore
-                        liberalium.</p>
-                    <button class="btn btn_form">Observer</button>
+                    <p>Devenez acteur de la biodiversité. Partagez vos observations.</p>
+                    <a class="btn btn_form call" href="{{ path('observation') }}">Observer</a>
                 </div>
                 <div class="col-sm-4" id="call_consultation">
                     <h2>Consultation</h2>
-                    <p>Inter haec Orfitus praefecti potestate regebat urbem aeternam ultra modum delatae dignitatis sese
-                        efferens insolenter, vir quidem prudens et forensium negotiorum oppido gnarus, sed splendore
-                        liberalium.</p>
-                    <button class="btn btn_form-orange">Consulter</button>
+                    <p>Consultez les observations de tous les contributeurs enregistrés.</p>
+                    <a class="btn btn_form-orange call" href="{{ path('results') }}">Consulter</a>
                 </div>
                 <div class="col-sm-4" id="call_blog">
                     <h2>Blog</h2>
-                    <p>Inter haec Orfitus praefecti potestate regebat urbem aeternam ultra modum delatae dignitatis sese
-                        efferens insolenter, vir quidem prudens et forensium negotiorum oppido gnarus, sed splendore
-                        liberalium.</p>
-                    <button class="btn btn_form">Blog</button>
+                    <p>Suivez l'actualité et les conseils de Nos Amis les Oiseaux.<br></p>
+                    <a class="btn btn_form call" href="{{ path('blog') }}">Blog</a>
                 </div>
             </div>
         </div>
         <div class="container-fluid global_bottom_part">
             <div class="col-sm-5" id="information_bar">
                 <div class="col-sm-12" id="informations">
+                    <h1 class="information_group_title">Nos amis les oiseaux : partager vos observations d'oiseaux</h1>
                     <h2 class="information_group_title">Qui sommes-nous?</h2><br>
                     <p>Nos amis les oiseaux est une association regroupant des passionnés d'ornithologie. Elle compte, à
                         ce
@@ -91,18 +86,18 @@
                         {#<h2 class="titre label label-default">Les derniers articles du Blog</h2>#}
                         <h2 class="titre">Les derniers articles du Blog</h2>
                     </div>
-                    {% for article in articles %}
+                    {% for article in articlesTotal %}
                         <div class="col-sm-12 content_article">
                             <div class="col-md-3 col-xs-4" id="img_btn"><br>
-{#------A SUPPR LE IF QUAND LES ARTICLES AURONT UNE IMAGES-----#}
-                            {% if article.picture %}
-                                <img src="{{ asset(article.picture.url) }}" alt="{{ article.picture.alt }}" class="col-xs-2 img-rounded">
-                            {% endif %}
-{#-------------------------------------------------------------#}
-                            <a href="{{ path('article', {'id': article.id}) }}"
-                               class="btn btn-default btn_more"
-                               style="color: white">Lire
-                                la suite</a></div>
+                                {#------A SUPPR LE IF QUAND LES ARTICLES AURONT UNE IMAGES-----#}
+                                {% if article.picture %}
+                                    <img src="{{ asset(article.picture.url) }}" alt="{{ article.picture.alt }}" class="col-xs-2 img-rounded">
+                                {% endif %}
+                                {#-------------------------------------------------------------#}
+                                <a href="{{ path('article', {'id': article.id}) }}"
+                                   class="btn btn-default btn_more"
+                                   style="color: white">Lire
+                                    la suite</a></div>
                             <div class="col-md-9 col-xs-8">
                                 <h3>{{ article.title }}</h3>
                                 {% autoescape %}
@@ -116,7 +111,3 @@
     </div>
 
 {% endblock %}
-
- {% block JS %}
-
- {% endblock %}
