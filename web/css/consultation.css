@@ -6,7 +6,7 @@
     border-radius: 8px;
     box-shadow: 2px 2px 5px #288B90;
 }
-}
+
 #map {
     height: 450px;
     width: 100%;
@@ -89,25 +89,6 @@ p.col-xs-5.label_oiseau
     border-radius: 8px;
     box-shadow: 2px 2px 5px #288B90;
     }
-}
-
-    border: 1px solid #ccc;
-    box-shadow: 0 2px 2px rgba(33, 33, 33, 0.4);
-    font-family: 'Roboto','sans-serif';
-    margin: 10px;
-    height: 20px;
-}
-.info-box {
-    font-size: 14px;
-    line-height: 30px;
-    padding-left: 5px;
-    padding-right: 5px;
-}
-
-div.col-6.map_placement
-{
-    margin-top: 35px;
-    padding-right: 0;
 }
 
 /* Background */
