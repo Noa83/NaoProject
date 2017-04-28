@@ -123,8 +123,6 @@ h2.titre
 }
 div.col-sm-12.last_articles
 {
-    /*border: solid 1px #288B90;*/
-    /*border-radius: 8px;*/
     margin-left: 15px;
     display: flex;
     flex-direction: column;

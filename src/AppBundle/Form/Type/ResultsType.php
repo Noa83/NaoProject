@@ -16,16 +16,10 @@ class ResultsType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-//        $builder
-//            ->add('bird', ChoiceType::class, [
-//                'choices' => $options['birdList']
-//            ]);
         $builder
             ->add('birdId', ChoiceType::class, [
                 'choices' => $options['birdList']
-            ])
-            ->setMethod('GET')
-            ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
