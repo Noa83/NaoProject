@@ -1,5 +1,6 @@
 <?php
 namespace AppBundle\Controller;
+
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AppBundle\Model\ResultsModel;
@@ -14,7 +15,6 @@ class ResultsController extends Controller
      */
     public function resultsAction(Request $request)
     {
-        $birdChoisi = '';
         $observationsBird = null ;
         //liste de choix des oiseaux
         $birds = $this->getDoctrine()->getRepository('AppBundle:Birds')->getBirdsList();
@@ -23,36 +23,15 @@ class ResultsController extends Controller
             $resultsModel, ['birdList' => $birds]);
         //validation du choix
         $resultsForm->handleRequest($request);
-        if ($request->isMethod('GET') && $resultsForm->isSubmitted() && $resultsForm->isValid()) {
+        if ($request->isMethod('POST') && $resultsForm->isSubmitted() && $resultsForm->isValid()) {
 
-//            $birdId = $resultsModel->bird;
-//            $this->redirectToRoute('results_route', $birdId);
-            $birdChoisi = $this->getDoctrine()->getRepository('AppBundle:Birds')->find($resultsModel->bird);
-            $observationsBird = $this->getDoctrine()->getRepository('AppBundle:Observation')->find10ByBird($resultsModel->bird);
+           return $this->redirectToRoute('results_list', ['birdId' => $resultsModel->birdId]);
         }
         return $this->render('Results/results.html.twig', [
             'birds' => $birds,
-            'birdChoisi' => $birdChoisi,
-            'observationsBird' => $observationsBird,
             'form' => $resultsForm
                 ->createView()]);
     }
-
-    /**
-     * @Route("/results/{birdId}", name="results_route", requirements={"birdId": "\d+"})
-     */
-    public function getBirdsObservationsResultsAction($birdId)
-    {
-        $birdChoisi = $this->getDoctrine()->getRepository('AppBundle:Birds')->find($birdId);
-        $observationsBird = $this->getDoctrine()->getRepository('AppBundle:Observation')->find10ByBird($birdId);
-
-        return $this->render('Results/results.html.twig', [
-            'birdChoisi' => $birdChoisi,
-            'observationsBird' => $observationsBird
-                ]);
-    }
-
-
 
     /**
      * @Route("/bird/json/{id}", name="bird", requirements={"id": "\d+"})

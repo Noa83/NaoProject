@@ -15,11 +15,11 @@ class ObservationRepository extends EntityRepository
     public function getObservationInfoWithMailleByBird($birdId)
     {
         $list = $this->createQueryBuilder('o')
+            ->addSelect('km')
+            ->leftJoin('o.km10Maille', 'km')
             ->where('o.bird = :birdId')
             ->setParameter('birdId', $birdId)
-//            ->andWhere('o.validated = true')
-            ->leftJoin('o.km10Maille', 'km')
-            ->addSelect('km')
+            ->andWhere('o.validated = true')
             ->getQuery()
             ->getResult();
         return $list;
@@ -31,21 +31,28 @@ class ObservationRepository extends EntityRepository
     public function getOneMailleGeoJsonByBird($birdId, $observationId)
     {
         $list = $this->createQueryBuilder('o')
+            ->addSelect('km')
+            ->leftJoin('o.km10Maille', 'km')
             ->where('o.bird = :birdId')
             ->setParameter('birdId', $birdId)
             ->andWhere('o.id = :observationId')
             ->setParameter('observationId', $observationId)
-//            ->andWhere('o.validated = true')
-            ->leftJoin('o.km10Maille', 'km')
-            ->addSelect('km')
             ->getQuery()
             ->getResult();
         return $list;
     }
 
-    public function find10ByBird($bird){
+    public function find10ByBird($birdId){
 
-        $results = $this->findBy(array("bird" => $bird), array('id' => 'DESC','date' => 'DESC'));
+        $results = $this->createQueryBuilder('o')
+            ->where('o.bird = :birdId')
+            ->setParameter('birdId', $birdId)
+            ->andWhere('o.validated = true')
+            ->orderBy('o.date', 'DESC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult();
+
         if (empty($results)){
             throw new \Exception();
         }

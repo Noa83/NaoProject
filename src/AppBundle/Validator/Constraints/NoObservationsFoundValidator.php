@@ -20,7 +20,7 @@ class NoObservationsFoundValidator extends ConstraintValidator
         /**
          * @var ResultsModel $value
          */
-        $birdId = $value->bird;
+        $birdId = $value->birdId;
         try{
             $this->manager->getRepository('AppBundle:Observation')->find10ByBird($birdId);
         }

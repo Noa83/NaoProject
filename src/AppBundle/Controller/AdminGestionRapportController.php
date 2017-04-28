@@ -36,9 +36,9 @@ class AdminGestionRapportController extends Controller
         if ($request->isMethod('POST') && $resultsForm->handleRequest($request)->isValid()) {
 
             $mailleCountsForChoicedBirdList = $this->get('data_to_array_maille_nb_birds')->GetArrayMailleNameAndNumberOfBirds(
-                $this->getDoctrine()->getRepository('AppBundle:Km10')->getMaillesWithBird($resultsModel->bird));
+                $this->getDoctrine()->getRepository('AppBundle:Km10')->getMaillesWithBird($resultsModel->birdId));
 
-            $dateDerniereObs = $this->getDoctrine()->getRepository('AppBundle:Observation')->findOneBy(array('bird' => $resultsModel->bird),array('date' => 'DESC','id' => 'DESC'));
+            $dateDerniereObs = $this->getDoctrine()->getRepository('AppBundle:Observation')->findOneBy(array('bird' => $resultsModel->birdId),array('date' => 'DESC','id' => 'DESC'));
         }
 
         return $this->render('AdminAccount/adminGestionRapport.html.twig', [
