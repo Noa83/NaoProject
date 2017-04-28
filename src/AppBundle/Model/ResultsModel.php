@@ -13,5 +13,5 @@ use AppBundle\Validator\Constraints as NaoAssert;
  */
 class ResultsModel
 {
-    public $bird;
+    public $birdId;
 }

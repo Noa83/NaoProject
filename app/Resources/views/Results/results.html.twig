@@ -19,11 +19,10 @@
                         <h3 class="text-center">Choisissez l'oiseau pour lequel vous souhaitez obtenir des
                             informations et visualisez les zones géographiques dans lesquelles il a été observé
                             sur la carte.</h3>
-                        {% if form is defined %}
                         {{ form_start(form) }}
                         <div class="row">
                             <div class="col-md-12">
-                                {{ form_row(form.bird, {'label': 'Nom de l\'espèce :'}) }}
+                                {{ form_row(form.birdId, {'label': 'Nom de l\'espèce :'}) }}
                             </div>
                             </div>
                     <div class="row">
@@ -34,40 +33,10 @@
                                 </div>
                     </div>
                     {{ form_end(form) }}
-                    {% endif %}
-                </div>
-                <div class="col-md-12">
-                    <div>
-                        {% if observationsBird is not empty %}
-                            <h3 class="text-center">Observations sur l'oiseau :{% if birdChoisi %}
-                                    {{ birdChoisi.nomValide }}{% endif %}</h3><br/>
-                        {% endif %}
-                        {% if observationsBird is not empty %} <!-- if observation -->
-                            <div class="table-responsive">
-                                <table class="table table-hover table-condensed">
-                                    <thead>
-                                    <tr>
-                                        <th>Observation</th>
-                                        <th>Date d'observation</th>
-                                    </tr>
-                                    </thead>
-                                    {% for observation in observationsBird|slice(0, 10) %}
-                                        <tr>
-                                            <td class="col-sm-8"><a class="articleTitle"
-                                                                    href="{{ path('fiche_bird_obs',
-                                                                    {'id': observation.bird.id, 'idObs': observation.id}) }}">{{ observation.comment | truncate(125) }}</td>
-                                            <td class="col-sm-4 text-center">{{ observation.date | date("d/m/Y") }}</td>
-                                        </tr>
-                                    {% endfor %}
-                                </table>
-                            </div>
-                        {% endif %}
-                    </div>
                 </div>
             </div>
 
-
-            <div class="colonne_carte col-sm-6 col-xs-12">
+            <div class="colonne_carte col-md-6 col-sm-6 col-xs-12">
                             </div>
                             {{ form_end(form) }}
                         </div>
@@ -111,30 +80,12 @@
                 </div>
             </div>
             </div>
-                {% if observationsBird is empty %}
-                    <div id="empty_map" class="col-sm-12 col-xs-12"></div>
-                {% endif %}
-                {% if observationsBird is not empty %}
-                    <div id="map" class="col-md-12 col-sm-12 col-xs-12"></div>
-                    <div class="col-sm-12 col-xs-12 bg_legend">
-                        Les carrés colorés représentent les zones dans lesquelles l'espèce a été observée.<br>
-                        Plus la couleur du carré est foncée plus un grand nombre d'individus y a été vu.<br>
-                    </div>
-                {% endif %}
             </div>
 
             <script type="text/javascript">
                 var map;
                 function initMap() {
-                    {% if birdChoisi is empty %}
                     map = new google.maps.Map(document.getElementById('empty_map'), {
-                        center: {lat: 46.227588, lng: 2.214329},
-                        zoom: 6,
-                        mapTypeId: 'terrain'
-                    });
-                    {% endif %}
-                    {% if birdChoisi is not empty %}
-                    map = new google.maps.Map(document.getElementById('map'), {
                         center: {lat: 46.227588, lng: 2.214329},
                         zoom: 6,
                         mapTypeId: 'terrain'
@@ -146,22 +97,11 @@
                     zoom: 6,
                     mapTypeId: 'terrain'
                 });
-                    map.data.loadGeoJson('{{ path('bird', {'id':birdChoisi.id}) }}');
-                    map.data.setStyle({
-                        fillColor: '#FE9A04',
-                        fillOpacity: 0.5,
-                        strokeWeight: 0
-                    });
                 map.data.addListener('mouseover', function (event) {
                     map.data.revertStyle();
                     map.data.overrideStyle(event.feature, {strokeWeight: 2, strokeOpacity: 0.5});
                 });
                 });
-                    map.data.addListener('mouseover', function (event) {
-                        map.data.revertStyle();
-                        map.data.overrideStyle(event.feature, {strokeWeight: 2, strokeOpacity: 0.5});
-                    });
-                    {% endif %}
                 }
             </script>
             <script async defer

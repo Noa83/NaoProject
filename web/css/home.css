@@ -123,8 +123,6 @@ h2.titre
 }
 div.col-sm-12.last_articles
 {
-    /*border: solid 1px #288B90;*/
-    /*border-radius: 8px;*/
     margin-left: 15px;
     display: flex;
     flex-direction: column;
@@ -204,7 +202,7 @@ div#img_btn
         width: 250px;
     }
 }
-@media (max-width: 1199px) and (min-width: 992px)
+@media screen and (max-width: 1199px) and (min-width: 992px)
 {
     div.container-fluid.global_bottom_part
     {
