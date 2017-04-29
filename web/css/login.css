@@ -28,3 +28,7 @@ h1 {
 .contenulogin {
     margin-top: 10vh;
 }
+.div.opal_bg.contenulogin
+{
+    margin-left: 30px;
+}

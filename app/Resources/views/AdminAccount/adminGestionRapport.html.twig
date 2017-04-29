@@ -3,9 +3,49 @@
 {% block adminContent %}
 
     <div class="tab-content col-md-10 col-md-offset-1">
-
-        Gestion des rapports
-
+        <div class="container-fluid" id="consultation_bg">
+            <div class="row">
+                <h1 class="text-center">Rapports d'observation</h1>
+                <div class="col-sm-6 col-md-offset-3">
+                    {{ form_start(form) }}
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-1">
+                            {{ form_row(form.bird, {'label': 'Nom de l\'espèce :'}) }}
+                        </div>
+                    </div>
+                    <div class="row" id="btn_valid">
+                        <div class="col-md-2 col-md-offset-4">
+                            <button class="btn btn_form" type="submit">Envoyer</button>
+                        </div>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+                <div class="col-sm-8 col-md-offset-2">
+                    {% if mailleCountForBird is not empty %} <!-- if observation -->
+                        <p class="text-center">Nombre total d'observation : {{ mailleCountForBird[1] }}</p>
+                        <p class="text-center">Date de la derniere observation : {{ derniereObs.date | date("d/m/Y") }}</p>
+                        <div class="table-responsive col-md-6 col-md-offset-3">
+                            <table class="table table-hover table-condensed">
+                                <thead>
+                                <tr>
+                                    <th class="text-center">Maille</th>
+                                    <th class="text-center">Nombre observé dans la maille</th>
+                                </tr>
+                                </thead>
+                                {% for i in 0..(mailleCountForBird[0]|length - 1) %}
+                                    <tr>
+                                        <td class="col-sm-6 text-center">{{ mailleCountForBird[0][i][0] }}</td>
+                                        <td class="col-sm-6 text-center">{{ mailleCountForBird[0][i][1] }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+                    {% else %}
+                        <div class="alert alert-warning">Aucun rapport disponible pour cet oiseau.</div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
     </div>
 
 {% endblock %}

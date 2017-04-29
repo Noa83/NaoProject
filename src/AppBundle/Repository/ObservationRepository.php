@@ -2,11 +2,7 @@
 
 namespace AppBundle\Repository;
 
-use AppBundle\Entity\Km10;
 use Doctrine\ORM\EntityRepository;
-use Doctrine\ORM\Query\ResultSetMapping;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * ObservationRepository
@@ -16,71 +12,50 @@ use Symfony\Component\HttpFoundation\JsonResponse;
  */
 class ObservationRepository extends EntityRepository
 {
-    public function getObservationsInfosWithBirdInfo($birdId)
+    public function getObservationInfoWithMailleByBird($birdId)
     {
         $list = $this->createQueryBuilder('o')
+            ->addSelect('km')
+            ->leftJoin('o.km10Maille', 'km')
             ->where('o.bird = :birdId')
             ->setParameter('birdId', $birdId)
-//            ->andWhere('o.validated = true')
-            ->leftJoin('o.bird', 'bird')
-            ->addSelect('bird')
+            ->andWhere('o.validated = true')
             ->getQuery()
             ->getResult();
+        return $list;
+
+
+
     }
 
-    public function getMailleGeoJsonByBird($birdId)
+    public function getOneMailleGeoJsonByBird($birdId, $observationId)
     {
-        $em = $this->getEntityManager();
-        $rsm = new ResultSetMapping($em);
+        $list = $this->createQueryBuilder('o')
+            ->addSelect('km')
+            ->leftJoin('o.km10Maille', 'km')
+            ->where('o.bird = :birdId')
+            ->setParameter('birdId', $birdId)
+            ->andWhere('o.id = :observationId')
+            ->setParameter('observationId', $observationId)
+            ->getQuery()
+            ->getResult();
+        return $list;
+    }
 
-        $rsm->addScalarResult('nom_maille', 'nomMaille');
-        $rsm->addScalarResult('geojson', 'geometry');
+    public function find10ByBird($birdId){
 
-        //Requete sans le validated true
-        $query = $this->_em->createNativeQuery("SELECT k.nom_maille, st_asgeojson(k.polygon) as geojson FROM observation o,
- km10 k WHERE o.bird_id = :birdId AND o.km10maille_id = k.id", $rsm)
-            ->setParameter('birdId',$birdId);
+        $results = $this->createQueryBuilder('o')
+            ->where('o.bird = :birdId')
+            ->setParameter('birdId', $birdId)
+            ->andWhere('o.validated = true')
+            ->orderBy('o.date', 'DESC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult();
 
-
-        //Requete avec le validated true
-//        $query = $this->_em->createNativeQuery("SELECT k.nom_maille, st_asgeojson(k.polygon) as geojson FROM observation o,
-// km10 k WHERE o.bird_id = :birdId AND o.km10maille_id = k.id AND o.validated = true", $rsm)
-//              ->setParameter('birdId',$birdId);
-
-
-        //refaire pour que ça renvoie entite km10
-
-        $results = $query->getResult();
-
-
-        //mettre dans un service
-        //Transfo en géoJson
-        $feature = [];
-        foreach ($results as $row) {
-            $temp = array(
-                'type' => 'Feature',
-                'properties' => array(
-                    'name' => $row['nomMaille']
-                ),
-                'geometry' => json_decode($row['geometry'])
-            );
-            array_push($feature, $temp);
+        if (empty($results)){
+            throw new \Exception();
         }
-        $geojson = array(
-            'type' => 'FeatureCollection',
-            'features' => $feature
-        );
-
-        return $geojson;
-    }
-
-    public function getNbBirdsByMailleForChoicedBird($birdId)
-    {
-
-    }
-
-    public function getOneMailleGeoJsonByBird($birdId)
-    {
-
+        return $results;
     }
 }

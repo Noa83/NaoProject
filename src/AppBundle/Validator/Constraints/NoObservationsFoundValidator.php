@@ -2,11 +2,11 @@
 
 namespace AppBundle\Validator\Constraints;
 
-use AppBundle\Model\ObservationModel;
+use AppBundle\Model\ResultsModel;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 
-class OutOfFranceValidator extends ConstraintValidator
+class NoObservationsFoundValidator extends ConstraintValidator
 {
     private $manager;
 
@@ -18,17 +18,16 @@ class OutOfFranceValidator extends ConstraintValidator
     public function validate($value, Constraint $constraint)
     {
         /**
-         * @var ObservationModel $value
+         * @var ResultsModel $value
          */
-        $latlong = $value->getLongLat();
+        $birdId = $value->birdId;
         try{
-           $this->manager->getRepository('AppBundle:Km10')
-                ->getMailleNativeSql($latlong);
+            $this->manager->getRepository('AppBundle:Observation')->find10ByBird($birdId);
         }
         catch(\Exception $e)
         {
             $this->context->buildViolation($constraint->message)
-                ->atPath('long')
+                ->atPath('bird')
                 ->addViolation();
         }
     }

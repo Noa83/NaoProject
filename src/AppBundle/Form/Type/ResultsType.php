@@ -17,7 +17,7 @@ class ResultsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('bird', ChoiceType::class, [
+            ->add('birdId', ChoiceType::class, [
                 'choices' => $options['birdList']
             ]);
     }
