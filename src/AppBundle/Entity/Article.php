@@ -43,9 +43,11 @@ class Article
     private $date;
 
     /**
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Picture", cascade={"persist"})
+     * @var string
+     *
+     * @ORM\Column(name="image_url", type="text")
      */
-    private $picture;
+    private $imageUrl;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Category")
@@ -136,27 +138,19 @@ class Article
     }
 
     /**
-     * Set picture
-     *
-     * @param \AppBundle\Entity\Picture $picture
-     *
-     * @return Article
+     * @return string
      */
-    public function setPicture(\AppBundle\Entity\Picture $picture)
+    public function getImageUrl()
     {
-        $this->picture = $picture;
-
-        return $this;
+        return $this->imageUrl;
     }
 
     /**
-     * Get picture
-     *
-     * @return \AppBundle\Entity\Picture
+     * @param string $imageUrl
      */
-    public function getPicture()
+    public function setImageUrl($imageUrl)
     {
-        return $this->picture;
+        $this->imageUrl = $imageUrl;
     }
 
     /**

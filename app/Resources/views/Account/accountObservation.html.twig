@@ -21,7 +21,7 @@
                     {% for observation in observationsUser %}
                         <tr>
                             <td class="col-sm-3"><a class="articleTitle" href="#">{{ observation.bird.getNomValide() }}</td>
-                            <td class="col-sm-5">{{ observation.comment }}
+                            <td class="col-sm-5">{{ observation.comment | truncate(200) }}
                             <td class="col-sm-2">{{ observation.date | date("d/m/Y") }}</td>
                             <td class="col-sm-1">
                                 {% if observation.validated %}
@@ -39,14 +39,14 @@
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                                <h4 class="modal-title" id="myModalLabel">Confirmation needed</h4>
+                                                <h4 class="modal-title" id="myModalLabel">Confirmation requise</h4>
                                             </div>
                                             <div class="modal-body">
-                                                Do you really want to delete this article ?
+                                                Voulez vous vraiment supprimer cette observation ?
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                                <a href="{{ path('observation_remove', { 'id': observation.id }) }}" class="btn btn-danger">Confirm</a>
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                                                <a href="{{ path('observation_remove', { 'id': observation.id }) }}" class="btn btn-danger">Confirmer</a>
                                             </div>
                                         </div><!-- /.modal-content -->
                                     </div><!-- /.modal-dialog -->
