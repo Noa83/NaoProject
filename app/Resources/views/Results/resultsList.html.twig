@@ -1,4 +1,5 @@
 {% extends 'base.html.twig' %}
+{% block title %}Liste des résultats{% endblock %}
 
 {% block stylesheet_enfant %}
     <link rel="stylesheet" href="{{ asset('css/consultation.css') }}">
@@ -11,10 +12,10 @@
 {% block body %}
     <div class="container-fluid" id="consultation_bg">
         <br>
-        <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="col-md-12">
             <h1 class="text-center">Consulter les données</h1>
-            <div class="colonne_recherches col-md-6 col-sm-6 col-xs-12">
-                <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="colonne_recherches col-md-6 col-xs-12">
+                <div class="col-md-12">
                     <div>
                         <h3 class="text-center">Observations sur l'oiseau :{% if birdChoisi %}
                                 {{ birdChoisi.nomValide }}{% endif %}</h3><br/>
@@ -39,9 +40,9 @@
                     </div>
                 </div>
             </div>
-            <div class="colonne_carte col-sm-6 col-xs-12">
-                <div id="map" class="col-md-12 col-sm-12 col-xs-12"></div>
-                <div class="col-sm-12 col-xs-12 bg_legend">
+            <div class="colonne_carte col-md-6 col-xs-12">
+                <div id="map" class="col-md-12"></div>
+                <div class="col-md-12 bg_legend">
                     Les carrés colorés représentent les zones dans lesquelles l'espèce a été observée.<br>
                     Plus la couleur du carré est foncée plus un grand nombre d'individus y a été vu.<br>
                 </div>

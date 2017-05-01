@@ -11,11 +11,44 @@ textarea#observation_observationMsg.form-control
 
 /* Background */
 .content-body {
-    width: auto;
-    height: 670px;
+    /*width: auto;*/
+    /*height: 670px;*/
     background: url("../images/fond_observation.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     padding-top: 20px;
     padding-bottom: 20px;
+}
+
+
+/* Media Queries */
+
+@media screen and (max-width: 767px)
+{
+    div.content-body
+    {
+        margin-top: 70px;
+    }
+    #opal_bg
+    {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+}
+@media screen and (min-width: 768px) and (max-width: 991px)
+{
+    #opal_bg
+    {
+        margin-left: 50px;
+        margin-right: 10px;
+        margin-top: 40px;
+    }
+}
+@media screen and (min-width: 992px)
+{
+    #opal_bg
+    {
+        margin-top: 50px;
+    }
 }

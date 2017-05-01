@@ -1,4 +1,5 @@
 {% extends 'base.html.twig' %}
+{% block title %}Consultation{% endblock %}
 
 {% block stylesheet_enfant %}
     <link rel="stylesheet" href="{{ asset('css/consultation.css') }}">
@@ -11,11 +12,11 @@
 {% block body %}
     <div class="container-fluid" id="consultation_bg">
         <br>
-        <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="col-md-12">
             <h1 class="text-center">Consulter les données</h1>
-            <div class="colonne_recherches col-md-6 col-sm-6 col-xs-12">
-                <div class="col-md-12 col-sm-12 col-xs-12" id="bg_infos_consult">
-                    <div class="col-md-12">
+            <div class="colonne_recherches col-md-6 col-xs-12">
+                <div class="col-md-12" id="bg_infos_consult">
+                    <div class="col-md-12" id="opal_bg_consult">
                         <h3 class="text-center">Choisissez l'oiseau pour lequel vous souhaitez obtenir des
                             informations et visualisez les zones géographiques dans lesquelles il a été observé
                             sur la carte.</h3>
@@ -35,8 +36,8 @@
                 </div>
             </div>
 
-            <div class="colonne_carte col-md-6 col-sm-6 col-xs-12">
-                    <div id="empty_map" class="col-md-12 col-sm-12 col-xs-12"></div>
+            <div class="colonne_carte col-md-6 col-xs-12">
+                <div id="empty_map" class="col-md-12"></div>
             </div>
 
             <script type="text/javascript">
