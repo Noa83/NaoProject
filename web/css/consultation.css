@@ -69,6 +69,10 @@ a.btn_more:hover
     width: 170px;
     color: white;
 }
+div#opal_bg_consult
+{
+    padding-top: 15px;
+}
 
 /* Tableau */
 .table-hover>tbody>tr:hover
@@ -98,6 +102,6 @@ p.col-xs-5.label_oiseau
 {
     div#bg_infos_consult
     {
-        margin-bottom: 30px;
+    margin-bottom: 30px;
     }
 }

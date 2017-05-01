@@ -1,4 +1,5 @@
 {% extends 'base.html.twig' %}
+{% block title %}Observation{% endblock %}
 
 {% block stylesheet_enfant %}
     <link rel="stylesheet" href="{{ asset('css/observation.css') }}">
@@ -11,7 +12,7 @@
 {% block body %}
     <div class="container-fluid" id="observation_bg">
         {#<div class="container-fluid test">#}
-        <div class="col-md-6 col-md-offset-6" id="opal_bg">
+        <div class="col-md-offset-6 col-md-6" id="opal_bg">
             <div class="part-right">
                 <h1 class="sous-titre">Saisir une nouvelle observation:</h1>
                 <p class="accroche">Vous avez eu l'opportunité d'observer un oiseau lors de vos promenades ou même dans
@@ -19,17 +20,17 @@
                     Complétez ce formulaire pour nous envoyer une observation.
                 </p>
                 {{ form_start(form) }}
-                <div class="row">
+                <div>
                     <div class="col-md-12">
                         {{ form_row(form.bird, {'label': 'Nom de l\'espèce :'}) }}
                     </div>
                 </div>
-                <div class="row">
+                <div>
                     <label class="col-md-12">Coordonnées d'observation:</label>
                     {{ form_errors(form.lat) }}
                     {{ form_errors(form.long) }}
                 </div>
-                <div class="row">
+                <div>
                     <div class="col-md-6 col-xs-6">
                         {{ form_label(form.lat, 'Latitude') }}
                         {{ form_widget(form.lat) }}
@@ -39,7 +40,7 @@
                         {{ form_widget(form.long) }}
                     </div>
                 </div>
-                <div class="row">
+                <div>
                     <div class="col-md-6 col-xs-12">
                         {{ form_row(form.date, {'label': 'Date de l\'observation :'}) }}
                     </div>
@@ -47,7 +48,7 @@
                         {{ form_row(form.image, {'label': 'Joindre une image (Max: 2M) :'}) }}
                     </div>
                 </div>
-                <div class="row">
+                <div>
                     <div class="col-md-12">
                         {{ form_row(form.comment, {'label': 'Observations :'}) }}
                     </div>
@@ -58,7 +59,7 @@
                         <hr>
                     </div>
                 {% endfor %}
-                <div class="row" id="btn_valid">
+                <div class="col-md-12" id="btn_valid">
                     <div>
                         <button class="btn btn_form" type="submit">Envoyer</button>
                     </div>

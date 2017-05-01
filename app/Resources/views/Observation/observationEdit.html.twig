@@ -1,4 +1,5 @@
 {% extends 'base.html.twig' %}
+{% block title %}Edition d'observation{% endblock %}
 
 {% block stylesheet_enfant %}
     <link rel="stylesheet" href="{{ asset('css/observation.css') }}">
@@ -30,11 +31,11 @@
                     {{ form_errors(form.long) }}
                 </div>
                 <div class="row">
-                    <div class="col-md-6 col-xs-6">
+                    <div class="col-md-6 col-xs-12">
                         {{ form_label(form.lat, 'Latitude') }}
                         {{ form_widget(form.lat) }}
                     </div>
-                    <div class="col-md-6 col-xs-6">
+                    <div class="col-md-6 col-xs-12">
                         {{ form_label(form.long, 'Longitude') }}
                         {{ form_widget(form.long) }}
                     </div>
@@ -43,7 +44,7 @@
                     <div class="col-md-6 col-xs-12">
                         {{ form_row(form.date, {'label': 'Date de l\'observation :'}) }}
                     </div>
-                    <div class="col-md-6 col-xs-6">
+                    <div class="col-md-6 col-xs-12">
                         {{ form_row(form.image, {'label': 'Joindre une image (Max: 2M) :'}) }}
                     </div>
                 </div>
