@@ -10,18 +10,18 @@ use Doctrine\ORM\EntityRepository;
  */
 class ObservationRepository extends EntityRepository
 {
-    public function getObservationInfoWithMailleByBird($birdId)
-    public function getObservationInfoWithMailleByBird($birdId)
-    {
-        $list = $this->createQueryBuilder('o')
-            ->addSelect('km')
-            ->leftJoin('o.km10Maille', 'km')
-            ->where('o.bird = :birdId')
-            ->setParameter('birdId', $birdId)
-            ->andWhere('o.validated = true')
-            ->getQuery()
-            ->getResult();
-        return $list;
+//    public function getObservationInfoWithMailleByBird($birdId)
+//    {
+//        $list = $this->createQueryBuilder('o')
+//            ->addSelect('km')
+//            ->leftJoin('o.km10Maille', 'km')
+//            ->where('o.bird = :birdId')
+//            ->setParameter('birdId', $birdId)
+//            ->andWhere('o.validated = true')
+//            ->getQuery()
+//            ->getResult();
+//        return $list;
+//    }
     public function getOneMailleGeoJsonByBird($birdId, $observationId)
         $list = $this->createQueryBuilder('o')
             ->addSelect('km')
@@ -33,7 +33,6 @@ class ObservationRepository extends EntityRepository
             ->getQuery()
             ->getResult();
         return $list;
-    }
     public function find10ByBird($birdId){
         $results = $this->createQueryBuilder('o')
             ->where('o.bird = :birdId')
