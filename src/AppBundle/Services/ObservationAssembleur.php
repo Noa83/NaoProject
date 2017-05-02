@@ -27,6 +27,7 @@ class ObservationAssembleur
         $observation = new Observation();
         $this->editObservation($observationModel, $observation, $user, $imageUrl);
 
+        return $observation;
     }
 
     public function editObservation(ObservationModel $observationModel, Observation $observation, User $user, $imageUrl){
@@ -41,6 +42,7 @@ class ObservationAssembleur
             ->getMailleNativeSql($observationModel->getLongLat()));
         $observation->setComment($observationModel->comment);
         $observation->setUser($user);
+        $observation->setValidated(false);
 
         //Gestion de la validation de l'observation selon le role du user
         if ($user->getRoles() == array("ROLE_ADMIN") || $user->getRoles() == array("ROLE_VALIDATEUR")){

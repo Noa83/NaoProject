@@ -27,7 +27,7 @@ class AccountProfilController extends Controller
 
             $this->get('appbundle.user_service')->modifyUser($user, $userAccountModel);
             $this->addFlash(
-                'notice',
+                'success',
                 'Changements sauvegardés'
             );
 

@@ -26,14 +26,14 @@
                 {% if formEditUser %}
                 {{ form_start(formEditUser) }}
                 <tr>
-                    <td>{{ form_widget(formEditUser.username) }}</td>
-                    <td>{{ form_widget(formEditUser.prenom) }}</td>
-                    <td>{{ form_widget(formEditUser.dateNaissance) }}</td>
-                    <td>{{ form_widget(formEditUser.email) }}</td>
-                    <td>{{ form_widget(formEditUser.ville) }}</td>
-                    <td>{{ form_widget(formEditUser.role) }}</td>
-                    <td>
-                        <a href="#">X</a>
+                    <td class="col-md-2">{{ form_widget(formEditUser.username) }}</td>
+                    <td class="col-md-2">{{ form_widget(formEditUser.prenom) }}</td>
+                    <td class="col-md-1">{{ form_widget(formEditUser.dateNaissance) }}</td>
+                    <td class="col-md-2">{{ form_widget(formEditUser.email) }}</td>
+                    <td class="col-md-2">{{ form_widget(formEditUser.ville) }}</td>
+                    <td class="col-md-2">{{ form_widget(formEditUser.role) }}</td>
+                    <td class="col-md-1">
+                        <a href="#"><span class="glyphicon glyphicon-remove"></span></a>
                     </td>
                     {% else %}
                         Aucune données

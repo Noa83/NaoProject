@@ -32,7 +32,7 @@ class ObservationController extends Controller
             $imageURL = $this->get('image_manager')->createObservationImage($observationModel);
             $observation = $this->get('observation_assembleur')->createFromModel($observationModel, $this->getUser(), $imageURL);
             $this->get('observation_manager')->create($observation);
-            return $this->redirectToRoute('observation');
+            return $this->redirectToRoute('account_observation');
         }
 
         return $this->render('Observation/observation.html.twig', [

@@ -10,31 +10,31 @@
             {{ form_start(formProfil) }}
             <div class="row">
                 <div class="col-md-6">
-                    {{ form_row(formProfil.username, {'label': 'Pseudo :'}) }}
+                    {{ form_row(formProfil.username, {'label': '*Pseudo :'}) }}
                 </div>
                 <div class="col-md-6">
-                    {{ form_row(formProfil.email, {'label': 'Email :'}) }}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    {{ form_row(formProfil.plainPassword.first, {'label': 'Votre mot de passe :'}) }}
-                </div>
-                <div class="col-md-6">
-                    {{ form_row(formProfil.plainPassword.second, {'label': 'Retapez votre mot de passe :'}) }}
+                    {{ form_row(formProfil.email, {'label': '*Email :'}) }}
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    {{ form_row(formProfil.prenom, {'label': '*Votre prénom:'}) }}
+                    {{ form_row(formProfil.plainPassword.first, {'label': '*Votre mot de passe :'}) }}
                 </div>
                 <div class="col-md-6">
-                    {{ form_row(formProfil.ville, {'label': '*Votre ville :'}) }}
+                    {{ form_row(formProfil.plainPassword.second, {'label': '*Retapez votre mot de passe :'}) }}
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    {{ form_row(formProfil.dateNaissance, {'label': '*Votre date de naissance :'}) }}
+                    {{ form_row(formProfil.prenom, {'label': 'Votre prénom:'}) }}
+                </div>
+                <div class="col-md-6">
+                    {{ form_row(formProfil.ville, {'label': 'Votre ville :'}) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    {{ form_row(formProfil.dateNaissance, {'label': 'Votre date de naissance :'}) }}
                 </div>
             </div>
             <div class="row">
