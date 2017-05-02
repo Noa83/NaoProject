@@ -20,7 +20,7 @@
                     </thead>
                     {% for observation in observationsUser %}
                         <tr>
-                            <td class="col-sm-3"><a class="articleTitle" href="#">{{ observation.bird.getNomValide() }}</td>
+                            <td class="col-sm-3"><a class="articleTitle" href="{{ path('fiche_bird_obs',{'id': observation.bird.id,'idObs': observation.id}) }}">{{ observation.bird.getNomValide() }}</td>
                             <td class="col-sm-5">{{ observation.comment }}
                             <td class="col-sm-2">{{ observation.date | date("d/m/Y") }}</td>
                             <td class="col-sm-1">

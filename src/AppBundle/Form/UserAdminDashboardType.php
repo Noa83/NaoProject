@@ -3,6 +3,7 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -32,7 +33,12 @@ class UserAdminDashboardType extends AbstractType
                 'required' => false))
             ->add('ville',          TextType::class, array(
                 'required' => false))
-            ->add('role',           TextType::class)
+            ->add('role',           ChoiceType::class, array(
+                'choices'  => array(
+                    'Admin' => 'ROLE_ADMIN',
+                    'Validateur' => 'ROLE_VALIDATEUR',
+                    'Utilisateur' => 'ROLE_USER',
+                )))
         ;
 
     }
