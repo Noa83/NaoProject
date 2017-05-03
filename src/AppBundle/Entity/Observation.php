@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Observation
 {
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="observations")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;

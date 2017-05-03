@@ -21,15 +21,14 @@ class AdminGestionUserController extends Controller
     public function adminGestionUserAction(Request $request)
     {
 
+        $username = $request->query->get('username');
         $user = new User();
         $userModel = new UserAccountModel();
-        $formSearch = $this->createForm(UserSearchType::class, $userModel);
         $formEditUser = $this->createForm(UserAdminDashboardType::class, $userModel);
 
-        $formSearch->handleRequest($request);
-        if ($formSearch->isSubmitted()) {
+        if (isset($username) AND ($username != "")) {
 
-            $user = $this->getDoctrine()->getRepository('AppBundle:User')->findOneBy(array('username' => $userModel->username));
+            $user = $this->getDoctrine()->getRepository('AppBundle:User')->findOneBy(array('username' => $username));
 
             if ($user != null) {
 
@@ -37,13 +36,10 @@ class AdminGestionUserController extends Controller
                 $formEditUser = $this->createForm(UserAdminDashboardType::class, $userModel);
             }else {
                 $this->addFlash(
-                    'alert',
-                    'Aucun Pseudo de ce nom.'
+                    'warning',
+                    'Pseudo non trouvé veuillez rééssayer.'
                 );
             }
-
-            return $this->render('AdminAccount/adminGestionUser.html.twig', array('formSearch' => $formSearch->createView(),
-                'formEditUser' => $formEditUser->createView()));
         }
 
         $formEditUser->handleRequest($request);
@@ -58,7 +54,27 @@ class AdminGestionUserController extends Controller
             );
         }
 
-        return $this->render('AdminAccount/adminGestionUser.html.twig', array('formSearch' => $formSearch->createView(),
-            'formEditUser' => $formEditUser->createView()));
+        return $this->render('AdminAccount/adminGestionUser.html.twig', array(
+            'formEditUser' => $formEditUser->createView(),
+            'user' => $user));
+    }
+
+    /**
+     * @Route("/admin/user/remove/{id}", name="user_remove", requirements={"id": "\d+"})
+     */
+    public function removeUser($id){
+
+        $user = $this->getDoctrine()->getRepository('AppBundle:User')->find($id);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($user);
+        $em->flush();
+
+        $this->addFlash(
+            'success',
+            'Utilisateur supprimé'
+        );
+
+        return $this->redirectToRoute('admin_user');
     }
 }

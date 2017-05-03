@@ -60,6 +60,11 @@ class User implements UserInterface, \Serializable
      */
     private $ville;
 
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Observation", mappedBy="user", cascade={"remove"})
+     */
+    private $observations;
+
 
     function __construct() {
         $this->setRoles(array('ROLE_USER'));
@@ -277,5 +282,39 @@ class User implements UserInterface, \Serializable
     public function getVille()
     {
         return $this->ville;
+    }
+
+    /**
+     * Add observation
+     *
+     * @param \AppBundle\Entity\Observation $observation
+     *
+     * @return User
+     */
+    public function addObservation(\AppBundle\Entity\Observation $observation)
+    {
+        $this->observations[] = $observation;
+
+        return $this;
+    }
+
+    /**
+     * Remove observation
+     *
+     * @param \AppBundle\Entity\Observation $observation
+     */
+    public function removeObservation(\AppBundle\Entity\Observation $observation)
+    {
+        $this->observations->removeElement($observation);
+    }
+
+    /**
+     * Get observations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getObservations()
+    {
+        return $this->observations;
     }
 }

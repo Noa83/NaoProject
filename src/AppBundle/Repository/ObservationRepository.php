@@ -10,4 +10,16 @@ namespace AppBundle\Repository;
  */
 class ObservationRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findObsByUser($user){
+        $results = $this->createQueryBuilder('o')
+            ->where('o.user = '.$user->getId())
+            ->orderBy('o.date', 'DESC')
+            ->orderBy('o.id', 'DESC')
+            ->getQuery()
+            ->getResult();
+        if (empty($results)){
+            throw new \Exception();
+        }
+        return $results;
+    }
 }
