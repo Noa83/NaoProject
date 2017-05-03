@@ -2,7 +2,8 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <title>{% block title %}Nos Amis les Oiseaux{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Nos Amis les Oiseaux - {% block title %}{% endblock %}</title>
     {% block stylesheets %}
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -16,12 +17,12 @@
 </head>
 <body class="container-fluid">
 <header class="row" id="nao_header">
-    <div id="top_button_bar_xs" class="col-sm-12">
-        <a class="btn pull-right btn-sm faceb" title="NAO Link"
+    <div id="top_button_bar_xs" class="col-md-12">
+        <a class="btn btn-sm faceb" title="NAO Link"
            href="https://www.facebook.com/lapagedenosamislesoiseaux/" target="_blank"><i
                     class="fa fa-facebook" aria-hidden="true"></i></a>
-        <a class="btn btn-sm join" href="{{ path('join') }}" role="button">Adhérer</a>
-        <a class="btn btn-sm donate" href="{{ path('donate') }}" role="button">Faire un don</a>
+        <a class="btn btn-sm join" href="{{ path('donate_join') }}" role="button">Adhérer</a>
+        <a class="btn btn-sm donate" href="{{ path('donate_join') }}#donate" role="button">Faire un don</a>
     </div>
     <!-- Navbar -->
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -35,16 +36,16 @@
                     <span class="icon-bar"></span>
                 </button>
                 <div class="navbar-brand img-responsive">
-                    <img alt="logo_nos_amis_les_oiseaux"
-                         src="{{ asset('images/LogoNAO.png') }}">
+                    <a href="{{ path('home_page') }}"><img id="logo_nao" alt="logo_nos_amis_les_oiseaux"
+                         src="{{ asset('images/LogoNAO.png') }}"></a>
                 </div>
             </div>
             <div class="collapse navbar-collapse navbar-right" id="nao-navbar">
-                <div id="top_button_bar" class="col-sm-4 pull-right">
-                    <a class="btn btn-sm donate pull-right" href="{{ path('donate') }}" role="button">Faire
+                <div id="top_button_bar" class="col-md-4 pull-right">
+                    <a class="btn btn-sm donate pull-right" href="{{ path('donate_join') }}#donate" role="button">Faire
                         un
                         don</a>
-                    <a class="btn btn-sm join pull-right" href="{{ path('join') }}"
+                    <a class="btn btn-sm join pull-right" href="{{ path('donate_join') }}"
                        role="button">Adhérer</a>
                     <a class="btn pull-right btn-sm faceb" href="https://www.facebook.com/lapagedenosamislesoiseaux/">
                         <i class="fa fa-facebook" aria-hidden="true"></i></a>
@@ -103,15 +104,20 @@
 
 
 <footer class="row footer">
-    <ol class="breadcrumb col-md-11">
+    <div class="col-md-1"></div>
+    <div class="col-md-10 text-center">
+    <ol class="breadcrumb col-md-12">
         <li><a href="#">Admin</a></li>
         <li><a href="{{ path('legal_notice') }}">Mentions légales</a></li>
         <li><a href="{{ path('contact') }}">Contact</a></li>
-        <li><a href="{{ path('join') }}">Adhérer</a></li>
-        <li><a href="{{ path('donate') }}">Faire un don</a></li>
+        <li><a href="{{ path('donate_join') }}">Adhérer</a></li>
+        <li><a href="{{ path('donate_join') }}#donate">Faire un don</a></li>
     </ol>
+    </div>
+    <div class="col-md-1">
     <a href="http://www.europe-en-france.gouv.fr/" target="_blank"><img src="{{ asset('images/europe.png') }}" alt="europe"
                                                         id="europe_img"></a>
+    </div>
 </footer>
 
 

@@ -89,9 +89,8 @@ div.clear
 input#mc-embedded-subscribe.button.form-control
 {
     background-color: rgba(255, 255, 255, 0.5);
-    color: #289490;
+    color: white;
     width: 150px;
-    text-shadow: 1px 1px 2px white;
 }
 input#mc-embedded-subscribe.button.form-control:hover
 {
@@ -112,13 +111,18 @@ div.form-group
 /* Articles du blog */
 h2.titre
 {
+    background-color: #288B90;
+    border-radius: 5px;
+    color: white;
+    text-shadow: 0 1px 2px black;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    margin-top: 0;
     text-align: center;
     margin-bottom: 42px;
 }
-div.col-md-12.last_articles
+div.col-sm-12.last_articles
 {
-    border: solid 1px #288B90;
-    border-radius: 8px;
     margin-left: 15px;
     display: flex;
     flex-direction: column;
@@ -193,8 +197,12 @@ div#img_btn
     {
         margin-right: 0;
     }
+    input#mce-EMAIL, input#mce-FNAME
+    {
+        width: 250px;
+    }
 }
-@media (max-width: 1199px) and (min-width: 992px)
+@media screen and (max-width: 1199px) and (min-width: 992px)
 {
     div.container-fluid.global_bottom_part
     {
@@ -254,6 +262,20 @@ div#img_btn
     div.col-md-12.content_article
     {
         padding-top: 5px;
+    }
+}
+@media screen and (max-width: 767px)
+{
+    input#mce-EMAIL, input#mce-FNAME
+    {
+        width: 450px;
+    }
+}
+@media screen and (max-width: 550px)
+{
+    input#mce-EMAIL, input#mce-FNAME
+    {
+        width: 300px;
     }
 }
 

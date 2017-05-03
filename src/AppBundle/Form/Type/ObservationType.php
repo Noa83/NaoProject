@@ -39,7 +39,8 @@ class ObservationType extends AbstractType
             ])
             ->add('comment', TextareaType::class)
             ->add('image', FileType::class, [
-                'required' => false
+                'required' => false,
+                'data_class' => null
             ]);
     }
     public function configureOptions(OptionsResolver $resolver)

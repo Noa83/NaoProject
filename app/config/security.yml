@@ -37,6 +37,6 @@ security:
               target:     /
 
     access_control:
+        - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/account, roles: ROLE_USER }
-        - { path: ^/a-dashboard, roles: ROLE_ADMIN }
         - { path: ^/observation, roles: ROLE_USER}

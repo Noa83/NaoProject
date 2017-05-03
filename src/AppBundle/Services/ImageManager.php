@@ -25,9 +25,9 @@ class ImageManager
         $file = $observationModel->image;
         if (empty($file)) {
         } else {
-            $fileName = md5(uniqid()) . ' . ' . $file->guessExtension();
+            $fileName = md5(uniqid()) . '.' . $file->guessExtension();
             $file->move($this->birdsImg, $fileName);
-            $fileUrl = 'web/images/birdsImages/' . $fileName . '\'';
+            $fileUrl = 'images/birdsImages/' . $fileName;
         }
 
        return $fileUrl;

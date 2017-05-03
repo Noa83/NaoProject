@@ -1,4 +1,5 @@
 {% extends 'base.html.twig' %}
+{% block title %}Consultation{% endblock %}
 
 {% block stylesheet_enfant %}
     <link rel="stylesheet" href="{{ asset('css/consultation.css') }}">
@@ -9,56 +10,52 @@
 {% endblock %}
 
 {% block body %}
-<div class="container-fluid" id="consultation_bg">
-<br>
-    <div class="row">
-        <div class="col-sm-5"><h1>Consulter les données</h1>
-            <p>contenu recherche</p>
+    <div class="container-fluid" id="consultation_bg">
+        <br>
+        <div class="col-md-12">
+            <h1 class="text-center">Consulter les données</h1>
+            <div class="colonne_recherches col-md-6 col-xs-12">
+                <div class="col-md-12" id="bg_infos_consult">
+                    <div class="col-md-12" id="opal_bg_consult">
+                        <h3 class="text-center">Choisissez l'oiseau pour lequel vous souhaitez obtenir des
+                            informations et visualisez les zones géographiques dans lesquelles il a été observé
+                            sur la carte.</h3>
+                        {{ form_start(form) }}
+                        <div class="row">
+                            <div class="col-md-12">
+                                {{ form_row(form.birdId, {'label': 'Nom de l\'espèce :'}) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div id="btn_valid">
+                            <button class="btn btn_form" type="submit">Envoyer</button>
+                        </div>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+
+            <div class="colonne_carte col-md-6 col-xs-12">
+                <div id="empty_map" class="col-md-12"></div>
+            </div>
+
+            <script type="text/javascript">
+                var map;
+                function initMap() {
+                    map = new google.maps.Map(document.getElementById('empty_map'), {
+                        center: {lat: 46.227588, lng: 2.214329},
+                        zoom: 6,
+                        mapTypeId: 'terrain'
+                    });
+                }
+            </script>
+            <script async defer
+                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHtk1Q7isnHjGK7ApFU2_V5--RdvqVUks&callback=initMap">
+            </script>
         </div>
-        <div>
-            {#{% if observation.image is not null %}#}
-                {#<img src="{{ observation.image.url }}" alt="{{ observation.image.alt }}">#}
-            {#{% endif %}#}
-        </div>
-
-
-
-
-        <div id="map" class="col-sm-7"></div>
     </div>
 
-    <script type="text/javascript">
-
-        var map;
-//        var myLatLng = {lat: 46.041, lng: 6.155};
-        function initMap() {
-            map = new google.maps.Map(document.getElementById('map'), {
-                center: {lat: 46.227588, lng: 2.214329},
-                zoom: 5
-            });
-
-
-            map.data.loadGeoJson('https://raw.githubusercontent.com/Noa83/Activit-_Git/master/carroyage10km.json');
-//            var KmlLayer = new google.maps.KmlLayer({
-//                url: 'https://inpn.mnhn.fr/docs/KMZ/L93_10K.kmz',
-//                map: map
-//            });
-            map.data.setStyle({
-                fillColor: 'green',
-                strokeWeight: 0
-            });
-
-//            var marker = new google.maps.Marker({
-//                position: myLatLng,
-//                map: map,
-//                title: 'Villy!'
-//            });
-        }
-
-
-    </script>
-    <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHtk1Q7isnHjGK7ApFU2_V5--RdvqVUks&callback=initMap">
-    </script>
-</div>
 {% endblock %}
+
+

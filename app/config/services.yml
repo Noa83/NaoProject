@@ -26,12 +26,30 @@ services:
          class: AppBundle\Services\UserService
          arguments: ["@doctrine.orm.entity_manager","@security.password_encoder"]
 
+    data_to_geojson:
+        class: AppBundle\Services\DataToGeoJson
+
+    data_to_array_maille_nb_birds:
+        class: AppBundle\Services\DataToArrayMailleNameAndNumberOfBirds
+
+#Validators
     out_of_france_validator:
          class: AppBundle\Validator\Constraints\OutOfFranceValidator
          arguments:
              - "@doctrine.orm.entity_manager"
          tags:
             - {name: validator.constraint_validator}
-         class: AppBundle\Services\UserService
-         arguments: ["@doctrine.orm.entity_manager","@security.password_encoder"]
 
+    no_observations_found_validator:
+         class: AppBundle\Validator\Constraints\NoObservationsFoundValidator
+         arguments:
+             - "@doctrine.orm.entity_manager"
+         tags:
+            - {name: validator.constraint_validator}
+
+    no_observations_found_validator:
+         class: AppBundle\Validator\Constraints\NoObservationsFoundValidator
+         arguments:
+             - "@doctrine.orm.entity_manager"
+         tags:
+            - {name: validator.constraint_validator}

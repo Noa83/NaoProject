@@ -15,6 +15,7 @@ use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+
 class ArticleType extends AbstractType
 {
     /**
@@ -25,7 +26,8 @@ class ArticleType extends AbstractType
         $builder
             ->add('title', TextType::class)
             ->add('text', TextareaType::class)
-            ->add('picture', PictureType::class)
+            ->add('imageUrl', FileType::class, array(
+                'data_class' => null))
             ->add('category', EntityType::class, array(
                 'class'        => 'AppBundle:Category',
                 'choice_label' => 'name',
@@ -50,6 +52,4 @@ class ArticleType extends AbstractType
     {
         return 'appbundle_article';
     }
-
-
 }
