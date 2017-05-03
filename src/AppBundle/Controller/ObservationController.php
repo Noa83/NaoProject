@@ -18,20 +18,22 @@ class ObservationController extends Controller
      */
     public function observationAction(Request $request)
     {
-        //Récup liste oiseaux.
+        //R�cup liste oiseaux.
         $birds = $this->getDoctrine()->getRepository('AppBundle:Birds')->getBirdsList();
 
-        //Créa du formulaire
+        //Cr�a du formulaire
         $observationModel = new ObservationModel();
         $observationForm = $this->get('form.factory')->create(ObservationType::class,
             $observationModel, ['birdList' => $birds]);
 
-        //Gestion d'une saisie géo hors France (quand les coordonnées rentrent dans les min/max entrés en conditions)
+        //Gestion d'une saisie g�o hors France (quand les coordonn�es rentrent dans les min/max entr�s en conditions)
         if ($request->isMethod('POST') && $observationForm->handleRequest($request)->isValid()) {
 
             $imageURL = $this->get('image_manager')->createObservationImage($observationModel);
             $observation = $this->get('observation_assembleur')->createFromModel($observationModel, $this->getUser(), $imageURL);
             $this->get('observation_manager')->create($observation);
+
+            $this->addFlash('success', 'Votre observation a bien été enregistrée!');
             return $this->redirectToRoute('account_observation');
         }
 
@@ -48,7 +50,7 @@ class ObservationController extends Controller
 
         $birds = $this->getDoctrine()->getRepository('AppBundle:Birds')->getBirdsList();
 
-        //Créa du formulaire
+        //Cr�a du formulaire
         $observation = $this->getDoctrine()->getRepository('AppBundle:Observation')->findOneBy(array('id' => $id));
         $observationModel = $this->get('observation_assembleur')->createFromObservation($observation);
 
@@ -96,6 +98,6 @@ class ObservationController extends Controller
         $em = $this->getDoctrine()->getManager();
         $em->flush();
 
-        return $this->redirectToRoute('account');
+        return $this->redirectToRoute('account_validation');
     }
 }

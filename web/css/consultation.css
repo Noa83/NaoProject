@@ -1,6 +1,113 @@
 /* Carte */
+#empty_map {
+    height: 700px;
+    width: 100%;
+    position:relative;
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px #288B90;
+}
+
 #map {
-    height: 450px;
-    width: 700px;
+    height: 700px;
+    width: 100%;
+    position:relative;
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px #288B90;
+    margin-bottom: 20px;
+}
+
+/* Background */
+.content-body {
+    width: auto;
+    height: auto;
+    background: url("../images/fond_results.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+div#bg_infos_consult
+{
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 8px;
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+div.bg_legend
+{
+    padding-bottom: 15px;
+    padding-top: 15px;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 8px;
+    font-size: 13px;
+}
+
+/* Body */
+h1.text-center
+{
     margin-bottom: 30px;
 }
+
+div#btn_valid
+{
+    text-align: center;
+}
+label.control-label.required, h1.text-center, th, td
+{
+    text-shadow: 1px 0 1px white;
+}
+a.btn_more
+{
+    background-color: #288B90;
+    color: white;
+    margin-top: 10px;
+    width: 140px;
+}
+a.btn_more:hover
+{
+    transition: width 1s linear;
+    background: #289490;
+    width: 170px;
+    color: white;
+}
+div#opal_bg_consult
+{
+    padding-top: 15px;
+}
+
+/* Tableau */
+.table-hover>tbody>tr:hover
+{
+    background-color: rgba(255, 255, 255, 0.3);
+}
+h3.text-center
+{
+    background-color: #FE9A04;
+    border-radius: 5px;
+    color: white;
+    text-shadow: 1px 1px 1px black;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+/* Fiche Oiseau */
+p.col-xs-5.label_oiseau
+{
+    color: #288B90;
+}
+
+/* Media Queries */
+
+@media screen and (max-width: 1270px)
+{
+    div#bg_infos_consult
+    {
+    margin-bottom: 30px;
+    padding: 0;
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px #288B90;
+    }
+}
+
+
+

@@ -25,7 +25,7 @@ class Observation
     private $bird;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Km10")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Km10", inversedBy="observations")
      * @ORM\JoinColumn(nullable=false)
      */
     private $km10Maille;

@@ -32,6 +32,15 @@ class ArticleRepository extends \Doctrine\ORM\EntityRepository
             ->getQuery()
             ->getResult();
     }
+    //Récup 4 articles pour la page d'accueil
+    public function getArticlesForHomePage()
+    {
+        return $this->createQueryBuilder('a')
+            ->orderBy('a.id', 'DESC') //Ordonne par ordre décroissant dernier article au premier article
+            ->setMaxResults(4)  //Limite à 4 résultats.
+            ->getQuery()
+            ->getResult();
+    }
 
     const LIMIT = 15;
 

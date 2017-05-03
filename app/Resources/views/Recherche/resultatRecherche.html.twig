@@ -1,4 +1,5 @@
 {% extends 'base.html.twig' %}
+{% block title %}Résultats de recherche{% endblock %}
 
 {% block stylesheet_enfant %}
     <link rel="stylesheet" href="{{ asset('css/recherche.css') }}">
@@ -10,7 +11,7 @@
             <div class="col-lg-6 col-lg-offset-3 well">
                 <h1>Résultats:</h1><br>
                 {% if nom.nomVern is defined %}
-                    <p><strong>Fiche: </strong><a href="#">{{ nom.nomVern }}</a></p><!-- route:  path(fiche, id : nom.id) -->
+                    <p><strong>Fiche: </strong><a href="{{ path('results_route', {'birdId': nom.id}) }}">{{ nom.nomVern }}</a></p><!-- route:  path(fiche, id : nom.id) -->
                 {% elseif  nom.title is defined %}
                     <p><strong>Article: </strong><a href="{{ path('article', {'id': nom.id}) }}">{{ nom.title }}</a></p><!-- route:  path(fiche, id : nom.id) -->
                 {% else %}
