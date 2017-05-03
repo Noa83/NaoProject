@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-{% block title %}Fiche EspÃ¨ce{% endblock %}
+{% block title %}Fiche Espèce{% endblock %}
 
 {% block stylesheet_enfant %}
     <link rel="stylesheet" href="{{ asset('css/consultation.css') }}">
@@ -12,12 +12,12 @@
 {% block body %}
     <div class="container-fluid" id="consultation_bg">
         <div class="col-md-12">
-            <h1 class="text-center">Consulter les donnÃ©es</h1>
+            <h1 class="text-center">Consulter les données</h1>
             <div class="colonne_infos col-md-6 col-xs-12" id="bg_infos_consult">
                 <div class="col-md-12">
-                    <h3 class="text-center">Fiche EspÃ¨ce :</h3><br/>
+                    <h3 class="text-center">Fiche Espèce :</h3><br/>
                     <div class="englob_fiche">
-                        <p class="col-xs-5 col-sm-6 col-md-5 label_oiseau">RÃ¨gne de l'oiseau :</p>
+                        <p class="col-xs-5 col-sm-6 col-md-5 label_oiseau">Règne de l'oiseau :</p>
                         <p class="col-xs-7 col-sm-6 col-md-7"> {{ birdChoisi.regne }}</p>
                     </div>
                     <div class="englob_fiche">
@@ -46,7 +46,7 @@
                     </div>
                     {% if birdChoisi.nomVern is not empty %}
                         <div class="englob_fiche">
-                            <p class="col-xs-5 col-sm-6 col-md-5 label_oiseau">Nom Vern de l'oiseau :</p>
+                            <p class="col-xs-5 col-sm-6 col-md-5 label_oiseau">Nom vernaculaire de l'oiseau :</p>
                             <p class="col-xs-7 col-sm-6 col-md-7"> {{ birdChoisi.nomVern }}</p>
                         </div>
                     {% endif %}
@@ -99,8 +99,8 @@
             <div class="colonne_carte col-md-6 col-xs-12">
                 <div id="map" class="col-md-12"></div>
                 <div class="col-md-12 bg_legend">
-                    Les carrï¿½s colorï¿½s reprï¿½sentent les zones dans lesquelles l'espï¿½ce a ï¿½tï¿½ observï¿½e.<br>
-                    Plus la couleur du carrï¿½ est foncï¿½e plus un grand nombre d'individus y a ï¿½tï¿½ vu.<br>
+                    Les carrés colorés représentent les zones dans lesquelles l'espèce a été observée.<br>
+                    Plus la couleur du carré est foncée plus un grand nombre d'individus y a été vu.<br>
                 </div>
             </div>
 

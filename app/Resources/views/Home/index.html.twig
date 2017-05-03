@@ -83,16 +83,19 @@
             <div class="col-sm-7" id="last_articles">
                 <div class="col-sm-12 last_articles">
                     <div class="col-sm-12">
+                        {#<h2 class="titre label label-default">Les derniers articles du Blog</h2>#}
                         <h2 class="titre">Les derniers articles du Blog</h2>
                     </div>
                     {% for article in articlesTotal %}
                         <div class="col-sm-12 content_article">
                             <div class="col-md-3 col-xs-4" id="img_btn"><br>
-                                    <img src="{{ asset(article.imageUrl) }}" alt="{{ article.title }}" class="col-xs-2 img-rounded">
+                            
+                            <img src="{{ asset(article.imageUrl) }}" alt="{{ article.title }}" class="col-xs-2 img-rounded">
                                 <a href="{{ path('article', {'id': article.id}) }}"
                                    class="btn btn-default btn_more"
                                    style="color: white">Lire
                                     la suite</a></div>
+
                             <div class="col-md-9 col-xs-8">
                                 <h3>{{ article.title }}</h3>
                                 {% autoescape %}

@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-{% block title %}Observation{% endblock %}
+{% block title %}Edition d'observation{% endblock %}
 
 {% block stylesheet_enfant %}
     <link rel="stylesheet" href="{{ asset('css/observation.css') }}">
@@ -15,7 +15,7 @@
             <div class="part-right">
                 <h1 class="sous-titre">Saisir une nouvelle observation:</h1>
                 <p class="accroche">Vous avez eu l'opportunité d'observer un oiseau lors de vos promenades ou même dans
-                    votre jardin? Vous pouvez nous aider à réaliser à un inventaire des espèces de nos régions.<br/>
+                    votre jardin? Vous pouvez nous aider à réaliser un inventaire des espèces de nos régions.<br/>
                     Complétez ce formulaire pour nous envoyer une observation.
                 </p>
                 {{ form_start(form) }}
