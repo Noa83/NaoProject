@@ -104,15 +104,20 @@
 
 
 <footer class="row footer">
-    <ol class="breadcrumb col-md-11">
+    <div class="col-md-1"></div>
+    <div class="col-md-10 text-center">
+    <ol class="breadcrumb col-md-12">
         <li><a href="#">Admin</a></li>
         <li><a href="{{ path('legal_notice') }}">Mentions légales</a></li>
         <li><a href="{{ path('contact') }}">Contact</a></li>
         <li><a href="{{ path('donate_join') }}">Adhérer</a></li>
         <li><a href="{{ path('donate_join') }}#donate">Faire un don</a></li>
     </ol>
+    </div>
+    <div class="col-md-1">
     <a href="http://www.europe-en-france.gouv.fr/" target="_blank"><img src="{{ asset('images/europe.png') }}" alt="europe"
                                                         id="europe_img"></a>
+    </div>
 </footer>
 
 

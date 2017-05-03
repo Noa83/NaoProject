@@ -18,21 +18,21 @@ class ObservationController extends Controller
      */
     public function observationAction(Request $request)
     {
-        //Récup liste oiseaux.
+        //Rï¿½cup liste oiseaux.
         $birds = $this->getDoctrine()->getRepository('AppBundle:Birds')->getBirdsList();
 
-        //Créa du formulaire
+        //Crï¿½a du formulaire
         $observationModel = new ObservationModel();
         $observationForm = $this->get('form.factory')->create(ObservationType::class,
             $observationModel, ['birdList' => $birds]);
 
-        //Gestion d'une saisie géo hors France (quand les coordonnées rentrent dans les min/max entrés en conditions)
+        //Gestion d'une saisie gï¿½o hors France (quand les coordonnï¿½es rentrent dans les min/max entrï¿½s en conditions)
         if ($request->isMethod('POST') && $observationForm->handleRequest($request)->isValid()) {
 
             $imageURL = $this->get('image_manager')->createObservationImage($observationModel);
             $observation = $this->get('observation_assembleur')->createFromModel($observationModel, $this->getUser(), $imageURL);
             $this->get('observation_manager')->create($observation);
-                $this->addFlash('success', 'Votre observation a bien été enregistrée!');
+                $this->addFlash('success', 'Votre observation a bien Ã©tÃ© enregistrÃ©e!');
             return $this->redirectToRoute('observation');
         }
 
@@ -49,7 +49,7 @@ class ObservationController extends Controller
 
         $birds = $this->getDoctrine()->getRepository('AppBundle:Birds')->getBirdsList();
 
-        //Créa du formulaire
+        //Crï¿½a du formulaire
         $observation = $this->getDoctrine()->getRepository('AppBundle:Observation')->findOneBy(array('id' => $id));
         $observationModel = $this->get('observation_assembleur')->createFromObservation($observation);
 

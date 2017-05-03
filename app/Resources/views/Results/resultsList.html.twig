@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-{% block title %}Liste des résultats{% endblock %}
+{% block title %}Liste des rÃ©sultats{% endblock %}
 
 {% block stylesheet_enfant %}
     <link rel="stylesheet" href="{{ asset('css/consultation.css') }}">
@@ -13,7 +13,7 @@
     <div class="container-fluid" id="consultation_bg">
         <br>
         <div class="col-md-12">
-            <h1 class="text-center">Consulter les données</h1>
+            <h1 class="text-center">Consulter les donnÃ©es</h1>
             <div class="colonne_recherches col-md-6 col-xs-12">
                 <div class="col-md-12">
                     <div>
@@ -43,8 +43,8 @@
             <div class="colonne_carte col-md-6 col-xs-12">
                 <div id="map" class="col-md-12"></div>
                 <div class="col-md-12 text-center bg_legend">
-                    Les carrés colorés représentent les zones dans lesquelles l'espèce a été observée.<br>
-                    Plus la couleur du carré est foncée plus un grand nombre d'individus y a été vu.<br>
+                    Les carrÃ©s colorÃ©s reprÃ©sentent les zones dans lesquelles l'espÃ¨ce a Ã©tÃ© observÃ©e.<br>
+                    Plus la couleur du carrÃ© est foncÃ©e plus un grand nombre d'individus y a Ã©tÃ© vu.<br>
                 </div>
             </div>
             <script type="text/javascript">
@@ -73,7 +73,4 @@
         </div>
     </div>
 
-{% endblock %}
-{% block JS %}
-    <script src="{{ asset('js/tooltip.js') }}"></script>
 {% endblock %}
