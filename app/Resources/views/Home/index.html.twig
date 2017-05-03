@@ -74,7 +74,7 @@
                                     <div class="response" id="mce-success-response" style="display:none"></div>
                                 </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
                                 <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_bbe78064cd70e2b6f19d973f9_2f04265752" tabindex="-1" value=""></div>
-                                <div class="clear"><input type="submit" value="Je m'inscris" name="subscribe" id="mc-embedded-subscribe" class="button form-control"></div>
+                                <div class="clear"><input type="submit" value="Je m'inscris" name="subscribe" id="mc-embedded-subscribe" class="button form-control" style="background-color: #fe9a04; color: white;"></div>
                             </div>
                         </form>
                     </div>
@@ -83,15 +83,12 @@
             <div class="col-sm-7" id="last_articles">
                 <div class="col-sm-12 last_articles">
                     <div class="col-sm-12">
-                        {#<h2 class="titre label label-default">Les derniers articles du Blog</h2>#}
                         <h2 class="titre">Les derniers articles du Blog</h2>
                     </div>
                     {% for article in articlesTotal %}
                         <div class="col-sm-12 content_article">
                             <div class="col-md-3 col-xs-4" id="img_btn"><br>
-                                {#------A SUPPR LE IF QUAND LES ARTICLES AURONT UNE IMAGES-----#}
-                                    <img src="{{ asset(article.picture.url) }}" alt="{{ article.picture.alt }}" class="col-xs-2 img-rounded">
-                                {#-------------------------------------------------------------#}
+                                    <img src="{{ asset(article.imageUrl) }}" alt="{{ article.title }}" class="col-xs-2 img-rounded">
                                 <a href="{{ path('article', {'id': article.id}) }}"
                                    class="btn btn-default btn_more"
                                    style="color: white">Lire

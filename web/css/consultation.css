@@ -6,7 +6,7 @@
     border-radius: 8px;
     box-shadow: 2px 2px 5px #288B90;
 }
-}
+
 #map {
     height: 700px;
     width: 100%;
@@ -122,7 +122,7 @@ p.col-xs-5.label_oiseau
         margin-bottom: 30px;
     }
 }
-}
+
 
 /* Media Queries */
 

@@ -32,10 +32,7 @@ class ObservationController extends Controller
             $imageURL = $this->get('image_manager')->createObservationImage($observationModel);
             $observation = $this->get('observation_assembleur')->createFromModel($observationModel, $this->getUser(), $imageURL);
             $this->get('observation_manager')->create($observation);
-                $this->addFlash(
-                    'success',
-                    'Votre observation a bien été enregistrée!'
-            );
+                $this->addFlash('success', 'Votre observation a bien été enregistrée!');
             return $this->redirectToRoute('observation');
         }
 

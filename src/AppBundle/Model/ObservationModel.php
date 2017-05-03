@@ -26,8 +26,8 @@ class ObservationModel
      * @Assert\Range(
      *      min = 41.56,
      *      max = 51.56,
-     *      minMessage = "Vous devez entrer une coordonnée minimale de {{ limit }}",
-     *      maxMessage = "Vous devez entrer une coordonnée maximale de {{ limit }}",
+     *      minMessage = "Vous devez entrer une latitude minimale de {{ limit }}",
+     *      maxMessage = "Vous devez entrer une latitude maximale de {{ limit }}",
      *  )
      */
     public $lat;
@@ -35,8 +35,8 @@ class ObservationModel
      * @Assert\Range(
      *      min = -9.88,
      *      max = 10.21,
-     *      minMessage = "Vous devez entrer une coordonnée minimale de {{ limit }}",
-     *      maxMessage = "Vous devez entrer une coordonnée maximale de {{ limit }}",
+     *      minMessage = "Vous devez entrer une longitude minimale de {{ limit }}",
+     *      maxMessage = "Vous devez entrer une longitude maximale de {{ limit }}",
      *  )
      */
     public $long;
