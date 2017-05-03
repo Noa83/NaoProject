@@ -47,6 +47,12 @@ class ObservationRepository extends EntityRepository
             ->andWhere('o.validated = true')
             ->orderBy('o.date', 'DESC')
             ->setMaxResults(10)
+            ->getQuery()
+            ->getResult();
+        if (empty($results)) {
+            throw new \Exception();
+        }
+        return $results;
 
     }
 
