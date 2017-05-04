@@ -123,9 +123,13 @@
 
 {% block javascripts %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="{{ asset('js/cookiechoices.js') }}"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="{{ asset('js/recherche.js')}}"></script>
+    <script src="{{ asset('js/cookiechoices.js') }}"></script>
+    <script>document.addEventListener('DOMContentLoaded',
+            function(event){cookieChoices.showCookieConsentBar('Ce site utilise des cookies pour vous offrir le meilleur service. En poursuivant votre navigation, vous acceptez l’utilisation des cookies.', 'J’accepte', 'En savoir plus', 'http://nosamislesoiseaux.eg2.fr/legal_notice');});</script>
     <script>
         $(function(){
             $('#recherche_recherche').autocomplete({
