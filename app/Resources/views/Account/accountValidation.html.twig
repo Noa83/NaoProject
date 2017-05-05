@@ -23,8 +23,8 @@
                             <td class="col-sm-5">{{ obs.comment }}
                             <td class="col-sm-2">{{ obs.date | date("d/m/Y") }}</td>
                             <td class="col-sm-1">
-                                <a href="{{ path('observation_validate', {'id': obs.id}) }}" class="btn btn-success btn-xs" title="Edit"><span class="glyphicon glyphicon-ok"></span></a>
-                                <button type="button" class="btn btn-danger btn-xs" title="Delete" data-toggle="modal" data-target="#obsModererDialog{{ obs.id }}"><span class="glyphicon glyphicon-remove"></span>
+                                <a href="{{ path('observation_validate', {'id': obs.id}) }}" class="btn btn-success btn-xs" title="Valider"><span class="glyphicon glyphicon-ok"></span></a>
+                                <button type="button" class="btn btn-danger btn-xs" title="Supprimer" data-toggle="modal" data-target="#obsModererDialog{{ obs.id }}"><span class="glyphicon glyphicon-remove"></span>
                                 </button>
                                 <div class="modal fade" id="obsModererDialog{{ obs.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">

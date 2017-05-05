@@ -64,9 +64,7 @@ class ObservationRepository extends EntityRepository
             ->orderBy('o.id', 'DESC')
             ->getQuery()
             ->getResult();
-        if (empty($results)) {
-            throw new \Exception();
-        }
+
         return $results;
     }
 }
