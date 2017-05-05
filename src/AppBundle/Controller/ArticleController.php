@@ -62,7 +62,7 @@ class ArticleController extends Controller
     }
 
     /**
-     * @Route("/article/edit/{id}", name="article_edit", requirements={"id": "\d+"})
+     * @Route("/admin/article/edit/{id}", name="article_edit", requirements={"id": "\d+"})
      */
     public function articleEditAction(Request $request, $id){
 

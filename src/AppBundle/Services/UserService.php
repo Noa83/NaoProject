@@ -83,4 +83,21 @@ class UserService {
 
         return $user;
     }
+
+    public function AdminModifyUser(User $user, UserAccountModel $model){
+
+        $user->setUsername($model->username);
+        $user->setEmail($model->email);
+
+        $user->setPrenom($model->prenom);
+        $user->setDateNaissance($model->dateNaissance);
+        $user->setVille($model->ville);
+        $user->setRoles(array($model->role));
+
+        // 4) Sauvegarde de l'utilisateur
+        $this->em->persist($user);
+        $this->em->flush();
+
+        return $user;
+    }
 }
