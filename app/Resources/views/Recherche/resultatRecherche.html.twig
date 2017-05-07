@@ -12,16 +12,18 @@
                 <h1>Résultats:</h1><br>
                 {% if nom.nomVern is defined %}
                     <p><strong>Fiche: </strong><a href="{{ path('results_route', {'birdId': nom.id}) }}">{{ nom.nomVern }}</a></p><!-- route:  path(fiche, id : nom.id) -->
+                    {#{% else nom.Valide is defined %}#}
+                        {#<p><strong>Fiche: </strong><a href="{{ path('results_route', {'birdId': nom.id}) }}">{{ nom.nomValide }}</a></p><!-- route:  path(fiche, id : nom.id) -->#}
+                    {#{% endif %}#}
                 {% elseif  nom.title is defined %}
                     <p><strong>Article: </strong><a href="{{ path('article', {'id': nom.id}) }}">{{ nom.title }}</a></p><!-- route:  path(fiche, id : nom.id) -->
                 {% else %}
                     {% for resultat in tab %}
                         {% if resultat.nomVern is defined %}
-                            <p><strong>Fiche: </strong><a href="#">{{ resultat.nomVern }}</a></p><!-- route:  path(fiche, id : nom.id) -->
+                            <p><strong>Fiche: </strong><a href="{{ path('results_route', {'birdId': nom.id}) }}">{{ nom.nomVern }}">{{ resultat.nomVern }}</a></p><!-- route:  path(fiche, id : nom.id) -->
                         {% else %}
-                            <p><strong>Article: </strong><a href="{{ path('article', {'id': resultat.id}) }}">{{ resultat.title }}</a></p><!-- route:  path(fiche, id : nom.id) -->
-                        {% endif %}
-                    {% endfor %}
+                         <p><strong>Article: </strong><a href="{{ path('article', {'id': resultat.id}) }}">{{ resultat.title }}</a></p><!-- route:  path(fiche, id : nom.id) -->{% endif %}
+                        {% endfor %}
                 {% endif %}
 
             </div>

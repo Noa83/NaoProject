@@ -1,5 +1,7 @@
 <?php
 namespace AppBundle\Services;
+use Symfony\Component\HttpFoundation\JsonResponse;
+
 class DataToArrayMailleNameAndNumberOfBirds
 {
     public function GetArrayMailleNameAndNumberOfBirds($Km10List)
@@ -17,6 +19,52 @@ class DataToArrayMailleNameAndNumberOfBirds
             $countNbObsTotale += $compte;
         }
         return array($countList,$countNbObsTotale);
+    }
+
+    public function getJsonMailleNameAndNumberOfBirds($Km10List)
+    {
+        $cols = [];
+        $tempCols1 = [
+            'id' => '',
+            'label' => 'Nom de la Maille',
+            'pattern' => '',
+            'type' => 'string'
+        ];
+        $tempCols2 = [
+            'id' => '',
+            'label' => 'Nombre d\'individus',
+            'pattern' => '',
+            'type' => 'number'
+        ];
+        array_push($cols, $tempCols1, $tempCols2);
+//        dump($cols);
+
+        $rows = [];
+        foreach ($Km10List as $Km10) {
+            $compte = count($Km10->getObservations());
+            $nomMaille = $Km10->getNomMaille();
+
+            $tempRows = array(
+                'c' => [
+                    [
+                        'v' => $nomMaille,
+                        'f' => null
+                    ],
+                    [
+                        'v' => $compte,
+                        'f' => null
+                    ]
+                ]
+            );
+            array_push($rows, $tempRows);
+        }
+//        dump($rows);
+        $json = array(
+            'cols' => $cols,
+            'rows' => $rows
+        );
+//        dump($json);
+        return $json;
     }
 
 }
