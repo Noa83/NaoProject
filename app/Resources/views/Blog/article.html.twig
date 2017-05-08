@@ -13,7 +13,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <div class="col-lg-10 ligne_verticale">
+                <div class="col-lg-9 ligne_verticale">
                     <h1>{{ article.title }}</h1>
                     <p class="post-meta">Posté par <a href="#">Nos amis les oiseaux</a>
                         le {{ article.date|date('d-m-Y') }} a {{ article.date|date('H:i:s') }}
@@ -26,7 +26,7 @@
                     {% endautoescape %}
                     <hr>
                 </div>
-                <div class="col-lg-2">
+                <div class="col-lg-3 collant">
                     {% include("Blog/article_recent.html.twig") %}
                 </div>
             </div>
@@ -58,4 +58,8 @@
                 min: $.validator.format("Veuillez entrer une valeur supérieure ou égale à {0}.")
             });}(jQuery));var $mcj = jQuery.noConflict(true);</script>
     <!--End mc_embed_signup-->
+{% endblock %}
+
+{% block JS %}
+    <script src="{{ asset('js/blog.js') }}"></script>
 {% endblock %}

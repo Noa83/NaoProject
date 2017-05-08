@@ -36,7 +36,7 @@
                         {% endfor %}
                     </ul>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-3 collant">
                     {% include("Blog/article_recent.html.twig") %}
                 </div>
         </div>
@@ -67,4 +67,7 @@
                 min: $.validator.format("Veuillez entrer une valeur supérieure ou égale à {0}.")
             });}(jQuery));var $mcj = jQuery.noConflict(true);</script>
     <!--End mc_embed_signup-->
+{% endblock %}
+{% block JS %}
+        <script src="{{ asset('js/blog.js') }}"></script>
 {% endblock %}
