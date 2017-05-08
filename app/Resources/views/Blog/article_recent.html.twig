@@ -3,7 +3,7 @@
     <hr>
     {% for article in articlesTotal %}
     <a href="{{ path('article', {'id': article.id}) }}">
-        Article {{ loop.revindex + 1 }}</a>{# Rajoute 1 pour faire la correspondance avec l'article#}
+        Article {{ article.title | truncate(20) }}</a>
         <br><br>
     {% endfor %}
 

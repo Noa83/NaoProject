@@ -13,7 +13,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <div class="col-lg-10 ligne_verticale">
+                <div class="col-lg-9 ligne_verticale">
                     {% for article in articles %}
                         <h1>{{ article.title}}</h1>
                         <p class="ecrit">Posté par <a href="#">Nos amis les oiseaux</a> le {{ article.date|date('d-m-Y') }} a {{ article.date|date('H:i:s') }} | {{ article.category.name }}</p>
@@ -27,21 +27,20 @@
                         </div>
                         <hr>
                     {% endfor %}
+                    <ul class="pager">
+                        {# On utilise la fonction range(a, b) qui crée un tableau de valeurs entre a et b #}
+                        {% for p in range(1, nbPages) %}
+                            <li{% if p == page %} class="active"{% endif %}>
+                                <a href="{{ path('blog', {'page': p}) }}">{{ p }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
                 </div>
-                <div class="col-lg-2">
+                <div class="col-lg-3">
                     {% include("Blog/article_recent.html.twig") %}
                 </div>
         </div>
     </div>
-
-    <ul class="pager">
-        {# On utilise la fonction range(a, b) qui crée un tableau de valeurs entre a et b #}
-        {% for p in range(1, nbPages) %}
-            <li{% if p == page %} class="active"{% endif %}>
-                <a href="{{ path('blog', {'page': p}) }}">{{ p }}</a>
-            </li>
-        {% endfor %}
-    </ul>
 
     <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
     <script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[1]='FNAME';ftypes[1]='text';fnames[0]='EMAIL';ftypes[0]='email'; /*
