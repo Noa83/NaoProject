@@ -20,7 +20,7 @@
                         <img src="{{ asset(article.imageUrl) }}" alt="{{ article.title }}" class="imageArticle">
                         <br><br>
                         {% autoescape %}
-                            <p>{{ article.text|truncate(650)|raw}}</p>
+                            <p>{{ article.text|truncate(320)|raw}}</p>
                         {% endautoescape %}
                         <div class="text-right">
                             <a href="{{ path('article', {'id': article.id}) }}" class="btn btn-primary lire">Lire la suite</a>
