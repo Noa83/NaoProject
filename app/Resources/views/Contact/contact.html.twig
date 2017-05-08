@@ -2,6 +2,7 @@
 
 {% block stylesheet_enfant %}
     <link rel="stylesheet" href="{{ asset('css/contact.css') }}">
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 {% endblock %}
 
 {% block body %}
@@ -9,72 +10,76 @@
     <div class="container-fluid" id="contact_bg">
 
         <div class="col-md-12">
-            <div class="col-lg-12">
-                <div class="text-center">
-                    <h1>CONTACTEZ-NOUS</h1>
-                    <h2>Pour plus d'informations.</h2>
-                </div>
+            <div class="col-lg-3 col-lg-offset-4 text-center">
+                <h1>CONTACTEZ-NOUS</h1>
+                <h2>Pour plus d'informations.</h2>
             </div>
         </div>
         <br>
 
         <div class="col-md-12">
-            {#<div>#}
-                <div class="col-lg-3 col-lg-offset-1">
-                    <legend>Adresse</legend>
-                    <p class="contact">9 Place Léon Betoulle, 87000 Limoges</p>
-                    <p class="contact">Tel:05 55 45 60 00</p>
-                    <hr>
-                    <legend>Maps</legend>
-                    <div class="well contact" id="maps"></div>
-                </div>
+            {% for message in app.session.flashbag.get('info') %}
+                <p class="alert alert-info">{{ message }}</p>
+            {% endfor %}
+        </div>
 
-                <div class="col-lg-8">
+        <div class="col-md-12">
 
-                    <div class="col-lg-8 col-lg-offset-3">
-                        {{ form_start(form) }}
-                        {{ form_errors(form) }}
+            <div class="col-lg-3 col-lg-offset-1">
+                <legend>Adresse</legend>
+                <p class="contact">9 Place Léon Betoulle, 87000 Limoges</p>
+                <p class="contact">Tel:05 55 45 60 00</p>
+                <hr>
+                <legend>Maps</legend>
+                <div class="well contact" id="maps"></div>
+            </div>
 
-                        <legend>Envoyez-nous un message</legend>
+            <div class="col-lg-8">
 
-                        <div class="well">
-                            <div class="form-group">
-                                <label for="nom">Nom:</label>
-                                {{ form_widget(form.lastName, {'attr': {'class': 'form-control', 'placeholder': 'Nom'}}) }}
-                                {{ form_errors(form.lastName) }}
-                            </div>
+                <div class="col-lg-8 col-lg-offset-3">
+                    {{ form_start(form) }}
+                    {{ form_errors(form) }}
 
-                            <div class="form-group">
-                                <label for="nom">Prénom:</label>
-                                {{ form_widget(form.firstName, {'attr': {'class': 'form-control', 'placeholder': 'Prénom'}}) }}
-                                {{ form_errors(form.firstName) }}
-                            </div>
+                    <legend>Envoyez-nous un message</legend>
 
-                            <div class="form-group">
-                                <label for="nom">Email:</label>
-                                {{ form_widget(form.mail, {'attr': {'class': 'form-control', 'placeholder': 'Email'}}) }}
-                                {{ form_errors(form.mail) }}
-                            </div>
-
-                            <div class="form-group">
-                                <label for="nom">Votre message:</label>
-                                {{ form_widget(form.message, {'attr': {'class': 'form-control', 'placeholder': 'Message', 'cols': '30', 'rows':'10'}}) }}
-                                {{ form_errors(form.message) }}
-                            </div>
-                            {{ form_widget(form.Envoyer, {'attr': {'class': 'btn btn-warning pull-right'}}) }}
+                    <div class="well">
+                        <div class="form-group">
+                            <label for="nom">Nom:</label>
+                            {{ form_widget(form.lastName, {'attr': {'class': 'form-control', 'placeholder': 'Nom'}})}}
+                            {{ form_errors(form.lastName) }}
                         </div>
 
-                        {{ form_rest(form) }}
-                        {{ form_end(form) }}
+                        <div class="form-group">
+                            <label for="nom">Prénom:</label>
+                            {{ form_widget(form.firstName, {'attr': {'class': 'form-control', 'placeholder': 'Prénom'}})}}
+                            {{ form_errors(form.firstName) }}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="nom">Email:</label>
+                            {{ form_widget(form.mail, {'attr': {'class': 'form-control', 'placeholder': 'Email'}})}}
+                            {{ form_errors(form.mail) }}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="nom">Votre message:</label>
+                            {{ form_widget(form.message, {'attr': {'class': 'form-control', 'placeholder': 'Message', 'cols': '30', 'rows':'10'}})}}
+                            {{ form_errors(form.message) }}
+                        </div>
+                        <div class="g-recaptcha" data-sitekey="6Ld8nR8UAAAAAIYdiriuzmfxHREYMBnS1pqRr_QP"></div>
+                        {{ form_widget(form.Envoyer, {'attr': {'class': 'btn btn-warning pull-right'}})}}
                     </div>
+
+                    {{ form_rest(form) }}
+                    {{ form_end(form) }}
                 </div>
-            {#</div>#}
+            </div>
         </div>
     </div>
 {% endblock %}
 
 {% block JS %}
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAR8e4bssWdv_3Om7ArT7GGGmLQg2Ylg2A"></script>
-    <script src="{{ asset('js/maps.js') }}"></script>
-    <script src="{{ asset('js/observation.js') }}"></script>
+    <script src="{{ asset('js/maps.js')}}"></script>
+    <script src="{{ asset('js/observation.js')}}"></script>
 {% endblock %}
