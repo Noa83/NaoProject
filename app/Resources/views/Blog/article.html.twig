@@ -1,6 +1,5 @@
 {% extends 'base.html.twig' %}
 
-
 {% block navi4 %}
     <li class="active"><a href="{{ path('blog', {'page': 1}) }}">Blog<span class="sr-only">(current)</span></a></li>
 {% endblock %}
@@ -20,18 +19,15 @@
                         le {{ article.date|date('d-m-Y') }} a {{ article.date|date('H:i:s') }}
                         | {{ article.category.name }}
                     </p>
-
                     <img src="{{ asset(article.imageUrl) }}" alt="{{ article.title }}" class="imageArticle">
                     <br><br>
                     {% autoescape %}
                         <p>{{ article.text|raw }}</p>
                     {% endautoescape %}
-
                     <hr>
                 </div>
-
                 <div class="col-lg-2">
-
+                    {% include("Blog/article_recent.html.twig") %}
                 </div>
             </div>
         </div>
