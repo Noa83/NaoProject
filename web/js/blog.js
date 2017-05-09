@@ -7,6 +7,7 @@ $(function(){
         var defaultTop = $(this).offset().top;
         var elementCourant = $(this);
         var largeur = $(window).width();
+        console.log(largeur);
 
         $(window).scroll(function () {
             if(choix == 0)
@@ -34,4 +35,8 @@ $(function(){
 
         })
     });
+
+    $('#mc-embedded-subscribe').click(function () {
+        choix = 1;
+    })
 });

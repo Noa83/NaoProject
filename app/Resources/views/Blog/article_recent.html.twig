@@ -2,8 +2,7 @@
     <h3>Articles récents</h3>
     <hr>
     {% for article in articlesTotal %}
-    <a href="{{ path('article', {'id': article.id}) }}">
-        Article {{ article.title | truncate(20) }}</a>
+    <a href="{{ path('article', {'id': article.id}) }}">{{ article.title | truncate(27) }}</a>
         <br><br>
     {% endfor %}
 
