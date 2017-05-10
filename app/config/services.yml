@@ -32,16 +32,12 @@ services:
     data_to_array_maille_nb_birds:
         class: AppBundle\Services\DataToArrayMailleNameAndNumberOfBirds
 
+    data_to_array_for_autocomplete_consultation:
+        class: AppBundle\Services\DataToArrayOfObjectsForAutocompleteConsultation
+
 #Validators
     out_of_france_validator:
          class: AppBundle\Validator\Constraints\OutOfFranceValidator
-         arguments:
-             - "@doctrine.orm.entity_manager"
-         tags:
-            - {name: validator.constraint_validator}
-
-    no_observations_found_validator:
-         class: AppBundle\Validator\Constraints\NoObservationsFoundValidator
          arguments:
              - "@doctrine.orm.entity_manager"
          tags:

@@ -30,7 +30,8 @@ class BirdsRepository extends \Doctrine\ORM\EntityRepository
             {
                 $birdSpecie = $bird['nomValide'];
             }else{
-                $birdSpecie = $bird['nomVern'] . ' (' . $bird['nomValide'] . ')';
+//                $birdSpecie = $bird['nomVern'] . ' (' . $bird['nomValide'] . ')';
+                $birdSpecie = $bird['nomVern'];
             }
             $arrayList[$birdSpecie] = $bird['id'];
 

@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Form\Type\ObservationType;
 use AppBundle\Model\ObservationModel;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 
 class ObservationController extends Controller
@@ -18,15 +19,16 @@ class ObservationController extends Controller
      */
     public function observationAction(Request $request)
     {
-        //R�cup liste oiseaux.
-        $birds = $this->getDoctrine()->getRepository('AppBundle:Birds')->getBirdsList();
+        //Récup liste oiseaux.
+//        $birds = $this->getDoctrine()->getRepository('AppBundle:Birds')->getBirdsList();
 
-        //Cr�a du formulaire
+        //Créa du formulaire
         $observationModel = new ObservationModel();
         $observationForm = $this->get('form.factory')->create(ObservationType::class,
-            $observationModel, ['birdList' => $birds]);
+            $observationModel);
+//        , ['birdList' => $birds]
 
-        //Gestion d'une saisie g�o hors France (quand les coordonn�es rentrent dans les min/max entr�s en conditions)
+        //Gestion d'une saisie géo hors France (quand les coordonnées rentrent dans les min/max entrés en conditions)
         if ($request->isMethod('POST') && $observationForm->handleRequest($request)->isValid()) {
 
             $imageURL = $this->get('image_manager')->createObservationImage($observationModel);
@@ -38,7 +40,7 @@ class ObservationController extends Controller
         }
 
         return $this->render('Observation/observation.html.twig', [
-            'birds' => $birds,
+//            'birds' => $birds,
             'form' => $observationForm
                 ->createView()]);
     }
@@ -48,14 +50,12 @@ class ObservationController extends Controller
      */
     public function observationEditAction(Request $request, $id){
 
-        $birds = $this->getDoctrine()->getRepository('AppBundle:Birds')->getBirdsList();
-
-        //Cr�a du formulaire
+        //Créa du formulaire
         $observation = $this->getDoctrine()->getRepository('AppBundle:Observation')->findOneBy(array('id' => $id));
         $observationModel = $this->get('observation_assembleur')->createFromObservation($observation);
 
         $observationForm = $this->get('form.factory')->create(ObservationType::class,
-            $observationModel, ['birdList' => $birds, 'selectedBirdId' => $observation->getBird()->getId()]);
+            $observationModel);
 
         $observationForm->handleRequest($request);
         if ($observationForm->isSubmitted() && $observationForm->isValid()) {
@@ -69,7 +69,6 @@ class ObservationController extends Controller
         }
 
         return $this->render('Observation/observationEdit.html.twig', [
-            'birds' => $birds,
             'form' => $observationForm
                 ->createView()]);
 
@@ -99,5 +98,14 @@ class ObservationController extends Controller
         $em->flush();
 
         return $this->redirectToRoute('account_validation');
+    }
+
+    /**
+     * @Route("/observation/edit/bird/autocomp", name="edit_obs_bird_list")
+     */
+    public function getAutoCompBirdsList()
+    {
+        return new JsonResponse($this->get('data_to_array_for_autocomplete_consultation')
+            ->getBirdsListForAutoComplete($this->getDoctrine()->getRepository('AppBundle:Birds')->getBirdsList()));
     }
 }
