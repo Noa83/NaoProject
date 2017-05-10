@@ -65,6 +65,11 @@ class User implements UserInterface, \Serializable
      */
     private $observations;
 
+    /**
+     * @ORM\Column(type="string", length=255,unique=true, nullable=true)
+     */
+    private $token;
+
 
     function __construct() {
         $this->setRoles(array('ROLE_USER'));
