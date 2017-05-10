@@ -4,10 +4,6 @@ namespace AppBundle\Services;
 
 
 
-
-
-use AppBundle\Repository\BirdsRepository;
-
 class DataToArrayOfObjectsForAutocompleteConsultation
 {
     public function getBirdsListForAutoComplete($birdsArray)

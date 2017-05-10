@@ -38,7 +38,7 @@ class FicheBirdController extends Controller
 
         $birdChoisi = $this->getDoctrine()->getRepository('AppBundle:Birds')->find($id);
 
-        return $this->render('Results/ficheBird.html.twig', [
+        return $this->render('Results/ficheBirdSansObservations.html.twig', [
             'birdChoisi' => $birdChoisi]);
     }
 
