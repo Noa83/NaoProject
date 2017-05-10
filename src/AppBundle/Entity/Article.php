@@ -56,6 +56,18 @@ class Article
     private $category;
 
     /**
+     * @var bool
+     *
+     * @ORM\Column(name="publish", type="boolean")
+     */
+    private $publish;
+
+    public  function __construct()
+    {
+        $this->setPublish(false);
+    }
+
+    /**
      * Get id
      *
      * @return int
@@ -175,5 +187,29 @@ class Article
     public function getCategory()
     {
         return $this->category;
+    }
+
+    /**
+     * Set publish
+     *
+     * @param boolean $publish
+     *
+     * @return Article
+     */
+    public function setPublish($publish)
+    {
+        $this->publish = $publish;
+
+        return $this;
+    }
+
+    /**
+     * Get publish
+     *
+     * @return boolean
+     */
+    public function getPublish()
+    {
+        return $this->publish;
     }
 }

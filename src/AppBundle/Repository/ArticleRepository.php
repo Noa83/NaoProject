@@ -15,6 +15,7 @@ class ArticleRepository extends \Doctrine\ORM\EntityRepository
     public function findAllArticles($page, $nbreParPage)
     {
         $query = $this->createQueryBuilder('a')
+            ->where('a.publish = 1')
             ->orderBy('a.id', 'DESC') //Ordonne par ordre décroissant dernier article au premier article
             ->getQuery()
             ->setFirstResult(($page-1) * $nbreParPage) //On définit l'article à partir duquel commencer la liste
@@ -27,6 +28,7 @@ class ArticleRepository extends \Doctrine\ORM\EntityRepository
     public function getArticlesRecents()
     {
         return $this->createQueryBuilder('a')
+            ->where('a.publish = 1')
             ->orderBy('a.id', 'DESC') //Ordonne par ordre décroissant dernier article au premier article
             ->setMaxResults(3)  //Limite à 3 résultats.
             ->getQuery()
@@ -36,6 +38,7 @@ class ArticleRepository extends \Doctrine\ORM\EntityRepository
     public function getArticlesForHomePage()
     {
         return $this->createQueryBuilder('a')
+            ->where('a.publish = 1')
             ->orderBy('a.id', 'DESC') //Ordonne par ordre décroissant dernier article au premier article
             ->setMaxResults(4)  //Limite à 4 résultats.
             ->getQuery()
@@ -44,7 +47,7 @@ class ArticleRepository extends \Doctrine\ORM\EntityRepository
 
     const LIMIT = 15;
 
-    public function findArticle($term)
+    public function findArticle($term)//Pour autocomplete
     {
         $qb = $this->createQueryBuilder('a');
         $qb ->select('a.id, a.title')

@@ -1,4 +1,5 @@
 {% extends 'AdminAccount/adminDashboard.html.twig' %}
+{% block title %}Gérer les articles{% endblock %}
 
 {% block adminContent %}
 
@@ -11,14 +12,22 @@
                         <th>Titre</th>
                         <th>Contenu</th>
                         <th>Date</th>
+                        <th>Status</th>
                         <th>Action</th>
                     </tr>
                     </thead>
                     {% for article in articles %}
                         <tr>
                             <td class="col-sm-3"><a class="articleTitle" href="{{ path('article', {'id': article.id}) }}">{{ article.title }}</a></td>
-                            <td class="col-sm-7">{{ article.text | truncate(250) }}</td>
+                            <td class="col-sm-7">{{ article.text | truncate(200) | raw }}</td>
                             <td class="col-sm-1">{{ article.date | date("d/m/Y") }}</td>
+                            <td>
+                                {% if  article.publish  == 1 %}
+                                    <span>Publié</span>
+                                {% else %}
+                                    <span>Brouillon</span>
+                                {% endif %}
+                            </td>
                             <td class="col-sm-1">
                                 <a href="{{ path('article_edit', {'id': article.id}) }}" class="btn btn-info btn-xs" title="Editer"><span class="glyphicon glyphicon-edit"></span></a>
                                 <button type="button" class="btn btn-danger btn-xs" title="Supprimer" data-toggle="modal" data-target="#articleDialog{{ article.id }}"><span class="glyphicon glyphicon-remove"></span>

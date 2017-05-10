@@ -31,8 +31,7 @@ class ArticleType extends AbstractType
             ->add('category', EntityType::class, array(
                 'class'        => 'AppBundle:Category',
                 'choice_label' => 'name',
-                'multiple'     => false,))
-            ->add('Valider', SubmitType::class);
+                'multiple'     => false,));
     }
     
     /**

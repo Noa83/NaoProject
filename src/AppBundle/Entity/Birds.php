@@ -129,6 +129,13 @@ class Birds
     private $nomVernEng;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="url_wiki", type="string", nullable=true, length=57)
+     */
+    private $urlWiki;
+
+    /**
      * @return int
      */
     public function getId()
@@ -256,4 +263,11 @@ class Birds
         return $this->nomVernEng;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getUrlWiki()
+    {
+        return $this->urlWiki;
+    }
 }

@@ -20,7 +20,7 @@ class ArticleController extends Controller
     /**
      * @Route("/article/{id}", name="article")
      */
-    public function articleAction(Article $article) //mettre param converter Article article pour supprimer les deux premières lignes
+    public function articleAction(Article $article)
     {
         //On récupère tous les articles qui nous serviront pour l'affichage des articles récents
         $articlesTotal = $this->getDoctrine()->getManager()->getRepository('AppBundle:Article')->getArticlesRecents();
@@ -38,17 +38,32 @@ class ArticleController extends Controller
         $article = new Article();
         $form = $this->get('form.factory')->create(ArticleType::class, $article);
 
-        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid())
-        {
-
-            $this->handleImage($article);
-            $article->setDate(new \DateTime);
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($article);
-            $em->flush();
-            return $this->redirectToRoute('blog');
+        if ($request->get('submitAction') == 'Publier') {
+            if ($request->isMethod('POST') && $form->handleRequest($request)->isValid())
+            {
+                $article->setPublish(true);
+                $this->handleImage($article);
+                $article->setDate(new \DateTime);
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($article);
+                $em->flush();
+                return $this->redirectToRoute('blog');
+            }
         }
-        return $this->render('Blog/ecriture_article.html.twig', array('form' => $form->createView()));
+        elseif ($request->get('submitAction') == 'Enregistrer')
+        {
+            if ($request->isMethod('POST') && $form->handleRequest($request)->isValid())
+            {
+
+                $this->handleImage($article);
+                $article->setDate(new \DateTime);
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($article);
+                $em->flush();
+                return $this->redirectToRoute('admin_article');
+            }
+        }
+            return $this->render('Blog/ecriture_article.html.twig', array('form' => $form->createView()));
     }
 
     private function handleImage(Article $article)
@@ -69,14 +84,30 @@ class ArticleController extends Controller
         $article = $this->getDoctrine()->getRepository('AppBundle:Article')->findOneBy(array('id' => $id));
         $form = $this->get('form.factory')->create(ArticleType::class, $article);
 
-        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid())
+        if ($request->get('submitAction') == 'Publier') {
+            if ($request->isMethod('POST') && $form->handleRequest($request)->isValid())
+            {
+                $article->setPublish(true);
+                $this->handleImage($article);
+                $article->setDate(new \DateTime);
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($article);
+                $em->flush();
+                return $this->redirectToRoute('blog');
+            }
+        }
+        elseif ($request->get('submitAction') == 'Enregistrer')
         {
+            if ($request->isMethod('POST') && $form->handleRequest($request)->isValid())
+            {
 
-            $this->handleImage($article);
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($article);
-            $em->flush();
-            return $this->redirectToRoute('admin_article');
+                $this->handleImage($article);
+                $article->setDate(new \DateTime);
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($article);
+                $em->flush();
+                return $this->redirectToRoute('admin_article');
+            }
         }
         return $this->render('Blog/article_edit.html.twig', array('form' => $form->createView()));
 
