@@ -82,13 +82,18 @@ class ArticleController extends Controller
     public function articleEditAction(Request $request, $id){
 
         $article = $this->getDoctrine()->getRepository('AppBundle:Article')->findOneBy(array('id' => $id));
+        $imageBackUp = $article->getImageUrl();
         $form = $this->get('form.factory')->create(ArticleType::class, $article);
 
         if ($request->get('submitAction') == 'Publier') {
             if ($request->isMethod('POST') && $form->handleRequest($request)->isValid())
             {
                 $article->setPublish(true);
-                $this->handleImage($article);
+                if (null !== $article->getImageUrl()){
+                    $this->handleImage($article);
+                } else {
+                    $article->setImageUrl($imageBackUp);
+                }
                 $article->setDate(new \DateTime);
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($article);
