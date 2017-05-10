@@ -15,28 +15,4 @@ h3{ font-size: 1.4em; font-weight: bold; }
 
 .ecrit{ font-style: italic; }
 
-/*recentrer le pager*/
-.pager { margin-left: -200px; }
-
-/*@media screen and (min-width: 769px) and (max-width: 2000px)
-{
-    .pager { margin-left: 1px; }
-}
-
-@media screen and (min-width: 200px) and (max-width: 768px)
-{
-    .pager { margin-left: 1px; }
-}*/
-
-
-
-@media (max-width: 768px)
-{
-    .pager { margin-left: 1px; }
-}
-
-/*@media (max-width: 384px)
-{
-    .pager { margin-left: 1px; }
-}*/
 

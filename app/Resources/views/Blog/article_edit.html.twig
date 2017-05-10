@@ -44,8 +44,9 @@
                         {{ form_widget(form.text, {'attr': {'required': 'false'}})}}
                         {{ form_errors(form.text)}}
                     </div>
-
-                    {{ form_widget(form.Valider, {'attr': {'class': 'btn btn-warning pull-right'}})}}
+                    <a href="{{ path('admin_article') }}" class="btn btn-danger pull-right">Annuler</a>
+                    <button type="submit" name="submitAction"  value="Publier"  class="btn btn-info">Publier</button>
+                    <button type="submit" name="submitAction"  value="Enregistrer" class="btn btn-warning">Enregistrer</button>
                 </div>
 
                 {{ form_rest(form) }}
