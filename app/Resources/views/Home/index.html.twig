@@ -1,4 +1,5 @@
 {% extends 'base.html.twig' %}
+{% block title %}Accueil{% endblock %}
 
 {% block stylesheet_enfant %}
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
@@ -35,7 +36,7 @@
         <div class="container-fluid global_bottom_part">
             <div class="col-sm-5" id="information_bar">
                 <div class="col-sm-12" id="informations">
-                    <h1 class="information_group_title">Nos amis les oiseaux : partager vos observations d'oiseaux</h1>
+                    <h1 class="information_group_title">Devenez acteur de la biodiversité et de la protection des oiseaux</h1>
                     <h2 class="information_group_title">Qui sommes-nous?</h2><br>
                     <p>Nos amis les oiseaux est une association regroupant des passionnés d'ornithologie. Elle compte, à
                         ce
@@ -46,7 +47,8 @@
                         de
                         l'agriculture sur la biodiversité. Grâce à vous, adhérents ou simples contributeurs, nous
                         souhaitons
-                        recueuillir vos observations à travers ce site participatif.</p>
+                        recueuillir vos observations à travers ce site participatif. Ensemble préservons la biodiversité
+                        et contribuons à la protection des oiseaux.</p>
                 </div>
                 <div class="col-sm-12" id="newsletter">
                     <h2 class="information_group_title">Newsletter</h2><br>
@@ -89,7 +91,7 @@
                     {% for article in articlesTotal %}
                         <div class="col-sm-12 content_article">
                             <div class="col-md-3 col-xs-4" id="img_btn"><br>
-                            
+
                             <img src="{{ asset(article.imageUrl) }}" alt="{{ article.title }}" class="col-xs-2 img-rounded">
                                 <a href="{{ path('article', {'id': article.id}) }}"
                                    class="btn btn-default btn_more"

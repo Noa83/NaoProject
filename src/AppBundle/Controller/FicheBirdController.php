@@ -19,6 +19,11 @@ class FicheBirdController extends Controller
 
         $birdChoisi = $this->getDoctrine()->getRepository('AppBundle:Birds')->find($id);
         $observation = $this->getDoctrine()->getRepository('AppBundle:Observation')->findOneBy(array('id'=>$idObs));
+//        if (empty ($observation)){
+//            return $this->render('Results/ficheBirdSansObservations.html.twig', [
+//                'birdChoisi' => $birdChoisi
+//            ]);
+//        }
 
         return $this->render('Results/ficheBird.html.twig', [
             'birdChoisi' => $birdChoisi,
