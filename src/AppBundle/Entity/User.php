@@ -73,6 +73,7 @@ class User implements UserInterface, \Serializable
 
     function __construct() {
         $this->setRoles(array('ROLE_USER'));
+        $this->setToken(sha1(random_bytes(15)));
     }
 
 
@@ -321,5 +322,29 @@ class User implements UserInterface, \Serializable
     public function getObservations()
     {
         return $this->observations;
+    }
+
+    /**
+     * Set token
+     *
+     * @param string $token
+     *
+     * @return User
+     */
+    public function setToken($token)
+    {
+        $this->token = $token;
+
+        return $this;
+    }
+
+    /**
+     * Get token
+     *
+     * @return string
+     */
+    public function getToken()
+    {
+        return $this->token;
     }
 }
