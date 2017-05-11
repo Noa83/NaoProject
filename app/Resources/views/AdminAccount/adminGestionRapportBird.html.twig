@@ -1,6 +1,10 @@
 {% extends 'AdminAccount/adminDashboard.html.twig' %}
 {% block title %}Consultation du rapport pour l'espèce: {% endblock %}
 
+{% block stylesheet_enfant %}
+    <link rel="stylesheet" href="{{ asset('css/adminDashboard.css') }}">
+{% endblock %}
+
 {% block adminContent %}
 
     <div class="tab-content col-md-12">
@@ -40,6 +44,10 @@
                     {% endif %}
                 </div>
             </div>
+        <br>
+        <div class="text-center">
+            <a href="{{ path('admin_rapport') }}" class="btn btn_form">Changer d'oiseau</a>
+        </div>
         {#</div>#}
     </div>
 {% endblock %}
@@ -49,7 +57,8 @@
     <script type="text/javascript">
 
         // Load the Visualization API and the corechart package.
-        google.charts.load('current', {'packages':['corechart']});
+        google.charts.load('current', {'packages':['corechart', 'bar']});
+        google.charts.setOnLoadCallback(drawAxisTickColors);
 
         // Set a callback to run when the Google Visualization API is loaded.
         google.charts.setOnLoadCallback(drawChart);
@@ -57,7 +66,7 @@
         // Callback that creates and populates a data table,
         // instantiates the pie chart, passes in the data and
         // draws it.
-        function drawChart() {
+        function drawAxisTickColors() {
             var jsonData = $.ajax({
                 url: "{{ path('admin_json', {'birdId':birdChoisi.id}) }}",
                 dataType: "json",
@@ -73,8 +82,7 @@
                 'height':400};
 
             // Instantiate and draw our chart, passing in some options.
-            var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-//            var chart = new google.visualization.Charts.Bar(document.getElementById('chart_div'));
+            var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
             chart.draw(data, options);
         }
     </script>

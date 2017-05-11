@@ -2,8 +2,7 @@
 
 namespace AppBundle\Repository;
 
-use Doctrine\ORM\Query;
-use Symfony\Component\HttpFoundation\JsonResponse;
+
 
 /**
  * BirdsRepository
@@ -30,7 +29,6 @@ class BirdsRepository extends \Doctrine\ORM\EntityRepository
             {
                 $birdSpecie = $bird['nomValide'];
             }else{
-//                $birdSpecie = $bird['nomVern'] . ' (' . $bird['nomValide'] . ')';
                 $birdSpecie = $bird['nomVern'];
             }
             $arrayList[$birdSpecie] = $bird['id'];
@@ -41,7 +39,7 @@ class BirdsRepository extends \Doctrine\ORM\EntityRepository
 
     const LIMIT = 15;
 
-    public function findBirds($term) //mettre un limit en CONSTANT
+    public function findBirds($term)
     {
         $qb = $this->createQueryBuilder('b');
         $qb ->select('b.id, b.nomVern')
