@@ -19,16 +19,10 @@ class ObservationController extends Controller
      */
     public function observationAction(Request $request)
     {
-        //Récup liste oiseaux.
-//        $birds = $this->getDoctrine()->getRepository('AppBundle:Birds')->getBirdsList();
-
-        //Créa du formulaire
         $observationModel = new ObservationModel();
         $observationForm = $this->get('form.factory')->create(ObservationType::class,
             $observationModel);
-//        , ['birdList' => $birds]
 
-        //Gestion d'une saisie géo hors France (quand les coordonnées rentrent dans les min/max entrés en conditions)
         if ($request->isMethod('POST') && $observationForm->handleRequest($request)->isValid()) {
 
             $imageURL = $this->get('image_manager')->createObservationImage($observationModel);
@@ -40,7 +34,6 @@ class ObservationController extends Controller
         }
 
         return $this->render('Observation/observation.html.twig', [
-//            'birds' => $birds,
             'form' => $observationForm
                 ->createView()]);
     }
@@ -48,9 +41,8 @@ class ObservationController extends Controller
     /**
      * @Route("/observation/edit/{id}", name="observation_edit", requirements={"id": "\d+"})
      */
-    public function observationEditAction(Request $request, $id){
-
-        //Créa du formulaire
+    public function observationEditAction(Request $request, $id)
+    {
         $observation = $this->getDoctrine()->getRepository('AppBundle:Observation')->findOneBy(array('id' => $id));
         $observationModel = $this->get('observation_assembleur')->createFromObservation($observation);
 
@@ -60,7 +52,6 @@ class ObservationController extends Controller
         $observationForm->handleRequest($request);
         if ($observationForm->isSubmitted() && $observationForm->isValid()) {
 
-            //Envoi en traitement Bdd et redirect
             $imageURL = $this->get('image_manager')->createObservationImage($observationModel);
             $observationEdit = $this->get('observation_assembleur')->editObservation($observationModel, $observation, $this->getUser(), $imageURL);
             $this->get('observation_manager')->create($observationEdit);

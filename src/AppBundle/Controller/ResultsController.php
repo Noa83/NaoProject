@@ -19,7 +19,6 @@ class ResultsController extends Controller
         $resultsForm = $this->get('form.factory')->create(ResultsType::class,
             $resultsModel);
 
-        //validation du choix
         $resultsForm->handleRequest($request);
         if ($request->isMethod('POST') && $resultsForm->isSubmitted() && $resultsForm->isValid()) {
             return $this->redirectToRoute('results_list', ['birdId' => $resultsModel->birdId]);

@@ -16,14 +16,8 @@ class FicheBirdController extends Controller
      */
     public function ficheObsAction($id, $idObs)
     {
-
         $birdChoisi = $this->getDoctrine()->getRepository('AppBundle:Birds')->find($id);
         $observation = $this->getDoctrine()->getRepository('AppBundle:Observation')->findOneBy(array('id'=>$idObs));
-//        if (empty ($observation)){
-//            return $this->render('Results/ficheBirdSansObservations.html.twig', [
-//                'birdChoisi' => $birdChoisi
-//            ]);
-//        }
 
         return $this->render('Results/ficheBird.html.twig', [
             'birdChoisi' => $birdChoisi,
@@ -35,7 +29,6 @@ class FicheBirdController extends Controller
      */
     public function ficheBirdAction($id)
     {
-
         $birdChoisi = $this->getDoctrine()->getRepository('AppBundle:Birds')->find($id);
 
         return $this->render('Results/ficheBirdSansObservations.html.twig', [
@@ -50,6 +43,4 @@ class FicheBirdController extends Controller
         return new Response($this->get('data_to_geojson')->getGeoJson($this->getDoctrine()
             ->getRepository('AppBundle:Observation')->getOneMailleGeoJsonByBird($id, $obsId)));
     }
-
-
 }

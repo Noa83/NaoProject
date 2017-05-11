@@ -6,7 +6,7 @@
 
 
     <div class="tab-content col-md-10 col-md-offset-1">
-        <h1 class="text-center">Mes observations.</h1>
+        <h1 class="text-center" id="gros_titre">Mes observations</h1>
         {% if observationsUser %} <!-- if observation -->
             <div class="table-responsive">
                 <table class="table table-hover table-condensed">
@@ -64,7 +64,9 @@
         {% else %}
             <div class="alert alert-warning">Aucune observation trouvée.</div>
         {% endif %}
-        <a href="{{ path('observation') }}"><button type="button" class="btn join"><span class="glyphicon glyphicon-plus"></span> Ajouter une observation</button></a>
+        <div class="text-center">
+            <a href="{{ path('observation') }}" class="btn btn_more"><span class="glyphicon glyphicon-plus"></span> Ajouter une observation</a>
+        </div>
     </div>
 
 

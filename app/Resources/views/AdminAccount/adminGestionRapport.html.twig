@@ -6,8 +6,8 @@
     <div class="tab-content col-md-10 col-md-offset-1">
         <div class="container-fluid" id="consultation_bg">
             <div class="row">
-                <h1 class="text-center">Rapports d'observation</h1>
-                <div class="col-sm-6 col-md-offset-3">
+                <h1 class="text-center" id="rapport_titre">Rapports d'observation</h1>
+                <div class="col-sm-8 col-md-offset-2">
                     {{ form_start(form) }}
                     <div class="row">
                         <div class="col-md-10 col-md-offset-1">
@@ -19,8 +19,8 @@
                     </div>
                     <br class="col-md-10 col-md-offset-1">
                     <div class="row" id="btn_valid">
-                        <div class="col-md-2 col-md-offset-4">
-                            <button class="btn btn_form" type="submit">Envoyer</button>
+                        <div class="text-center">
+                            <button class="btn btn_more" type="submit">Envoyer</button>
                         </div>
                     </div>
                     {{ form_end(form) }}
