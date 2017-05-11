@@ -1,5 +1,4 @@
 {% extends 'base.html.twig' %}
-{% block title %}Se Connecter{% endblock %}
 
 {% block stylesheet_enfant %}
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
@@ -11,19 +10,23 @@
 
     {% block body %}
     <div class="container-fluid" id="login_bg">
-        {% if error %}
-            <div class="alert alert-danger">Erreur de connexion vérifiez vos identifiants. ({{ error.message }})
-            </div>
-        {% endif %}
-        <div class="col-md-6 col-md-offset-3 col-xs-8 col-xs-offset-2 contenulogin" id="opal_bg">
+
+        {% for type, flash_messages in app.session.flashBag.all %}
+            {% for flash_message in flash_messages %}
+                <div class="alert-{{ type }} text-center">
+                    {{ flash_message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+        <div class="col-md-6 col-md-offset-3 col-xs-9 col-xs-offset-2 contenulogin" id="opal_bg">
             <div class="test">
-                <h1 class="sous-titre">Se connecter :</h1>
-                <p class="text-center">Connectez-vous pour compléter votre profil et saisir vos
-                    observations.</p>
+                <h1 class="sous-titre">Mot de passe oublié :</h1>
+                <p class="text-center">Pour obtenir un lien de reinitialisation veuillez entrer votre email et votre pseudo.</p>
                 <p class="text-center">Pas encore inscrit ? Cliquez <a
                             href="{{ path('create_account') }}">ici</a>.
                 </p>
-                <form class="form-login" action="{{ path('login_check') }}" method="post">
+                <form class="form-login" action="{{ path('email_reset_password') }}" method="post">
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
                             <label for="username">Login : </label><br/>
@@ -32,16 +35,14 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                            <label for="password">Mot de passe :</label>
-                            <input type="password" class="form-control" id="password" name="_password"/>
+                            <label for="email">Email :</label>
+                            <input type="email" class="form-control" id="email" name="_email"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                            <input type="hidden" name="_target_path" value="account"/>
                             <br/>
-                            <button class="btn btn_form-orange" type="submit" value="Connexion"> Connexion</button>
-                            <p><a href="{{ path('ask_reset_password') }}">Mot de passe oublié ?</a></p>
+                            <button class="btn btn-form" type="submit" value="Connexion"> Envoyer</button>
                         </div>
                     </div>
                 </form>

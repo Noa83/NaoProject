@@ -47,9 +47,9 @@ class AdminGestionUserController extends Controller
 
             $user = $this->getDoctrine()->getRepository('AppBundle:User')->findOneBy(array('username' => $userModel->username));
 
-            $this->get('appbundle.user_service')->modifyUser($user, $userModel);
+            $this->get('appbundle.user_service')->AdminModifyUser($user, $userModel);
             $this->addFlash(
-                'notice',
+                'success',
                 'Changements sauvegardés'
             );
         }
