@@ -10,29 +10,31 @@
     <div class="tab-content col-md-12">
         {#<div class="container-fluid" id="consultation_bg">#}
             <div class="col-md-12">
+                <div class="col-md-offset-3 col-md-6" id="rapport_titre">
                 <h1 class="text-center">Rapports d'observation pour l'espèce:</h1>
                 <h2 class="text-center">{{ birdChoisi.nomValide  }}</h2>
-                <hr class="col-md-11">
-                <div class="col-md-6 text-center">
-                    {% if mailleCountForBird is not empty %} <!-- if observation -->
-                    <p class="text-center">Nombre total d'observation : {{ mailleCountForBird[1] }}</p>
-                    <p class="text-center">Date de la derniere observation : {{ derniereObs.date | date("d/m/Y") }}</p>
-                    <hr class="col-md-11">
-                    <!--Div that will hold the pie chart-->
-                    <div class="text-center" id="chart_div"></div>
-                    <!------ end ----->
                 </div>
-                <div class="col-md-6 text-center">
-                    <div class="table-responsive col-md-12">
+                <hr class="col-md-11">
+                <div class="col-md-offset-1 col-md-10 text-center" id="global_obs">
+                    {% if mailleCountForBird is not empty %} <!-- if observation -->
+                    <p class="col-md-6 text-center">Nombre total d'observation : {{ mailleCountForBird[1] }}</p>
+                    <p class="col-md-6 text-center">Date de la dernière observation : {{ derniereObs.date | date("d/m/Y") }}</p>
+                </div>
+                <div class="col-md-7 text-center" id="barChart_div">
+                    <div class="text-center" id="chart_div"></div>
+                </div>
+                <div class="col-md-5 text-center" id="table_div">
+                    <br class="col-md-12">
+                    <div class="table-responsive col-md-11">
                     <table class="table table-hover table-condensed">
-                    <thead>
+                    <thead class="tableau_head">
                     <tr>
                     <th class="text-center">Maille</th>
                     <th class="text-center">Nombre observé</th>
                     </tr>
                     </thead>
                     {% for i in 0..(mailleCountForBird[0]|length - 1) %}
-                    <tr>
+                    <tr  class="warning">
                     <td class="col-sm-6 text-center">{{ mailleCountForBird[0][i][0] }}</td>
                     <td class="col-sm-6 text-center">{{ mailleCountForBird[0][i][1] }}</td>
                     </tr>
@@ -46,7 +48,7 @@
             </div>
         <br>
         <div class="text-center">
-            <a href="{{ path('admin_rapport') }}" class="btn btn_form">Changer d'oiseau</a>
+            <a href="{{ path('admin_rapport') }}" class="btn btn_more">Changer d'oiseau</a>
         </div>
         {#</div>#}
     </div>
@@ -77,9 +79,12 @@
             var data = new google.visualization.DataTable(jsonData);
 
             // Set chart options
-            var options = {'title':'Répartition du nombre d\'individus observés par maille',
-                'width':500,
-                'height':400};
+            var options = {
+                title:'Répartition du nombre d\'individus observés par maille',
+                width:700,
+                height:600,
+                colors:['#FE9A04']
+                };
 
             // Instantiate and draw our chart, passing in some options.
             var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
