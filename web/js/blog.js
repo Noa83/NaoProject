@@ -38,5 +38,5 @@ $(function(){
 
     $('#mc-embedded-subscribe').click(function () {
         choix = 1;
-    })
+})
 });
