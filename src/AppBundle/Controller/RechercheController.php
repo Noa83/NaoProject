@@ -50,7 +50,7 @@ class RechercheController extends Controller
             $array1= $this->getDoctrine()->getManager()->getRepository('AppBundle:Birds')->findBirds($term);
             $array2= $this->getDoctrine()->getManager()->getRepository('AppBundle:Article')->findArticle($term);
             $array = array_merge($array1, $array2);
-            return new JsonResponse($array);
+            return new JsonResponse($array1);
         }
     }
 }

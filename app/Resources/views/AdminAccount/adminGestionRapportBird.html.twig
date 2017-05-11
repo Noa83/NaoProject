@@ -1,0 +1,81 @@
+{% extends 'AdminAccount/adminDashboard.html.twig' %}
+{% block title %}Consultation du rapport pour l'espèce: {% endblock %}
+
+{% block adminContent %}
+
+    <div class="tab-content col-md-12">
+        {#<div class="container-fluid" id="consultation_bg">#}
+            <div class="col-md-12">
+                <h1 class="text-center">Rapports d'observation pour l'espèce:</h1>
+                <h2 class="text-center">{{ birdChoisi.nomValide  }}</h2>
+                <hr class="col-md-11">
+                <div class="col-md-6 text-center">
+                    {% if mailleCountForBird is not empty %} <!-- if observation -->
+                    <p class="text-center">Nombre total d'observation : {{ mailleCountForBird[1] }}</p>
+                    <p class="text-center">Date de la derniere observation : {{ derniereObs.date | date("d/m/Y") }}</p>
+                    <hr class="col-md-11">
+                    <!--Div that will hold the pie chart-->
+                    <div class="text-center" id="chart_div"></div>
+                    <!------ end ----->
+                </div>
+                <div class="col-md-6 text-center">
+                    <div class="table-responsive col-md-12">
+                    <table class="table table-hover table-condensed">
+                    <thead>
+                    <tr>
+                    <th class="text-center">Maille</th>
+                    <th class="text-center">Nombre observé</th>
+                    </tr>
+                    </thead>
+                    {% for i in 0..(mailleCountForBird[0]|length - 1) %}
+                    <tr>
+                    <td class="col-sm-6 text-center">{{ mailleCountForBird[0][i][0] }}</td>
+                    <td class="col-sm-6 text-center">{{ mailleCountForBird[0][i][1] }}</td>
+                    </tr>
+                    {% endfor %}
+                    </table>
+                    </div>
+                    {% else %}
+                    <div class="alert alert-warning">Aucun rapport disponible pour cet oiseau.</div>
+                    {% endif %}
+                </div>
+            </div>
+        {#</div>#}
+    </div>
+{% endblock %}
+{% block JS %}
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+        // Load the Visualization API and the corechart package.
+        google.charts.load('current', {'packages':['corechart']});
+
+        // Set a callback to run when the Google Visualization API is loaded.
+        google.charts.setOnLoadCallback(drawChart);
+
+        // Callback that creates and populates a data table,
+        // instantiates the pie chart, passes in the data and
+        // draws it.
+        function drawChart() {
+            var jsonData = $.ajax({
+                url: "{{ path('admin_json', {'birdId':birdChoisi.id}) }}",
+                dataType: "json",
+                async: false
+            }).responseText;
+
+            // Create our data table out of JSON data loaded from server.
+            var data = new google.visualization.DataTable(jsonData);
+
+            // Set chart options
+            var options = {'title':'Répartition du nombre d\'individus observés par maille',
+                'width':500,
+                'height':400};
+
+            // Instantiate and draw our chart, passing in some options.
+            var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+//            var chart = new google.visualization.Charts.Bar(document.getElementById('chart_div'));
+            chart.draw(data, options);
+        }
+    </script>
+{% endblock %}

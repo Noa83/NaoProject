@@ -1,3 +1,5 @@
+/* Concerne les fiches results, resultsList, ficheBird */
+
 /* Carte */
 #empty_map {
     height: 700px;
@@ -89,11 +91,30 @@ h3.text-center
     padding-bottom: 5px;
     padding-top: 5px;
 }
+h3.text-center.bg_colvert
+{
+    background-color: #289490;
+}
 
 /* Fiche Oiseau */
 p.col-xs-5.label_oiseau
 {
     color: #288B90;
+}
+p.col-xs-7.col-sm-6.col-md-7.bird_links>a
+{
+    color: black;
+}
+p.col-xs-7.col-sm-6.col-md-7.bird_links>a:hover, p.col-xs-7.col-sm-6.col-md-7.bird_links>a:visited
+{
+    text-shadow: 3px 3px 3px white;
+    text-decoration: none;
+}
+p.text_bird_links
+{
+    background-color: rgba(100, 65, 0, 0.2);
+    border-radius: 8px;
+    padding: 10px;
 }
 
 /* Media Queries */
