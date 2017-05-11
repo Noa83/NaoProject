@@ -32,6 +32,7 @@ services:
     data_to_array_maille_nb_birds:
         class: AppBundle\Services\DataToArrayMailleNameAndNumberOfBirds
 
+
 #Validators
     out_of_france_validator:
          class: AppBundle\Validator\Constraints\OutOfFranceValidator

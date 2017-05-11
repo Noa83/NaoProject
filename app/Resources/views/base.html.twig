@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-    <meta name="description" content="Nos amis les oiseaux, un site de partage autour des oiseaux dans un but
-     d'information et de protection de la biodiversité"/>
+    <meta name="description" content="L'association Nos Amis les Oiseaux vous propose de devenir acteur de la biodiversité
+     et de la protection des oiseaux en partageant vos observations."/>
     <meta name="keywords" content="Protéger les espèces, Protéger les oiseaux, Protéger l’environnement,
      Protéger la nature, Protéger la biodiversité, Préserver les espèces, Préserver les oiseaux, Préserver l’environnement,
      Préserver la nature, Préserver la biodiversité, Défendre les espèces, Défendre les oiseaux, Défendre l’environnement,
      Défendre la nature, Défendre la biodiversité, Observer les oiseaux, Observer les oiseaux en France, Reconnaitre les oiseaux,
      Identifier les Oiseaux, Oiseaux en France, Guide ornithologie, Guide sur les oiseaux, Ornithologie pour tous,
      Devenir acteur de la biodiversité" />
-    <title>Nos Amis les Oiseaux - Un site de partage, d'échange et de protection de la biodiversité autour des oiseaux -
+    <title>Nos Amis les Oiseaux - Protection des oiseaux et préservation de la biodiversité -
         {% block title %}{% endblock %}</title>
     {% block stylesheets %}
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -179,5 +179,6 @@
     </script>
     {% block JS %} {% endblock %}
 {% endblock %}
+{% include '/Analytics/AnalyticsTracking.html.twig' %}
 </body>
 </html>

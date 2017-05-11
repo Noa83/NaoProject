@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+{% block title %}Erreur{% endblock %}
+
+{% block stylesheet_enfant %}
+    <link rel="stylesheet" href="{{ asset('css/erreur.css') }}">
+{% endblock %}
+
+{% block navi5 %}
+<li class="dropdown active">
+    {% endblock %}
+
+    {% block body %}
+    <div class="container-fluid" id="erreur_bg">
+        <div class="col-md-6 pull-right" id="opal_bg">
+            <div class="col-md-12 text-center">
+                <h1 class="col-md-12">Oups! Quelquechose n'a pas fonctionné...</h1><br>
+                <p class="col-md-12">Le server a renvoyé "{{ status_code }} {{ status_text }}".
+                    Nous travaillons pour résoudre ce problème, veuillez nous excuser pour la gêne
+                    occasionnée...</p>
+                <hr class="col-md-11">
+                <div class="col-md-12 text-center">
+                    <a href="{{ path('home_page') }}" class="btn btn_form">Retourner à l'accueil</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
