@@ -29,3 +29,7 @@ button#btn-form.btn.pull-right:hover
     margin-bottom: 13px;
     width: 175px;
 }
+div#opal_bg
+{
+    right: 0;
+}

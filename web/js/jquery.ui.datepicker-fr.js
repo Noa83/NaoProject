@@ -17,10 +17,10 @@ jQuery(function($){
 		isRTL: false,
 		showMonthAfterYear: false,
 		yearSuffix: '',
-		minDate: 0,
-		maxDate: '+12M +0D',
+		minDate: '-100Y',
+		maxDate: '+0D',
 		numberOfMonths: 2,
-		showButtonPanel: true,
+		showButtonPanel: true
 		};
 	$.datepicker.setDefaults($.datepicker.regional['fr']);
 });

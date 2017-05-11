@@ -261,15 +261,7 @@ div#opal_bg
 
 /*Media Queries*/
 
-@media screen and (min-width: 992px) {
-    .navbar-brand > img {
-        /*display: none;*/
-        position: absolute;
-        height: 80px;
-        width: auto;
-    }
-}
-
+/*Ecrans type Smartphones*/
 @media screen and (max-width: 767px) {
     div#opal_bg.col-md-6.col-md-offset-6
     {
@@ -292,10 +284,10 @@ div#opal_bg
     img#logo_nao {
         display: none;
     }
-
-}
-
-@media (max-width: 767px) {
+    input#recherche_recherche
+    {
+        margin-right: 15px;
+    }
     #top_button_bar_xs {
         margin-bottom: 5px;
         margin-top: 10px;
@@ -329,10 +321,27 @@ div#opal_bg
         margin-top: 70px;
     }
 }
-@media (min-width: 767px) and (max-width: 1229px){
+@media screen and (width: 768px){
+    form.navbar-form.navbar-right
+    {
+        padding-left: 5px;
+        padding-right: 10px;
+    }
+}
+@media (min-width: 768px) and (max-width: 1229px){
     .content-body {
         min-height: 83vh;
         margin-top: 170px;
+    }
+}
+
+/*Ecrans standards*/
+@media screen and (min-width: 992px) {
+    .navbar-brand > img {
+        /*display: none;*/
+        position: absolute;
+        height: 80px;
+        width: auto;
     }
 }
 

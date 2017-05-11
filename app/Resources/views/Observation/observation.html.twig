@@ -13,15 +13,23 @@
     <div class="container-fluid" id="observation_bg">
         <div class="col-md-offset-6 col-md-6" id="opal_bg">
             <div class="part-right">
-                <h1 class="sous-titre">Saisir une nouvelle observation:</h1>
-                <p class="accroche">Vous avez eu l'opportunité d'observer un oiseau lors de vos promenades ou même dans
-                    votre jardin? Vous pouvez nous aider à réaliser à un inventaire des espèces de nos régions.<br/>
-                    Complétez ce formulaire pour nous envoyer une observation.
-                </p>
+                <div>
+                    <div class="col-md-12">
+                        <h1 class="sous-titre">Saisir une nouvelle observation:</h1>
+                        <p class="accroche">Vous avez eu l'opportunité d'observer un oiseau lors de vos promenades ou
+                            même dans
+                            votre jardin? Vous pouvez nous aider à réaliser à un inventaire des espèces de nos
+                            régions.<br/>
+                            Complétez ce formulaire pour nous envoyer une observation.
+                        </p>
+                    </div>
+                </div>
                 {{ form_start(form) }}
                 <div>
                     <div class="col-md-12 saisie">
-                        {{ form_row(form.bird, {'label': 'Nom de l\'espèce :'}) }}
+                        {{ form_label(form.birdName, 'Nom de l\'espèce :') }}
+                        {{ form_widget(form.birdName, {'attr': {'placeholder': 'Saisissez le nom de l\'espèce observée (3 caractères minimum)'}}) }}
+                        {{ form_row(form.birdId) }}
                     </div>
                 </div>
                 <div>
@@ -54,10 +62,10 @@
                     </div>
                 </div>
                 {% for flash_message in app.session.flashBag.get('success') %}
-                   <div class="col-md-12 text-center">
-                    <br>
-                    <div class="col-md-12 text-center">{{ flash_message }}</div>
-                   </div>
+                    <div class="col-md-12 text-center">
+                        <br>
+                        <div class="col-md-12 text-center">{{ flash_message }}</div>
+                    </div>
                 {% endfor %}
                 <br>
                 <div class="col-md-12 saisie" id="btn_valid">
@@ -70,4 +78,9 @@
             </div>
         </div>
     </div>
+{% endblock %}
+{% block JS %}
+    <script src="{{ asset('js/autoCompBirdChoice.js') }}"></script>
+    <script src="{{ asset('js/jquery.ui.datepicker-fr.js') }}"></script>
+    <script src="{{ asset('js/account.js') }}"></script>
 {% endblock %}

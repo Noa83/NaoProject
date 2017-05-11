@@ -53,7 +53,8 @@ class ObservationModel
      * )
      */
     public $image;
-    public $bird;
+    public $birdName;
+    public $birdId;
 
     public function __construct()
     {
