@@ -3,8 +3,6 @@
 namespace AppBundle\Services;
 
 
-use AppBundle\Entity\User;
-use AppBundle\Model\ObservationModel;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Mapping as ORM;
 use AppBundle\Entity\Observation;

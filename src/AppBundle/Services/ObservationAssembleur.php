@@ -5,7 +5,6 @@ namespace AppBundle\Services;
 
 use AppBundle\Entity\User;
 use AppBundle\Model\ObservationModel;
-use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Mapping as ORM;
 use AppBundle\Entity\Observation;
@@ -34,7 +33,7 @@ class ObservationAssembleur
 
         $observation->setImageUrl($imageUrl);
         $observation->setDate($observationModel->date);
-        $bird = $this->manager->getRepository('AppBundle:Birds')->getBirdById($observationModel->bird);
+        $bird = $this->manager->getRepository('AppBundle:Birds')->getBirdById($observationModel->birdId);
         $observation->setBird($bird);
         $observation->setLongitude($observationModel->long);
         $observation->setLattitude($observationModel->lat);
@@ -55,7 +54,13 @@ class ObservationAssembleur
     public function createFromObservation(Observation $observation){
 
         $observationModel = new ObservationModel();
-        $observationModel->bird = $observation->getBird()->getNomValide();
+
+        if (empty($observation->getBird()->getNomVern())){
+            $observationModel->birdName = $observation->getBird()->getNomValide();
+        }else{
+            $observationModel->birdName = $observation->getBird()->getNomVern();
+        }
+        $observationModel->birdId = $observation->getBird()->getId();
         $observationModel->comment = $observation->getComment();
         $observationModel->date = $observation->getDate();
         $observationModel->image = $observation->getImageUrl();

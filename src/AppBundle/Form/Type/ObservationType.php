@@ -7,11 +7,12 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 
 /**
@@ -24,10 +25,19 @@ class ObservationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('date', DateType::class)
-            ->add('bird', ChoiceType::class, [
-                'choices' => $options['birdList'],
-                'data' => $options['selectedBirdId']
+            ->add('date',  DateType::class, array(
+                'widget'    =>  'single_text',
+                'format'    =>  'yyyy-MM-dd',
+                'attr'      =>  array(
+                'class' =>  'date'),
+                'required' => false))
+            ->add('birdName', TextType::class, [
+                'attr' => [
+                    'class' =>  'birdName']
+            ])
+            ->add('birdId', HiddenType::class, [
+                'attr' => [
+                    'class' =>  'birdId']
             ])
             ->add('lat', NumberType::class,[
                 'scale' => 6,
@@ -46,9 +56,7 @@ class ObservationType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'AppBundle\Model\ObservationModel',
-            'birdList' => null,
-            'selectedBirdId' => null
+            'data_class' => 'AppBundle\Model\ObservationModel'
         ]);
     }
 }

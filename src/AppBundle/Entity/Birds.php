@@ -131,7 +131,7 @@ class Birds
     /**
      * @var string
      *
-     * @ORM\Column(name="url_wiki", type="string", nullable=true, length=57)
+     * @ORM\Column(name="url_wiki", type="string", nullable=true, length=255)
      */
     private $urlWiki;
 
