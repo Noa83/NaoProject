@@ -4,12 +4,12 @@
 {% block adminContent %}
 
     <div class="tab-content col-md-10 col-md-offset-1">
-        <h3 class="text-center">Gestion des utilisateurs</h3>
+        <h1 class="text-center" id="rapport_titre">Gestion des utilisateurs</h1>
 
         <div class="col-md-8 col-md-offset-2">
-            <div class="text-center col-md-6 col-md-offset-3">
-                <form action="{{ path('admin_user') }}" method="get">
-                    <div class="form-group">
+            <div class="col-md-12">
+                <form class="col-md-6 col-md-offset-3" action="{{ path('admin_user') }}" method="get">
+                    <div class="form-group text-center">
                         <label>Pseudo :</label>
                         <input type="text" title="Pseudo :" class="form-control" id="user_search" name="username" required><br/>
                         <button type="submit" class="btn join">Rechercher</button>

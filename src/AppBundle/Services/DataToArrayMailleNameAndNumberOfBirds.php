@@ -1,6 +1,6 @@
 <?php
 namespace AppBundle\Services;
-use Symfony\Component\HttpFoundation\JsonResponse;
+
 
 class DataToArrayMailleNameAndNumberOfBirds
 {
@@ -37,7 +37,6 @@ class DataToArrayMailleNameAndNumberOfBirds
             'type' => 'number'
         ];
         array_push($cols, $tempCols1, $tempCols2);
-//        dump($cols);
 
         $rows = [];
         foreach ($Km10List as $Km10) {
@@ -58,12 +57,10 @@ class DataToArrayMailleNameAndNumberOfBirds
             );
             array_push($rows, $tempRows);
         }
-//        dump($rows);
         $json = array(
             'cols' => $cols,
             'rows' => $rows
         );
-//        dump($json);
         return $json;
     }
 

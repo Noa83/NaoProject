@@ -4,6 +4,9 @@
 {% block adminContent %}
 
     <div class="tab-content col-md-10 col-md-offset-1">
+        <div class="text-center">
+            <h1 class="text-center" id="rapport_titre">Création / Modification d'articles</h1>
+        </div>
         {% if articles %}
             <div class="table-responsive">
                 <table class="table table-hover table-condensed">
@@ -57,7 +60,10 @@
         {% else %}
             <div class="alert alert-warning">Aucun article trouvé.</div>
         {% endif %}
-        <a href="{{ path('ecriture_article') }}"><button type="button" class="btn join"><span class="glyphicon glyphicon-plus"></span> Ajouter un article</button></a>
+        <div class="text-center">
+        <a href="{{ path('ecriture_article') }}" class="btn btn_more"><span class="glyphicon glyphicon-plus"></span> Ajouter un article</a>
+        </div>
+        {#<button type="button" class="btn btn-primary"></button>#}
     </div>
 
 {% endblock %}

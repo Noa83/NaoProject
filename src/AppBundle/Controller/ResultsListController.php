@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Response;
 
 class ResultsListController extends Controller
 {
@@ -19,5 +20,14 @@ class ResultsListController extends Controller
             'birdChoisi' => $birdChoisi,
             'observationsBird' => $observationsBird
         ]);
+    }
+
+    /**
+     * @Route("/bird/json/{id}", name="bird", requirements={"id": "\d+"})
+     */
+    public function getBirdsResultsAction($id)
+    {
+        return new Response ($this->get('data_to_geojson')->getGeoJson($this->getDoctrine()
+            ->getRepository('AppBundle:Observation')->getObservationInfoWithMailleByBird($id)));
     }
 }

@@ -22,7 +22,6 @@ class ArticleController extends Controller
      */
     public function articleAction(Article $article)
     {
-        //On récupère tous les articles qui nous serviront pour l'affichage des articles récents
         $articlesTotal = $this->getDoctrine()->getManager()->getRepository('AppBundle:Article')->getArticlesRecents();
 
         return $this->render('Blog/article.html.twig', array(

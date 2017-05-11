@@ -27,7 +27,7 @@ class NoObservationsFoundValidator extends ConstraintValidator
         catch(\Exception $e)
         {
             $this->context->buildViolation($constraint->message)
-                ->atPath('birdId')
+                ->atPath('birdName')
                 ->addViolation();
         }
     }
