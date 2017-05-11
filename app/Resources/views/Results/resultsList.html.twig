@@ -19,8 +19,8 @@
                     <div>
                         <h3 class="text-center">Observations sur l'oiseau :{% if birdChoisi %}
                                 {{ birdChoisi.nomValide }}{% endif %}</h3><br/>
-                        <div class="table-responsive">
-                            <table class="table table-hover table-condensed">
+                        <div>
+                            <table class="table table-hover table-condensed table-responsive">
                                 <thead>
                                 <tr>
                                     <th>Observation</th>
@@ -41,6 +41,7 @@
                     <div class="text-center">
                         <a class="btn btn_more" href="{{ path('results') }}">Changer d'oiseau</a>
                     </div>
+                    <br class="col-md-12">
                 </div>
             </div>
             <div class="colonne_carte col-md-6 col-xs-12">
