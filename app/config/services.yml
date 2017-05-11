@@ -53,3 +53,17 @@ services:
              - "@doctrine.orm.entity_manager"
          tags:
             - {name: validator.constraint_validator}
+
+    username_validator:
+         class: AppBundle\Validator\Constraints\UsernameConstraintValidator
+         arguments:
+             - "@doctrine.orm.entity_manager"
+         tags:
+            - {name: validator.constraint_validator}
+
+    mail_validator:
+             class: AppBundle\Validator\Constraints\EmailConstraintValidator
+             arguments:
+                 - "@doctrine.orm.entity_manager"
+             tags:
+                - {name: validator.constraint_validator}
