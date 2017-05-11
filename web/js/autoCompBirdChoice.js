@@ -14,13 +14,13 @@ $(function(){
         url: 'bird/autocomp',
         success: function(data){
             var birdsList = eval(data);
-            $('#observation_birdName').completion({
+            $('.birdName').completion({
                 source: birdsList,
                 select: function(event, ui){
-                    $('#observation_birdId').val(ui.item.id);
+                    $('.birdId').val(ui.item.id);
                 }
             });
-            $('#observation_birdName').completion( "option", "minLength", 3 );
+            $('.birdName').completion( "option", "minLength", 3 );
         }
     });
 });

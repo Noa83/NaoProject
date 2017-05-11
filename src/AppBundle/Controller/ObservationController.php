@@ -100,12 +100,4 @@ class ObservationController extends Controller
         return $this->redirectToRoute('account_validation');
     }
 
-    /**
-     * @Route("/observation/edit/bird/autocomp", name="edit_obs_bird_list")
-     */
-    public function getAutoCompBirdsList()
-    {
-        return new JsonResponse($this->get('data_to_array_for_autocomplete_consultation')
-            ->getBirdsListForAutoComplete($this->getDoctrine()->getRepository('AppBundle:Birds')->getBirdsList()));
-    }
 }

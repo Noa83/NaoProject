@@ -12,7 +12,7 @@ use AppBundle\Model\UserAccountModel;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 
 class AdminGestionRapportController extends Controller
@@ -27,11 +27,12 @@ class AdminGestionRapportController extends Controller
         $dateDerniereObs = '';
 
         //liste de choix des oiseaux
-        $birds = $this->getDoctrine()->getRepository('AppBundle:Birds')->getBirdsList();
+//        $birds = $this->getDoctrine()->getRepository('AppBundle:Birds')->getBirdsList();
 
         $resultsModel = new ResultsModel();
         $resultsForm = $this->get('form.factory')->create(ResultsType::class,
-            $resultsModel, ['birdList' => $birds]);
+            $resultsModel);
+//        , ['birdList' => $birds]
 
 //        //validation du choix
 //        if ($request->isMethod('POST') && $resultsForm->handleRequest($request)->isValid()) {
@@ -48,7 +49,7 @@ class AdminGestionRapportController extends Controller
         }
 
         return $this->render('AdminAccount/adminGestionRapport.html.twig', [
-            'birds' => $birds,
+//            'birds' => $birds,
 //            'mailleCountForBird' => $mailleCountsForChoicedBirdList,
             'derniereObs' => $dateDerniereObs,
             'form' => $resultsForm
@@ -63,5 +64,6 @@ class AdminGestionRapportController extends Controller
 //        return new Response($this->get('data_to_array_maille_nb_birds')->GetArrayMailleNameAndNumberOfBirds(
 //        $this->getDoctrine()->getRepository('AppBundle:Km10')->getMaillesWithBird($birdId)));
 //    }
+
 
 }

@@ -10,7 +10,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 /**
- * ObservationType
+ * ResultsType
  */
 
 class ResultsType extends AbstractType
@@ -18,8 +18,14 @@ class ResultsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('birdName', TextType::class)
-            ->add('birdId', HiddenType::class);
+            ->add('birdName', TextType::class, [
+                'attr' => [
+                    'class' =>  'birdName']
+            ])
+            ->add('birdId', HiddenType::class, [
+                'attr' => [
+                    'class' =>  'birdId']
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

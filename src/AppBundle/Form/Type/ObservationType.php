@@ -31,8 +31,14 @@ class ObservationType extends AbstractType
                 'attr'      =>  array(
                 'class' =>  'date'),
                 'required' => false))
-            ->add('birdName', TextType::class)
-            ->add('birdId', HiddenType::class)
+            ->add('birdName', TextType::class, [
+                'attr' => [
+                    'class' =>  'birdName']
+            ])
+            ->add('birdId', HiddenType::class, [
+                'attr' => [
+                    'class' =>  'birdId']
+            ])
             ->add('lat', NumberType::class,[
                 'scale' => 6,
                 'invalid_message' => 'Vous devez saisir une lattitude géographique.'
