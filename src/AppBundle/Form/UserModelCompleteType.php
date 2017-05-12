@@ -10,7 +10,6 @@ use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\IsTrue;
 
 class UserModelCompleteType extends AbstractType
 {
@@ -25,7 +24,7 @@ class UserModelCompleteType extends AbstractType
                 'type' => PasswordType::class,
                 'first_options'  => array('label' => 'Mot de passe'),
                 'second_options' => array('label' => 'Mot de passe répété'),
-                'required' => true
+                'required' => false
                 ))
             ->add('prenom',         TextType::class, array(
                 'required' => false))
@@ -41,9 +40,14 @@ class UserModelCompleteType extends AbstractType
 
     }
 
-    public function getParent()
+    /**
+     * {@inheritdoc}
+     */
+    public function configureOptions(OptionsResolver $resolver)
     {
-        return UserModelType::class;
+        $resolver->setDefaults(array(
+            'data_class' => 'AppBundle\Model\UserAccountModel'
+        ));
     }
 
 }

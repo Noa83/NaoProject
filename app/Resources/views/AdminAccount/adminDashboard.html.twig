@@ -25,14 +25,15 @@
                 </ul>
             </div>
         </div>
-        <br class="col-md-12">
-        {% for type, flash_messages in app.session.flashBag.all %}
-            {% for flash_message in flash_messages %}
-                <div class="alert-{{ type }} text-center">
-                    {{ flash_message }}
-                </div>
+        <div class="col-md-12">
+            {% for type, flash_messages in app.session.flashBag.all %}
+                {% for flash_message in flash_messages %}
+                    <div class="alert-{{ type }} text-center">
+                        {{ flash_message }}
+                    </div>
+                {% endfor %}
             {% endfor %}
-        {% endfor %}
+        </div>
 
         {% block adminContent %}
         {% endblock %}

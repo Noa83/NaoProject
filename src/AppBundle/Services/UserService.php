@@ -68,9 +68,28 @@ class UserService {
         $user->setEmail($model->email);
 
         // Encodage du mot de passe.
-        $password = $this->encoder
-            ->encodePassword($user, $model->plainPassword);
-        $user->setPassword($password);
+        if (null !== $model->plainPassword) {
+            $password = $this->encoder
+                ->encodePassword($user, $model->plainPassword);
+            $user->setPassword($password);
+        }
+
+        $user->setPrenom($model->prenom);
+        $user->setDateNaissance($model->dateNaissance);
+        $user->setVille($model->ville);
+        $user->setRoles(array($model->role));
+
+        // 4) Sauvegarde de l'utilisateur
+        $this->em->persist($user);
+        $this->em->flush();
+
+        return $user;
+    }
+
+    public function AdminModifyUser(User $user, UserAccountModel $model){
+
+        $user->setUsername($model->username);
+        $user->setEmail($model->email);
 
         $user->setPrenom($model->prenom);
         $user->setDateNaissance($model->dateNaissance);

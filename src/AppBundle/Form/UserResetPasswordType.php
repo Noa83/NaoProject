@@ -13,20 +13,18 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
 
-class UserAdminDashboardType extends AbstractType
+class UserResetPasswordType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->remove('plainPassword')
-            ->add('role',           ChoiceType::class, array(
-                'choices'  => array(
-                    'Admin' => 'ROLE_ADMIN',
-                    'Validateur' => 'ROLE_VALIDATEUR',
-                    'Utilisateur' => 'ROLE_USER',
-                )))
+        $builder->remove('email')
+            ->remove('username')
+            ->remove('prenom')
+            ->remove('dateNaissance')
+            ->remove('ville')
         ;
 
     }

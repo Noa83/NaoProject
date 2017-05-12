@@ -10,7 +10,25 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *
  *
  */
-class UserAccountModel extends UserRegistrationModel {
+class UserAccountModel {
+
+    /**
+     * @Assert\NotBlank()
+     */
+    public $username;
+
+    /**
+     *
+     * @Assert\Length(max=4096)
+     */
+    public $plainPassword;
+
+    /**
+     *
+     * @Assert\NotBlank()
+     * @Assert\Email()
+     */
+    public $email;
 
     /**
      * @Assert\Length(

@@ -35,4 +35,19 @@ class ContactService
 
         $this->mailer->send($message);
     }
+
+    public function sendResetMail($lien, $email)
+    {
+        $message = \Swift_Message::newInstance()
+            ->setSubject('Récupération de mot de passe Nos amis les oiseaux')
+            ->setFrom('contact@nosamislesoiseaux.eg2.fr')
+            ->setTo($email)
+            ->setContentType('text/html')
+
+            ->setBody('Vous avez demandé la modification de votre mot de passe. Pour reinitialiser votre mot de passe veuillez suivre 
+            ce lien : '. '<a href="'.$lien.'">'.$lien.'</a>'. '<br/>Si vous n\'êtes pas à l\'origine de cette manipulation ignorez ce mail votre mot de passe restera 
+            inchangé.');
+
+        $this->mailer->send($message);
+    }
 }

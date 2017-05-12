@@ -8,6 +8,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Form\ArticleModifType;
 use AppBundle\Form\ArticleType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -76,18 +77,23 @@ class ArticleController extends Controller
     }
 
     /**
-     * @Route("/article/edit/{id}", name="article_edit", requirements={"id": "\d+"})
+     * @Route("/admin/article/edit/{id}", name="article_edit", requirements={"id": "\d+"})
      */
     public function articleEditAction(Request $request, $id){
 
         $article = $this->getDoctrine()->getRepository('AppBundle:Article')->findOneBy(array('id' => $id));
-        $form = $this->get('form.factory')->create(ArticleType::class, $article);
+        $imageBackUp = $article->getImageUrl();
+        $form = $this->get('form.factory')->create(ArticleModifType::class, $article);
 
         if ($request->get('submitAction') == 'Publier') {
             if ($request->isMethod('POST') && $form->handleRequest($request)->isValid())
             {
                 $article->setPublish(true);
-                $this->handleImage($article);
+                if (null !== $article->getImageUrl()){
+                    $this->handleImage($article);
+                } else {
+                    $article->setImageUrl($imageBackUp);
+                }
                 $article->setDate(new \DateTime);
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($article);
@@ -100,7 +106,11 @@ class ArticleController extends Controller
             if ($request->isMethod('POST') && $form->handleRequest($request)->isValid())
             {
 
-                $this->handleImage($article);
+                if (null !== $article->getImageUrl()){
+                    $this->handleImage($article);
+                } else {
+                    $article->setImageUrl($imageBackUp);
+                }
                 $article->setDate(new \DateTime);
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($article);

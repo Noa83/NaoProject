@@ -15,6 +15,13 @@
 {% block body %}
     <div class="container-fluid" id="global_home_bg">
         <div>
+            {% for type, flash_messages in app.session.flashBag.all %}
+                {% for flash_message in flash_messages %}
+                    <div class="alert-{{ type }} text-center">
+                        {{ flash_message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
             <div class="container-fluid" id="calls_to_action_bar">
                 <div class="col-sm-4" id="call_observer">
                     <h2>Observation</h2>
