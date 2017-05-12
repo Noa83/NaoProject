@@ -26,7 +26,7 @@ class AdminGestionUserController extends Controller
         $userModel = new UserAccountModel();
         $formEditUser = $this->createForm(UserAdminDashboardType::class, $userModel);
 
-        if (isset($username) AND ($username != "")) {
+        if (isset($username) && ($username != "")) {
 
             $user = $this->getDoctrine()->getRepository('AppBundle:User')->findOneBy(array('username' => $username));
 
