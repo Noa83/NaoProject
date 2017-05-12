@@ -26,11 +26,11 @@ class AdminGestionUserController extends Controller
         $userModel = new UserAccountModel();
         $formEditUser = $this->createForm(UserAdminDashboardType::class, $userModel);
 
-        if (isset($username) && ($username != "")) {
+        if (isset($username) && ($username !== "")) {
 
             $user = $this->getDoctrine()->getRepository('AppBundle:User')->findOneBy(array('username' => $username));
 
-            if ($user != null) {
+            if ($user !== null) {
 
                 $userModel = $this->get('appbundle.user_service')->userToUserModel($user);
                 $formEditUser = $this->createForm(UserAdminDashboardType::class, $userModel);
@@ -62,7 +62,7 @@ class AdminGestionUserController extends Controller
     /**
      * @Route("/admin/user/remove/{id}", name="user_remove", requirements={"id": "\d+"})
      */
-    public function removeUser($id){
+    public function removeUserAction($id){
 
         $user = $this->getDoctrine()->getRepository('AppBundle:User')->find($id);
 
