@@ -41,9 +41,14 @@ class UserModelCompleteType extends AbstractType
 
     }
 
-    public function getParent()
+    /**
+     * {@inheritdoc}
+     */
+    public function configureOptions(OptionsResolver $resolver)
     {
-        return UserModelType::class;
+        $resolver->setDefaults(array(
+            'data_class' => 'AppBundle\Model\UserAccountModel'
+        ));
     }
 
 }

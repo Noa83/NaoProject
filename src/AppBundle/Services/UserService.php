@@ -4,7 +4,6 @@ namespace AppBundle\Services;
 
 use AppBundle\Model\UserAccountModel;
 use AppBundle\Entity\User;
-use AppBundle\Model\UserPasswordResetModel;
 use AppBundle\Model\UserRegistrationModel;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -102,16 +101,5 @@ class UserService {
         $this->em->flush();
 
         return $user;
-    }
-
-    public function modifyUserPass(User $user, UserPasswordResetModel $model){
-
-        if (null !== $model->plainPassword) {
-            $password = $this->encoder
-                ->encodePassword($user, $model->plainPassword);
-            $user->setPassword($password);
-        }
-
-        $this->em->flush();
     }
 }

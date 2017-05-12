@@ -4,7 +4,6 @@ namespace AppBundle\Controller;
 
 
 use AppBundle\Form\UserResetPasswordType;
-use AppBundle\Model\UserPasswordResetModel;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -64,13 +63,13 @@ class PasswordManagerController extends Controller
     {
         $token = $request->attributes->get("token");
         $user = $this->getDoctrine()->getRepository('AppBundle:User')->findOneBy(array('token' => $token));
-        $userModel = new UserPasswordResetModel();
+        $userModel = $this->get('appbundle.user_service')->userToUserModel($user);
         $form = $this->createForm(UserResetPasswordType::class, $userModel);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $this->get('appbundle.user_service')->modifyUserPass($user, $userModel);
+            $this->get('appbundle.user_service')->modifyUser($user, $userModel);
             return $this->redirectToRoute('login');
         }
 
