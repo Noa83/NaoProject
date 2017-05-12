@@ -8,6 +8,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Form\ArticleModifType;
 use AppBundle\Form\ArticleType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -82,7 +83,7 @@ class ArticleController extends Controller
 
         $article = $this->getDoctrine()->getRepository('AppBundle:Article')->findOneBy(array('id' => $id));
         $imageBackUp = $article->getImageUrl();
-        $form = $this->get('form.factory')->create(ArticleType::class, $article);
+        $form = $this->get('form.factory')->create(ArticleModifType::class, $article);
 
         if ($request->get('submitAction') == 'Publier') {
             if ($request->isMethod('POST') && $form->handleRequest($request)->isValid())
