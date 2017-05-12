@@ -20,15 +20,23 @@ class UserResetPasswordType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->remove('email')
-            ->remove('username')
-        ;
-
+        $builder->add('plainPassword', RepeatedType::class, array(
+            'type' => PasswordType::class,
+            'first_options' => array('label' => 'Mot de passe'),
+            'second_options' => array('label' => 'Répétez le mot de passe'),
+            'required' => true,
+            'invalid_message' => 'Vos mot de passe doivent être identique'
+        ));
     }
 
-    public function getParent()
+    /**
+     * {@inheritdoc}
+     */
+    public function configureOptions(OptionsResolver $resolver)
     {
-        return UserModelType::class;
+        $resolver->setDefaults(array(
+            'data_class' => 'AppBundle\Model\UserPasswordResetModel'
+        ));
     }
 
 }

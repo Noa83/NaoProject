@@ -106,7 +106,11 @@ class ArticleController extends Controller
             if ($request->isMethod('POST') && $form->handleRequest($request)->isValid())
             {
 
-                $this->handleImage($article);
+                if (null !== $article->getImageUrl()){
+                    $this->handleImage($article);
+                } else {
+                    $article->setImageUrl($imageBackUp);
+                }
                 $article->setDate(new \DateTime);
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($article);
