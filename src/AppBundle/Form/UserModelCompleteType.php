@@ -24,7 +24,8 @@ class UserModelCompleteType extends AbstractType
                 'type' => PasswordType::class,
                 'first_options'  => array('label' => 'Mot de passe'),
                 'second_options' => array('label' => 'Mot de passe répété'),
-                'required' => false
+                'required' => false,
+                'invalid_message' => "Mots de passe différents."
                 ))
             ->add('prenom',         TextType::class, array(
                 'required' => false))
