@@ -49,7 +49,7 @@ class PasswordManagerController extends Controller
             $user->setToken($token);
             $this->getDoctrine()->getManager()->flush();
 
-            $lien = "http://nosamislesoiseaux.eg2.fr/".$token;
+            $lien = "http://nosamislesoiseaux.eg2.fr/reseting-password/".$token;
             $this->get('mail')->sendResetMail($lien, $email);
 
             return $this->redirectToRoute('home_page');
