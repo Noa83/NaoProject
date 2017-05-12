@@ -56,6 +56,11 @@ class ObservationController extends Controller
             $observationEdit = $this->get('observation_assembleur')->editObservation($observationModel, $observation, $this->getUser(), $imageURL);
             $this->get('observation_manager')->create($observationEdit);
 
+            $this->addFlash(
+                'success',
+                'Observation editée'
+            );
+
             return $this->redirectToRoute('account');
         }
 

@@ -52,6 +52,11 @@ class PasswordManagerController extends Controller
             $lien = "http://nosamislesoiseaux.eg2.fr/reseting-password/".$token;
             $this->get('mail')->sendResetMail($lien, $email);
 
+            $this->addFlash(
+                'success',
+                'Email de reinitialisation envoyé.'
+            );
+
             return $this->redirectToRoute('home_page');
         }
     }
