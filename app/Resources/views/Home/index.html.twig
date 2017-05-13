@@ -108,7 +108,7 @@
                             <div class="col-md-9 col-xs-8">
                                 <h3>{{ article.title }}</h3>
                                 {% autoescape %}
-                                    <p>{{ article.text|truncate(150)|raw }}</p>
+                                    <p>{{ article.text|striptags|truncate(150)|raw }}</p>
                                 {% endautoescape %}</div>
                         </div>
                     {% endfor %}

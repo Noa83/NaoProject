@@ -44,7 +44,7 @@ $(function(){
     $( window ).on( "orientationchange", function( event ) {
         location.reload();
     });
-    
+
     $('#mc-embedded-subscribe').click(function () {
         choix = 1;
     })
