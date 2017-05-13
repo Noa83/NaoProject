@@ -44,30 +44,7 @@ $(function(){
     $( window ).on( "orientationchange", function( event ) {
         location.reload();
     });
-
-
-    /* $( window ).on( "orientationchange", function( event ) {
-
-     if(window.innerHeight > window.innerWidth)
-     {
-     console.log('height > width');
-     location.reload();
-     /*if(window.innerWidth < 1024)
-     {
-     $('.collant').css({'top':'0'}).stop();
-     }*/
-    /*  }
-     else
-     {
-     console.log('width > height');
-     scroll();
-
-     }
-     console.log('valeur apres rotation height: ',window.innerHeight);
-     console.log('valeur apres rotation  width: ', window.innerWidth);
-     });*/
-
-
+    
     $('#mc-embedded-subscribe').click(function () {
         choix = 1;
     })
