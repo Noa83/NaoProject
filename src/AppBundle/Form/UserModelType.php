@@ -25,7 +25,7 @@ class UserModelType extends AbstractType
                 'first_options'  => array('label' => 'Mot de passe'),
                 'second_options' => array('label' => 'Répétez le mot de passe'),
                 'required' => true,
-                'invalid_message' => 'Vos mot de passe doivent être identique'
+                'invalid_message' => 'Vos mots de passe doivent être identique'
                 ));
     }
     
