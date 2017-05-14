@@ -65,4 +65,14 @@ class ArticleRepository extends \Doctrine\ORM\EntityRepository
         }
         return $array;
     }
+
+    public function findArticleAdmin()
+    {
+        $query = $this->createQueryBuilder('a')
+            ->addOrderBy('a.publish')
+            ->addOrderBy('a.id', 'DESC')
+            ->getQuery()->getResult();
+
+        return $query;
+    }
 }
