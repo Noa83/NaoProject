@@ -22,7 +22,7 @@
                     {% for article in articles %}
                         <tr>
                             <td class="col-sm-3"><a class="articleTitle" href="{{ path('article', {'id': article.id}) }}">{{ article.title }}</a></td>
-                            <td class="col-sm-7">{{ article.text | truncate(200) | raw }}</td>
+                            <td class="col-sm-7">{{ article.text | striptags| truncate(200) | html }}</td>
                             <td class="col-sm-1">{{ article.date | date("d/m/Y") }}</td>
                             <td>
                                 {% if  article.publish  == 1 %}
