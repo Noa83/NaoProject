@@ -23,7 +23,7 @@ services:
             - "@templating"
 
     app.twig_extension:
-        class: AppBundle\Twig\AppExtension
+        class: AppBundle\Twig\AcmeExtension
         public: false
         tags:
             - { name: twig.extension }
