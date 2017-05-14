@@ -82,18 +82,13 @@ class ArticleController extends Controller
     public function articleEditAction(Request $request, $id){
 
         $article = $this->getDoctrine()->getRepository('AppBundle:Article')->findOneBy(array('id' => $id));
-        $imageBackUp = $article->getImageUrl();
-        $form = $this->get('form.factory')->create(ArticleModifType::class, $article);
+        $form = $this->get('form.factory')->create(ArticleType::class, $article);
 
-        if ($request->get('submitAction') == 'Publier') {
+        if ($request->get('submitAction') == 'Depublier') {
             if ($request->isMethod('POST') && $form->handleRequest($request)->isValid())
             {
-                $article->setPublish(true);
-                if (null !== $article->getImageUrl()){
-                    $this->handleImage($article);
-                } else {
-                    $article->setImageUrl($imageBackUp);
-                }
+                $article->setPublish(false);
+                $this->handleImage($article);
                 $article->setDate(new \DateTime);
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($article);
@@ -101,16 +96,26 @@ class ArticleController extends Controller
                 return $this->redirectToRoute('blog');
             }
         }
-        elseif ($request->get('submitAction') == 'Enregistrer')
+
+        if ($request->get('submitAction') == 'Publier') {
+            if ($request->isMethod('POST') && $form->handleRequest($request)->isValid())
+            {
+                $article->setPublish(true);
+                $this->handleImage($article);
+                $article->setDate(new \DateTime);
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($article);
+                $em->flush();
+                return $this->redirectToRoute('blog');
+            }
+        }
+
+        if ($request->get('submitAction') == 'Enregistrer')
         {
             if ($request->isMethod('POST') && $form->handleRequest($request)->isValid())
             {
 
-                if (null !== $article->getImageUrl()){
-                    $this->handleImage($article);
-                } else {
-                    $article->setImageUrl($imageBackUp);
-                }
+                $this->handleImage($article);
                 $article->setDate(new \DateTime);
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($article);
