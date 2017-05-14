@@ -31,5 +31,14 @@ button#btn-form.btn.pull-right:hover
 }
 div#opal_bg
 {
-    right: 0;
+    right: 20px;
+}
+
+/*Media Queries*/
+
+@media screen and (min-width:768px) and (max-width:991px){
+    div#opal_bg
+    {
+        right: 0;
+    }
 }

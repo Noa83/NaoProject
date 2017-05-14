@@ -16,7 +16,7 @@ class AdminGestionUserController extends Controller
 {
 
     /**
-     * @Route("/admin/user", name="admin_user")
+     * @Route("/admin/utilisateurs", name="admin_user")
      */
     public function adminGestionUserAction(Request $request)
     {

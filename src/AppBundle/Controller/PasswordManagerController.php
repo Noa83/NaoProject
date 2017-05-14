@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 class PasswordManagerController extends Controller
 {
     /**
-     * @Route("/ask-reset-pass", name="ask_reset_password")
+     * @Route("/reinitialiser_mdp", name="ask_reset_password")
      */
     public function askResetAction(Request $request)
     {
@@ -27,7 +27,7 @@ class PasswordManagerController extends Controller
     }
 
     /**
-     * @Route("/email-reset", name="email_reset_password")
+     * @Route("/reinitialiser_email", name="email_reset_password")
      */
     public function emailResetAction()
     {
@@ -57,7 +57,7 @@ class PasswordManagerController extends Controller
     }
 
     /**
-     * @Route("/reseting-password/{token}", name="reset_password", requirements={"token" = "\w+"})
+     * @Route("/changement_mdp/{token}", name="reset_password", requirements={"token" = "\w+"})
      */
     public function resetAction(Request $request)
     {

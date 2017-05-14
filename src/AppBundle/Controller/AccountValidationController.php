@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 class AccountValidationController extends Controller
 {
     /**
-     * @Route("/account/validation", name="account_validation")
+     * @Route("/profil/validation", name="account_validation")
      */
     public function validationAction(Request $request)
     {

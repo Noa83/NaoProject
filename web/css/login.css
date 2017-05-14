@@ -8,23 +8,15 @@
     padding-bottom: 20px;
     margin-top: 110px;
 }
-
 h1 {
     text-align: center;
 }
-
 .form-login{
     text-align: center;
 }
-
 .form-login input {
     width: 100%;
 }
-
-.form-login button {
-    margin-bottom: 5%;
-}
-
 .contenulogin {
     margin-top: 10vh;
 }

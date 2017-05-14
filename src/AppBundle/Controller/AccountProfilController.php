@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 class AccountProfilController extends Controller
 {
     /**
-     * @Route("/account", name="account")
+     * @Route("/profil", name="account")
      */
     public function accountAction(Request $request)
     {

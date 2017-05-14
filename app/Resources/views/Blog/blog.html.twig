@@ -17,14 +17,14 @@
                 <div class="col-lg-9 ligne_verticale">
                     {% for article in articles %}
                         <h1>{{ article.title}}</h1>
-                        <p class="ecrit">Posté par <a href="#">Nos amis les oiseaux</a> le {{ article.date|date('d-m-Y') }} a {{ article.date|date('H:i:s') }} | {{ article.category.name }}</p>
+                        <p class="ecrit">Posté par <a href="{{ asset('contact') }}">Nos amis les oiseaux</a> le {{ article.date|date('d-m-Y') }} a {{ article.date|date('H:i:s') }} | {{ article.category.name }}</p>
                         <img src="{{ asset(article.imageUrl) }}" alt="{{ article.title }}" class="imageArticle">
                         <br><br>
                         {% autoescape %}
                             <p>{{ article.text|truncate(380)|raw}}</p>
                         {% endautoescape %}
                         <div class="text-right">
-                            <a href="{{ path('article', {'id': article.id}) }}" class="btn btn-primary lire">Lire la suite</a>
+                            <a href="{{ path('article', {'id': article.id}) }}" class="btn lire">Lire la suite</a>
                         </div>
                         <hr>
                     {% endfor %}

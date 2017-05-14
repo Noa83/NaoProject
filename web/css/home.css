@@ -166,6 +166,7 @@ div#img_btn {
 /* Media Queries */
 
 /*Ecrans Mobiles*/
+
 @media screen and (max-width: 550px) {
     input#mce-EMAIL, input#mce-FNAME {
         width: 300px;

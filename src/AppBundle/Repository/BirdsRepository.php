@@ -53,7 +53,7 @@ class BirdsRepository extends \Doctrine\ORM\EntityRepository
         $array = array();
         foreach($arrayAss as $data)
         {
-            $array[] = array("nomVern"=>$data['nomVern']);
+            $array[] = array("nomVern"=>$data['nomVern'], "id"=>$data['id']);
         }
         return $array;
     }

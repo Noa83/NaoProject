@@ -5,7 +5,7 @@
     padding-left: 0;
 }
 body {
-    font-family: Mitr, SansSerif;
+    font-family: Mitr, SansSerif, serif;
     color: #321c0e;
 }
 
@@ -166,6 +166,7 @@ a.btn.pull-right.btn-sm.faceb:hover
 .btn.btn_form
 {
     color: #288B90;
+    border: solid 2px #288B90;
     text-shadow: 1px 1px 2px white;
     background-color: rgba(255, 255, 255, 0.5);
     margin-right: 15px;
@@ -177,12 +178,13 @@ a.btn.pull-right.btn-sm.faceb:hover
     transition: width 1s linear;
     border: solid 2px #288B90;
     color: #288B90;
-    margin-bottom: 13px;
+    margin-bottom: 15px;
     width: 175px;
 }
 .btn_form-orange
 {
     color:#FE9A04;
+    border: solid 2px #FE9A04;
     text-shadow: 1px 1px 2px white;
     background-color: rgba(255, 255, 255, 0.5);
     margin-right: 15px;
@@ -194,7 +196,7 @@ a.btn.pull-right.btn-sm.faceb:hover
     transition: width 1s linear;
     border: solid 2px #FE9A04;
     color: #FE9A04;
-    margin-bottom: 13px;
+    margin-bottom: 15px;
     width: 175px;
 }
 /* Formulaires */
@@ -320,12 +322,20 @@ div#opal_bg
         min-height: 83vh;
         margin-top: 70px;
     }
+    button.navbar-toggle.collapsed
+    {
+        margin-right: 25px;
+    }
 }
-@media screen and (width: 768px){
+@media screen and (min-width: 768px) and (max-width: 778px){
     form.navbar-form.navbar-right
     {
         padding-left: 5px;
         padding-right: 10px;
+    }
+    div#nao-navbar
+    {
+        padding-right: 5px;
     }
 }
 @media (min-width: 768px) and (max-width: 1229px){

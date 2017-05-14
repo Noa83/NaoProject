@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 class ResultsListController extends Controller
 {
     /**
-     * @Route("/results/{birdId}", name="results_list", requirements={"birdId": "\d+"})
+     * @Route("/consultation/{birdId}", name="results_list", requirements={"birdId": "\d+"})
      */
     public function getBirdsObservationsResultsAction($birdId)
     {

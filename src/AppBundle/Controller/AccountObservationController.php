@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 class AccountObservationController extends Controller
 {
     /**
-     * @Route("/account/observation", name="account_observation")
+     * @Route("/profil/observation", name="account_observation")
      */
     public function observationAction(Request $request)
     {

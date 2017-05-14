@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 class FicheBirdController extends Controller
 {
     /**
-     * @Route("/bird/fiche/{id}/{idObs}", name="fiche_bird_obs", requirements={"id" = "\d+", "idObs" = "\d+"})
+     * @Route("/oiseau/fiche/{id}/{idObs}", name="fiche_bird_obs", requirements={"id" = "\d+", "idObs" = "\d+"})
      */
     public function ficheObsAction($id, $idObs)
     {
@@ -25,7 +25,7 @@ class FicheBirdController extends Controller
     }
 
     /**
-     * @Route("/bird/fiche/{id}/", name="fiche_bird", requirements={"id" = "\d+"})
+     * @Route("/oiseau/fiche/{id}/", name="fiche_bird", requirements={"id" = "\d+"})
      */
     public function ficheBirdAction($id)
     {

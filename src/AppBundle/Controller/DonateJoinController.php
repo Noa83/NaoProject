@@ -9,7 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class DonateJoinController extends Controller
 {
     /**
-     * @Route("/donate_join", name="donate_join")
+     * @Route("/contribution", name="donate_join")
      */
     public function donateJoinAction()
     {

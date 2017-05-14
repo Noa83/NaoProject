@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 class ResultsController extends Controller
 {
     /**
-     * @Route("/results", name="results")
+     * @Route("/consultation", name="results")
      */
     public function resultsAction(Request $request)
     {

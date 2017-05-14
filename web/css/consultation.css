@@ -97,15 +97,15 @@ h3.text-center.bg_colvert
 }
 
 /* Fiche Oiseau */
-p.col-xs-5.label_oiseau
+p.col-xs-12.label_oiseau
 {
     color: #288B90;
 }
-p.col-xs-7.col-sm-6.col-md-7.bird_links>a
+p.col-xs-12.col-sm-6.col-md-7.bird_links>a
 {
     color: black;
 }
-p.col-xs-7.col-sm-6.col-md-7.bird_links>a:hover, p.col-xs-7.col-sm-6.col-md-7.bird_links>a:visited
+p.col-xs-12.col-sm-6.col-md-7.bird_links>a:hover, p.col-xs-7.col-sm-6.col-md-7.bird_links>a:visited
 {
     text-shadow: 3px 3px 3px white;
     text-decoration: none;

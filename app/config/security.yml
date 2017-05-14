@@ -30,7 +30,7 @@ security:
             http_basic: ~
             provider: main
             form_login:
-              login_path: /login
+              login_path: /connexion
               check_path: /login_check
             logout:
               path:       /logout
@@ -38,5 +38,5 @@ security:
 
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
-        - { path: ^/account, roles: ROLE_USER }
+        - { path: ^/profil, roles: ROLE_USER }
         - { path: ^/observation, roles: ROLE_USER}
