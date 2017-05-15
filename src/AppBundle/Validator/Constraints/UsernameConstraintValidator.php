@@ -11,10 +11,12 @@ use Symfony\Component\Validator\ConstraintValidator;
 class UsernameConstraintValidator extends ConstraintValidator
 {
     private $manager;
+    private $security;
 
-    public function __construct($manager)
+    public function __construct($manager, $security)
     {
         $this->manager = $manager;
+        $this->security = $security;
     }
 
     public function validate($value, Constraint $constraint)
@@ -23,12 +25,17 @@ class UsernameConstraintValidator extends ConstraintValidator
          * @var UserRegistrationModel $value
          */
 
-        $requeteUsername = $this->manager->getRepository('AppBundle:User')->findOneBy(array('username' => $value->username));
+        $user= $this->security->getToken()->getUser();
 
-        if (null !== $requeteUsername){
-            $this->context->buildViolation($constraint->message)
-                ->atPath('username')
-                ->addViolation();
+        if ($user->getUsername() !== $value->username){
+
+            $requeteUsername = $this->manager->getRepository('AppBundle:User')->findOneBy(array('username' => $value->username));
+
+            if (null !== $requeteUsername){
+                $this->context->buildViolation($constraint->message)
+                    ->atPath('username')
+                    ->addViolation();
+            }
         }
     }
 }

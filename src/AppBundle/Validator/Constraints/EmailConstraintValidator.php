@@ -11,10 +11,12 @@ use Symfony\Component\Validator\ConstraintValidator;
 class EmailConstraintValidator extends ConstraintValidator
 {
     private $manager;
+    private $security;
 
-    public function __construct($manager)
+    public function __construct($manager, $security)
     {
         $this->manager = $manager;
+        $this->security = $security;
     }
 
     public function validate($value, Constraint $constraint)
@@ -23,12 +25,17 @@ class EmailConstraintValidator extends ConstraintValidator
          * @var UserRegistrationModel $value
          */
 
-        $requeteEmail = $this->manager->getRepository('AppBundle:User')->findOneBy(array('email' => $value->email));
+        $user= $this->security->getToken()->getUser();
 
-        if (null !== $requeteEmail){
-            $this->context->buildViolation($constraint->message)
-                ->atPath('email')
-                ->addViolation();
+        if ($user->getEmail() !== $value->email){
+
+            $requeteEmail = $this->manager->getRepository('AppBundle:User')->findOneBy(array('email' => $value->email));
+
+            if (null !== $requeteEmail){
+                $this->context->buildViolation($constraint->message)
+                    ->atPath('email')
+                    ->addViolation();
+            }
         }
     }
 }

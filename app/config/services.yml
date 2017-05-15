@@ -60,6 +60,7 @@ services:
          class: AppBundle\Validator\Constraints\UsernameConstraintValidator
          arguments:
              - "@doctrine.orm.entity_manager"
+             - "@security.token_storage"
          tags:
             - {name: validator.constraint_validator}
 
@@ -67,5 +68,6 @@ services:
              class: AppBundle\Validator\Constraints\EmailConstraintValidator
              arguments:
                  - "@doctrine.orm.entity_manager"
+                 - "@security.token_storage"
              tags:
                 - {name: validator.constraint_validator}
