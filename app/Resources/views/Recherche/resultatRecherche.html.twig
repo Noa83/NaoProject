@@ -17,9 +17,7 @@
             {% else %}
                 {% for resultat in tab %}
                     {% if resultat.nomVern is defined %}
-                        <p><strong>Fiche: </strong>
-                            <a href="{{ path('fiche_bird', {'id': resultat.id}) }}">{{ resultat.nomVern }}</a>
-                        </p>
+                        <p><strong>Fiche: </strong><a href="{{ path('fiche_bird', {'id': resultat.id}) }}">{{ resultat.nomVern }}</a></p>
                     {% else %}
                         <p><strong>Article: </strong>
                             <a href="{{ path('article', {'id': resultat.id}) }}">{{ resultat.title }}</a>

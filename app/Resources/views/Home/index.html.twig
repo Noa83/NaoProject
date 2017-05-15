@@ -15,6 +15,13 @@
 {% block body %}
     <div class="container-fluid" id="global_home_bg">
         <div>
+            {% for type, flash_messages in app.session.flashBag.all %}
+                {% for flash_message in flash_messages %}
+                    <div class="alert-{{ type }} text-center">
+                        {{ flash_message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
             <div class="container-fluid" id="calls_to_action_bar">
                 <div class="col-sm-4" id="call_observer">
                     <h2>Observation</h2>
@@ -102,7 +109,7 @@
                             <div class="col-sm-9 col-xs-12">
                                 <h2>{{ article.title }}</h2>
                                 {% autoescape %}
-                                    <p>{{ article.text|truncate(150)|raw }}</p>
+                                    <p>{{ article.text|striptags|truncate(145)|html }}</p>
                                 {% endautoescape %}</div>
                         </div>
                     {% endfor %}

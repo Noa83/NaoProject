@@ -22,13 +22,16 @@ class UserResetPasswordType extends AbstractType
     {
         $builder->remove('email')
             ->remove('username')
+            ->remove('prenom')
+            ->remove('dateNaissance')
+            ->remove('ville')
         ;
 
     }
 
     public function getParent()
     {
-        return UserModelType::class;
+        return UserModelCompleteType::class;
     }
 
 }

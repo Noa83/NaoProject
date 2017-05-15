@@ -20,19 +20,7 @@ class UserAdminDashboardType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('email',      EmailType::class)
-            ->add('username',       TextType::class)
-            ->remove('plainPassword')
-            ->add('prenom',         TextType::class, array(
-                'required' => false))
-            ->add('dateNaissance',  DateType::class, array(
-                'widget'    =>  'single_text',
-                'format'    =>  'yyyy-MM-dd',
-                'attr'      =>  array(
-                    'class' =>  'date'),
-                'required' => false))
-            ->add('ville',          TextType::class, array(
-                'required' => false))
+        $builder->remove('plainPassword')
             ->add('role',           ChoiceType::class, array(
                 'choices'  => array(
                     'Admin' => 'ROLE_ADMIN',
@@ -45,7 +33,7 @@ class UserAdminDashboardType extends AbstractType
 
     public function getParent()
     {
-        return UserModelType::class;
+        return UserModelCompleteType::class;
     }
 
 }

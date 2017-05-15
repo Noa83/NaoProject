@@ -23,7 +23,7 @@
                     <img src="{{ asset(article.imageUrl) }}" alt="{{ article.title }}" class="imageArticle">
                     <br><br>
                     {% autoescape %}
-                        <p>{{ article.text|raw }}</p>
+                        <p>{{ article.text|html }}</p>
                     {% endautoescape %}
                     <hr>
                 </div>

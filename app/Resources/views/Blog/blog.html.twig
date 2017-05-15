@@ -1,5 +1,4 @@
 {% extends 'base.html.twig' %}
-{% block title %}Blog{% endblock %}
 
 {% block stylesheet_enfant %}
     <link rel="stylesheet" href="{{ asset('css/blog.css') }}">
@@ -21,7 +20,7 @@
                         <img src="{{ asset(article.imageUrl) }}" alt="{{ article.title }}" class="imageArticle">
                         <br><br>
                         {% autoescape %}
-                            <p>{{ article.text|truncate(380)|raw}}</p>
+                            <p>{{ article.text | striptags | truncate(380) | html }}</p>
                         {% endautoescape %}
                         <div class="text-right">
                             <a href="{{ path('article', {'id': article.id}) }}" class="btn lire">Lire la suite</a>
