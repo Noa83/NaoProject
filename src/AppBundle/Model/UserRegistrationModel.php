@@ -28,7 +28,7 @@ class UserRegistrationModel {
     /**
      *
      * @Assert\NotBlank()
-     * @Assert\Email()
+     * @Assert\Email(message = "Adresse non valide")
      */
     public $email;
 
