@@ -16,7 +16,7 @@ class ArticleRepository extends \Doctrine\ORM\EntityRepository
     {
         $query = $this->createQueryBuilder('a')
             ->where('a.publish = 1')
-            ->orderBy('a.date', 'DESC') //Ordonne par ordre décroissant dernier article au premier article
+            ->orderBy('a.id', 'DESC') //Ordonne par ordre décroissant dernier article au premier article
             ->getQuery()
             ->setFirstResult(($page-1) * $nbreParPage) //On définit l'article à partir duquel commencer la liste
             ->setMaxResults($nbreParPage); //Le nombre d'épisode à afficher sur une page
@@ -29,7 +29,7 @@ class ArticleRepository extends \Doctrine\ORM\EntityRepository
     {
         return $this->createQueryBuilder('a')
             ->where('a.publish = 1')
-            ->orderBy('a.date', 'DESC') //Ordonne par ordre décroissant dernier article au premier article
+            ->orderBy('a.id', 'DESC') //Ordonne par ordre décroissant dernier article au premier article
             ->setMaxResults(3)  //Limite à 3 résultats.
             ->getQuery()
             ->getResult();
