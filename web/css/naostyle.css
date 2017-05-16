@@ -328,6 +328,7 @@ div#opal_bg
     {
         margin-right: 25px;
     }
+
 }
 @media screen and (min-width: 768px) and (max-width: 778px){
     form.navbar-form.navbar-right
@@ -348,6 +349,10 @@ div#opal_bg
     .content-body {
         min-height: 83vh;
         margin-top: 170px;
+    }
+    input#recherche_recherche
+    {
+        width: 156px;
     }
 }
 
