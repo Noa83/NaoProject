@@ -25,7 +25,6 @@ class RechercheController extends Controller
                 $arrayOiseau = $this->getDoctrine()->getManager()->getRepository('AppBundle:Birds')->findBirds($motRecherche);
                 $arrayArticle = $this->getDoctrine()->getManager()->getRepository('AppBundle:Article')->findArticle($motRecherche);
                 $array = array_merge($arrayOiseau, $arrayArticle);
-                dump($array);
                 return $this->render('Recherche/resultatRecherche.html.twig', array('tab' => $array));
             }
             else
@@ -51,7 +50,6 @@ class RechercheController extends Controller
             $array1= $this->getDoctrine()->getManager()->getRepository('AppBundle:Birds')->findBirds($term);
             $array2= $this->getDoctrine()->getManager()->getRepository('AppBundle:Article')->findArticle($term);
             $array = array_merge($array1, $array2);
-            dump($array);
             return new JsonResponse($array);
         }
     }

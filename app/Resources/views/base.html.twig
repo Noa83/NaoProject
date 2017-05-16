@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:og="http://ogp.me/ns#">
 <head>
     <meta charset="UTF-8"/>
+    {% block meta %}{% endblock %}
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
     <meta name="description" content="L'association Nos Amis les Oiseaux vous propose de devenir acteur de la biodiversité
      et de la protection des oiseaux en partageant vos observations."/>
@@ -173,7 +174,8 @@
                             alert('problème');
                         }
                     });
-                }
+                },
+                minLength: 2
             });
         });
     </script>
