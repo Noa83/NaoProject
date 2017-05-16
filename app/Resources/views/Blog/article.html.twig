@@ -1,5 +1,15 @@
 {% extends 'base.html.twig' %}
-{% block title %}Article{% endblock %}
+
+{% block meta %}
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta property="og:title" content= "{{ article.title }}"  />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="http://nosamislesoiseaux.eg2.fr/article/" />
+    <meta property="og:description" content= "{{ article.text | striptags | truncate(380) | html }}" />
+    <meta property="og:image" content={{ asset(article.imageUrl) }} />
+{% endblock %}
+
+{% block title %} {{ article.title }} {% endblock %}
 
 {% block navi4 %}
     <li class="active"><a href="{{ path('blog', {'page': 1}) }}">Blog<span class="sr-only">(current)</span></a></li>
@@ -23,9 +33,12 @@
                     <img src="{{ asset(article.imageUrl) }}" alt="{{ article.title }}" class="imageArticle">
                     <br><br>
                     {% autoescape %}
-                        <p>{{ article.text|html }}</p>
+                        <p>{{ article.text | html }}</p>
                     {% endautoescape %}
                     <hr>
+
+                    <div id="shareBtn" class="btn faceb clearfix">
+                        <i class="fa fa-facebook" aria-hidden="true"></i> Partager</div>
                 </div>
                 <div class="col-lg-3 collant">
                     {% include("Blog/article_recent.html.twig") %}
@@ -33,6 +46,7 @@
             </div>
         </div>
     </div>
+
 
     <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
     <script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[1]='FNAME';ftypes[1]='text';fnames[0]='EMAIL';ftypes[0]='email'; /*
@@ -63,4 +77,32 @@
 
 {% block JS %}
     <script src="{{ asset('js/blog.js') }}"></script>
+    <script>
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId      : '1184861994955763',
+                xfbml      : true,
+                version    : 'v2.9'
+            });
+            FB.AppEvents.logPageView();
+        };
+
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <script>
+        document.getElementById('shareBtn').onclick = function() {
+
+            FB.ui({
+                method: 'share',
+                display: 'popup',
+                href: $(location).attr('href'),
+            }, function(response){});
+        }
+    </script>
 {% endblock %}
