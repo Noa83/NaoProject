@@ -264,6 +264,7 @@ div#opal_bg
 /*Media Queries*/
 
 /*Ecrans type Smartphones*/
+
 @media screen and (max-width: 767px) {
     div#opal_bg.col-md-6.col-md-offset-6
     {
@@ -307,9 +308,10 @@ div#opal_bg
     }
 
     ul.nav.navbar-nav.navbar-right
-    {
-        padding-left: 15px;
-    }
+     {
+         padding-left: 15px;
+     }
+
     div.form-group
     {
         padding-left: 10px;
@@ -332,6 +334,10 @@ div#opal_bg
     {
         padding-left: 5px;
         padding-right: 10px;
+    }
+    li>a{
+        padding-left: 7px;
+        padding-right: 7px;
     }
     div#nao-navbar
     {

@@ -25,37 +25,37 @@
                     </div>
                 </div>
                 {{ form_start(form) }}
-                <div>
+                <div class="row">
                     <div class="col-md-12 saisie">
                         {{ form_label(form.birdName, 'Nom de l\'espèce :') }}
                         {{ form_widget(form.birdName, {'attr': {'placeholder': 'Saisissez le nom de l\'espèce observée (3 caractères minimum)'}}) }}
                         {{ form_row(form.birdId) }}
                     </div>
                 </div>
-                <div>
+                <div class="row">
                     <label class="col-md-12 saisie">Coordonnées d'observation:</label>
                     {{ form_errors(form.lat) }}
                     {{ form_errors(form.long) }}
                 </div>
-                <div>
-                    <div class="col-md-6 col-xs-6 saisie">
+                <div class="row">
+                    <div class="col-md-6 col-xs-12 saisie">
                         {{ form_label(form.lat, 'Latitude') }}
                         {{ form_widget(form.lat, {'attr': {'placeholder': '46.123456'}}) }}
                     </div>
-                    <div class="col-md-6 col-xs-6 saisie">
+                    <div class="col-md-6 col-xs-12 saisie">
                         {{ form_label(form.long, 'Longitude') }}
                         {{ form_widget(form.long, {'attr': {'placeholder': '6.123456'}}) }}
                     </div>
                 </div>
-                <div>
+                <div class="row">
                     <div class="col-md-6 col-xs-12 saisie">
                         {{ form_row(form.date, {'label': 'Date de l\'observation :'}) }}
                     </div>
-                    <div class="col-md-6 col-xs-6 saisie">
+                    <div class="col-md-6 col-xs-12 saisie">
                         {{ form_row(form.image, {'label': 'Joindre une image (Max: 2M) :'}) }}
                     </div>
                 </div>
-                <div>
+                <div class="row">
                     <div class="col-md-12 saisie">
                         {{ form_label(form.comment, 'Observations :') }}
                         {{ form_widget(form.comment,{'attr': {'placeholder':'Décrivez le contexte dans lequel vous avez pu observer cet oiseau.'}}) }}

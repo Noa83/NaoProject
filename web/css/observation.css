@@ -9,7 +9,7 @@ textarea#observation_observationMsg.form-control
     justify-content: center;
 }
 
-div.col-md-12.saisie, div.col-md-6.col-xs-12.saisie, div.col-md-6.col-xs-6.saisie
+div.col-md-12.saisie, div.col-md-6.col-xs-12.saisie
 {
     padding-left: 30px;
     padding-right: 30px;
