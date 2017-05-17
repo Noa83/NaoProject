@@ -84,8 +84,7 @@
                                     <div class="response" id="mce-success-response" style="display:none"></div>
                                 </div>
                                 <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                                <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_bbe78064cd70e2b6f19d973f9_2f04265752" tabindex="-1" value="">
-                                </div>
+                                <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_e41820aa8254ad15f23bdda06_0cb31d4815" tabindex="-1" value=""></div>
                                 <div class="clear"><input type="submit" value="Je m'inscris" name="subscribe" id="mc-embedded-subscribe" class="button form-control" style="background-color: #fe9a04; color: white;"></div>
                             </div>
                         </form>
@@ -117,5 +116,24 @@
             </div>
         </div>
     </div>
+
+    <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
+    <script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[1]='FNAME';ftypes[1]='text';fnames[0]='EMAIL';ftypes[0]='email'; /*
+         * Translated default messages for the $ validation plugin.
+         * Locale: FR
+         */
+            $.extend($.validator.messages, {
+                required: "Ce champ est requis.",
+                remote: "Veuillez remplir ce champ pour continuer.",
+                email: "Veuillez entrer une adresse email valide.",
+                accept: "Veuillez entrer une valeur avec une extension valide.",
+                maxlength: $.validator.format("Veuillez ne pas entrer plus de {0} caractères."),
+                minlength: $.validator.format("Veuillez entrer au moins {0} caractères."),
+                rangelength: $.validator.format("Veuillez entrer entre {0} et {1} caractères."),
+                range: $.validator.format("Veuillez entrer une valeur entre {0} et {1}."),
+                max: $.validator.format("Veuillez entrer une valeur inférieure ou égale à {0}."),
+                min: $.validator.format("Veuillez entrer une valeur supérieure ou égale à {0}.")
+            });}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+    <!--End mc_embed_signup-->
 
 {% endblock %}

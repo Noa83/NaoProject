@@ -46,4 +46,9 @@ h3 {
     font-style: italic;
 }
 
+/*Erreurs*/
+.article_recent #mc_embed_signup div.mce_inline_error{
+    background-color: #289490;
+}
+
 
