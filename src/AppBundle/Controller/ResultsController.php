@@ -31,7 +31,7 @@ class ResultsController extends Controller
     /**
      * @Route("/bird/autocomp", name="bird_list")
      */
-    public function getAutoCompBirdsList()
+    public function getAutoCompBirdsListAction()
     {
         return new JsonResponse($this->get('data_to_array_for_autocomplete_consultation')
             ->getBirdsListForAutoComplete($this->getDoctrine()->getRepository('AppBundle:Birds')->getBirdsList()));

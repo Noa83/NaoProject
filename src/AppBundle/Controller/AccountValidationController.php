@@ -26,7 +26,7 @@ class AccountValidationController extends Controller
     /**
      * @Route("/profil/ficheBeforeValidation/{id}/{idObs}", name="fiche_bird_before_obs", requirements={"id" = "\d+", "idObs" = "\d+"})
      */
-    public function ficheBeforeValidation($id, $idObs)
+    public function ficheBeforeValidationAction($id, $idObs)
     {
         $birdChoisi = $this->getDoctrine()->getRepository('AppBundle:Birds')->find($id);
         $observation = $this->getDoctrine()->getRepository('AppBundle:Observation')->findOneBy(array('id'=>$idObs));

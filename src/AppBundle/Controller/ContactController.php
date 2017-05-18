@@ -27,9 +27,9 @@ class ContactController extends Controller
             //clé privée
             $secret = "6Ld8nR8UAAAAAHm5kF4EO5Or1TjpUyjX1khWHPPK";
             //Paramètre renvoyé par le recaptcha
-            $response = $_POST['g-recaptcha-response'];
+            $response = $request->get('g-recaptcha-response');
             //On récupère l'IP de l'utilisateur
-            $remoteip = $_SERVER['REMOTE_ADDR'];
+            $remoteip = $request->server->get('REMOTE_ADDR');
             $api_url = "https://www.google.com/recaptcha/api/siteverify?secret="
                 . $secret
                 . "&response=" . $response

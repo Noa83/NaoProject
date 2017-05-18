@@ -17,7 +17,7 @@ class RechercheController extends Controller
     {
         $motRecherche = $request->query->get('motRecherche');
         
-        if (isset($motRecherche) AND ($motRecherche != ""))
+        if (isset($motRecherche) && ($motRecherche != ""))
         {
             $fiche = $this->getDoctrine()->getManager()->getRepository('AppBundle:Birds')->findOneBy(array('nomVern' => $motRecherche));
             if ($fiche == null)

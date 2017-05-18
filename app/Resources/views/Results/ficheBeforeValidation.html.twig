@@ -14,110 +14,109 @@
         <div class="col-md-12">
             <h1 class="text-center">Consulter les données</h1>
             <div class="colonne_infos col-md-6 col-xs-12" id="bg_infos_consult">
-                <div class="col-md-12">
-                    <div class="col-xs-12">
-                        <h3 class="text-center">Fiche Espèce :</h3><br/>
-                        <div class="englob_fiche text-center">
-                            <p class="col-xs-12 col-sm-6 col-md-5 label_oiseau">Règne de l'oiseau :</p>
-                            <p class="col-xs-12 col-sm-6 col-md-7"> {{ birdChoisi.regne }}</p>
-                        </div>
-                        <div class="englob_fiche text-center">
-                            <p class="col-xs-12 col-sm-6 col-md-5 label_oiseau">Phylum de l'oiseau :</p>
-                            <p class="col-xs-12 col-sm-6 col-md-7"> {{ birdChoisi.phylum }}</p>
-                        </div>
-                        <div class="englob_fiche text-center">
-                            <p class="col-xs-12 col-sm-6 col-md-5 label_oiseau">Classe de l'oiseau :</p>
-                            <p class="col-xs-12 col-sm-6 col-md-7"> {{ birdChoisi.classe }}</p>
-                        </div>
-                        <div class="englob_fiche text-center">
-                            <p class="col-xs-12 col-sm-6 col-md-5 label_oiseau">Ordre de l'oiseau :</p>
-                            <p class="col-xs-12 col-sm-6 col-md-7"> {{ birdChoisi.ordre }}</p>
-                        </div>
-                        <div class="englob_fiche text-center">
-                            <p class="col-xs-12 col-sm-6 col-md-5 label_oiseau">Famille de l'oiseau :</p>
-                            <p class="col-xs-12 col-sm-6 col-md-7"> {{ birdChoisi.famille }}</p>
-                        </div>
-                        <div class="englob_fiche text-center">
-                            <p class="col-xs-12 col-sm-6 col-md-5 label_oiseau">Nom Valide de l'oiseau :</p>
-                            <p class="col-xs-12 col-sm-6 col-md-7"> {{ birdChoisi.nomValide }}</p>
-                        </div>
-                        {% if birdChoisi.nomVern is not empty %}
-                            <div class="englob_fiche text-center">
-                                <p class="col-xs-12 col-sm-6 col-md-5 label_oiseau">Nom vernaculaire de l'oiseau :</p>
-                                <p class="col-xs-12 col-sm-6 col-md-7"> {{ birdChoisi.nomVern }}</p>
-                            </div>
-                        {% endif %}
+                <div class="col-xs-12">
+                    <h3 class="text-center">Fiche Espèce :</h3><br/>
+                    <div class="englob_fiche text-center">
+                        <p class="col-xs-12 col-sm-6 col-md-5 label_oiseau">Règne de l'oiseau :</p>
+                        <p class="col-xs-12 col-sm-6 col-md-7"> {{ birdChoisi.regne }}</p>
                     </div>
+                    <div class="englob_fiche text-center">
+                        <p class="col-xs-12 col-sm-6 col-md-5 label_oiseau">Phylum de l'oiseau :</p>
+                        <p class="col-xs-12 col-sm-6 col-md-7"> {{ birdChoisi.phylum }}</p>
+                    </div>
+                    <div class="englob_fiche text-center">
+                        <p class="col-xs-12 col-sm-6 col-md-5 label_oiseau">Classe de l'oiseau :</p>
+                        <p class="col-xs-12 col-sm-6 col-md-7"> {{ birdChoisi.classe }}</p>
+                    </div>
+                    <div class="englob_fiche text-center">
+                        <p class="col-xs-12 col-sm-6 col-md-5 label_oiseau">Ordre de l'oiseau :</p>
+                        <p class="col-xs-12 col-sm-6 col-md-7"> {{ birdChoisi.ordre }}</p>
+                    </div>
+                    <div class="englob_fiche text-center">
+                        <p class="col-xs-12 col-sm-6 col-md-5 label_oiseau">Famille de l'oiseau :</p>
+                        <p class="col-xs-12 col-sm-6 col-md-7"> {{ birdChoisi.famille }}</p>
+                    </div>
+                    <div class="englob_fiche text-center">
+                        <p class="col-xs-12 col-sm-6 col-md-5 label_oiseau">Nom Valide de l'oiseau :</p>
+                        <p class="col-xs-12 col-sm-6 col-md-7"> {{ birdChoisi.nomValide }}</p>
+                    </div>
+                    {% if birdChoisi.nomVern is not empty %}
+                        <div class="englob_fiche text-center">
+                            <p class="col-xs-12 col-sm-6 col-md-5 label_oiseau">Nom vernaculaire de l'oiseau :</p>
+                            <p class="col-xs-12 col-sm-6 col-md-7"> {{ birdChoisi.nomVern }}</p>
+                        </div>
+                    {% endif %}
                 </div>
-                <div class="col-md-12">
-                    <div class="col-xs-12">
-                        <h3 class="text-center bg_colvert">Information sur l'observation :</h3><br/>
+                <div class="col-xs-12">
+                    <h3 class="text-center bg_colvert">Information sur l'observation :</h3><br/>
+                    <div class="englob_fiche text-center">
+                        <p class="col-xs-12 col-sm-6 col-md-5 label_oiseau">Commentaire :</p>
+                        <p class="col-xs-12 col-sm-6 col-md-7"> {{ observation.comment }}</p>
+                    </div>
+                    <div class="englob_fiche text-center">
+                        <p class="col-xs-12 col-sm-6 col-md-5 label_oiseau">Date :</p>
+                        <p class="col-xs-12 col-sm-6 col-md-7"> {{ observation.date | date("d/m/Y") }}</p>
+                    </div>
+                    <div class="englob_fiche text-center">
+                        <p class="col-xs-12 col-sm-6 col-md-5 label_oiseau">Maille :</p>
+                        <p class="col-xs-12 col-sm-6 col-md-7"> {{ observation.km10Maille.getNomMaille() }}</p>
+                    </div>
+                    {% if observation.imageUrl %}
                         <div class="englob_fiche text-center">
-                            <p class="col-xs-12 col-sm-6 col-md-5 label_oiseau">Commentaire :</p>
-                            <p class="col-xs-12 col-sm-6 col-md-7"> {{ observation.comment }}</p>
+                            <p class="col-xs-12 col-sm-6 col-md-5 label_oiseau">Image :</p>
+                            <p class="col-xs-12 col-sm-6 col-md-7"><a id="modal-declenche">Cliquez ici</a></p>
                         </div>
-                        <div class="englob_fiche text-center">
-                            <p class="col-xs-12 col-sm-6 col-md-5 label_oiseau">Date :</p>
-                            <p class="col-xs-12 col-sm-6 col-md-7"> {{ observation.date | date("d/m/Y") }}</p>
-                        </div>
-                        <div class="englob_fiche text-center">
-                            <p class="col-xs-12 col-sm-6 col-md-5 label_oiseau">Maille :</p>
-                            <p class="col-xs-12 col-sm-6 col-md-7"> {{ observation.km10Maille.getNomMaille() }}</p>
-                        </div>
-                        {% if observation.imageUrl %}
-                            <div class="englob_fiche text-center">
-                                <p class="col-xs-12 col-sm-6 col-md-5 label_oiseau">Image :</p>
-                                <p class="col-xs-12 col-sm-6 col-md-7"><a id="modal-declenche">Cliquez ici</a></p>
-                            </div>
-                            <div class="modal fade" id="enlargeImageModal" tabindex="-1" role="dialog"
-                                 aria-labelledby="enlargeImageModal" aria-hidden="true">
-                                <div class="modal-dialog modal-lg" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close"><span aria-hidden="true"></span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <img src="{{ asset(observation.imageUrl) }}"
-                                                 class="enlargeImageModalSource" style="width: 100%;">
-                                        </div>
+                        <div class="modal fade" id="enlargeImageModal" tabindex="-1" role="dialog"
+                             aria-labelledby="enlargeImageModal" aria-hidden="true">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close"><span aria-hidden="true"></span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <img src="{{ asset(observation.imageUrl) }}"
+                                             class="enlargeImageModalSource" style="width: 100%;">
                                     </div>
                                 </div>
                             </div>
-                        {% endif %}
-                    </div>
+                        </div>
+                    {% endif %}
                 </div>
-                <div class="col-md-12">
-                    <div class="col-xs-12">
-                        <h3 class="text-center">En savoir plus sur l'espèce :</h3><br/>
-                        <p class="text-center text_bird_links">Si vous souhaitez en apprendre plus sur cette espèce, nous mettons à
-                            votre
-                            disposition ci-dessous, les liens vers les fiches de l'Inventaire National du Patrimoine
-                            Naturel
-                            (INPN) et de Wikipédia.</p><br>
-                        <div class="englob_fiche text-center">
-                            <p class="col-xs-12 col-sm-6 col-md-5 label_oiseau"><span class="glyphicon glyphicon-leaf" aria-hidden="true"></span> INPN :</p>
-                            <p class="col-xs-12 col-sm-6 col-md-7 bird_links"><a
-                                        href="https://inpn.mnhn.fr/espece/cd_nom/{{ birdChoisi.cdNom }}" target="_blank">
-                                    {% if birdChoisi.nomVern is not empty %} {{ birdChoisi.nomVern }} {% else %} {{ birdChoisi.lbNom }}
-                                    {% endif %}</a></p>
-                        </div>
-                        {% if birdChoisi.urlWiki is not empty %}
-                            <div class="englob_fiche text-center">
-                                <p class="col-xs-12 col-sm-6 col-md-5 label_oiseau"><i class="fa fa-wikipedia-w" aria-hidden="true"></i> Wikipédia :</p>
-                                <p class="col-xs-12 col-sm-6 col-md-7 bird_links"><a href="{{ birdChoisi.urlWiki }}" target="_blank">
-                                        {% if birdChoisi.nomVern is not empty %}{{ birdChoisi.nomVern }} {% else %}
-                                            {{ birdChoisi.lbNom }} {% endif %}</a></p>
-                            </div>
-                        {% endif %}
-                        <div class="col-md-12 text-center">
-                            <hr>
-                            <a class="btn btn-default btn_more"
-                               href="{{ path('account_observation') }}">Retour</a>
-                        </div>
-                        <br>
+                <div class="col-xs-12">
+                    <h3 class="text-center">En savoir plus sur l'espèce :</h3><br/>
+                    <p class="text-center text_bird_links">Si vous souhaitez en apprendre plus sur cette espèce, nous
+                        mettons à
+                        votre
+                        disposition ci-dessous, les liens vers les fiches de l'Inventaire National du Patrimoine
+                        Naturel
+                        (INPN) et de Wikipédia.</p><br>
+                    <div class="englob_fiche text-center">
+                        <p class="col-xs-12 col-sm-6 col-md-5 label_oiseau"><span class="glyphicon glyphicon-leaf"
+                                                                                  aria-hidden="true"></span> INPN :</p>
+                        <p class="col-xs-12 col-sm-6 col-md-7 bird_links"><a
+                                    href="https://inpn.mnhn.fr/espece/cd_nom/{{ birdChoisi.cdNom }}" target="_blank">
+                                {% if birdChoisi.nomVern is not empty %} {{ birdChoisi.nomVern }} {% else %} {{ birdChoisi.lbNom }}
+                                {% endif %}</a></p>
                     </div>
+                    {% if birdChoisi.urlWiki is not empty %}
+                        <div class="englob_fiche text-center">
+                            <p class="col-xs-12 col-sm-6 col-md-5 label_oiseau"><i class="fa fa-wikipedia-w"
+                                                                                   aria-hidden="true"></i> Wikipédia :
+                            </p>
+                            <p class="col-xs-12 col-sm-6 col-md-7 bird_links"><a href="{{ birdChoisi.urlWiki }}"
+                                                                                 target="_blank">
+                                    {% if birdChoisi.nomVern is not empty %}{{ birdChoisi.nomVern }} {% else %}
+                                        {{ birdChoisi.lbNom }} {% endif %}</a></p>
+                        </div>
+                    {% endif %}
+                    <div class="col-md-12 text-center">
+                        <hr>
+                        <a class="btn btn-default btn_more"
+                           href="{{ path('account_observation') }}">Retour</a>
+                    </div>
+                    <br>
                 </div>
             </div>
 
