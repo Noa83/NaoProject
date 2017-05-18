@@ -79,10 +79,15 @@
                         {% endblock %}
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                            aria-haspopup="true"
-                           aria-expanded="false">Mon Compte<span class="caret"></span></a>
+                           aria-expanded="false">
+                            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                {{ app.user.getUsername() }}<span class="caret"></span></a>
+                            {% else %}
+                                Connexion<span class="caret"></span></a>
+                            {% endif %}
                         <ul class="dropdown-menu">
                             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                                <li><a href="{{ path('account') }}" rel="nofollow">{{ app.user.getUsername() }}</a></li>
+                                <li><a href="{{ path('account') }}" rel="nofollow">Profil</a></li>
                                 {% if is_granted('ROLE_ADMIN') %}
                                     <li><a href="{{ path('admin_user') }}" rel="nofollow">Tableau de bord</a></li>
                                 {% endif %}
