@@ -163,6 +163,10 @@ div#img_btn {
     align-items: center;
 }
 
+/*Erreurs*/
+#global_home_bg #mc_embed_signup div.mce_inline_error{
+    background-color: #FE9A04;
+}
 /* Media Queries */
 
 /*Ecrans Mobiles*/

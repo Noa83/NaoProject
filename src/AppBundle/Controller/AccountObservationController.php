@@ -20,7 +20,6 @@ class AccountObservationController extends Controller
         $user = $this->get('security.token_storage')->getToken()->getUser();
 
         $observationsUser = $this->getDoctrine()->getRepository('AppBundle:Observation')->findObsByUser($user);
-
         return $this->render('Account/accountObservation.html.twig', array(
             'observationsUser' => $observationsUser));
     }
