@@ -29,9 +29,8 @@ class PasswordManagerController extends Controller
     /**
      * @Route("/reinitialiser_email", name="email_reset_password")
      */
-    public function emailResetAction()
+    public function emailResetAction(Request $request)
     {
-        $request = Request::createFromGlobals();
         $username = $request->request->get('_username');
         $email = $request->request->get('_email');
 
@@ -43,7 +42,7 @@ class PasswordManagerController extends Controller
                 'Erreur de saisie. Votre pseudo et votre email ne correspondent pas.'
             );
 
-          //  return $this->redirectToRoute('ask_reset_password');
+            return $this->redirectToRoute('ask_reset_password');
         } else {
             $token = sha1(random_bytes(15));
             $user->setToken($token);
@@ -57,7 +56,7 @@ class PasswordManagerController extends Controller
                 'Email de reinitialisation envoyé.'
             );
 
-           // return $this->redirectToRoute('home_page');
+            return $this->redirectToRoute('home_page');
         }
     }
 
