@@ -43,7 +43,7 @@ class AdminGestionUserController extends Controller
         }
 
         $formEditUser->handleRequest($request);
-        if ($formEditUser->isSubmitted()) {
+        if ($formEditUser->isSubmitted() && $formEditUser->isValid()) {
 
             $user = $this->getDoctrine()->getRepository('AppBundle:User')->findOneBy(array('username' => $userModel->username));
 

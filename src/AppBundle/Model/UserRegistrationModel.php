@@ -21,7 +21,9 @@ class UserRegistrationModel {
 
     /**
      *
-     * @Assert\Length(max=4096)
+     * @Assert\Length(
+     *      min = 5,
+     *      minMessage = "Votre mot de passe doit faire {{ limit }} caracteres minimum")
      */
     public $plainPassword;
 

@@ -2,6 +2,7 @@
 
 namespace AppBundle\Validator\Constraints;
 
+use AppBundle\Entity\User;
 use AppBundle\Model\UserRegistrationModel;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
@@ -26,6 +27,10 @@ class EmailConstraintValidator extends ConstraintValidator
          */
 
         $user= $this->security->getToken()->getUser();
+
+        if ($user == "anon."){
+            $user = new User();
+        }
 
         if ($user->getEmail() !== $value->email){
 

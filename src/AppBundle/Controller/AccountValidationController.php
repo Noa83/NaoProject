@@ -28,6 +28,9 @@ class AccountValidationController extends Controller
      */
     public function ficheBeforeValidation($id, $idObs)
     {
+
+        $this->denyAccessUnlessGranted('ROLE_VALIDATEUR', null, 'Vous n\'etes pas autorisé à consulter cette page!');
+
         $birdChoisi = $this->getDoctrine()->getRepository('AppBundle:Birds')->find($id);
         $observation = $this->getDoctrine()->getRepository('AppBundle:Observation')->findOneBy(array('id'=>$idObs));
 
