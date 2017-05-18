@@ -20,7 +20,7 @@
                     </thead>
                     {% for obs in observationAModerer %}
                         <tr>
-                            <td class="col-sm-4"><a class="articleTitle" href="{{ path('fiche_bird_obs', { 'id':obs.bird.getId(), 'idObs':obs.id }) }}">{{ obs.bird.getNomValide() }}</td>
+                            <td class="col-sm-4"><a class="articleTitle" href="{{ path('fiche_bird_before_obs', { 'id':obs.bird.getId(), 'idObs':obs.id }) }}">{{ obs.bird.getNomValide() }}</td>
                             <td class="col-sm-5">{{ obs.comment }}
                             <td class="col-sm-2">{{ obs.date | date("d/m/Y") }}</td>
                             <td class="col-sm-1">

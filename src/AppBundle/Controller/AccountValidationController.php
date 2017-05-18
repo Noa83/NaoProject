@@ -23,4 +23,16 @@ class AccountValidationController extends Controller
             'observationAModerer' => $observationAModerer));
     }
 
+    /**
+     * @Route("/profil/ficheBeforeValidation/{id}/{idObs}", name="fiche_bird_before_obs", requirements={"id" = "\d+", "idObs" = "\d+"})
+     */
+    public function ficheBeforeValidation($id, $idObs)
+    {
+        $birdChoisi = $this->getDoctrine()->getRepository('AppBundle:Birds')->find($id);
+        $observation = $this->getDoctrine()->getRepository('AppBundle:Observation')->findOneBy(array('id'=>$idObs));
+
+        return $this->render('Results/ficheBird.html.twig', [
+            'birdChoisi' => $birdChoisi,
+            'observation' => $observation]);
+    }
 }

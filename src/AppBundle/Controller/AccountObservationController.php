@@ -23,5 +23,4 @@ class AccountObservationController extends Controller
         return $this->render('Account/accountObservation.html.twig', array(
             'observationsUser' => $observationsUser));
     }
-
 }
