@@ -31,7 +31,7 @@ class AccountValidationController extends Controller
         $birdChoisi = $this->getDoctrine()->getRepository('AppBundle:Birds')->find($id);
         $observation = $this->getDoctrine()->getRepository('AppBundle:Observation')->findOneBy(array('id'=>$idObs));
 
-        return $this->render('Results/ficheBird.html.twig', [
+        return $this->render('Results/ficheBeforeValidation.html.twig', [
             'birdChoisi' => $birdChoisi,
             'observation' => $observation]);
     }
