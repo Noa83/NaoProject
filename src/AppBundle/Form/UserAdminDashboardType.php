@@ -21,6 +21,8 @@ class UserAdminDashboardType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->remove('plainPassword')
+            ->remove('username')
+            ->remove('email')
             ->add('role',           ChoiceType::class, array(
                 'choices'  => array(
                     'Admin' => 'ROLE_ADMIN',
