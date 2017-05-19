@@ -37,7 +37,7 @@ class AdminGestionRapportBirdChoicedController extends Controller
     /**
      * @Route("/admin/json/{birdId}", name="admin_json", requirements={"birdId": "\d+"})
      */
-    public function getArrayDataForChartsPieRepresentation($birdId)
+    public function getArrayDataForChartsPieRepresentationAction($birdId)
     {
         return new JsonResponse($this->get('data_to_array_maille_nb_birds')->getJsonMailleNameAndNumberOfBirds(
             $this->getDoctrine()->getRepository('AppBundle:Km10')->getMaillesWithBird($birdId)));

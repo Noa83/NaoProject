@@ -26,7 +26,7 @@ class AccountValidationController extends Controller
     /**
      * @Route("/profil/ficheBeforeValidation/{id}/{idObs}", name="fiche_bird_before_obs", requirements={"id" = "\d+", "idObs" = "\d+"})
      */
-    public function ficheBeforeValidation($id, $idObs)
+    public function ficheBeforeValidationAction($id, $idObs)
     {
 
         $this->denyAccessUnlessGranted('ROLE_VALIDATEUR', null, 'Vous n\'etes pas autorisé à consulter cette page!');
