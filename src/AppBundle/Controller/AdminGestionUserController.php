@@ -5,8 +5,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\User;
 use AppBundle\Form\UserAdminDashboardType;
-use AppBundle\Form\UserSearchType;
-use AppBundle\Model\UserAccountModel;
+use AppBundle\Model\UserAdminModel;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,7 +22,7 @@ class AdminGestionUserController extends Controller
 
         $username = $request->query->get('username');
         $user = new User();
-        $userModel = new UserAccountModel();
+        $userModel = new UserAdminModel();
         $formEditUser = $this->createForm(UserAdminDashboardType::class, $userModel);
 
         if (isset($username) && ($username !== "")) {
@@ -32,7 +31,7 @@ class AdminGestionUserController extends Controller
 
             if ($user !== null) {
 
-                $userModel = $this->get('appbundle.user_service')->userToUserModel($user);
+                $userModel = $this->get('appbundle.user_service')->userToUserAdminModel($user);
                 $formEditUser = $this->createForm(UserAdminDashboardType::class, $userModel);
             }else {
                 $this->addFlash(
@@ -47,6 +46,7 @@ class AdminGestionUserController extends Controller
 
             $user = $this->getDoctrine()->getRepository('AppBundle:User')->findOneBy(array('username' => $userModel->username));
 
+            dump($user);
             $this->get('appbundle.user_service')->AdminModifyUser($user, $userModel);
             $this->addFlash(
                 'success',
@@ -62,19 +62,33 @@ class AdminGestionUserController extends Controller
     /**
      * @Route("/admin/user/remove/{id}", name="user_remove", requirements={"id": "\d+"})
      */
-    public function removeUserAction($id){
+    public function removeUserAction($id)
+    {
 
-        $user = $this->getDoctrine()->getRepository('AppBundle:User')->find($id);
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN')) {
+            throw $this->createAccessDeniedException();
+        } else {
+            $user = $this->getDoctrine()->getRepository('AppBundle:User')->find($id);
 
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($user);
-        $em->flush();
+            if ($user->getRoles() !== array("ROLE_SUPER_ADMIN")) {
+                dump($user);
+                $em = $this->getDoctrine()->getManager();
+                $em->remove($user);
+                $em->flush();
 
-        $this->addFlash(
-            'success',
-            'Utilisateur supprimé'
-        );
-
-        return $this->redirectToRoute('admin_user');
+                $this->addFlash(
+                    'success',
+                    'Utilisateur supprimé'
+                );
+                return $this->redirectToRoute('admin_user');
+                
+            } else {
+                $this->addFlash(
+                    'warning',
+                    'Vous ne pouvez pas supprimer le compte Super Admin.'
+                );
+                return $this->redirectToRoute('admin_user');
+            }
+        }
     }
 }

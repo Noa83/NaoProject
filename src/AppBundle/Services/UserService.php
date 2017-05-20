@@ -4,6 +4,7 @@ namespace AppBundle\Services;
 
 use AppBundle\Model\UserAccountModel;
 use AppBundle\Entity\User;
+use AppBundle\Model\UserAdminModel;
 use AppBundle\Model\UserRegistrationModel;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -62,6 +63,18 @@ class UserService {
         return $userModel;
     }
 
+    public function userToUserAdminModel(User $user){
+
+        $userModel = new UserAdminModel();
+
+        $userModel->username = $user->getUsername();
+        foreach($user->getRoles() as $role) {
+            $userModel->role = $role;
+        }
+
+        return $userModel;
+    }
+
     public function modifyUser(User $user, UserAccountModel $model){
 
         $user->setUsername($model->username);
@@ -86,14 +99,10 @@ class UserService {
         return $user;
     }
 
-    public function AdminModifyUser(User $user, UserAccountModel $model){
+    public function AdminModifyUser(User $user, UserAdminModel $model){
 
         $user->setUsername($model->username);
-        $user->setEmail($model->email);
 
-        $user->setPrenom($model->prenom);
-        $user->setDateNaissance($model->dateNaissance);
-        $user->setVille($model->ville);
         $user->setRoles(array($model->role));
 
         // 4) Sauvegarde de l'utilisateur

@@ -20,10 +20,7 @@ class UserAdminDashboardType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->remove('plainPassword')
-            ->remove('username')
-            ->remove('email')
-            ->add('role',           ChoiceType::class, array(
+        $builder->add('role',           ChoiceType::class, array(
                 'choices'  => array(
                     'Admin' => 'ROLE_ADMIN',
                     'Validateur' => 'ROLE_VALIDATEUR',
@@ -33,9 +30,14 @@ class UserAdminDashboardType extends AbstractType
 
     }
 
-    public function getParent()
+    /**
+     * {@inheritdoc}
+     */
+    public function configureOptions(OptionsResolver $resolver)
     {
-        return UserModelCompleteType::class;
+        $resolver->setDefaults(array(
+            'data_class' => 'AppBundle\Model\UserAdminModel'
+        ));
     }
 
 }
