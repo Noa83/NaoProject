@@ -46,7 +46,6 @@ class AdminGestionUserController extends Controller
 
             $user = $this->getDoctrine()->getRepository('AppBundle:User')->findOneBy(array('username' => $userModel->username));
 
-            dump($user);
             $this->get('appbundle.user_service')->AdminModifyUser($user, $userModel);
             $this->addFlash(
                 'success',
@@ -71,7 +70,7 @@ class AdminGestionUserController extends Controller
             $user = $this->getDoctrine()->getRepository('AppBundle:User')->find($id);
 
             if ($user->getRoles() !== array("ROLE_SUPER_ADMIN")) {
-                dump($user);
+
                 $em = $this->getDoctrine()->getManager();
                 $em->remove($user);
                 $em->flush();
