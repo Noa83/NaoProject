@@ -28,7 +28,6 @@ class AdminGestionUserController extends Controller
         if (isset($username) && ($username !== "")) {
 
             $user = $this->getDoctrine()->getRepository('AppBundle:User')->findOneBy(array('username' => $username));
-            dump($user->getRoles());
 
             if($user->getRoles() == array("ROLE_SUPER_ADMIN")){
                 $this->addFlash(

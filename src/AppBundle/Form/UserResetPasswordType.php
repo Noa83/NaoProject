@@ -20,18 +20,24 @@ class UserResetPasswordType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->remove('email')
-            ->remove('username')
-            ->remove('prenom')
-            ->remove('dateNaissance')
-            ->remove('ville')
-        ;
+        $builder ->add('plainPassword',  RepeatedType::class, array(
+            'type' => PasswordType::class,
+            'first_options'  => array('label' => 'Mot de passe'),
+            'second_options' => array('label' => 'Mot de passe répété'),
+            'required' => false,
+            'invalid_message' => "Mots de passe différents."
+        ));
 
     }
 
-    public function getParent()
+    /**
+     * {@inheritdoc}
+     */
+    public function configureOptions(OptionsResolver $resolver)
     {
-        return UserModelCompleteType::class;
+        $resolver->setDefaults(array(
+            'data_class' => 'AppBundle\Model\UserAdminModel'
+        ));
     }
 
 }

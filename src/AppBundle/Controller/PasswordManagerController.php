@@ -67,13 +67,13 @@ class PasswordManagerController extends Controller
     {
         $token = $request->attributes->get("token");
         $user = $this->getDoctrine()->getRepository('AppBundle:User')->findOneBy(array('token' => $token));
-        $userModel = $this->get('appbundle.user_service')->userToUserModel($user);
+        $userModel = $this->get('appbundle.user_service')->userToUserAdminModel($user);
         $form = $this->createForm(UserResetPasswordType::class, $userModel);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $this->get('appbundle.user_service')->modifyUser($user, $userModel);
+            $this->get('appbundle.user_service')->modifyPassword($user, $userModel);
             return $this->redirectToRoute('login');
         }
 
