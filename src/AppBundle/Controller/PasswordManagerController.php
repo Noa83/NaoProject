@@ -48,7 +48,7 @@ class PasswordManagerController extends Controller
             $user->setToken($token);
             $this->getDoctrine()->getManager()->flush();
 
-            $lien = "http://nosamislesoiseaux.eg2.fr/reseting-password/".$token;
+            $lien = "http://nosamislesoiseaux.eg2.fr/changement_mdp/".$token;
             $this->get('mail')->sendResetMail($lien, $email);
 
             $this->addFlash(
