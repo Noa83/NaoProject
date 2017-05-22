@@ -28,8 +28,15 @@ class AdminGestionUserController extends Controller
         if (isset($username) && ($username !== "")) {
 
             $user = $this->getDoctrine()->getRepository('AppBundle:User')->findOneBy(array('username' => $username));
+            dump($user->getRoles());
 
-            if ($user !== null) {
+            if($user->getRoles() == array("ROLE_SUPER_ADMIN")){
+                $this->addFlash(
+                    'warning',
+                    'Le compte Super Admin n\'est pas modifiable'
+                );
+                $user = new User();
+            }elseif ($user !== null) {
 
                 $userModel = $this->get('appbundle.user_service')->userToUserAdminModel($user);
                 $formEditUser = $this->createForm(UserAdminDashboardType::class, $userModel);
