@@ -68,11 +68,31 @@ class UserService {
         $userModel = new UserAdminModel();
 
         $userModel->username = $user->getUsername();
+        $userModel->plainPassword = "";
+        $userModel->email = $user->getEmail();
         foreach($user->getRoles() as $role) {
             $userModel->role = $role;
         }
 
         return $userModel;
+    }
+
+    public function modifyPassword(User $user, UserAdminModel $model){
+
+        // Encodage du mot de passe.
+        if (null !== $model->plainPassword) {
+            $password = $this->encoder
+                ->encodePassword($user, $model->plainPassword);
+            $user->setPassword($password);
+        }
+
+        $user->setToken(sha1(random_bytes(15)));
+
+        // 4) Sauvegarde de l'utilisateur
+        $this->em->persist($user);
+        $this->em->flush();
+
+        return $user;
     }
 
     public function modifyUser(User $user, UserAccountModel $model){
