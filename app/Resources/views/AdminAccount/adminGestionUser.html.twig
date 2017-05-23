@@ -12,7 +12,7 @@
                     <div class="form-group text-center">
                         <label>Pseudo :</label>
                         <input type="text" title="Pseudo :" class="form-control" id="user_search" name="username" required><br/>
-                        <button type="submit" class="btn btn_more">Rechercher</button>
+                        <button type="submit" class="btn btn_more"><span class="glyphicon glyphicon-search"></span> Rechercher</button>
                     </div>
                 </form>
             </div>
@@ -27,7 +27,7 @@
                         <div class="form-group">
                             <div>
                                 {% if user.id is not empty and is_granted('ROLE_SUPER_ADMIN') %}
-                                    <a type="button" class="btn btn-danger " title="Supprimer" data-toggle="modal"
+                                    <a type="button" class="btn btn_more-red " title="Supprimer" data-toggle="modal"
                                        data-target="#gestionUtilisateur{{ user.id }}"><span
                                                 class="glyphicon glyphicon-remove"></span> Supprimer
                                     </a>
@@ -44,10 +44,10 @@
                                                     Voulez vous supprimer cet utilisateur ?
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                    <button type="button" class="btn btn-warning" data-dismiss="modal">
                                                         Annuler
                                                     </button>
-                                                    <a href="{{ path('user_remove',{'id': user.id}) }}">Supprimer</a>
+                                                    <a class="btn btn-danger" href="{{ path('user_remove',{'id': user.id}) }}"> Supprimer</a>
                                                 </div>
                                             </div><!-- /.modal-content -->
                                         </div><!-- /.modal-dialog -->
@@ -55,7 +55,32 @@
                                 {% endif %}
                             </div>
                         </div>
-                        <button type="submit" class="btn btn_more">Sauvegarder</button>
+
+                    <a type="button" class="btn btn_more" title="Sauvegarder" data-toggle="modal"
+                       data-target="#saveUtilisateur{{ user.id }}"><span
+                                class="glyphicon glyphicon-save"></span> Sauvegarder
+                    </a>
+                    <div class="modal fade" id="saveUtilisateur{{ user.id }}" tabindex="-1" role="dialog"
+                         aria-labelledby="myModalLabel2" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"
+                                            aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title" id="myModalLabel2">Confirmation demandée</h4>
+                                </div>
+                                <div class="modal-body">
+                                    Voulez vous sauvegarder les changements ?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn_more-orange" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Annuler</button>
+                                    <button type="submit" class="btn btn_more"><span class="glyphicon glyphicon-save"></span> Sauvegarder</button>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
+
+
                     {{ form_end(formEditUser) }}
                 {% else %}
                     Aucune donnée.

@@ -23,4 +23,17 @@ class AccountObservationController extends Controller
         return $this->render('Account/accountObservation.html.twig', array(
             'observationsUser' => $observationsUser));
     }
+
+    /**
+     * @Route("/profil/ficheMyObservation/{id}/{idObs}", name="fiche_bird_my_obs", requirements={"id" = "\d+", "idObs" = "\d+"})
+     */
+    public function ficheMyObservationAction($id, $idObs)
+    {
+        $birdChoisi = $this->getDoctrine()->getRepository('AppBundle:Birds')->find($id);
+        $observation = $this->getDoctrine()->getRepository('AppBundle:Observation')->findOneBy(array('id'=>$idObs));
+
+        return $this->render('Results/ficheMyObservation.html.twig', [
+            'birdChoisi' => $birdChoisi,
+            'observation' => $observation]);
+    }
 }

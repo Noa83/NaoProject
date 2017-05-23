@@ -23,6 +23,7 @@ class ResultsController extends Controller
         if ($request->isMethod('POST') && $resultsForm->isSubmitted() && $resultsForm->isValid()) {
             return $this->redirectToRoute('results_list', ['birdId' => $resultsModel->birdId]);
         }
+
         return $this->render('Results/results.html.twig', [
             'form' => $resultsForm
                 ->createView()]);

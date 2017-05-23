@@ -25,7 +25,6 @@ class UsernameConstraintValidator extends ConstraintValidator
         /**
          * @var UserRegistrationModel $value
          */
-
         $user= $this->security->getToken()->getUser();
 
         if ($user == "anon."){

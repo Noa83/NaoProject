@@ -2,6 +2,8 @@
 
 namespace AppBundle\Entity;
 
+use CrEOF\Spatial\ORM\Query\AST\Functions\MySql\GeomFromText;
+use CrEOF\Spatial\PHP\Types\Geography\Polygon;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -79,4 +81,5 @@ class Km10
     {
         return $this->polygon;
     }
+
 }

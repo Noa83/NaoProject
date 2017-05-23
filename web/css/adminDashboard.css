@@ -27,20 +27,49 @@
 }
 
 .btn_more
-{
-    background-color: #288B90;
-    margin-top: 10px;
-    width: 170px;
-    color: white;
-    margin-bottom: 30px;
-}
+ {
+     background-color: #288B90;
+     margin-top: 10px;
+     width: 170px;
+     color: white;
+     margin-bottom: 30px;
+ }
 .btn_more:hover, .btn_more:active
 {
     transition: width 1s linear;
     background: #289490;
     width: 210px;
     color: white;
-
+}
+.btn_more-orange
+ {
+     background-color: #FE9A04;
+     margin-top: 10px;
+     width: 170px;
+     color: white;
+     margin-bottom: 0;
+ }
+.btn_more-orange:hover, .btn_more-orange:active
+{
+    transition: width 1s linear;
+    background: #FE9A04;
+    width: 210px;
+    color: white;
+}
+.btn_more-red
+{
+    background-color: #bb0000;
+    margin-top: 10px;
+    width: 170px;
+    color: white;
+    margin-bottom: 0;
+}
+.btn_more-red:hover, .btn_more-red:active
+{
+    transition: width 1s linear;
+    background: #bb0000;
+    width: 210px;
+    color: white;
 }
 
 .tableau_head{

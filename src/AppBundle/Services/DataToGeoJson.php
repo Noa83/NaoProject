@@ -20,7 +20,7 @@ class DataToGeoJson
     }
     public function getGeoJson($observationList)
     {
-        //Transfo en g�oJson
+        //Transfo en geoJson
         $feature = [];
         foreach ($observationList as $Observation) {
             $points = [];

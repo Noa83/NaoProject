@@ -29,15 +29,15 @@ class CreateAccountController extends Controller
             // 2) Si le formulaire est valide et Requete POST encodage du mot de passe puis sauvegarde des données
             $form->handleRequest($request);
             if ($form->isSubmitted() && $form->isValid()) {
-
                 $user = $this->get('appbundle.user_service')->createUser($model);
+                dump($user);
 
                 //Creation du token pour le login automatique apres inscription.
                 $token = new UsernamePasswordToken($user, null, 'main', $user->getRoles());
                 $this->get('security.token_storage')->setToken($token);
                 $this->get('session')->set('_security_main', serialize($token));
 
-                return $this->redirectToRoute('account');
+               // return $this->redirectToRoute('account');
             }
 
             return $this->render('Account/createAccount.html.twig',

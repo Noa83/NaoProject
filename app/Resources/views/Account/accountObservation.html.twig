@@ -24,11 +24,11 @@
                             {% if observation.bird.getNomVern() is not empty %}
                                 <td class="col-sm-3"><a class="articleTitle" data-toggle="tooltip"
                                                         data-placement="right" title="Visualiser l'article"
-                                                        href="{{ path('fiche_bird_obs', { 'id': observation.bird.id, 'idObs': observation.id}) }}">{{ observation.bird.getNomVern() }}</td>
+                                                        href="{{ path('fiche_bird_my_obs', { 'id': observation.bird.id, 'idObs': observation.id}) }}">{{ observation.bird.getNomVern() }}</td>
                             {% else %}
                                 <td class="col-sm-3"><a class="articleTitle" data-toggle="tooltip"
                                                         data-placement="right" title="Visualiser l'article"
-                                                        href="{{ path('fiche_bird_obs', { 'id': observation.bird.id, 'idObs': observation.id}) }}">{{ observation.bird.getNomValide() }}</td>
+                                                        href="{{ path('fiche_bird_my_obs', { 'id': observation.bird.id, 'idObs': observation.id}) }}">{{ observation.bird.getNomValide() }}</td>
                             {% endif %}
                             <td class="col-sm-5">{{ observation.comment | truncate(200) }}
                             <td class="col-sm-2">{{ observation.date | date("d/m/Y") }}</td>
