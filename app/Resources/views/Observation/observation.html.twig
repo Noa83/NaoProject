@@ -103,7 +103,7 @@
         var apiGeolocationSuccess = function(position) {
             $(".latitude").val(position.coords.latitude);
             $(".longitude").val(position.coords.longitude);
-            alert("API geolocation success!\n\nlat = " + position.coords.latitude + "\nlng = " + position.coords.longitude);
+            alert("Voici vos coordonnées actuels :\n\nlatitude = " + position.coords.latitude + "\nlongitude = " + position.coords.longitude);
         };
 
         var tryAPIGeolocation = function() {
